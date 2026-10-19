@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { business, reviews } from '../content/business.mjs';
 import { Icon } from './Icon';
+import { asset } from '../lib/asset.mjs';
 
 function Stars() {
   return <span className="stars" aria-label="5 out of 5 stars">{[0, 1, 2, 3, 4].map(i => <Icon key={i} name="star" size={17} />)}</span>;
@@ -8,9 +9,9 @@ function Stars() {
 
 function ReviewCard({ review, duplicate = false }) {
   return <figure className="review-card">
-    <div className="review-card-top"><Stars /><img className="google-mark" src="/images/google-g.svg" alt={duplicate ? '' : 'Google'} width="27" height="27" /></div>
+    <div className="review-card-top"><Stars /><img className="google-mark" src={asset("/images/google-g.svg")} alt={duplicate ? '' : 'Google'} width="27" height="27" /></div>
     <blockquote>“{review.text}”</blockquote>
-    <figcaption><a className="review-profile" href={review.profile} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined} aria-label={`${review.name}'s Google profile`}><img src={review.photo} alt={duplicate ? '' : `${review.name}'s public Google profile photo`} width="48" height="48" loading="lazy" /></a><div><a href={review.profile} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined}>{review.name}</a><span>{review.service}</span></div><a className="review-original" href={review.profile} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined} aria-label={`View ${review.name}'s review on Google`}><Icon name="diagonal" size={17} /></a></figcaption>
+    <figcaption><a className="review-profile" href={review.profile} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined} aria-label={`${review.name}'s Google profile`}><img src={asset(review.photo)} alt={duplicate ? '' : `${review.name}'s public Google profile photo`} width="48" height="48" loading="lazy" /></a><div><a href={review.profile} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined}>{review.name}</a><span>{review.service}</span></div><a className="review-original" href={review.profile} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined} aria-label={`View ${review.name}'s review on Google`}><Icon name="diagonal" size={17} /></a></figcaption>
   </figure>;
 }
 
@@ -61,7 +62,7 @@ export function Reviews({ full = false }) {
     element.scrollBy({ left: direction * (width + 24), behavior: reduced ? 'auto' : 'smooth' });
   }
 
-  return <section className={`reviews-section section scrolling-reviews ${full ? 'reviews-full' : ''}`} aria-label="Customer reviews"><div className="container"><div className="section-heading"><div><div className="eyebrow">FROM OUR NEIGHBORS</div><h2>Good work gets<br />people talking.</h2></div><div className="review-score"><strong>4.8<span>/5</span></strong><div><Stars /><span>119 Google reviews</span></div><a href={business.google} target="_blank" rel="noopener noreferrer" aria-label="Read all Google reviews"><img className="google-mark" src="/images/google-g.svg" alt="Google" width="27" height="27" /></a></div></div></div>
+  return <section className={`reviews-section section scrolling-reviews ${full ? 'reviews-full' : ''}`} aria-label="Customer reviews"><div className="container"><div className="section-heading"><div><div className="eyebrow">FROM OUR NEIGHBORS</div><h2>Good work gets<br />people talking.</h2></div><div className="review-score"><strong>4.8<span>/5</span></strong><div><Stars /><span>119 Google reviews</span></div><a href={business.google} target="_blank" rel="noopener noreferrer" aria-label="Read all Google reviews"><img className="google-mark" src={asset("/images/google-g.svg")} alt="Google" width="27" height="27" /></a></div></div></div>
     <div className="reviews-window" ref={viewport} role="region" aria-roledescription="carousel" tabIndex="0" aria-label="Swipe or scroll horizontally to read customer reviews" onPointerEnter={e => { if (e.pointerType === 'mouse') setHovered(true); }} onPointerLeave={() => setHovered(false)} onPointerDown={() => setPaused(true)} onFocus={() => setFocused(true)} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false); }} onKeyDown={e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); move(e.key === 'ArrowRight' ? 1 : -1); } }}>
       <div className="reviews-track"><div className="reviews-group" ref={group}>{reviews.map(r => <ReviewCard key={r.name} review={r} />)}</div><div className="reviews-group reviews-duplicate" aria-hidden="true">{reviews.map(r => <ReviewCard key={r.name} review={r} duplicate />)}</div></div>
     </div>

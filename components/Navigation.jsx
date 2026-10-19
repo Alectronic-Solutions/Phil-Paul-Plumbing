@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { asset } from '../lib/asset.mjs';
 import { useRouter } from 'next/router';
 import { business, services, cities } from '../content/business.mjs';
 import { Icon } from './Icon';
@@ -76,7 +77,7 @@ export function Header() {
                 <div className="dropdown-heading"><span>WHAT CAN WE HELP WITH?</span><Link href="/service">All services<Icon name="arrow" size={16} /></Link></div>
                 <div className="dropdown-services">{services.map(service => <Link href={`/service/${service.slug}`} key={service.slug}><span className="dropdown-icon"><Icon name={service.icon} size={23} /></span><span><strong>{service.name}</strong><small>{descriptions[service.slug]}</small></span><Icon className="dropdown-link-arrow" name="diagonal" size={15} /></Link>)}</div>
               </div>
-              <aside className="dropdown-feature"><img src="/images/truck-960.webp" alt="Phil and Paul's red plumbing service truck" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Not sure where<br />to start?</h2><a href={`tel:${business.telephone}`}><Icon name="phone" size={17} />{business.phone}</a><small>Tell us what is happening.<br />We will help with the next step.</small></aside>
+              <aside className="dropdown-feature"><img src={asset("/images/truck-960.webp")} alt="Phil and Paul's red plumbing service truck" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Not sure where<br />to start?</h2><a href={`tel:${business.telephone}`}><Icon name="phone" size={17} />{business.phone}</a><small>Tell us what is happening.<br />We will help with the next step.</small></aside>
             </div>
           </div>
           <div className="nav-item">
