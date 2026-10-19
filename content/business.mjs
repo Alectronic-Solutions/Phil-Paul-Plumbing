@@ -1,5 +1,7 @@
 export const business = {
   name: "Phil & Paul's Plumbing",
+  legalName: "Phil & Paul's Plumbing, Inc.",
+  email: 'info@philpaulplumbing.com',
   phone: '(209) 366-2319',
   telephone: '+12093662319',
   address: '6 Sierra Vista Pl, Lodi, CA 95240',
@@ -9,6 +11,10 @@ export const business = {
   bbb: 'https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008',
   privacy: '/privacy-policy',
   terms: '/terms-and-conditions',
+  cookies: '/cookie-policy',
+  accessibility: '/accessibility',
+  // Update with the date checked whenever the Google rating changes.
+  rating: { value: '4.8', count: 119, asOf: 'October 2026' },
 };
 
 export const services = [
@@ -92,38 +98,33 @@ export const services = [
 
 export const reviews = [
   {
-    "name": "Austin Blake",
+    "name": "Austin B.",
     "text": "No attempted upsell or pressure for anything other than what I needed",
     "service": "Drain cleaning",
-    "photo": "/images/reviewers/austin-blake.jpg",
     "profile": "https://www.google.com/maps/contrib/112152773033746268240/reviews?hl=en"
   },
   {
-    "name": "Claudia Trevino",
+    "name": "Claudia T.",
     "text": "I would recommend this company to everyone. Mike deserves a raise and a promotion.",
     "service": "Drain & sewer service",
-    "photo": "/images/reviewers/claudia-trevino.jpg",
     "profile": "https://www.google.com/maps/contrib/114032964195880371423/reviews?hl=en"
   },
   {
-    "name": "Karen Mellish",
+    "name": "Karen M.",
     "text": "Aaron came out to service my kitchen drain. He was very polite and professional!",
     "service": "Kitchen drain service",
-    "photo": "/images/reviewers/karen-mellish.jpg",
     "profile": "https://www.google.com/maps/contrib/112144790618698516369/reviews?hl=en"
   },
   {
-    "name": "Kelly Stow",
+    "name": "Kelly S.",
     "text": "He gets us back in service in a timely manner and for a fair price. Thanks to Paul & Phil’s for always coming through!",
     "service": "Plumbing service",
-    "photo": "/images/reviewers/kelly-stow.jpg",
     "profile": "https://www.google.com/maps/contrib/116584263391353546627/reviews?hl=en"
   },
   {
-    "name": "Monty Merrill",
+    "name": "Monty M.",
     "text": "Excellent service! Great explanations, prompt, and cost efficient.",
     "service": "Commercial customer",
-    "photo": "/images/reviewers/monty-merrill.jpg",
     "profile": "https://www.google.com/maps/contrib/112314188013151123869/reviews?hl=en"
   }
 ];
@@ -153,6 +154,8 @@ const basePages = [
   { route: '/book-plumbing-services', type: 'booking', title: "Request Plumbing Service | Phil & Paul's Plumbing", description: 'Request a plumbing appointment in Lodi, Stockton, Galt, or nearby communities. For an urgent problem, call (209) 366-2319.' },
   { route: '/privacy-policy', type: 'legal', legal: 'privacy', title: "Privacy Policy | Phil & Paul's Plumbing", description: "How Phil & Paul's Plumbing collects, uses, and protects your personal information, and the privacy rights available to you." },
   { route: '/terms-and-conditions', type: 'legal', legal: 'terms', title: "Terms and Conditions | Phil & Paul's Plumbing", description: "The terms that apply when you use the Phil & Paul's Plumbing website and services." },
+  { route: '/cookie-policy', type: 'legal', legal: 'cookies', title: "Cookie Policy | Phil & Paul's Plumbing", description: "Which cookies the Phil & Paul's Plumbing website uses, and how to change your privacy choices." },
+  { route: '/accessibility', type: 'legal', legal: 'accessibility', title: "Accessibility Statement | Phil & Paul's Plumbing", description: "Our commitment to an accessible website, and how to reach us if anything on the site is hard to use." },
   { route: '/leave-a-review', type: 'reviews', title: "Customer Reviews | Phil & Paul's Plumbing", description: 'Read what customers say about Phil & Paul\'s Plumbing or share your experience on Google or Yelp.' },
 ];
 export const pages = [

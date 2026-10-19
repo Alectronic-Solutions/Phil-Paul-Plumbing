@@ -44,8 +44,7 @@ for (const entry of capture.pages) {
     if (link.attr('target') === '_blank') link.attr('rel', 'noopener noreferrer');
     // Repair malformed URLs without changing their visible text or styling.
     if (href.includes('https://&lt;a') || href.includes('https://<a')) {
-      if (link.text().trim() === 'Consent') link.attr('href', '#consent-preferences').addClass('termly-display-preferences');
-      else link.attr('href', 'https://app.termly.io/notify/210823d1-ac21-40bc-9c11-b40b57aad9b3');
+      link.attr('href', link.text().trim() === 'Consent' ? '/cookie-policy' : '/privacy-policy');
     }
     if (link.attr('href')?.startsWith('/service/ ')) link.attr('href', link.attr('href').replace('/service/ ', '/service/'));
     if (href === '#' && /call\s*\(?209[)-]?\s*366[-\s]?2319/i.test(link.text())) link.attr('href', 'tel:+12093662319');

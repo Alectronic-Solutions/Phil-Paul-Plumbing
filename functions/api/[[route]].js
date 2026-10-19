@@ -1,3 +1,10 @@
+// Proof of consent sent with every service request. Keep `text` identical to the checkbox label on the booking page
+// (npm run verify checks this) and change `version` whenever the wording changes.
+export const CONSENT = {
+  version: '2026-10-19',
+  text: 'I agree to the Terms and Conditions and Privacy Policy, and I agree to be contacted by phone, text, or email about this service request. Msg & data rates may apply. Reply STOP to opt out.',
+};
+
 const json = (body, status = 200) => new Response(JSON.stringify(body), {
   status,
   headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
@@ -37,7 +44,7 @@ export async function onRequestPost({ request, env, params }) {
         'Content-Type': 'application/json',
         ...(env.DELIVERY_WEBHOOK_SECRET ? { Authorization: `Bearer ${env.DELIVERY_WEBHOOK_SECRET}` } : {}),
       },
-      body: JSON.stringify({ type: route, submittedAt: new Date().toISOString(), fields }),
+      body: JSON.stringify({ type: route, submittedAt: new Date().toISOString(), fields, ...(route === 'book-service' ? { consent: { ...CONSENT, page: request.headers.get('Referer') || null, ip: request.headers.get('CF-Connecting-IP') || null } } : {}) }),
       signal: AbortSignal.timeout(10000),
     });
     if (!response.ok) throw new Error('Delivery failed');

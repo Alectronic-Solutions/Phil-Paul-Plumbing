@@ -7,11 +7,11 @@
     "build": "node scripts/prepare-redesign.mjs && next build",
     "capture": "node scripts/capture-site.mjs && node scripts/capture-dependencies.mjs && node scripts/prepare-content.mjs",
     "prepare:content": "node scripts/prepare-content.mjs",
-    "import:legal": "node scripts/import-legal.mjs",
     "verify": "node scripts/verify.mjs",
     "preview": "node scripts/preview.mjs",
     "check:original-capture": "node scripts/visual-check.mjs",
-    "test:forms": "node --test tests/forms.test.mjs"
+    "test:forms": "node --test tests/forms.test.mjs",
+    "test:consent": "node --test tests/consent.test.mjs"
   },
   "dependencies": {
     "next": "16.4.2",

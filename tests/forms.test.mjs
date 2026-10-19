@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const source = await readFile(new URL('../functions/api/[[route]].js', import.meta.url), 'utf8');
-const { onRequestPost } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+const { onRequestPost, CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
 const valid = { Name: 'Test User', Phone: '2095550100', City: 'Lodi', 'Service-Needed': 'Drain cleaning', 'Opt-In': 'on' };
 function context(fields, env = {}, origin = 'https://preview.example.com') {
-  return { request: new Request('https://preview.example.com/api/book-service', { method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json' }, body: JSON.stringify(fields) }), env, params: { route: ['book-service'] } };
+  return { request: new Request('https://preview.example.com/api/book-service', { method: 'POST', headers: { Origin: origin, Referer: 'https://preview.example.com/book-plumbing-services/', 'Content-Type': 'application/json' }, body: JSON.stringify(fields) }), env, params: { route: ['book-service'] } };
 }
 
 test('missing delivery configuration gives a clear failure, never a success', async () => {
@@ -41,6 +41,9 @@ test('reports success only after the configured delivery service accepts the req
     assert.equal(delivered.url, 'https://delivery.example.com/form');
     assert.equal(delivered.headers.Authorization, 'Bearer test-secret');
     assert.deepEqual(delivered.body.fields, valid);
+    assert.equal(delivered.body.consent.version, CONSENT.version);
+    assert.equal(delivered.body.consent.text, CONSENT.text);
+    assert.equal(delivered.body.consent.page, 'https://preview.example.com/book-plumbing-services/');
   } finally { globalThis.fetch = realFetch; }
 });
 test('a failed delivery service does not produce a success', async () => {
