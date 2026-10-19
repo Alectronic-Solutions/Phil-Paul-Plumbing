@@ -244,7 +244,7 @@ body { font-size: 17px; }
 }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; gap: 29px; }
-  .service-card-photo > img { aspect-ratio: 1.65; }
+  .service-card-photo img { aspect-ratio: 1.65; }
   .service-card-copy > div > svg { display: block; width: 23px; margin-top: 2px; }
   .service-card-copy > div { align-items: center; gap: 11px; }
   .service-card-copy { padding: 20px 0 22px; }

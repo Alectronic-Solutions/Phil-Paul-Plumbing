@@ -57,13 +57,13 @@
 
 /* Photos and panels */
 .about-feature-photo { border-radius: var(--radius-lg); overflow: hidden; }
-.about-feature-photo > img { border-radius: var(--radius-lg); }
+.about-feature-photo img { border-radius: var(--radius-lg); }
 .page-hero-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
 .image-caption { font-size: 11px; letter-spacing: .1em; padding: 15px 20px; }
-.gallery-grid figure > img { border-radius: var(--radius); box-shadow: var(--shadow-sm); }
-.booking-intro > img { border-radius: var(--radius); }
+.gallery-grid figure img { border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.booking-intro img { border-radius: var(--radius); }
 .contact-request { border-radius: var(--radius-lg); border: 1px solid #e0dbcf; }
-.contact-request-image > img { border-radius: var(--radius); }
+.contact-request-image img { border-radius: var(--radius); }
 .area-visual { border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .map-pin { box-shadow: 0 0 0 7px #751c2818, 0 6px 16px #751c2840; }
 .map-lodi > small { font-size: 10px; }
@@ -209,3 +209,6 @@
 .form-field > select:focus { outline: none; border-color: var(--wine); background-color: var(--white); box-shadow: 0 0 0 4px #751c281f; }
 
 .other-services { padding-top: 0; }
+
+/* Photos are <picture> (AVIF + WebP fallback); the wrapper adds no box, so the <img> lays out as before. */
+picture { display: contents; }

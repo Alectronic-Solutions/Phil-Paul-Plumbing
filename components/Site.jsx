@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { asset } from '../lib/asset.mjs';
+import { photoWidths } from '../lib/photos.mjs';
 import { business, services, otherServices, commonFaqs, cities, hoursSummary } from '../content/business.mjs';
 import { Icon, BrandIcon } from './Icon';
 import { Header, Brand } from './Navigation';
@@ -9,8 +10,8 @@ import { ConsentProvider, PrivacyChoicesButton } from './Consent';
 export { Icon, Reviews };
 
 export function Photo({ name, alt, className = '', priority = false, sizes = '(max-width: 700px) 100vw, 50vw', ...props }) {
-  const responsive = ['team', 'truck', 'waterHeater', 'repair', 'filtration', 'drain', 'sewer', 'camera', 'gas', 'commercial'].includes(name);
-  return <img className={className} src={asset(responsive ? `/images/${name}-960.webp` : `/images/${name}.avif`)} srcSet={responsive ? [480, 960, 1440].map(w => `${asset(`/images/${name}-${w}.webp`)} ${w}w`).join(', ') : undefined} sizes={responsive ? sizes : undefined} alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" width="1440" height="1080" {...props} />;
+  const srcSet = format => photoWidths.map(w => `${asset(`/images/${name}-${w}.${format}`)} ${w}w`).join(', ');
+  return <picture><source type="image/avif" srcSet={srcSet('avif')} sizes={sizes} /><img className={className} src={asset(`/images/${name}-960.webp`)} srcSet={srcSet('webp')} sizes={sizes} alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" width="1440" height="1080" {...props} /></picture>;
 }
 
 export function Button({ href = '/book-plumbing-services', children = 'Request service', variant = 'primary', icon = 'arrow', className = '', ...props }) {

@@ -1,19 +1,24 @@
-import { readFile, writeFile, mkdir, copyFile, access } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
+import { photoWidths } from '../lib/photos.mjs';
 
 const photos = JSON.parse(await readFile('reference/photo-inventory.json', 'utf8'));
 const choices = { team: 2, technician: 14, crew: 24, truck: 19, fleet: 32, drain: 16, roots: 13, sewer: 22, camera: 8, waterHeater: 56, heaterInstall: 52, commercial: 36, commercialHeaters: 38, repair: 30, filtration: 60, jeff: 50, gas: 15, field: 27, pipe: 7 };
+// Every photo ships as AVIF (served first) with a WebP fallback, at the widths listed in lib/photos.mjs.
+// Sources top out near 1080px, so the largest variant is never upscaled.
 await mkdir('public/images', { recursive: true });
 for (const [name, index] of Object.entries(choices)) {
   let input = 'public' + photos[index].local;
   try { await access(input); } catch { input = 'reference/published-assets/' + path.basename(photos[index].local); }
-  await copyFile(input, `public/images/${name}.avif`);
-  if (['team', 'truck', 'waterHeater', 'repair', 'filtration', 'drain', 'sewer', 'camera', 'gas', 'commercial'].includes(name)) {
-    for (const width of [480, 960, 1440]) await sharp(input).resize({ width, withoutEnlargement: true }).webp({ quality: 85 }).toFile(`public/images/${name}-${width}.webp`);
+  for (const width of photoWidths) {
+    const resized = () => sharp(input).resize({ width, withoutEnlargement: true });
+    await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
+    await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
   }
 }
+if (process.argv.includes('--photos-only')) process.exit(0);
 
 const fontUrl = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap';
 const response = await fetch(fontUrl, { headers: { 'User-Agent': 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36' } });

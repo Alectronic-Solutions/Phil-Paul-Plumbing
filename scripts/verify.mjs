@@ -64,7 +64,7 @@ for (const page of pages) {
     assert($(image).attr('alt') !== undefined, `Missing alt on ${page.route}`);
     assert($(image).attr('width') && $(image).attr('height'), `Missing image dimensions on ${page.route}`);
   }
-  for (const el of $('[src],[href],img[srcset]').toArray()) {
+  for (const el of $('[src],[href],[srcset]').toArray()) {
     const urls = [$(el).attr('src'), $(el).attr('href'), ...($(el).attr('srcset') || '').split(',').map(p => p.trim().split(' ')[0])].filter(Boolean);
     for (const url of urls) {
       if (/^\/(images|assets|fonts|_next)\//.test(url)) {
