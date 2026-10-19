@@ -68,7 +68,7 @@ Set these runtime secrets in the Cloudflare Pages dashboard:
 
 The handlers send `{ type, submittedAt, fields }` as JSON. Destinations must confirm acceptance with a 2xx HTTP response. Connect these to the chosen CRM or email workflow; no delivery destination was available during this migration.
 
-The preview is deliberately excluded from indexing via `public/robots.txt` and `public/_headers`. Remove the robots block and `X-Robots-Tag` before replacing the production site. Keep the other security headers. Canonical and structured-data URLs currently point to the existing production domain. No deployment, DNS changes or account transfers have been performed.
+The preview is deliberately excluded from indexing (robots meta tag, `robots.txt` and the `X-Robots-Tag` header). At launch, set the build environment variable `SITE_INDEXABLE=true` on the production Cloudflare Pages project only. The build then drops all three blocks and adds the sitemap to `robots.txt`; `npm run verify` checks that they agree. Leave it unset everywhere else, including GitHub Pages. URLs have no trailing slash, to match the original site's indexed URLs. Canonical and structured-data URLs currently point to the existing production domain. No deployment, DNS changes or account transfers have been performed.
 
 ## Remaining account connections
 

@@ -9,7 +9,7 @@ const server = http.createServer(async (request, response) => {
   try {
     const url = new URL(request.url, 'http://127.0.0.1');
     if (url.pathname.replace(/\/$/, '') === '/book-service') {
-      response.writeHead(301, { Location: '/book-plumbing-services/' });
+      response.writeHead(301, { Location: '/book-plumbing-services' });
       response.end();
       return;
     }
@@ -21,7 +21,9 @@ const server = http.createServer(async (request, response) => {
     let target = path.resolve(root, '.' + decodeURIComponent(url.pathname));
     if (target !== root && !target.startsWith(root + path.sep)) throw new Error('Invalid path');
     let details = await stat(target).catch(() => null);
-    if (details?.isDirectory()) target = path.join(target, 'index.html');
+    // Match Cloudflare Pages: /service serves service.html, even beside a service/ folder.
+    if (details?.isDirectory()) target = await stat(target + '.html').then(() => target + '.html', () => path.join(target, 'index.html'));
+    else if (!details && !path.extname(target)) target += '.html';
     let bytes = await readFile(target).catch(() => null);
     if (!bytes) {
       response.writeHead(404, { 'Content-Type': 'text/html' });

@@ -25,20 +25,28 @@ for (const item of integrations) {
 const legalLinks = [business.privacy, business.terms, business.cookies, business.accessibility];
 
 const routes = new Set(pages.map(p => p.route));
+const indexable = process.env.SITE_INDEXABLE === 'true';
+const htmlFile = route => route === '/' ? 'out/index.html' : `out${route}.html`;
+const seen = { titles: new Set(), descriptions: new Set() };
 let assets = 0, links = 0;
 for (const page of pages) {
-  const file = page.route === '/' ? 'out/index.html' : `out${page.route}/index.html`;
-  const html = await readFile(file, 'utf8');
+  const html = await readFile(htmlFile(page.route), 'utf8');
   const $ = load(html);
   assert.equal($('title').text(), page.title, `Title: ${page.route}`);
   assert.equal($('h1').length, 1, `H1: ${page.route}`);
   assert.equal($('main').length, 1, `Main landmark: ${page.route}`);
-  assert.equal($('html').attr('lang'), 'en');
-  assert.equal($('meta[name="robots"]').attr('content'), 'noindex, nofollow', `Preview noindex: ${page.route}`);
+  assert.equal($('html').attr('lang'), 'en-US');
+  assert.equal($('meta[name="robots"]').attr('content'), indexable ? undefined : 'noindex, nofollow', `Robots meta must match SITE_INDEXABLE: ${page.route}`);
   assert.equal($('meta[name="description"]').attr('content'), page.description);
-  assert.equal($('link[rel="canonical"]').attr('href'), `https://www.philpaulplumbing.com${page.route === '/' ? '/' : page.route}`);
+  assert.equal($('link[rel="canonical"]').attr('href'), business.url + page.route, `Canonical: ${page.route}`);
+  assert.equal($('meta[property="og:url"]').attr('content'), business.url + page.route, `og:url: ${page.route}`);
+  assert((await stat('out' + new URL($('meta[property="og:image"]').attr('content')).pathname)).isFile(), `Social image missing: ${page.route}`);
+  assert(!seen.titles.has(page.title) && !seen.descriptions.has(page.description), `Duplicate title or description: ${page.route}`);
+  seen.titles.add(page.title); seen.descriptions.add(page.description);
+  assert(page.title.length <= 65 && page.description.length >= 70 && page.description.length <= 165, `Title or description length: ${page.route}`);
   const schemas = $('script[type="application/ld+json"]').toArray().map(el => JSON.parse($(el).text()));
   assert(schemas.some(s => s['@graph'].some(g => g['@type'] === 'Plumber')), `Plumber schema: ${page.route}`);
+  assert.equal(schemas.some(s => s['@graph'].some(g => g['@type'] === 'BreadcrumbList')), page.route !== '/', `Breadcrumb schema: ${page.route}`);
   assert.equal($('script[src*="webflow"],script[src*="phil-pauls-plumbing-lodi"],script[src*="googletagmanager"],script[src*="podium"],link[href*="typekit"],iframe').length, 0, `Legacy dependency: ${page.route}`);
   for (const el of $('script[src],link[href],img[src],iframe,embed,object').toArray()) {
     const url = $(el).attr('src') || $(el).attr('href') || '';
@@ -75,8 +83,12 @@ for (const page of pages) {
   }
 }
 const sitemap = await readFile('out/sitemap.xml', 'utf8');
-assert.equal([...sitemap.matchAll(/<loc>/g)].length, pages.length);
-const booking = load(await readFile('out/book-plumbing-services/index.html', 'utf8'));
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]), pages.map(p => business.url + p.route), 'Sitemap must list exactly the canonical URLs');
+const robots = await readFile('out/robots.txt', 'utf8');
+assert.equal(/^Disallow: \/$/m.test(robots), !indexable, 'robots.txt must match SITE_INDEXABLE');
+if (indexable) assert(robots.includes(`Sitemap: ${business.url}/sitemap.xml`), 'robots.txt must point to the sitemap');
+assert.equal((await readFile('out/_headers', 'utf8')).includes('X-Robots-Tag'), !indexable, '_headers X-Robots-Tag must match SITE_INDEXABLE');
+const booking = load(await readFile(htmlFile('/book-plumbing-services'), 'utf8'));
 assert.equal(booking('input[name="Email"]').attr('required'), undefined, 'Email should be optional');
 assert.equal(booking('form').attr('action'), '/api/book-service');
 const old = JSON.parse(await readFile('reference/capture.json', 'utf8'));
@@ -88,7 +100,7 @@ assert.equal(home('.review-avatar').length, 0, 'Initial-only avatars should be r
 assert.equal(home('button[aria-label="Next reviews"]').length, 1, 'Review navigation');
 const { CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(await readFile('functions/api/[[route]].js', 'utf8')).toString('base64')}`);
 assert.equal(booking('.consent-label > span').text().replace(/\s*\*$/, '').replace(/\s+/g, ' ').trim(), CONSENT.text, 'Booking consent label must match the consent record in functions/api/[[route]].js');
-const termsPage = load(await readFile('out/terms-and-conditions/index.html', 'utf8'))('.legal-body').text();
+const termsPage = load(await readFile(htmlFile('/terms-and-conditions'), 'utf8'))('.legal-body').text();
 assert(!/disparag/i.test(termsPage), 'Terms must not restrict customer reviews (Consumer Review Fairness Act, Cal. Civ. Code 1670.8)');
 assert(termsPage.includes('Nothing in these Terms limits your right to post honest reviews'), 'Terms must keep the review rights statement');
 const builtFiles = (await readdir('out', { recursive: true, withFileTypes: true })).filter(f => f.isFile() && /\.(html|js|css|txt|xml)$/.test(f.name));
@@ -97,4 +109,4 @@ for (const file of builtFiles) {
   assert(!/termly/i.test(text), `Termly reference in ${file.name}`);
   assert(!text.includes('366-2621') && !text.includes('/images/reviewers/'), `Outdated phone number or reviewer photo in ${file.name}`);
 }
-console.log(`PASS: ${pages.length} pages, ${assets} asset references, ${links} internal links, metadata, schemas, form labels, original route coverage, copy checks, and consent and legal guardrails.`);
+console.log(`PASS (search indexing ${indexable ? 'ENABLED' : 'blocked'}): ${pages.length} pages, ${assets} asset references, ${links} internal links, metadata, schemas, form labels, original route coverage, copy checks, and consent and legal guardrails.`);
