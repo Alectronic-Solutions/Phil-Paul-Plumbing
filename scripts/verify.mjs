@@ -1,7 +1,28 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import { load } from 'cheerio';
-import { pages } from '../content/business.mjs';
+import { pages, business } from '../content/business.mjs';
+import { integrations, categories } from '../content/integrations.mjs';
+
+// Legal guardrails: the cookie policy promises that nothing optional loads without consent.
+// Third-party tools may only be added through content/integrations.mjs, which the consent manager gates.
+const trackers = /googletagmanager|google-analytics|googleadservices|doubleclick|facebook\.net|connect\.facebook|fbevents|clarity\.ms|hotjar|podium|termly|callrail|accessibe|acsbapp|tiktok|linkedin\.com\/(px|insight)|bing\.com\/bat|segment\.(io|com)|fullstory|mouseflow|intercom|tawk\.to|livechat/i;
+const consentFiles = new Set(['components/Consent.jsx', 'lib/consent.mjs']);
+const listSource = async dir => (await readdir(dir, { recursive: true, withFileTypes: true })).filter(f => f.isFile() && /\.(m?js|jsx)$/.test(f.name)).map(f => `${f.parentPath ?? f.path}/${f.name}`.replace(/\\/g, '/'));
+for (const file of [...await listSource('components'), ...await listSource('pages'), ...await listSource('lib')]) {
+  if (consentFiles.has(file)) continue;
+  const code = await readFile(file, 'utf8');
+  assert(!/document\.cookie|localStorage|sessionStorage|indexedDB|next\/script|createElement\(\s*['"]script|<iframe|\bgtag\(|\bfbq\(|dataLayer/.test(code), `${file} uses cookies, browser storage, or third-party scripts outside the consent manager. Add the tool to content/integrations.mjs instead.`);
+  assert(!trackers.test(code), `${file} references a tracking or widget service. Add it through content/integrations.mjs so it is consent-gated and listed in the cookie policy.`);
+}
+for (const item of integrations) {
+  assert(item.id && item.name && item.provider && item.purpose, `Integration is missing id, name, provider, or purpose: ${item.id}`);
+  assert(categories[item.category], `Integration ${item.id} needs a category of functional, analytics, or marketing. Strictly necessary tools do not belong in the registry.`);
+  assert(/^https:\/\//.test(item.privacyUrl || ''), `Integration ${item.id} needs its provider's privacy policy URL.`);
+  assert(Array.isArray(item.cookies) && item.cookies.every(c => c.name && c.duration && c.purpose), `Integration ${item.id} must list every cookie with name, duration, and purpose for the cookie policy.`);
+  assert(Array.isArray(item.scripts), `Integration ${item.id} needs a scripts array.`);
+}
+const legalLinks = [business.privacy, business.terms, business.cookies, business.accessibility];
 
 const routes = new Set(pages.map(p => p.route));
 let assets = 0, links = 0;
@@ -13,11 +34,19 @@ for (const page of pages) {
   assert.equal($('h1').length, 1, `H1: ${page.route}`);
   assert.equal($('main').length, 1, `Main landmark: ${page.route}`);
   assert.equal($('html').attr('lang'), 'en');
+  assert.equal($('meta[name="robots"]').attr('content'), 'noindex, nofollow', `Preview noindex: ${page.route}`);
   assert.equal($('meta[name="description"]').attr('content'), page.description);
   assert.equal($('link[rel="canonical"]').attr('href'), `https://www.philpaulplumbing.com${page.route === '/' ? '/' : page.route}`);
   const schemas = $('script[type="application/ld+json"]').toArray().map(el => JSON.parse($(el).text()));
   assert(schemas.some(s => s['@graph'].some(g => g['@type'] === 'Plumber')), `Plumber schema: ${page.route}`);
   assert.equal($('script[src*="webflow"],script[src*="phil-pauls-plumbing-lodi"],script[src*="googletagmanager"],script[src*="podium"],link[href*="typekit"],iframe').length, 0, `Legacy dependency: ${page.route}`);
+  for (const el of $('script[src],link[href],img[src],iframe,embed,object').toArray()) {
+    const url = $(el).attr('src') || $(el).attr('href') || '';
+    assert(!/^(https?:)?\/\//.test(url) || el.name === 'link' && /^(canonical|alternate)$/.test($(el).attr('rel')), `Third-party resource loaded without consent on ${page.route}: ${url}`);
+  }
+  assert(!trackers.test($('head').html() + $('body').html().replace(/<a [^>]*>/g, '')), `Tracking or widget service referenced on ${page.route}`);
+  for (const route of legalLinks) assert($(`footer a[href^="${route}"]`).length, `Footer link to ${route} missing on ${page.route}`);
+  assert.equal($('footer button.privacy-choices').length, 1, `"Your Privacy Choices" control missing on ${page.route}`);
   assert(!$('body').text().includes('\u2014'), `Em dash in visible copy: ${page.route}`);
   assert.equal($('.eyebrow > span').length, 0, `Decorative title dash: ${page.route}`);
   assert.equal($('.nav-trigger[aria-controls][aria-expanded="false"]').length, 3, `Navigation disclosures: ${page.route}`);
@@ -53,8 +82,19 @@ assert.equal(booking('form').attr('action'), '/api/book-service');
 const old = JSON.parse(await readFile('reference/capture.json', 'utf8'));
 for (const page of old.pages) assert(routes.has(page.route), `Original URL lost: ${page.route}`);
 const home = load(await readFile('out/index.html', 'utf8'));
-assert.equal(home('.reviews-group:not([aria-hidden]) .review-profile img').length, 5, 'Real reviewer photos');
+assert.equal(home('.review-card img:not(.google-mark)').length, 0, 'Reviewer photos need the reviewer’s permission and should not be shown');
 assert.equal(home('.reviews-duplicate a:not([tabindex="-1"])').length, 0, 'Duplicate review links should not receive keyboard focus');
 assert.equal(home('.review-avatar').length, 0, 'Initial-only avatars should be removed');
 assert.equal(home('button[aria-label="Next reviews"]').length, 1, 'Review navigation');
-console.log(`PASS: ${pages.length} pages, ${assets} asset references, ${links} internal links, metadata, schemas, form labels, original route coverage, and copy checks.`);
+const { CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(await readFile('functions/api/[[route]].js', 'utf8')).toString('base64')}`);
+assert.equal(booking('.consent-label > span').text().replace(/\s*\*$/, '').replace(/\s+/g, ' ').trim(), CONSENT.text, 'Booking consent label must match the consent record in functions/api/[[route]].js');
+const termsPage = load(await readFile('out/terms-and-conditions/index.html', 'utf8'))('.legal-body').text();
+assert(!/disparag/i.test(termsPage), 'Terms must not restrict customer reviews (Consumer Review Fairness Act, Cal. Civ. Code 1670.8)');
+assert(termsPage.includes('Nothing in these Terms limits your right to post honest reviews'), 'Terms must keep the review rights statement');
+const builtFiles = (await readdir('out', { recursive: true, withFileTypes: true })).filter(f => f.isFile() && /\.(html|js|css|txt|xml)$/.test(f.name));
+for (const file of builtFiles) {
+  const text = await readFile(`${file.parentPath ?? file.path}/${file.name}`, 'utf8');
+  assert(!/termly/i.test(text), `Termly reference in ${file.name}`);
+  assert(!text.includes('366-2621') && !text.includes('/images/reviewers/'), `Outdated phone number or reviewer photo in ${file.name}`);
+}
+console.log(`PASS: ${pages.length} pages, ${assets} asset references, ${links} internal links, metadata, schemas, form labels, original route coverage, copy checks, and consent and legal guardrails.`);
