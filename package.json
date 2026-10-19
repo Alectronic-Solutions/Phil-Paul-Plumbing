@@ -7,6 +7,7 @@
     "build": "node scripts/prepare-redesign.mjs && next build",
     "capture": "node scripts/capture-site.mjs && node scripts/capture-dependencies.mjs && node scripts/prepare-content.mjs",
     "prepare:content": "node scripts/prepare-content.mjs",
+    "import:legal": "node scripts/import-legal.mjs",
     "verify": "node scripts/verify.mjs",
     "preview": "node scripts/preview.mjs",
     "check:original-capture": "node scripts/visual-check.mjs",

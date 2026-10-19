@@ -7,8 +7,8 @@ export const business = {
   google: 'https://g.page/phil-paul-s-plumbing-inc-lodi?share',
   yelp: 'https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4',
   bbb: 'https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008',
-  privacy: 'https://app.termly.io/policy-viewer/policy.html?policyUUID=210823d1-ac21-40bc-9c11-b40b57aad9b3',
-  terms: 'https://app.termly.io/policy-viewer/policy.html?policyUUID=2bd1caeb-3646-4256-8bde-98174db05d66',
+  privacy: '/privacy-policy',
+  terms: '/terms-and-conditions',
 };
 
 export const services = [
@@ -151,6 +151,8 @@ const basePages = [
   { route: '/service-areas', type: 'areas', title: "Lodi, Stockton & Galt Plumbers | Our Service Area", description: 'Based in Lodi and serving Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities. Call to confirm availability.' },
   { route: '/contact', type: 'contact', title: "Contact Phil & Paul's Plumbing | Lodi, CA", description: 'Call (209) 366-2319 for plumbing service in Lodi and surrounding communities. View our hours, address, and service-request options.' },
   { route: '/book-plumbing-services', type: 'booking', title: "Request Plumbing Service | Phil & Paul's Plumbing", description: 'Request a plumbing appointment in Lodi, Stockton, Galt, or nearby communities. For an urgent problem, call (209) 366-2319.' },
+  { route: '/privacy-policy', type: 'legal', legal: 'privacy', title: "Privacy Policy | Phil & Paul's Plumbing", description: "How Phil & Paul's Plumbing collects, uses, and protects your personal information, and the privacy rights available to you." },
+  { route: '/terms-and-conditions', type: 'legal', legal: 'terms', title: "Terms and Conditions | Phil & Paul's Plumbing", description: "The terms that apply when you use the Phil & Paul's Plumbing website and services." },
   { route: '/leave-a-review', type: 'reviews', title: "Customer Reviews | Phil & Paul's Plumbing", description: 'Read what customers say about Phil & Paul\'s Plumbing or share your experience on Google or Yelp.' },
 ];
 export const pages = [

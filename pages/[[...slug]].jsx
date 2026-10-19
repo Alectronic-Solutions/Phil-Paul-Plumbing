@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { pages, services, cities, business } from '../content/business.mjs';
-import { Layout, HomePage, ServicesPage, ServicePage, AboutPage, AreasPage, CityPage, ContactPage, BookingPage, ReviewsPage } from '../components/Site';
+import { Layout, HomePage, ServicesPage, ServicePage, AboutPage, AreasPage, CityPage, ContactPage, BookingPage, ReviewsPage, LegalPage } from '../components/Site';
 
-export default function SitePage({ page }) {
+export default function SitePage({ page, legal }) {
   const canonical = `https://www.philpaulplumbing.com${page.route === '/' ? '/' : page.route}`;
   const schema = {
     '@context': 'https://schema.org',
@@ -31,6 +31,7 @@ export default function SitePage({ page }) {
       {page.type === 'contact' && <ContactPage />}
       {page.type === 'booking' && <BookingPage />}
       {page.type === 'reviews' && <ReviewsPage />}
+      {page.type === 'legal' && <LegalPage doc={legal} />}
     </Layout>
   </>;
 }
@@ -39,9 +40,11 @@ export function getStaticPaths() {
   return { paths: pages.map((page) => ({ params: { slug: page.route === '/' ? [] : page.route.slice(1).split('/') } })), fallback: false };
 }
 
-export function getStaticProps({ params }) {
+export async function getStaticProps({ params }) {
   const route = '/' + (params.slug || []).join('/');
   const page = pages.find((item) => item.route === route);
   if (!page) return { notFound: true };
+  // Loaded here so the policy text only ships in the legal pages' HTML, not the shared client bundle.
+  if (page.type === 'legal') return { props: { page, legal: (await import('../content/legal.mjs')).legal[page.legal] } };
   return { props: { page } };
 }

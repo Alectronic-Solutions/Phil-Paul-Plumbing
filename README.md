@@ -45,6 +45,7 @@ The live Webflow site was not edited. The redesigned site does not load Webflow,
 | `components/Icon.jsx` | Shared SVG icons |
 | `styles/site.css` | Base design tokens and layouts |
 | `styles/premium.css` | Readable typography, premium navigation, review rail, and mobile refinements |
+| `styles/polish.css` | Pill buttons, rounded photos and cards, shadows, focus rings, and the footer credit |
 | `pages/[[...slug]].jsx` | Static route generation and search metadata |
 | `pages/_document.jsx` | Local font loading and favicon |
 | `public/images/` | Selected business photos and responsive variants |
