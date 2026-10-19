@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { pages, services, cities, business } from '../content/business.mjs';
+import { pages, services, cities, business, openHours } from '../content/business.mjs';
 import { Layout, HomePage, ServicesPage, ServicePage, AboutPage, AreasPage, CityPage, ContactPage, BookingPage, ReviewsPage, LegalPage } from '../components/Site';
 
 const site = business.url;
@@ -14,7 +14,7 @@ export default function SitePage({ page, legal }) {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Plumber', '@id': `${site}/#business`, name: business.name, legalName: business.legalName, url: `${site}/`, telephone: business.telephone, email: business.email, foundingDate: '1996', logo: `${site}/images/favicon.png`, image: `${site}/images/og-image.jpg`, hasMap: business.google, address: { '@type': 'PostalAddress', streetAddress: '6 Sierra Vista Pl', addressLocality: 'Lodi', addressRegion: 'CA', postalCode: '95240', addressCountry: 'US' }, areaServed, openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '19:00' }, { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '16:00' }], hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: `California contractor license ${business.license}` }, sameAs: [business.google, business.yelp, business.bbb, business.facebook, business.instagram] },
+      { '@type': 'Plumber', '@id': `${site}/#business`, name: business.name, legalName: business.legalName, url: `${site}/`, telephone: business.telephone, email: business.email, foundingDate: '1996', logo: `${site}/images/favicon.png`, image: `${site}/images/og-image.jpg`, hasMap: business.google, address: { '@type': 'PostalAddress', streetAddress: '6 Sierra Vista Pl', addressLocality: 'Lodi', addressRegion: 'CA', postalCode: '95240', addressCountry: 'US' }, areaServed, openingHoursSpecification: openHours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dayOfWeek, opens: h.opens, closes: h.closes })), hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: `California contractor license ${business.license}` }, sameAs: [business.google, business.yelp, business.bbb, business.facebook, business.instagram] },
       { '@type': 'WebSite', '@id': `${site}/#website`, url: `${site}/`, name: business.name, publisher: { '@id': `${site}/#business` }, inLanguage: 'en-US' },
       { '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: page.title, description: page.description, isPartOf: { '@id': `${site}/#website` }, about: { '@id': `${site}/#business` }, inLanguage: 'en-US', ...(trail.length ? { breadcrumb: { '@id': `${canonical}#breadcrumb` } } : {}) },
       ...(trail.length ? [{ '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`, itemListElement: trail.map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, item: site + item.route })) }] : []),

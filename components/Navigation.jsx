@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { asset } from '../lib/asset.mjs';
 import { useRouter } from 'next/router';
-import { business, services, cities } from '../content/business.mjs';
+import { business, services, cities, hoursSummary } from '../content/business.mjs';
 import { Icon } from './Icon';
 
 export function Brand({ footer = false }) {
@@ -63,7 +63,7 @@ export function Header() {
   }
 
   return <>
-    <div className="utility"><div className="container utility-inner"><span><span className="utility-dot" />Serving our neighbors since 1996</span><span className="utility-right">Mon–Fri 7am–7pm <span>/</span> Sat 8am–4pm</span></div></div>
+    <div className="utility"><div className="container utility-inner"><span><span className="utility-dot" />Serving our neighbors since 1996</span><span className="utility-right">{hoursSummary.map((h, i) => <Fragment key={h}>{i > 0 && <> <span>/</span> </>}{h}</Fragment>)}</span></div></div>
     {(panel || open) && <div className="nav-backdrop" aria-hidden="true" />}
     <header className={`site-header premium-header ${open ? 'mobile-nav-open' : ''}`} ref={header}>
       <div className="container header-inner">

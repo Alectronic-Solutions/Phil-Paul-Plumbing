@@ -19,7 +19,19 @@ export const business = {
   accessibility: '/accessibility',
   // Update with the date checked whenever the Google rating changes.
   rating: { value: '4.8', count: 119, asOf: 'October 2026' },
+  // The single source for office hours: header, footer, contact page, CTA, FAQ, and JSON-LD all read from here.
+  hours: [
+    { days: 'Monday–Friday', short: 'Mon–Fri', time: '7am–7pm', opens: '07:00', closes: '19:00', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'] },
+    { days: 'Saturday', short: 'Sat', time: '8am–4pm', opens: '08:00', closes: '16:00', dayOfWeek: ['Saturday'] },
+    { days: 'Sunday', short: 'Sun', time: 'Closed' },
+  ],
 };
+
+export const openHours = business.hours.filter(h => h.opens);
+export const hoursSummary = openHours.map(h => `${h.short} ${h.time}`);
+
+// Smaller jobs listed on the live site's services page that do not have their own page.
+export const otherServices = ['Hot water recirculation pumps', 'Sump pumps', 'Bathroom remodel plumbing', 'Tub and shower valves', 'Sinks and faucets', 'Sprinkler and irrigation lines'];
 
 export const services = [
   {
@@ -138,7 +150,7 @@ export const commonFaqs = [
   ['How quickly can someone come out?', 'We prioritize urgent calls. Call (209) 366-2319, tell us what is happening, and our team will confirm availability. Online requests are reviewed during business hours.'],
   ['Are you licensed and insured?', 'Yes. Phil & Paul\'s Plumbing is licensed and insured. Our California C-36 plumbing contractor license number is 900888.'],
   ['Do you stand behind your work?', 'We offer a one-year labor warranty on most repairs and installations. Ask about the coverage that applies to your job. Equipment manufacturer warranties are separate.'],
-  ['What are your hours?', 'Monday through Friday, 7 a.m. to 7 p.m. Saturday, 8 a.m. to 4 p.m. Closed Sunday. Call to confirm appointment availability.'],
+  ['What are your hours?', `${business.hours.map(h => h.opens ? `${h.days}, ${h.time}.` : `Closed ${h.days}.`).join(' ')} Call to confirm appointment availability.`],
 ];
 
 export const cities = [

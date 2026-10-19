@@ -23,7 +23,7 @@ export async function onRequestPost({ request, env, params }) {
   try { input = JSON.parse(body); } catch { return json({ ok: false }, 400); }
   if (!input || typeof input !== 'object' || Array.isArray(input)) return json({ ok: false }, 400);
   const required = route === 'book-service' ? ['Name', 'Phone', 'City', 'Service-Needed', 'Opt-In'] : ['email'];
-  const allowed = new Set([...required, ...(route === 'book-service' ? ['Email', 'Details'] : [])]);
+  const allowed = new Set([...required, ...(route === 'book-service' ? ['Email', 'Details', 'Address', 'Heard-About'] : [])]);
   if (input.Website) return json({ ok: false, error: 'Unable to process this request. Please call (209) 366-2319.' }, 400);
   const fields = Object.fromEntries(Object.entries(input).filter(([key]) => allowed.has(key)).map(([key, value]) => [key, typeof value === 'string' ? value.trim() : '']));
   if (required.some((key) => !fields[key])) return json({ ok: false, error: 'Please complete all required fields.' }, 400);

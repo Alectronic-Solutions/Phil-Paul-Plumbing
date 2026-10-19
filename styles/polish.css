@@ -192,3 +192,20 @@
 .consent-switch input:disabled { cursor: not-allowed; }
 .consent-dialog-actions { justify-content: flex-end; padding-top: 18px; border-top: 1px solid var(--line); }
 .consent-dialog-actions > .button { min-height: 48px; padding: 12px 22px; }
+
+/* Award badges */
+.awards { display: flex; align-items: center; gap: 14px; margin-top: 26px; }
+.awards img { width: 68px; height: 68px; border-radius: 50%; }
+.awards > a { display: block; border-radius: 50%; transition: transform .2s; }
+.awards > a:hover { transform: rotate(-4deg) scale(1.04); }
+.awards > p { display: grid; gap: 2px; margin: 0 0 0 4px; font-size: 13px; line-height: 1.45; color: var(--muted); }
+.awards > p > strong { font-family: var(--heading); font-size: 19px; font-weight: 600; letter-spacing: .02em; color: var(--ink); }
+.story-copy .awards { margin-top: 30px; }
+.reviews-intro .awards { margin: 0 0 30px; }
+@media (max-width: 760px) { .awards img { width: 60px; height: 60px; } .awards > p { font-size: 12px; } .awards > p > strong { font-size: 17px; } }
+
+/* Booking form select, matching the text inputs */
+.form-field > select { width: 100%; min-height: 49px; padding: 12px 40px 12px 13px; font-size: 16px; color: var(--ink); background: #f9f8f4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23252822' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center; border: 1px solid #d4d4c9; border-radius: 12px; appearance: none; cursor: pointer; transition: border-color .2s, box-shadow .2s, background-color .2s; }
+.form-field > select:focus { outline: none; border-color: var(--wine); background-color: var(--white); box-shadow: 0 0 0 4px #751c281f; }
+
+.other-services { padding-top: 0; }
