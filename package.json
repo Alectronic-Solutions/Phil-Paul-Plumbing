@@ -1,0 +1,24 @@
+{
+  "name": "phil-paul-plumbing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "node scripts/prepare-redesign.mjs && next build",
+    "capture": "node scripts/capture-site.mjs && node scripts/capture-dependencies.mjs && node scripts/prepare-content.mjs",
+    "prepare:content": "node scripts/prepare-content.mjs",
+    "verify": "node scripts/verify.mjs",
+    "preview": "node scripts/preview.mjs",
+    "check:original-capture": "node scripts/visual-check.mjs",
+    "test:forms": "node --test tests/forms.test.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "cheerio": "1.2.0",
+    "sharp": "0.35.5"
+  }
+}

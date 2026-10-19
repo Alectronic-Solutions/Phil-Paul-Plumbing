@@ -1,0 +1,522 @@
+[
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+    "local": "/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+    "local": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+    "bytes": 32307,
+    "sha256": "857d9b7d66d8b593dfafec30f5a7fb6c1ede67d6462257ee04e341e2a4f2e5c5",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ad0fabe4ed6a41a3cc92a_ef9fa0156fe0c0b5d6780a27482ad28b_ppp-team-2025-2.avif",
+    "local": "/assets/daf3ffcb91-6a3ad0fabe4ed6a41a3cc92a_ef9fa0156fe0c0b5d6780a27482ad28b_ppp-team-2025-2.avif",
+    "bytes": 271300,
+    "sha256": "ec378d3f3fedcf29ba1a4ef26fcc50021054f22537e3820d34ee56dfd04cd8a2",
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ad4e76aa7371bcae7e8e2_phil%20paul%20plumbing%20june%202026-03.avif",
+    "local": "/assets/fc0f563bc1-6a3ad4e76aa7371bcae7e8e2_phil_20paul_20plumbing_20june_202026-03.avif",
+    "bytes": 142817,
+    "sha256": "d5961490de719651fbcdf39c9fd0bbf32ffa8ac864e5e81f42d47546876128e5",
+    "width": 1080,
+    "height": 1122
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ad51def6f836ddea09674_plumbing-truck-lodi%2C%20ca-2.avif",
+    "local": "/assets/051c7926b3-6a3ad51def6f836ddea09674_plumbing-truck-lodi_2C_20ca-2.avif",
+    "bytes": 278258,
+    "sha256": "12da17dd933aef48f9b24eb4c833e9375eba8c8aa1880cbde5660d4fbb43f1df",
+    "width": 1080,
+    "height": 1918
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/65c5968db33df3c37959bd9b/67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+    "local": "/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+    "bytes": 100979,
+    "sha256": "fa5dd45a3cec202fbe26d7368813ed92ede7917bf4d668f398f4493b351db2ef",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+    "local": "/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+    "bytes": 15833,
+    "sha256": "72712b1620c0f58fd8965ebbe8678aaacf82d1ca44283dd8a2fa4a1771ff3012",
+    "width": 750,
+    "height": 736
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3c569f65df13116b4ae2bf_phil%20paul%20plumbing%20june%202026-38.avif",
+    "local": "/assets/1ac57126ac-6a3c569f65df13116b4ae2bf_phil_20paul_20plumbing_20june_202026-38.avif",
+    "bytes": 61887,
+    "sha256": "9c38b52fa49fbd89f3b31d69f757062f4d5240e5f9de96515ad246583d001a8d",
+    "width": 1400,
+    "height": 932
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3af2e7093cec63b199a358_phil%20paul%20plumbing%20june%202026-36.avif",
+    "local": "/assets/849ff6bae1-6a3af2e7093cec63b199a358_phil_20paul_20plumbing_20june_202026-36.avif",
+    "bytes": 87002,
+    "sha256": "85512f9873140b64f8f68f24a605e9dc58be2081ed604c74c5caa8c9e2cfc614",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3aed7d18d8291eac61e1b9_phil%20paul%20plumbing%20june%202026-35.avif",
+    "local": "/assets/ce5eb71e95-6a3aed7d18d8291eac61e1b9_phil_20paul_20plumbing_20june_202026-35.avif",
+    "bytes": 99166,
+    "sha256": "1b95a8e32348341da3913f2d88adefc7f4ccf6102d9366af8355ffe3eecb4665",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3aed7d3e7ce6d488b04f21_phil%20paul%20plumbing%20june%202026-34.avif",
+    "local": "/assets/b2c6f5e44e-6a3aed7d3e7ce6d488b04f21_phil_20paul_20plumbing_20june_202026-34.avif",
+    "bytes": 132457,
+    "sha256": "81934e2ab1e2f808d962f4d673a9cf6a1757d03631aafc0e6d2fba2ea4397d7a",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae976aec1236e7ecec02c_phil%20paul%20plumbing%20june%202026-30.avif",
+    "local": "/assets/b946716f4c-6a3ae976aec1236e7ecec02c_phil_20paul_20plumbing_20june_202026-30.avif",
+    "bytes": 69576,
+    "sha256": "06e67f78a6f1aab57875e1b8ec870435662f33f5e70adc04a894080e4fe239fb",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae9760268cec0e3d06b9a_phil%20paul%20plumbing%20june%202026-25.avif",
+    "local": "/assets/76891ca739-6a3ae9760268cec0e3d06b9a_phil_20paul_20plumbing_20june_202026-25.avif",
+    "bytes": 280349,
+    "sha256": "a9bd0c79f32e0f11022a2f68269bb6c058e87e1f334b373a71584d6a06f92cdc",
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae9705f5fb0cdcf0649df_phil%20paul%20plumbing%20june%202026-18.avif",
+    "local": "/assets/b690906525-6a3ae9705f5fb0cdcf0649df_phil_20paul_20plumbing_20june_202026-18.avif",
+    "bytes": 526206,
+    "sha256": "0d7f34db902f773b11646dea8967987a87b651adb9fe06c4397bd351bf56cd76",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae970afab2fb860f184f2_phil%20paul%20plumbing%20june%202026-14.avif",
+    "local": "/assets/dad427d4f5-6a3ae970afab2fb860f184f2_phil_20paul_20plumbing_20june_202026-14.avif",
+    "bytes": 257035,
+    "sha256": "2d6fe6b2d6419aa484ee38fad003bef05827a85a3859a2d95e2ad7a9f077deda",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae96fca3714890a6fb5f2_64c9c75c1aff2bdbaefbdeb685ba05d2_phil%20paul%20plumbing%20june%202026-19.avif",
+    "local": "/assets/e3e912da9a-6a3ae96fca3714890a6fb5f2_64c9c75c1aff2bdbaefbdeb685ba05d2_phil_20paul_20plumbing_20june_202026-19.avif",
+    "bytes": 108917,
+    "sha256": "16e43198f1dcc47232dea6df497b75d8b429288e77fc257459c8915a3a44f906",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae976d6483ba2f98d77fa_phil%20paul%20plumbing%20june%202026-31.avif",
+    "local": "/assets/8c4a6fb02e-6a3ae976d6483ba2f98d77fa_phil_20paul_20plumbing_20june_202026-31.avif",
+    "bytes": 344088,
+    "sha256": "b4cb3fea0cf10ab6580717f75c9bd84f0c730bf00d2b369b2faedda967313845",
+    "width": 1087,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3af4a37e71a71ea793969c_57b63793f7d064848e2781cc89a03f2f_ppp-hand-holding-phone.avif",
+    "local": "/assets/a0d21c0916-6a3af4a37e71a71ea793969c_57b63793f7d064848e2781cc89a03f2f_ppp-hand-holding-phone.avif",
+    "bytes": 78487,
+    "sha256": "d4b75f2b3f43630f6a59a92507d90ea3e26299936ddf35144421380ce81029aa",
+    "width": 1500,
+    "height": 1500
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae976afab2fb860f1857d_phil%20paul%20plumbing%20june%202026-26.avif",
+    "local": "/assets/a27ded7945-6a3ae976afab2fb860f1857d_phil_20paul_20plumbing_20june_202026-26.avif",
+    "bytes": 223620,
+    "sha256": "653fed3350466ca557d7023ae8efcca4e8f24d0c2f4110d61b1b24dd6e3d5c46",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ad12e2157421bbae20dad_plumbing-truck-lodi%2C%20ca-1.avif",
+    "local": "/assets/d6d5f085f5-6a3ad12e2157421bbae20dad_plumbing-truck-lodi_2C_20ca-1.avif",
+    "bytes": 418031,
+    "sha256": "1a2ce7b1aab5ae98a4fb77c82c6458e966c37013cd94495575dc4c36595eadf2",
+    "width": 1918,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ada6ff05a98103037f62f_phil-pauls-plumbing.avif",
+    "local": "/assets/955d34f2e4-6a3ada6ff05a98103037f62f_phil-pauls-plumbing.avif",
+    "bytes": 134159,
+    "sha256": "057f587245f9e645724baceb57195f8bdc606192f675bd689dae013c108d9bfc",
+    "width": 1400,
+    "height": 788
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c6857eefa83bb2a04e685_phil-pauls-plumbing-main.avif",
+    "local": "/assets/6cda644d55-6a3c6857eefa83bb2a04e685_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3c50230734d6e170136e5c_phil%20paul%20plumbing%20june%202026-05.avif",
+    "local": "/assets/776a969869-6a3c50230734d6e170136e5c_phil_20paul_20plumbing_20june_202026-05.avif",
+    "bytes": 294199,
+    "sha256": "92d6e2fbe9a35deeb22db8f727915f88f7af055e6245fb49f1dce44275366796",
+    "width": 1507,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c5560a8d4898b3d92b517_phil%20paul%20plumbing%20june%202026-31.avif",
+    "local": "/assets/aa96199402-6a3c5560a8d4898b3d92b517_phil_20paul_20plumbing_20june_202026-31.avif",
+    "bytes": 235534,
+    "sha256": "aa2759b1977ced0d46741339636a28b5649c712a7d2c66617002a8ab5a6cbdf9",
+    "width": 1087,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c55bfde20b646cbf94761_phil%20paul%20plumbing%20june%202026-15.avif",
+    "local": "/assets/81e8ca7b3c-6a3c55bfde20b646cbf94761_phil_20paul_20plumbing_20june_202026-15.avif",
+    "bytes": 215580,
+    "sha256": "229ad022b7ffae178c146e85847d491dbe1c31c4565dcdd00887668dbcca175e",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c553c35c2153eb11ddd9f_phil%20paul%20plumbing%20june%202026-38.avif",
+    "local": "/assets/fa6da4c5b4-6a3c553c35c2153eb11ddd9f_phil_20paul_20plumbing_20june_202026-38.avif",
+    "bytes": 61887,
+    "sha256": "9c38b52fa49fbd89f3b31d69f757062f4d5240e5f9de96515ad246583d001a8d",
+    "width": 1400,
+    "height": 932
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ad4de7881b1360d50c1fb_phil%20paul%20plumbing%20june%202026-01.avif",
+    "local": "/assets/c086f27f6b-6a3ad4de7881b1360d50c1fb_phil_20paul_20plumbing_20june_202026-01.avif",
+    "bytes": 122755,
+    "sha256": "f79e385fef8dded75f93020097fb277bc03d6363d0dc7aeb85b7dd57dbb4aa61",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c6b9661fa62790aa17ab0_phil%20paul%20plumbing%20june%202026-40.avif",
+    "local": "/assets/3a2eb666a0-6a3c6b9661fa62790aa17ab0_phil_20paul_20plumbing_20june_202026-40.avif",
+    "bytes": 273053,
+    "sha256": "a0899b841063f7195a3fb75fa18e63d9bd80afdfc0abe3514df97aeba6c1a0bc",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a396e919cb9dfc50da1bfb5/6a3ae976b8aa1b1b8c230d48_phil%20paul%20plumbing%20june%202026-29.avif",
+    "local": "/assets/0a41398964-6a3ae976b8aa1b1b8c230d48_phil_20paul_20plumbing_20june_202026-29.avif",
+    "bytes": 260342,
+    "sha256": "e1e8e818657dc578eb2d5ae7633182f29ffa566e5b4dc50c589f6606cf7d029d",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c6880a126157d73a432ec_phil-pauls-plumbing-main.avif",
+    "local": "/assets/035661ae4e-6a3c6880a126157d73a432ec_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c66ac61134d16d880ab8a_phil%20paul%20plumbing%20june%202026-27.avif",
+    "local": "/assets/0efb20cdaf-6a3c66ac61134d16d880ab8a_phil_20paul_20plumbing_20june_202026-27.avif",
+    "bytes": 146311,
+    "sha256": "5b9caa0749fb27ea71327d65bdd00f86e1d2ac51147670781fd2498b2086ad61",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c66beac41e4e6041a47ff_phil%20paul%20plumbing%20june%202026-23.avif",
+    "local": "/assets/941fc84b95-6a3c66beac41e4e6041a47ff_phil_20paul_20plumbing_20june_202026-23.avif",
+    "bytes": 91912,
+    "sha256": "b8f8d8050e8d92be4c704d0da4bf01bbd80210068048c09ed48ecebb83420526",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a3c6628aba8797c71b02515_phil%20paul%20plumbing%20june%202026-39.avif",
+    "local": "/assets/649edcfd8b-6a3c6628aba8797c71b02515_phil_20paul_20plumbing_20june_202026-39.avif",
+    "bytes": 255266,
+    "sha256": "bb636eede11f802816922684a4b75f1b2005458a53df844210b5f2710607537d",
+    "width": 2282,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a41756480fcbddbec90c476_ppp-commercial-services-1.avif",
+    "local": "/assets/7f6c1c4e99-6a41756480fcbddbec90c476_ppp-commercial-services-1.avif",
+    "bytes": 92442,
+    "sha256": "a67bf0313228f9002b2ca576b41ac9312bb96d2193df970928ea827eef38b2ab",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4174e68cb15a3ebf2f7416_ppp-commercial-services-10.avif",
+    "local": "/assets/c0383ce25a-6a4174e68cb15a3ebf2f7416_ppp-commercial-services-10.avif",
+    "bytes": 117090,
+    "sha256": "64b64bbc1632492d8213dfe5fc9f49a96aa177c83da6936ff486c8c4c5e0057e",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a416bd6dab4e7091dbf1177_phil-pauls-plumbing-main.avif",
+    "local": "/assets/fb61806ab1-6a416bd6dab4e7091dbf1177_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4176c5ddc89ecf69c0ec19_ppp-commercial-services-11.avif",
+    "local": "/assets/297daca036-6a4176c5ddc89ecf69c0ec19_ppp-commercial-services-11.avif",
+    "bytes": 62310,
+    "sha256": "a40a27ce02509815bcdbb48d0c5aa24f701c6dc139b770f43044cf0514f4e36e",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4179b6f899936483aa782e_ppp-commercial-services-3.avif",
+    "local": "/assets/c57a7e9b0b-6a4179b6f899936483aa782e_ppp-commercial-services-3.avif",
+    "bytes": 298981,
+    "sha256": "4b077958cf1db37a6796ce07b7ebd5958be93a1802fcf36bb75401ee0eb1c2ae",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a417515205095e38eab6ee3_phil%20paul%20plumbing%20water%20heater-2.avif",
+    "local": "/assets/768078c209-6a417515205095e38eab6ee3_phil_20paul_20plumbing_20water_20heater-2.avif",
+    "bytes": 117643,
+    "sha256": "9668c823a290bc7c79d79190c031857beb5b30de70bd5e0d4ec8c3ada3a6eeb1",
+    "width": 1532,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4174d452599a96eb994cae_ppp-commercial-services-9.avif",
+    "local": "/assets/1960c6eb91-6a4174d452599a96eb994cae_ppp-commercial-services-9.avif",
+    "bytes": 149766,
+    "sha256": "49bf9270a7dbfabb027841b84da02058865d51df7b650fa5bf41fb8b802c2970",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4179ab173d64c986d80e1a_ppp-commercial-services-8.avif",
+    "local": "/assets/338775d610-6a4179ab173d64c986d80e1a_ppp-commercial-services-8.avif",
+    "bytes": 181633,
+    "sha256": "b502a29dd90855c8aae1ff44307492a45c8f0836c893da6d28dc91e3e82658b0",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a41758eddc89ecf69c0b842_ppp-commercial-services-7.avif",
+    "local": "/assets/820cb839a4-6a41758eddc89ecf69c0b842_ppp-commercial-services-7.avif",
+    "bytes": 192252,
+    "sha256": "18b20beafc95fb3e94ce829e62921b5e9286ff87d10d70e282ef5b130ad690eb",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a40801239c6f80dfbd48d27_phil-pauls-plumbing-main.avif",
+    "local": "/assets/b9112f702b-6a40801239c6f80dfbd48d27_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a408417f367a9d78304ec25_ppp-1-26-1-2.avif",
+    "local": "/assets/d1b7916120-6a408417f367a9d78304ec25_ppp-1-26-1-2.avif",
+    "bytes": 119740,
+    "sha256": "8f46b79f8e223f1418377a180998693025c68d38dbc4789eca1bbc5a37b82eae",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4082a860ea1e7044d3f3eb_phil%20paul%20plumbing%20pipes-6.avif",
+    "local": "/assets/e30359a35d-6a4082a860ea1e7044d3f3eb_phil_20paul_20plumbing_20pipes-6.avif",
+    "bytes": 128185,
+    "sha256": "44e27b58023e5e303595ff72e3d6e129499e6f98ab22757c242344c478b39e67",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4080ede922541887eeb90d_phil%20paul%20plumbing%20june%202026-08.avif",
+    "local": "/assets/fafca922a0-6a4080ede922541887eeb90d_phil_20paul_20plumbing_20june_202026-08.avif",
+    "bytes": 62541,
+    "sha256": "7f34990744da212bcb26344201fb86783e928d188660ca4228c2be81ccfe8b7a",
+    "width": 1080,
+    "height": 1454
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4080b08dd6a57317aa1cce_phil%20paul%20plumbing%20june%202026-16.avif",
+    "local": "/assets/c33a0741c7-6a4080b08dd6a57317aa1cce_phil_20paul_20plumbing_20june_202026-16.avif",
+    "bytes": 175022,
+    "sha256": "e5913debbf18944fbb4de8e2c113803ac89a460215bbfa67f6dfc4b99fde605c",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a408067fa9094638080f79f_phil%20paul%20plumbing%20june%202026-27.avif",
+    "local": "/assets/f68b959358-6a408067fa9094638080f79f_phil_20paul_20plumbing_20june_202026-27.avif",
+    "bytes": 146311,
+    "sha256": "5b9caa0749fb27ea71327d65bdd00f86e1d2ac51147670781fd2498b2086ad61",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4082e1e29ad2eefd1ca673_phil%20paul%20plumbing%20june%202026-06.avif",
+    "local": "/assets/c2533a4ec8-6a4082e1e29ad2eefd1ca673_phil_20paul_20plumbing_20june_202026-06.avif",
+    "bytes": 297693,
+    "sha256": "feecef20e560a5e35322ae375e9ba8b4937a25985847ee1ab67f593e7471e3e9",
+    "width": 1080,
+    "height": 1769
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a4080fc60ea1e7044d3d100_phil%20paul%20plumbing%20june%202026-11.avif",
+    "local": "/assets/e0f5ccc441-6a4080fc60ea1e7044d3d100_phil_20paul_20plumbing_20june_202026-11.avif",
+    "bytes": 166788,
+    "sha256": "d8a520f1a73af69c2ea49e4b1f2f62d70c7a67fbb7fbe5c32a2cc74f59622cbc",
+    "width": 1080,
+    "height": 1521
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a408301c8bdeae08c67a1d1_ppp-jeff-in-truck-1.avif",
+    "local": "/assets/20347a10f3-6a408301c8bdeae08c67a1d1_ppp-jeff-in-truck-1.avif",
+    "bytes": 183489,
+    "sha256": "4af8a6399de22e33dcadd9a2dc00da45e5b53b837602f277266634cc404dfda8",
+    "width": 1080,
+    "height": 1218
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a41749c4ecd4209a3d4f02e_ppp-commercial-services-2.avif",
+    "local": "/assets/08ded3aa22-6a41749c4ecd4209a3d4f02e_ppp-commercial-services-2.avif",
+    "bytes": 44726,
+    "sha256": "383ccfcee06d99df2eafb81b902375c61d72104600693521e47ad443b43e779b",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a40583989d8b7fe87104174_phil%20paul%20plumbing%20water%20heater-5.avif",
+    "local": "/assets/f9405777bd-6a40583989d8b7fe87104174_phil_20paul_20plumbing_20water_20heater-5.avif",
+    "bytes": 81409,
+    "sha256": "7cdffaead85b0ca7021208d68cfe26f8236d11d23868a3a3e02a3b0c9a23fe36",
+    "width": 1080,
+    "height": 1323
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a404efc825509a0aba40e56_phil%20paul%20plumbing%20jwater%20heater-1.avif",
+    "local": "/assets/0f7440860d-6a404efc825509a0aba40e56_phil_20paul_20plumbing_20jwater_20heater-1.avif",
+    "bytes": 114587,
+    "sha256": "a749288292734b0153fdb3564730700fe816ff4b4a9fc13dff901da2afb5c3e6",
+    "width": 1080,
+    "height": 1584
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a5c3381a9941b70043e6248_ppp-hot-water-heater-00001.avif",
+    "local": "/assets/a0618ab467-6a5c3381a9941b70043e6248_ppp-hot-water-heater-00001.avif",
+    "bytes": 80277,
+    "sha256": "3b9a906e7a7c333dcb5187dcaf0b5aa25913d3352472aebeb1ca1ec90d8cc296",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a40576f95fb0b707c5f7777_phil%20paul%20plumbing%20water%20heater-4.avif",
+    "local": "/assets/5e645d618a-6a40576f95fb0b707c5f7777_phil_20paul_20plumbing_20water_20heater-4.avif",
+    "bytes": 50652,
+    "sha256": "617a0d6a74c758a2fdea2c92016a6cef082a25ab4b7e8f7cbc220602030a8500",
+    "width": 1084,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a404eb8690a69e1855838bb_phil%20paul%20plumbing%20june%202026-20.avif",
+    "local": "/assets/d4f605a306-6a404eb8690a69e1855838bb_phil_20paul_20plumbing_20june_202026-20.avif",
+    "bytes": 87916,
+    "sha256": "f0989602b18b3ba359d61f6dc3e2f89ed5d9b780ec21ca114683402445c13077",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a405f31f899936483837efb_phil-pauls-plumbing-main.avif",
+    "local": "/assets/8d163e5621-6a405f31f899936483837efb_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a404ea495fb0b707c5dd009_phil%20paul%20plumbing%20june%202026-13.avif",
+    "local": "/assets/757a3a5bba-6a404ea495fb0b707c5dd009_phil_20paul_20plumbing_20june_202026-13.avif",
+    "bytes": 254934,
+    "sha256": "da2b83fc59553ac64280712c128cd347a80f1407330590b2775004a4fe74f6ab",
+    "width": 2282,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a404eda4ecd4209a3acf1fa_phil%20paul%20plumbing%20june%202026-34.avif",
+    "local": "/assets/9b3085119f-6a404eda4ecd4209a3acf1fa_phil_20paul_20plumbing_20june_202026-34.avif",
+    "bytes": 127469,
+    "sha256": "39c17548e366b3948b4aabde8aef7294cd5c53ee804b494bbeabd2d314f7108b",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a70a95381dac15ee92f7192_ppp-more-water-softener-install-02.avif",
+    "local": "/assets/2404666f42-6a70a95381dac15ee92f7192_ppp-more-water-softener-install-02.avif",
+    "bytes": 66319,
+    "sha256": "9b3d333d4e1650c8bf532e92d769eae2baeab0be86cf354339b237eab5bafc1b",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a70a943dc4b749d43ba078e_ppp-more-water-softener-install-01.avif",
+    "local": "/assets/5641cc153c-6a70a943dc4b749d43ba078e_ppp-more-water-softener-install-01.avif",
+    "bytes": 54645,
+    "sha256": "f01581a2af72402ddef9de2e9ec6c91c0dc44fceb9422038d1fd9a94523b53b2",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a70a96333ec04d31b2948f8_ppp-water-softener-install-00000002.avif",
+    "local": "/assets/f632e1bede-6a70a96333ec04d31b2948f8_ppp-water-softener-install-00000002.avif",
+    "bytes": 117217,
+    "sha256": "b606304b6950aef76033ea6a5d319390c388f1755534bc3cdac9f2cdffca1cf1",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a70a8d9e4f53cf8588d0521_ppp-more-water-softener-install-05.avif",
+    "local": "/assets/eb500b08d6-6a70a8d9e4f53cf8588d0521_ppp-more-water-softener-install-05.avif",
+    "bytes": 136845,
+    "sha256": "f543650239c75ba697e76f0ceb6d389eda15e8275c16b4ca81a37a27232da728",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "url": "https://cdn.prod.website-files.com/6a3c2e96a75d3723c08e8bdb/6a70ab8a7d0f00257ecc3815_phil-pauls-plumbing-main.avif",
+    "local": "/assets/7f67ccc0da-6a70ab8a7d0f00257ecc3815_phil-pauls-plumbing-main.avif",
+    "bytes": 77672,
+    "sha256": "b8d7607cfaf16a83d6897b48dd50de4ff5f0ba7bc5fc9fff5006546c9ca05805",
+    "width": 1200,
+    "height": 630
+  }
+]

@@ -1,0 +1,288 @@
+<div class="page-wrapper"><div class="global-styles"><div class="style-overrides w-embed"><style>
+
+/* Ensure all elements inherit the color from its parent */
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-nav-brand,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-slider-arrow-left,
+.w-slider-arrow-right,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+/* Prevent all click and hover interaction with an element */
+.pointer-events-off {
+	pointer-events: none;
+}
+
+/* Enables all click and hover interaction with an element */
+.pointer-events-on {
+  pointer-events: auto;
+}
+
+/* Create a class of .div-square which maintains a 1:1 dimension of a div */
+.div-square::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* Adds inline flex display */
+.display-inlineflex {
+  display: inline-flex;
+}
+
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+
+/* Remove default Webflow chevron from form select */
+select{
+  -webkit-appearance:none;
+}
+
+
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+}
+ 
+.margin-0 {
+  margin: 0rem !important;
+}
+  
+.padding-0 {
+  padding: 0rem !important;
+}
+
+.spacing-clean {
+padding: 0rem !important;
+margin: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+  
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+  
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+  
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+  
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+/* Apply "..." at 100% width */
+.truncate-width { 
+		width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+/* Removes native scrollbar */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+</style></div><div class="fonts w-embed">
+</div><div class="color-schemes w-embed"><style>
+.color-scheme-1 {}
+
+  .color-scheme-2 {
+    --color-scheme-1--text: var(--color-scheme-2--text);
+    --color-scheme-1--background: var(--color-scheme-2--background);
+    --color-scheme-1--foreground: var(--color-scheme-2--foreground);
+    --color-scheme-1--border: var(--color-scheme-2--border);
+    --color-scheme-1--accent: var(--color-scheme-2--accent);
+  }
+
+
+  .color-scheme-3 {
+    --color-scheme-1--text: var(--color-scheme-3--text);
+    --color-scheme-1--background: var(--color-scheme-3--background);
+    --color-scheme-1--foreground: var(--color-scheme-3--foreground);
+    --color-scheme-1--border: var(--color-scheme-3--border);
+    --color-scheme-1--accent: var(--color-scheme-3--accent);
+  }
+
+
+  .color-scheme-4 {
+    --color-scheme-1--text: var(--color-scheme-4--text);
+    --color-scheme-1--background: var(--color-scheme-4--background);
+    --color-scheme-1--foreground: var(--color-scheme-4--foreground);
+    --color-scheme-1--border: var(--color-scheme-4--border);
+    --color-scheme-1--accent: var(--color-scheme-4--accent);
+  }
+
+
+  .color-scheme-5 {
+    --color-scheme-1--text: var(--color-scheme-5--text);
+    --color-scheme-1--background: var(--color-scheme-5--background);
+    --color-scheme-1--foreground: var(--color-scheme-5--foreground);
+    --color-scheme-1--border: var(--color-scheme-5--border);
+    --color-scheme-1--accent: var(--color-scheme-5--accent);
+  }
+
+
+  .color-scheme-6 {
+    --color-scheme-1--text: var(--color-scheme-6--text);
+    --color-scheme-1--background: var(--color-scheme-6--background);
+    --color-scheme-1--foreground: var(--color-scheme-6--foreground);
+    --color-scheme-1--border: var(--color-scheme-6--border);
+    --color-scheme-1--accent: var(--color-scheme-6--accent);
+  }
+
+  
+
+.w-slider-dot {
+  background-color: var(--color-scheme-1--text);
+  opacity: 0.20;
+}
+
+.w-slider-dot.w-active {
+  background-color: var(--color-scheme-1--text);
+  opacity: 1;
+}
+
+/* Override .w-slider-nav-invert styles */
+.w-slider-nav-invert .w-slider-dot {
+  background-color: var(--color-scheme-1--text) !important;
+  opacity: 0.20 !important;
+}
+
+.w-slider-nav-invert .w-slider-dot.w-active {
+  background-color: var(--color-scheme-1--text) !important;
+  opacity: 1 !important;
+}
+
+</style></div></div><div data-collapse="medium" data-animation="default" data-duration="400" fs-scrolldisable-element="smart-nav" data-easing="ease" data-easing2="ease" role="banner" class="navbar11_component color-scheme-6 w-nav"><div class="navbar11_container"><a href="/" class="navbar11_logo-link w-nav-brand"><img width="307" loading="lazy" alt="Phil and Pauls Plumbing Lodi CA logo" src="/assets/88d2c73f14-6a39cd3c075a828ddd72bc92_fad6976ea7d081f35b77d6df2aaffe63_PHIL_20_26_20PAUL_E2_80_99S_20PLUMBING-vector.svg" class="navbar11_logo"></a><nav role="navigation" class="navbar11_menu is-page-height-tablet w-nav-menu"><div class="navbar11_menu-links"><div data-delay="200" data-hover="true" class="navbar11_menu-dropdown w-dropdown"><div class="navbar11_dropdown-toggle w-dropdown-toggle"><div class="text-block-6">Services</div><div class="dropdown-chevron w-embed"><svg width=" 100%" height=" 100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"></path>
+</svg></div></div><nav class="navbar11_dropdown-list w-dropdown-list"><div class="navbar11_dropdown-link-list"><a href="/service" class="navbar11_dropdown-link w-inline-block"><div class="navbar11_text-wrapper"><div class="text-weight-semibold">Residential Services</div></div></a><a href="/service/water-heaters" class="navbar11_dropdown-link w-inline-block"><div class="navbar11_text-wrapper"><div class="text-weight-semibold">Water Heaters</div></div></a><a href="/service/plumbing-repair-services" class="navbar11_dropdown-link w-inline-block"><div class="navbar11_text-wrapper"><div class="text-weight-semibold">General Plumbing Services</div></div></a><a href="/service/water-softeners" class="navbar11_dropdown-link w-inline-block"><div class="navbar11_text-wrapper"><div class="text-weight-semibold">Water Softeners/Water Filtration</div></div></a><a href="/service/commercial-plumbing" class="navbar11_dropdown-link w-inline-block"><div class="navbar11_text-wrapper"><div class="text-weight-semibold">Commercial Plumbing</div></div></a></div></nav></div><a href="/contact" class="navbar11_link w-nav-link">Contact</a><a href="/leave-a-review" aria-current="page" class="navbar11_link w-nav-link w--current">Leave Review</a></div><div class="navbar11_menu-buttons"><a href="/book-plumbing-services" class="button is-small schedule-navbar w-button">Schedule Service</a></div></nav><div class="navbar11_menu-button w-nav-button"><div class="menu-icon1"><div class="menu-icon1_line-top"></div><div class="menu-icon1_line-middle"><div class="menu-icon1_line-middle-inner"></div></div><div class="menu-icon1_line-bottom"></div></div></div></div></div><main class="main-wrapper"><header class="section_header65 text-color-white section_header65-2 color-scheme-6"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="header65_component"><div class="text-align-center"><div class="max-width-large align-center"><div class="margin-bottom margin-xsmall"><div class="text-style-tagline text-color-white">Leave Review</div></div><div class="margin-bottom margin-small"><h1 class="heading-style-h1 text-color-white">Share Your Experience with Phil &amp; Paul’s Plumbing</h1></div><p class="text-size-medium text-color-white">If we’ve helped you with a plumbing problem, we’d be grateful for a review. Your feedback helps other Lodi, Stockton, and Galt homeowners find a plumber they can trust — and it helps us keep doing what we love.<br>Tap below to leave a review on Google or Yelp.</p></div></div></div></div></div></div><div class="header65_background-image-wrapper"><div class="image-overlay-layer"></div><img sizes="100vw" srcset="/assets/bfa213e8ad-6a3ada6ff05a98103037f62f_phil-pauls-plumbing-p-500.avif 500w, /assets/757cb84478-6a3ada6ff05a98103037f62f_phil-pauls-plumbing-p-800.avif 800w, /assets/e9900436a6-6a3ada6ff05a98103037f62f_phil-pauls-plumbing-p-1080.avif 1080w, /assets/955d34f2e4-6a3ada6ff05a98103037f62f_phil-pauls-plumbing.avif 1400w" alt="Phil and Pauls Plumbing" src="/assets/955d34f2e4-6a3ada6ff05a98103037f62f_phil-pauls-plumbing.avif" loading="eager" class="header65_background-image"></div></header><section class="section_links1 color-scheme-6"><div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="max-width-medium align-center"><div class="margin-bottom margin-xlarge"><div class="text-align-center"><div class="margin-bottom margin-small"><div class="links1_image-wrapper"><img sizes="100vw" srcset="/assets/19d721cb61-6a3bfa28759ba64f140a66ed_ppp-small-logo-round-p-500.avif 500w, /assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif 750w" alt="Phil and Pauls Plumbing Lodi CA logo" src="/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif" loading="lazy" class="links1_image"></div></div><div class="margin-bottom margin-xxsmall"><h2 class="heading-style-h5 review">Phil &amp; Paul's Plumbing</h2></div><p><strong class="bold-text">Honest. Professional. Local</strong></p><div class="margin-top margin-xsmall"><div class="links1_metatag-item"><div class="links1_metatag-icon"><div class="icon-embed-custom1 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M11.9999 2.34473C14.0242 2.34473 15.8029 3.04933 17.3553 4.47754C18.8789 5.87913 19.6552 7.7626 19.6552 10.1826C19.6551 11.1679 19.4382 12.1526 18.996 13.1406C18.5425 14.154 17.9734 15.1246 17.288 16.0527C16.5966 16.9889 15.8458 17.8627 15.035 18.6738C14.212 19.4974 13.4447 20.2259 12.7333 20.8594L12.7274 20.8643L12.7225 20.8691C12.632 20.9548 12.5274 21.017 12.4052 21.0566C12.2587 21.1041 12.1215 21.126 11.9921 21.126C11.8628 21.126 11.7292 21.104 11.5897 21.0576C11.474 21.0191 11.3759 20.959 11.2899 20.875L11.2811 20.8662L11.2714 20.8584C10.5564 20.2252 9.78741 19.497 8.96472 18.6738C8.15398 17.8627 7.40315 16.9889 6.71179 16.0527C6.02653 15.1248 5.45811 14.1547 5.00671 13.1416C4.56634 12.1534 4.35052 11.1682 4.35046 10.1826C4.35046 7.76231 5.12659 5.8791 6.64832 4.47754C8.19864 3.04953 9.9756 2.34475 11.9999 2.34473ZM11.9999 3.05371C10.0646 3.05371 8.40981 3.72261 7.06824 5.05664C5.71865 6.39887 5.05359 8.12233 5.05359 10.1826C5.0537 11.6021 5.6475 13.1413 6.75183 14.7861C7.85668 16.4317 9.49736 18.2606 11.6591 20.2715L11.996 20.585L12.3358 20.2764C14.5486 18.2689 16.2062 16.4381 17.2889 14.7852C18.3677 13.138 18.9461 11.5989 18.9462 10.1826C18.9462 8.12228 18.2812 6.39888 16.9315 5.05664V5.05566C15.5897 3.72177 13.935 3.05375 11.9999 3.05371ZM11.9979 8.70215C12.3641 8.7022 12.6619 8.82522 12.9188 9.08105C13.175 9.33617 13.2977 9.63248 13.2977 9.99805C13.2977 10.3642 13.1747 10.6605 12.9198 10.915C12.6649 11.1694 12.3682 11.292 12.0018 11.292C11.6348 11.2919 11.3391 11.169 11.0848 10.916C10.8313 10.6634 10.708 10.3691 10.7079 10.0029C10.7079 9.68146 10.8022 9.41279 10.996 9.17871L11.0848 9.08105C11.3378 8.82567 11.6324 8.70215 11.9979 8.70215Z" fill="currentColor" stroke="currentColor"></path>
+</svg></div></div><div>Lodi, Stockton, Galt +</div></div></div></div></div><div class="links1_component"><div class="links1_category-wrapper"><h3 class="heading-style-h6">Where to Leave Your Review</h3><a href="https://g.page/r/CVx0cIjFbPI-EBM/review" class="button is-secondary w-button">Google</a><a href="https://www.yelp.com/writeareview/biz/KAh_lFSOoD_Yj5gUMslffg?return_url=%2Fbiz%2FKAh_lFSOoD_Yj5gUMslffg&amp;review_origin=biz-details-war-button" class="button is-secondary w-button">Yelp</a></div><div class="links1_category-wrapper"><h3 class="heading-style-h6">Have a Question or Concern?</h3><div>If your experience wasn’t what you expected, please call us before leaving a negative review. We stand behind our work and want the opportunity to make it right.</div><a href="tel:+12093662319" class="link-2">(209) 366-2319</a><a href="/book-plumbing-services" class="button is-secondary w-button">Schedule Services</a></div><div class="button-group newletter"><a data-w-id="aaa3c836-83e1-0e5c-f822-e3a17ea8a61e" href="#" class="links1_newsletter-link w-inline-block"><div id="w-node-aaa3c836-83e1-0e5c-f822-e3a17ea8a61f-c64e8fea" class="links1_newsletter-icon-wrapper"><div class="icon-embed-small w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M3.05359 5.74219V18.9463H20.9462V6.13867L20.1708 6.64844L12.2147 11.8867C12.1544 11.9184 12.102 11.944 12.0565 11.9619C12.0534 11.9629 12.0366 11.9678 11.9999 11.9678C11.9626 11.9678 11.946 11.9628 11.9432 11.9619C11.8975 11.9439 11.8448 11.9186 11.7841 11.8867L4.05359 6.7959V6.39648L11.7264 11.4219L11.9999 11.6016L12.2733 11.4229L20.62 5.97266L21.6307 5.31152C21.6464 5.38933 21.6551 5.46973 21.6552 5.55371V18.4463C21.6552 18.7675 21.5429 19.041 21.2938 19.2891C21.0449 19.5371 20.7701 19.6494 20.4462 19.6494H3.55359C3.23187 19.6494 2.95869 19.5371 2.71082 19.2891L2.6239 19.1953C2.43623 18.9725 2.35046 18.7279 2.35046 18.4463V5.55371C2.35048 5.46519 2.35953 5.38047 2.37683 5.29883L3.05359 5.74219ZM3.55359 4.34473H20.4462C20.7696 4.34473 21.0438 4.4579 21.2928 4.70703H21.2938C21.4035 4.81669 21.485 4.93216 21.5438 5.05371H2.46082C2.5195 4.93172 2.60127 4.81595 2.71082 4.70605H2.71179C2.95976 4.45718 3.23251 4.34476 3.55359 4.34473Z" fill="currentColor" stroke="currentColor"></path>
+</svg></div></div><div id="w-node-aaa3c836-83e1-0e5c-f822-e3a17ea8a621-c64e8fea" class="links1_newsletter-link-content"><div class="text-size-medium text-size-medium-2 text-weight-semibold">Stay informed</div><div class="text-size-small">Get tips and updates sent straight to your inbox</div></div></a><div style="display:none;opacity:0" class="links1_newsletter-modal"><div class="links1_newsletter-content"><a data-w-id="aaa3c836-83e1-0e5c-f822-e3a17ea8a628" href="#" class="links1_close-button w-inline-block"><div class="icon-embed-small w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.056 23.5004L23.5004 24.056C23.1935 24.3628 22.696 24.3628 22.3892 24.056L16 17.6668L9.61078 24.056C9.30394 24.3628 8.80645 24.3628 8.49961 24.056L7.94403 23.5004C7.63719 23.1936 7.63719 22.6961 7.94403 22.3892L14.3332 16L7.94403 9.61081C7.63719 9.30397 7.63719 8.80648 7.94403 8.49964L8.49961 7.94406C8.80645 7.63721 9.30394 7.63721 9.61078 7.94406L16 14.3333L22.3892 7.94404C22.6961 7.6372 23.1935 7.6372 23.5004 7.94404L24.056 8.49963C24.3628 8.80647 24.3628 9.30395 24.056 9.61079L17.6667 16L24.056 22.3892C24.3628 22.6961 24.3628 23.1936 24.056 23.5004Z" fill="currentColor"></path>
+</svg></div></a><div class="margin-bottom margin-large"><div class="text-align-center"><div class="max-width-large align-center"><div class="margin-bottom margin-xsmall"><h2 class="heading-style-h3">Subscribe to our newsletter</h2></div><p>We share plumbing advice and service updates monthly</p></div></div></div><div class="links1_form-block w-form"><form id="email-form" name="email-form" data-name="Email Form" method="post" class="links1_form" action="/api/subscribe" data-migrated-form="subscribe"><input class="form_input w-input" maxlength="256" name="email" data-name="Email" placeholder="Your email" type="email" id="email" required=""><input type="submit" data-wait="Please wait..." class="button w-button" value="Subscribe"></form><div class="text-size-tiny">We respect your privacy and won't share your information.</div><div class="form_message-success-wrapper w-form-done" role="status" aria-live="polite"><div class="form_message-success"><div>Thanks for subscribing. Check your inbox soon.</div></div></div><div class="form_message-error-wrapper w-form-fail" role="status" aria-live="polite"><div class="form_message-error"><div>Something didn't work. Please try again.</div></div></div></div></div><div data-w-id="aaa3c836-83e1-0e5c-f822-e3a17ea8a640" class="links1_newsletter-background-overlay"></div></div></div></div></div></div></div></div></section></main><footer class="footer14_component color-scheme-4"><div class="padding-global"><div class="container-large"><div class="padding-vertical padding-xxlarge footer"><div class="footer14_cta"><div class="max-width-large"><div class="margin-bottom margin-small"><h2 class="heading-style-h1 footer">Phil &amp; Paul's Plumbing</h2></div><div class="text-block-5">Lodi's trusted plumber since 1996. Honest, licensed service for homes and businesses throughout the Central Valley.<br>‍<br>Honest. Professional. Local.</div></div><div class="button-group"><a href="/book-plumbing-services" class="button is-alternate w-button">Book Service</a><a href="tel:+12093662319" class="button is-secondary is-alternate white w-button">Call (209) 366-2319</a></div></div><div class="padding-vertical padding-xxlarge"><div class="divider-horizontal"></div></div><div class="padding-bottom padding-xxlarge"><div class="w-layout-grid footer14_top-wrapper"><div class="footer14_link-column"><div class="margin-bottom margin-xxsmall"><div class="text-weight-semibold footer-font">Navigation</div></div><div class="footer14_link-list"><a href="/" class="footer14_link">Home</a><a href="/service" class="footer14_link">Services</a><a href="/contact" class="footer14_link">Contact</a><a href="/book-plumbing-services" class="footer14_link">Book Service</a><a href="/leave-a-review" aria-current="page" class="footer14_link w--current">Leave Review</a><div class="footer14_link">FAQs</div></div></div><div class="footer14_link-column"><div class="margin-bottom margin-xxsmall"><div class="text-weight-semibold footer-font">Services</div></div><div class="footer14_link-list"><a href="/service/water-heaters" class="footer14_link">Water Heaters</a><div class="footer14_link">Drain Cleaning</div><a href="/service/plumbing-repair-services" class="footer14_link">Plumbing Repairs</a><div class="footer14_link">Sewer Repair</div><div class="footer14_link">Video Inspection</div><a href="/service/water-softeners" class="footer14_link">Water Softeners</a><a href="/service/commercial-plumbing" class="footer14_link">Commercial Plumbing</a></div></div><div class="footer14_link-column"><div class="margin-bottom margin-xxsmall"><div class="text-weight-semibold footer-font">Company</div></div><div class="footer14_link-list"><div class="footer14_link">About</div><div class="footer14_link">Licensing</div><div class="footer14_link">Warranty</div><div class="footer14_link">Coupons</div><a href="/leave-a-review" aria-current="page" class="footer14_link w--current">Leave Review</a><div class="footer14_link">Sitemap</div></div></div><div class="footer14_link-column"><div class="margin-bottom margin-xxsmall"><div class="text-weight-semibold footer-font">Service Areas</div></div><div class="footer14_link-list"><a href="/" class="footer14_link">Lodi</a><a href="/plumber/stockton-plumbers" class="footer14_link">Stockton</a><a href="/plumber/galt-plumbing-services" class="footer14_link">Galt</a></div></div><div class="footer14_link-column"><div class="margin-bottom margin-xxsmall"><div class="text-weight-semibold footer-font">Hours</div></div><div class="footer14_link-list"><div class="footer14_link">Mon - Fri 7am - 7pm</div><div class="footer14_link">Sat 8am - 4pm</div><div class="footer14_link">Sun - Closed</div><div class="footer14_link">CASLB C36-900888</div><div class="footer14_link">Fully licensed &amp; &nbsp;insured</div><a href="https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008" target="_blank" class="footer14_link" rel="noopener noreferrer">A+ BBB</a></div></div><div class="footer14_link-column"><div class="margin-bottom margin-xxsmall"><div class="text-weight-semibold footer-font">Follow Us</div></div><div class="footer14_link-list"><a href="https://g.page/phil-paul-s-plumbing-inc-lodi?share" target="_blank" class="footer14_link-2" rel="noopener noreferrer">Google</a><a href="https://www.facebook.com/PhilPaulsPlumbing?" target="_blank" class="footer14_link-2" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com/phil_and_pauls_plumbing/?hl=en" target="_blank" class="footer14_link-2" rel="noopener noreferrer">Instagram</a><a href="https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4" target="_blank" class="footer14_link-2" rel="noopener noreferrer">Yelp</a><a href="https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/" target="_blank" class="footer14_link-2" rel="noopener noreferrer">NextDoor</a></div></div></div></div><div class="padding-bottom padding-medium"><div class="footer14_middle-wrapper"><a href="/" class="footer14_logo-link w-nav-brand"><img width="342" loading="lazy" alt="Phil and Pauls Plumbing Lodi CA logo" src="/assets/132d7d5c66-6a39cd3c60766fd43c0cdc57_ppp-logo-footer.svg" class="footer14_logo"></a><div class="footer14_image-list"><a href="https://g.page/phil-paul-s-plumbing-inc-lodi?share" target="_blank" class="footer14_image-item w-inline-block" rel="noopener noreferrer"><div class="icon-embed-small w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="M128 224a96 96 0 1 1 67.9-163.9a8 8 0 0 1 0 11.3a7.9 7.9 0 0 1-11.3 0a80 80 0 1 0 23 64.6H128a8 8 0 0 1 0-16h88a8 8 0 0 1 8 8a96.2 96.2 0 0 1-96 96Z"></path></svg></div></a><a href="https://www.facebook.com/PhilPaulsPlumbing?" target="_blank" class="footer14_image-item w-inline-block" rel="noopener noreferrer"><div class="icon-embed-small w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="M230 128a102 102 0 1 0-102 102a102.1 102.1 0 0 0 102-102Zm-96 89.8V150h26a6 6 0 0 0 0-12h-26v-26a18.1 18.1 0 0 1 18-18h16a6 6 0 0 0 0-12h-16a30.1 30.1 0 0 0-30 30v26H96a6 6 0 0 0 0 12h26v67.8a90 90 0 1 1 12 0Z"></path></svg></div></a><a href="https://www.instagram.com/phil_and_pauls_plumbing/?hl=en" target="_blank" class="footer14_image-item w-inline-block" rel="noopener noreferrer"><div class="icon-embed-small w-embed"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="M128 82a46 46 0 1 0 46 46a46 46 0 0 0-46-46Zm0 80a34 34 0 1 1 34-34a34.1 34.1 0 0 1-34 34Zm44-132H84a54 54 0 0 0-54 54v88a54 54 0 0 0 54 54h88a54 54 0 0 0 54-54V84a54 54 0 0 0-54-54Zm42 142a42 42 0 0 1-42 42H84a42 42 0 0 1-42-42V84a42 42 0 0 1 42-42h88a42 42 0 0 1 42 42Zm-24-96a10 10 0 1 1-10-10a10 10 0 0 1 10 10Z"></path></svg></div></a><a href="https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4" target="_blank" class="footer14_image-item w-inline-block" rel="noopener noreferrer"><img src="/assets/0e0f48ea80-6a39c2781baf14dd5acfda00_e66ab5983eb17f5c80a883b635017adf_Yelp-logo-white.svg" loading="lazy" alt="Yelp logo" class="image-3"></a></div></div></div><div class="divider-horizontal"></div><div class="padding-top padding-medium"><div class="footer14_bottom-wrapper"><div id="w-node-cb09ab0b-fdca-a8bc-47ea-807de5a6fa3f-e5a6f9b9" class="footer14_credit-text">© 2026 Phil &amp; Paul's Plumbing, Inc. All rights reserved.</div><div class="w-layout-grid footer1_legal-list"><a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=210823d1-ac21-40bc-9c11-b40b57aad9b3" target="_blank" class="footer1_legal-link" rel="noopener noreferrer">Privacy</a><a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=2bd1caeb-3646-4256-8bde-98174db05d66" target="_blank" class="footer1_legal-link" rel="noopener noreferrer">Terms</a><a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=9ebf5d80-24db-467c-844d-684cac7c7db4" target="_blank" class="footer1_legal-link" rel="noopener noreferrer">Cookies</a><a href="https://app.termly.io/dsar/210823d1-ac21-40bc-9c11-b40b57aad9b3" class="footer1_legal-link">DSAR</a><a href="https://app.termly.io/notify/210823d1-ac21-40bc-9c11-b40b57aad9b3" class="footer1_legal-link">Limit Use of My Info</a><a href="#consent-preferences" class="footer1_legal-link termly-display-preferences">Consent</a><a href="https://app.termly.io/notify/210823d1-ac21-40bc-9c11-b40b57aad9b3" class="footer1_legal-link">Do Not Sell</a><a href="https://www.jkmgrp.com/" class="jkmg-website w-inline-block"><img src="/assets/9dd3a1f715-6a39c27840d3615d8e500e3c_jkmg-websites-logo.svg" loading="lazy" alt="JKMG website logo"></a></div></div></div></div></div></div></footer></div> <!-- Google Tag Manager (noscript) -->
+
+<!-- End Google Tag Manager (noscript) -->
+

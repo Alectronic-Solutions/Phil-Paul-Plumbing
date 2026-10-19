@@ -1,0 +1,2799 @@
+[
+  {
+    "route": "/",
+    "pageId": "6a396e929cb9dfc50da1c00a",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-2",
+    "title": "Plumber in Lodi, CA | Phil & Paul’s Plumbing",
+    "description": "Licensed Lodi plumber since 1996. Water heaters, drain cleaning, pipes & repairs. Honest, local. Call (209) 366-2319 today.",
+    "canonical": "https://www.philpaulplumbing.com",
+    "meta": [
+      {
+        "content": "Plumber in Lodi, CA | Phil & Paul’s Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Licensed Lodi plumber since 1996. Water heaters, drain cleaning, pipes & repairs. Honest, local. Call (209) 366-2319 today.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Plumber in Lodi, CA | Phil & Paul’s Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Licensed Lodi plumber since 1996. Water heaters, drain cleaning, pipes & repairs. Honest, local. Call (209) 366-2319 today.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://www.philpaulplumbing.com/#webpage",
+        "url": "https://www.philpaulplumbing.com/",
+        "name": "Plumber in Lodi, CA | Phil & Paul's Plumbing",
+        "description": "Licensed Lodi plumber since 1996. Water heaters, drain cleaning, plumbing repairs, sewer service, leak detection, commercial plumbing, and emergency plumbing. Call (209) 366-2319.",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@id": "https://www.philpaulplumbing.com/#website"
+        },
+        "about": {
+          "@id": "https://www.philpaulplumbing.com/#business"
+        },
+        "mainEntity": {
+          "@id": "https://www.philpaulplumbing.com/#business"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "@id": "https://www.philpaulplumbing.com/#primaryimage",
+          "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+          "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+          "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+        },
+        "breadcrumb": {
+          "@id": "https://www.philpaulplumbing.com/#breadcrumb"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://www.philpaulplumbing.com/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.philpaulplumbing.com/"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/index.html"
+  },
+  {
+    "route": "/service",
+    "pageId": "6a396ef6045c6e0d4846e6e4",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-3",
+    "title": "Plumbing Services in Lodi, CA | Phil & Paul’s",
+    "description": "Full-service plumbing in Lodi, CA: water heaters, drain cleaning, sewer repair & more. Licensed, insured. Call for a free estimate.",
+    "canonical": "https://www.philpaulplumbing.com/service",
+    "meta": [
+      {
+        "content": "Plumbing Services in Lodi, CA | Phil & Paul’s",
+        "property": "og:title"
+      },
+      {
+        "content": "Full-service plumbing in Lodi, CA: water heaters, drain cleaning, sewer repair & more. Licensed, insured. Call for a free estimate.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Plumbing Services in Lodi, CA | Phil & Paul’s",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Full-service plumbing in Lodi, CA: water heaters, drain cleaning, sewer repair & more. Licensed, insured. Call for a free estimate.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://www.philpaulplumbing.com/service#webpage",
+            "url": "https://www.philpaulplumbing.com/service",
+            "name": "Plumbing Services in Lodi, CA | Phil & Paul's Plumbing",
+            "description": "Full-service plumbing in Lodi, California, including water heater installation and repair, drain cleaning, sewer repair, leak detection, pipe repair, commercial plumbing, and more. Licensed and insured. Call (209) 366-2319.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@id": "https://www.philpaulplumbing.com/#website"
+            },
+            "about": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "mainEntity": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "breadcrumb": {
+              "@id": "https://www.philpaulplumbing.com/service#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.philpaulplumbing.com/service#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.philpaulplumbing.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://www.philpaulplumbing.com/service"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/service.html"
+  },
+  {
+    "route": "/contact",
+    "pageId": "6a396f74ae6d95b1609ff598",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-4",
+    "title": "Contact Phil & Paul’s Plumbing | Lodi, CA",
+    "description": "Call or message Phil & Paul’s Plumbing in Lodi, CA. Licensed plumbers, sewer & drain cleaning experts available Mon–Sat. Call (209) 366-2319.",
+    "canonical": "https://www.philpaulplumbing.com/contact",
+    "meta": [
+      {
+        "content": "Contact Phil & Paul’s Plumbing | Lodi, CA",
+        "property": "og:title"
+      },
+      {
+        "content": "Call or message Phil & Paul’s Plumbing in Lodi, CA. Licensed plumbers, sewer & drain cleaning experts available Mon–Sat. Call (209) 366-2319.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Contact Phil & Paul’s Plumbing | Lodi, CA",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Call or message Phil & Paul’s Plumbing in Lodi, CA. Licensed plumbers, sewer & drain cleaning experts available Mon–Sat. Call (209) 366-2319.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ContactPage",
+            "@id": "https://www.philpaulplumbing.com/contact#webpage",
+            "url": "https://www.philpaulplumbing.com/contact",
+            "name": "Contact Phil & Paul's Plumbing | Lodi, CA",
+            "description": "Contact Phil & Paul's Plumbing in Lodi, California for plumbing repairs, water heaters, drain cleaning, sewer services, leak detection, and commercial plumbing. Call (209) 366-2319 or request your free estimate online.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@id": "https://www.philpaulplumbing.com/#website"
+            },
+            "about": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "mainEntity": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#primaryimage",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "breadcrumb": {
+              "@id": "https://www.philpaulplumbing.com/contact#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.philpaulplumbing.com/contact#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.philpaulplumbing.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://www.philpaulplumbing.com/contact"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/contact.html"
+  },
+  {
+    "route": "/book-plumbing-services",
+    "pageId": "6a396f82010fbda311fb292f",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-5",
+    "title": "Schedule Plumbing Service in Lodi, CA | Phil & Paul's Plumbing",
+    "description": "Book a plumbing service appointment online with Phil & Paul's Plumbing. Serving Lodi, Stockton & Galt. Licensed, insured, A+ BBB. Call (209) 366-2319.",
+    "canonical": "https://www.philpaulplumbing.com/book-plumbing-services",
+    "meta": [
+      {
+        "content": "Schedule Plumbing Service in Lodi, CA | Phil & Paul's Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Book a plumbing service appointment online with Phil & Paul's Plumbing. Serving Lodi, Stockton & Galt. Licensed, insured, A+ BBB. Call (209) 366-2319.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Schedule Plumbing Service in Lodi, CA | Phil & Paul's Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Book a plumbing service appointment online with Phil & Paul's Plumbing. Serving Lodi, Stockton & Galt. Licensed, insured, A+ BBB. Call (209) 366-2319.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://www.philpaulplumbing.com/book-plumbing-services#webpage",
+            "url": "https://www.philpaulplumbing.com/book-plumbing-services",
+            "name": "Schedule Plumbing Service in Lodi, CA | Phil & Paul's Plumbing",
+            "description": "Schedule plumbing service with Phil & Paul's Plumbing. Serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities. Book water heater service, drain cleaning, sewer repair, plumbing repairs, leak detection, commercial plumbing, and more.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@id": "https://www.philpaulplumbing.com/#website"
+            },
+            "about": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "mainEntity": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#primaryimage",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "breadcrumb": {
+              "@id": "https://www.philpaulplumbing.com/book-plumbing-services#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.philpaulplumbing.com/book-plumbing-services#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.philpaulplumbing.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Schedule Service",
+                "item": "https://www.philpaulplumbing.com/book-plumbing-services"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/13324900ef-phil-pauls-plumbing-lodi.2d13ce46.b4e30d6830193e71.js"
+    ],
+    "content": "content/pages/book-plumbing-services.html"
+  },
+  {
+    "route": "/leave-a-review",
+    "pageId": "6a3970c381aea90ec64e8fea",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-6",
+    "title": "Leave a Review for Phil & Paul's Plumbing | Lodi, CA",
+    "description": "Had a good experience with Phil & Paul's Plumbing? Leave us a review on Google or Yelp. Your feedback helps Lodi, Stockton & Galt residents find a trusted plumber.",
+    "canonical": "https://www.philpaulplumbing.com/leave-a-review",
+    "meta": [
+      {
+        "content": "Leave a Review for Phil & Paul's Plumbing | Lodi, CA",
+        "property": "og:title"
+      },
+      {
+        "content": "Had a good experience with Phil & Paul's Plumbing? Leave us a review on Google or Yelp. Your feedback helps Lodi, Stockton & Galt residents find a trusted plumber.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Leave a Review for Phil & Paul's Plumbing | Lodi, CA",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Had a good experience with Phil & Paul's Plumbing? Leave us a review on Google or Yelp. Your feedback helps Lodi, Stockton & Galt residents find a trusted plumber.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/d7c342e1a5-6a3bfe929c6f441c6757274d_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://www.philpaulplumbing.com/leave-a-review#webpage",
+            "url": "https://www.philpaulplumbing.com/leave-a-review",
+            "name": "Leave a Review for Phil & Paul's Plumbing | Lodi, CA",
+            "description": "Share your experience with Phil & Paul's Plumbing by leaving a review on Google or Yelp. Your feedback helps homeowners and businesses in Lodi, Stockton, Galt, and surrounding communities find a trusted local plumber.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@id": "https://www.philpaulplumbing.com/#website"
+            },
+            "about": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "mainEntity": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#primaryimage",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "breadcrumb": {
+              "@id": "https://www.philpaulplumbing.com/leave-a-review#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.philpaulplumbing.com/leave-a-review#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.philpaulplumbing.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Leave a Review",
+                "item": "https://www.philpaulplumbing.com/leave-a-review"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/13324900ef-phil-pauls-plumbing-lodi.2d13ce46.b4e30d6830193e71.js"
+    ],
+    "content": "content/pages/leave-a-review.html"
+  },
+  {
+    "route": "/plumber/galt-plumbing-services",
+    "pageId": "6a3c442ea3d14e270bcc81a6",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-8",
+    "title": "Plumber in Galt, CA | Phil & Paul’s Plumbing",
+    "description": "Galt’s trusted plumber since 1996. Water heaters, drain cleaning & plumbing repairs. Fast local service. Call (209) 366-2319.",
+    "canonical": "https://www.philpaulplumbing.com/plumber/galt-plumbing-services",
+    "meta": [
+      {
+        "content": "Plumber in Galt, CA | Phil & Paul’s Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Galt’s trusted plumber since 1996. Water heaters, drain cleaning & plumbing repairs. Fast local service. Call (209) 366-2319.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/6cda644d55-6a3c6857eefa83bb2a04e685_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Plumber in Galt, CA | Phil & Paul’s Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Galt’s trusted plumber since 1996. Water heaters, drain cleaning & plumbing repairs. Fast local service. Call (209) 366-2319.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/6cda644d55-6a3c6857eefa83bb2a04e685_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/plumber__galt-plumbing-services.html"
+  },
+  {
+    "route": "/plumber/stockton-plumbers",
+    "pageId": "6a3c442ea3d14e270bcc81a6",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body-8",
+    "title": "Plumber in Stockton, CA | Phil & Paul’s Plumbing",
+    "description": "Trusted Stockton plumber since 1996. Water heaters, drain cleaning, sewer repairs. Local, licensed, A+ BBB.",
+    "canonical": "https://www.philpaulplumbing.com/plumber/stockton-plumbers",
+    "meta": [
+      {
+        "content": "Plumber in Stockton, CA | Phil & Paul’s Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Trusted Stockton plumber since 1996. Water heaters, drain cleaning, sewer repairs. Local, licensed, A+ BBB.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/035661ae4e-6a3c6880a126157d73a432ec_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Plumber in Stockton, CA | Phil & Paul’s Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Trusted Stockton plumber since 1996. Water heaters, drain cleaning, sewer repairs. Local, licensed, A+ BBB.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/035661ae4e-6a3c6880a126157d73a432ec_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/plumber__stockton-plumbers.html"
+  },
+  {
+    "route": "/service/commercial-plumbing",
+    "pageId": "6a404393b1866bf1fed38814",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body",
+    "title": "Commercial Plumbing in Lodi, CA | Phil & Paul’s Plumbing",
+    "description": "Licensed commercial plumber serving Lodi, Stockton & Galt since 1996. Drain cleaning, water heaters, pipe repair & more for businesses. Call (209) 366-2319.",
+    "canonical": "https://www.philpaulplumbing.com/service/commercial-plumbing",
+    "meta": [
+      {
+        "content": "Commercial Plumbing in Lodi, CA | Phil & Paul’s Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Licensed commercial plumber serving Lodi, Stockton & Galt since 1996. Drain cleaning, water heaters, pipe repair & more for businesses. Call (209) 366-2319.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/fb61806ab1-6a416bd6dab4e7091dbf1177_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Commercial Plumbing in Lodi, CA | Phil & Paul’s Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Licensed commercial plumber serving Lodi, Stockton & Galt since 1996. Drain cleaning, water heaters, pipe repair & more for businesses. Call (209) 366-2319.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/fb61806ab1-6a416bd6dab4e7091dbf1177_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/service__commercial-plumbing.html"
+  },
+  {
+    "route": "/service/plumbing-repair-services",
+    "pageId": "6a404393b1866bf1fed38814",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body",
+    "title": "Plumbing Repair in Lodi, CA | Phil & Paul’s Plumbing",
+    "description": "Leaky pipes, dripping faucets, broken fixtures — Phil & Paul’s handles it all in Lodi. Licensed plumbers, 1-Year warranty. Call today.",
+    "canonical": "https://www.philpaulplumbing.com/service/plumbing-repair-services",
+    "meta": [
+      {
+        "content": "Plumbing Repair in Lodi, CA | Phil & Paul’s Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Leaky pipes, dripping faucets, broken fixtures — Phil & Paul’s handles it all in Lodi. Licensed plumbers, 1-Year warranty. Call today.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/b9112f702b-6a40801239c6f80dfbd48d27_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Plumbing Repair in Lodi, CA | Phil & Paul’s Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Leaky pipes, dripping faucets, broken fixtures — Phil & Paul’s handles it all in Lodi. Licensed plumbers, 1-Year warranty. Call today.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/b9112f702b-6a40801239c6f80dfbd48d27_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/service__plumbing-repair-services.html"
+  },
+  {
+    "route": "/service/water-heaters",
+    "pageId": "6a404393b1866bf1fed38814",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body",
+    "title": "Water Heater Installation Lodi CA | Phil & Paul’s",
+    "description": "Need a new water heater in Lodi? Phil & Paul’s installs tank & tankless units. Licensed C36 plumbers. 1-Year warranty. Call (209) 366-2319.",
+    "canonical": "https://www.philpaulplumbing.com/service/water-heaters",
+    "meta": [
+      {
+        "content": "Water Heater Installation Lodi CA | Phil & Paul’s",
+        "property": "og:title"
+      },
+      {
+        "content": "Need a new water heater in Lodi? Phil & Paul’s installs tank & tankless units. Licensed C36 plumbers. 1-Year warranty. Call (209) 366-2319.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/8d163e5621-6a405f31f899936483837efb_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Water Heater Installation Lodi CA | Phil & Paul’s",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Need a new water heater in Lodi? Phil & Paul’s installs tank & tankless units. Licensed C36 plumbers. 1-Year warranty. Call (209) 366-2319.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/8d163e5621-6a405f31f899936483837efb_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/service__water-heaters.html"
+  },
+  {
+    "route": "/service/water-softeners",
+    "pageId": "6a404393b1866bf1fed38814",
+    "siteId": "6a396e919cb9dfc50da1bfb5",
+    "bodyClass": "body",
+    "title": "Water Softeners in Lodi, CA | Phil & Paul’s Plumbing",
+    "description": "Water softener and water filtration services in Lodi, Stockton & Galt. Improve water quality and reduce hard water buildup. Call (209) 366-2319.",
+    "canonical": "https://www.philpaulplumbing.com/service/water-softeners",
+    "meta": [
+      {
+        "content": "Water Softeners in Lodi, CA | Phil & Paul’s Plumbing",
+        "property": "og:title"
+      },
+      {
+        "content": "Water softener and water filtration services in Lodi, Stockton & Galt. Improve water quality and reduce hard water buildup. Call (209) 366-2319.",
+        "property": "og:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/7f67ccc0da-6a70ab8a7d0f00257ecc3815_phil-pauls-plumbing-main.avif",
+        "property": "og:image"
+      },
+      {
+        "content": "Water Softeners in Lodi, CA | Phil & Paul’s Plumbing",
+        "name": "twitter:title"
+      },
+      {
+        "content": "Water softener and water filtration services in Lodi, Stockton & Galt. Improve water quality and reduce hard water buildup. Call (209) 366-2319.",
+        "name": "twitter:description"
+      },
+      {
+        "content": "https://www.philpaulplumbing.com/assets/7f67ccc0da-6a70ab8a7d0f00257ecc3815_phil-pauls-plumbing-main.avif",
+        "name": "twitter:image"
+      },
+      {
+        "property": "og:type",
+        "content": "website"
+      },
+      {
+        "content": "summary_large_image",
+        "name": "twitter:card"
+      }
+    ],
+    "icons": [
+      {
+        "href": "/assets/aff57f54bb-6a3bfd86ff16127d73d1d869_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: light)"
+      },
+      {
+        "href": "/assets/c8d190536d-6a3bfd72f5d5548b92a5d9c3_ppp-favicon-dark.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "media": "(prefers-color-scheme: dark)"
+      },
+      {
+        "href": "/assets/b0bca54388-6a3bfd864096bd4fbfe911d3_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "href": "/assets/a24f2e80e3-6a3bfd8690f5591a70c18842_ppp-favicon-light.png",
+        "rel": "apple-touch-icon",
+        "sizes": "180x180"
+      },
+      {
+        "href": "/assets/b16ac7b7b6-6a3bfd86758a2ded8cf01fb1_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "href": "/assets/1f52034ec5-6a3bfd86ecb74a8eaafaccb2_ppp-favicon-light.png",
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "stylesheets": [
+      "/assets/f6ee87fa2c-phil-pauls-plumbing-lodi.shared.30e7ed09b.min.css"
+    ],
+    "headStyles": [
+      "\n  * {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -o-font-smoothing: antialiased;\n}\n"
+    ],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Plumber",
+            "@id": "https://www.philpaulplumbing.com/#business",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "alternateName": "Phil & Paul's Plumbing",
+            "url": "https://www.philpaulplumbing.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.philpaulplumbing.com/#logo",
+              "url": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/1ad47b490a-6a3bfa28759ba64f140a66ed_ppp-small-logo-round.avif",
+              "caption": "Phil & Paul's Plumbing, Inc. logo"
+            },
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "contentUrl": "https://www.philpaulplumbing.com/assets/6ef51d06d4-67e430e84ca359e7d73486dc_phil-pauls-plumbing-main.avif",
+              "caption": "Phil & Paul's Plumbing serving Lodi, Stockton, Galt, and surrounding communities"
+            },
+            "description": "Licensed plumber serving Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, Clements, and surrounding communities since 1996. Specializing in plumbing repairs, drain cleaning, water heater installation, sewer services, leak detection, commercial plumbing, and emergency plumbing solutions.",
+            "telephone": "+1-209-366-2319",
+            "foundingDate": "1996",
+            "priceRange": "$$",
+            "paymentAccepted": [
+              "Cash",
+              "Check",
+              "Credit Card"
+            ],
+            "currenciesAccepted": "USD",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "6 Sierra Vista Pl",
+              "addressLocality": "Lodi",
+              "addressRegion": "CA",
+              "postalCode": "95240",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 38.12199914888224,
+              "longitude": -121.27358612511436
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "https://schema.org/Monday",
+                  "https://schema.org/Tuesday",
+                  "https://schema.org/Wednesday",
+                  "https://schema.org/Thursday",
+                  "https://schema.org/Friday"
+                ],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "https://schema.org/Saturday",
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Lodi",
+                "sameAs": "https://en.wikipedia.org/wiki/Lodi,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Stockton",
+                "sameAs": "https://en.wikipedia.org/wiki/Stockton,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Galt",
+                "sameAs": "https://en.wikipedia.org/wiki/Galt,_California"
+              },
+              {
+                "@type": "City",
+                "name": "Acampo"
+              },
+              {
+                "@type": "City",
+                "name": "Woodbridge"
+              },
+              {
+                "@type": "City",
+                "name": "Lockeford"
+              },
+              {
+                "@type": "City",
+                "name": "Clements"
+              }
+            ],
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "California C-36 Plumbing Contractor License",
+              "name": "CASLB C36-900888",
+              "identifier": "900888",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "California Contractors State License Board",
+                "url": "https://www.cslb.ca.gov/"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.8,
+              "reviewCount": 116,
+              "bestRating": 5,
+              "worstRating": 1
+            },
+            "sameAs": [
+              "https://g.page/phil-paul-s-plumbing-inc-lodi?share",
+              "https://www.facebook.com/PhilPaulsPlumbing",
+              "https://www.instagram.com/phil_and_pauls_plumbing/",
+              "https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4",
+              "https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008",
+              "https://nextdoor.com/pages/phil-pauls-plumbing-acampo-ca/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.philpaulplumbing.com/#website",
+            "url": "https://www.philpaulplumbing.com/",
+            "name": "Phil & Paul's Plumbing, Inc.",
+            "description": "Official website of Phil & Paul's Plumbing, Inc.",
+            "publisher": {
+              "@id": "https://www.philpaulplumbing.com/#business"
+            },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "scripts": [
+      "/assets/7dce9e0040-jquery-3.5.1.min.dc5e7f18c8.js",
+      "/assets/c51df0cdd1-phil-pauls-plumbing-lodi.92d02180.4a60b5c425940828.js"
+    ],
+    "content": "content/pages/service__water-softeners.html"
+  }
+]
