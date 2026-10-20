@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
-    "build": "node scripts/prepare-redesign.mjs && next build",
+    "build": "node scripts/prepare-redesign.mjs && next build && node scripts/finalize-headers.mjs",
     "capture": "node scripts/capture-site.mjs && node scripts/capture-dependencies.mjs && node scripts/prepare-content.mjs",
     "prepare:content": "node scripts/prepare-content.mjs",
     "verify": "node scripts/verify.mjs",

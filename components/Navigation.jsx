@@ -6,7 +6,7 @@ import { business, services, cities, hoursSummary } from '../content/business.mj
 import { Icon } from './Icon';
 
 export function Brand({ footer = false }) {
-  return <Link href="/" className={`brand ${footer ? 'brand-footer' : ''}`} aria-label="Phil and Paul's Plumbing home"><span>PHIL &amp; PAUL’S<span className="brand-period">.</span></span><small>PLUMBING INC. <span aria-hidden="true">/</span> LODI, CALIFORNIA</small></Link>;
+  return <Link href="/" className={`brand ${footer ? 'brand-footer' : ''}`}><span>PHIL &amp; PAUL’S<span className="brand-period">.</span></span><small>PLUMBING INC. <span aria-hidden="true">/</span> LODI, CALIFORNIA</small></Link>;
 }
 
 const descriptions = {
@@ -68,7 +68,7 @@ export function Header() {
     <header className={`site-header premium-header ${open ? 'mobile-nav-open' : ''}`} ref={header}>
       <div className="container header-inner">
         <Brand />
-        <button ref={mobileTrigger} className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="main-navigation" onClick={() => { setOpen(!open); setPanel(null); }}><span>{open ? 'Close' : 'Menu'}</span><Icon name={open ? 'close' : 'menu'} size={22} /></button>
+        <button ref={mobileTrigger} className="menu-toggle" aria-expanded={open} aria-controls="main-navigation" onClick={() => { setOpen(!open); setPanel(null); }}><span>{open ? 'Close' : 'Menu'}</span><Icon name={open ? 'close' : 'menu'} size={22} /></button>
         <nav id="main-navigation" className={`main-nav ${open ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="nav-item">
             {trigger('services', 'Services')}

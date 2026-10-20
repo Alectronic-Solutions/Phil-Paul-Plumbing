@@ -20,8 +20,10 @@ for (const [name, index] of Object.entries(choices)) {
 }
 if (process.argv.includes('--photos-only')) process.exit(0);
 
-const fontUrl = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap';
-const response = await fetch(fontUrl, { headers: { 'User-Agent': 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36' } });
+// A full desktop Chrome user agent makes Google serve WOFF2, split into unicode-range subsets, so browsers download only the latin files.
+// pages/_document.jsx inlines the resulting CSS and preloads the latin files for the heading and body faces.
+const fontUrl = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap';
+const response = await fetch(fontUrl, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' } });
 if (!response.ok) throw new Error('Could not download design fonts');
 let css = await response.text();
 await mkdir('public/fonts', { recursive: true });
@@ -33,7 +35,7 @@ for (const url of urls) {
   const extension = bytes.subarray(0, 4).toString() === 'wOF2' ? 'woff2' : 'ttf';
   const filename = createHash('sha256').update(url).digest('hex').slice(0, 12) + `.${extension}`;
   await writeFile(`public/fonts/${filename}`, bytes);
-  css = css.replaceAll(url, `/fonts/${filename}`);
+  css = css.replaceAll(url, filename);
 }
 await writeFile('public/fonts/design.css', css);
 console.log(`Prepared ${Object.keys(choices).length} authentic photos, responsive variants, and ${urls.length} local fonts.`);

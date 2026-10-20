@@ -1,5 +1,15 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { Html, Head, Main, NextScript } from 'next/document';
 import { asset } from '../lib/asset.mjs';
+
+// The @font-face rules from scripts/prepare-design-assets.mjs are inlined, so text never waits on a stylesheet request.
+// _document renders only at build time, so reading the file here does not reach the browser bundle.
+const fontCss = readFileSync(path.join(process.cwd(), 'public/fonts/design.css'), 'utf8').replace(/url\(([^)/]+)\)/g, (_, file) => `url(${asset(`/fonts/${file}`)})`);
+const latinFile = (family, weight) => fontCss.split('/* latin */').slice(1).map(block => block.slice(0, block.indexOf('}'))).find(block => block.includes(`'${family}'`) && block.includes(`font-weight: ${weight}`))?.match(/url\(([^)]+)\)/)[1];
+// The hero heading and body text: the two faces the first screen cannot render without.
+const preloads = [latinFile('Barlow Condensed', 600), latinFile('DM Sans', 400)].filter(Boolean);
+
 export default function Document() {
-  return <Html lang="en-US"><Head><link rel="preload" href={asset("/fonts/501f76ca195e.ttf")} as="font" type="font/ttf" crossOrigin="anonymous" /><link rel="preload" href={asset("/fonts/0569c822cab6.ttf")} as="font" type="font/ttf" crossOrigin="anonymous" /><link rel="stylesheet" href={asset("/fonts/design.css")} /><link rel="icon" href={asset("/images/favicon.png")} type="image/png" /><link rel="apple-touch-icon" href={asset("/images/favicon.png")} />{process.env.NEXT_PUBLIC_SITE_INDEXABLE !== 'true' && <meta name="robots" content="noindex, nofollow" />}<meta name="theme-color" content="#751c28" /></Head><body><Main /><NextScript /></body></Html>;
+  return <Html lang="en-US"><Head>{preloads.map(href => <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />)}<style dangerouslySetInnerHTML={{ __html: fontCss }} /><link rel="icon" href={asset("/images/favicon.png")} type="image/png" /><link rel="apple-touch-icon" href={asset("/images/favicon.png")} />{process.env.NEXT_PUBLIC_SITE_INDEXABLE !== 'true' && <meta name="robots" content="noindex, nofollow" />}<meta name="theme-color" content="#751c28" /></Head><body><Main /><NextScript /></body></Html>;
 }

@@ -31,6 +31,9 @@
 //     { src: 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX' },
 //     { inline: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXX',{anonymize_ip:true});" },
 //   ],
+//   // Optional. The Content-Security-Policy (scripts/finalize-headers.mjs) already allows each script's origin and
+//   // inline snippet. List any other servers the tool talks to, or the browser will block them.
+//   csp: { 'connect-src': ['https://*.google-analytics.com'], 'img-src': ['https://*.google-analytics.com'] },
 // },
 //
 // A plain "Text us" link (<a href="sms:+12093662319">) sets no cookies and does not belong here.

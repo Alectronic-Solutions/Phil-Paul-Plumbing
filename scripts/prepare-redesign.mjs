@@ -6,5 +6,26 @@ await writeFile('public/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<
 await writeFile('public/robots.txt', indexable
   ? `User-agent: *\nDisallow: /api/\n\nSitemap: ${business.url}/sitemap.xml\n`
   : 'User-agent: *\nDisallow: /\n');
-await writeFile('public/_headers', `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n${indexable ? '' : '  X-Robots-Tag: noindex, nofollow\n'}`);
+// Cloudflare Pages applies every block whose path matches. scripts/finalize-headers.mjs adds the Content-Security-Policy
+// after the build, once the inline scripts it has to allow are known.
+await writeFile('public/_headers', [
+  '/*',
+  '  X-Content-Type-Options: nosniff',
+  '  Referrer-Policy: strict-origin-when-cross-origin',
+  // No includeSubDomains: other subdomains of the business's domain may not serve HTTPS.
+  '  Strict-Transport-Security: max-age=31536000',
+  '  Cross-Origin-Opener-Policy: same-origin',
+  '  X-Frame-Options: DENY',
+  '  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()',
+  ...(indexable ? [] : ['  X-Robots-Tag: noindex, nofollow']),
+  // Build output and fonts have content-based names, so a changed file always gets a new URL.
+  '/_next/static/*',
+  '  Cache-Control: public, max-age=31536000, immutable',
+  '/fonts/*',
+  '  Cache-Control: public, max-age=31536000, immutable',
+  // Photos keep their names when regenerated, so they are cached for a week and refreshed in the background.
+  '/images/*',
+  '  Cache-Control: public, max-age=604800, stale-while-revalidate=86400',
+  '',
+].join('\n'));
 console.log(`Prepared sitemap for ${pages.length} pages. Search indexing ${indexable ? 'ENABLED' : 'blocked (preview)'}.`);

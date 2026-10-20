@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
 import { pages, business } from '../content/business.mjs';
 import { integrations, categories } from '../content/integrations.mjs';
@@ -87,7 +88,21 @@ assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]), pag
 const robots = await readFile('out/robots.txt', 'utf8');
 assert.equal(/^Disallow: \/$/m.test(robots), !indexable, 'robots.txt must match SITE_INDEXABLE');
 if (indexable) assert(robots.includes(`Sitemap: ${business.url}/sitemap.xml`), 'robots.txt must point to the sitemap');
-assert.equal((await readFile('out/_headers', 'utf8')).includes('X-Robots-Tag'), !indexable, '_headers X-Robots-Tag must match SITE_INDEXABLE');
+const headers = await readFile('out/_headers', 'utf8');
+assert.equal(headers.includes('X-Robots-Tag'), !indexable, '_headers X-Robots-Tag must match SITE_INDEXABLE');
+for (const header of ['Strict-Transport-Security', 'Cross-Origin-Opener-Policy', 'X-Frame-Options', 'Permissions-Policy']) assert(headers.includes(`  ${header}: `), `_headers is missing ${header}`);
+assert(/^\/_next\/static\/\*\n  Cache-Control: public, max-age=31536000, immutable$/m.test(headers), '_headers must cache build output long-term');
+// The CSP must allow every inline script the build produced, or the site breaks in production only.
+const csp = headers.match(/^  Content-Security-Policy: (.+)$/m)?.[1];
+assert(csp, '_headers is missing the Content-Security-Policy (run the full npm run build)');
+assert(/script-src 'self'[^;]*;/.test(csp) && !/script-src[^;]*'unsafe-inline'/.test(csp), 'CSP script-src must not allow unsafe-inline');
+for (const file of (await readdir('out', { recursive: true, withFileTypes: true })).filter(f => f.isFile() && f.name.endsWith('.html'))) {
+  const $page = load(await readFile(`${file.parentPath ?? file.path}/${file.name}`, 'utf8'));
+  for (const el of $page('script:not([src])').toArray().filter(el => !/json/i.test(el.attribs.type || ''))) {
+    const digest = createHash('sha256').update($page(el).html(), 'utf8').digest('base64');
+    assert(csp.includes(`'sha256-${digest}'`), `Inline script in ${file.name} is not allowed by the CSP`);
+  }
+}
 const booking = load(await readFile(htmlFile('/book-plumbing-services'), 'utf8'));
 assert.equal(booking('input[name="Email"]').attr('required'), undefined, 'Email should be optional');
 assert.equal(booking('form').attr('action'), '/api/book-service');

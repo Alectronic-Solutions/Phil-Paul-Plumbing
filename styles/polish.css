@@ -197,6 +197,7 @@
 .awards { display: flex; align-items: center; gap: 14px; margin-top: 26px; }
 .awards img { width: 68px; height: 68px; border-radius: 50%; }
 .awards > a { display: block; border-radius: 50%; transition: transform .2s; }
+.awards > img, .awards > a { flex-shrink: 0; }
 .awards > a:hover { transform: rotate(-4deg) scale(1.04); }
 .awards > p { display: grid; gap: 2px; margin: 0 0 0 4px; font-size: 13px; line-height: 1.45; color: var(--muted); }
 .awards > p > strong { font-family: var(--heading); font-size: 19px; font-weight: 600; letter-spacing: .02em; color: var(--ink); }
