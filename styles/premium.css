@@ -56,10 +56,15 @@
 .scrolling-reviews { overflow: hidden; }
 .scrolling-reviews .section-heading { margin-bottom: 32px; }
 .review-score > div > span:last-child { font-size: 12px; }
-.review-score > a { background: var(--white); border-color: #d1ccbf; border-radius: 7px; width: 48px; height: 48px; }
+.review-stars-row { display: flex; align-items: center; gap: 12px; }
+.review-stars-row > a { display: inline-flex; border-radius: 50%; }
+.review-stars-row .google-mark { width: 24px; height: 24px; }
 .google-mark { display: block; width: 27px; height: 27px; object-fit: contain; flex-shrink: 0; }
 .reviews-window { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; padding: 7px max(52px, calc((100vw - 1280px) / 2)) 10px; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
 .reviews-window::-webkit-scrollbar { display: none; }
+@media (pointer: fine) { .reviews-window { cursor: grab; } }
+.reviews-window.is-dragging { cursor: grabbing; user-select: none; }
+.reviews-window.is-dragging * { cursor: grabbing; }
 .reviews-window:focus-visible { outline-offset: -4px; }
 .reviews-track, .reviews-group { display: flex; align-items: stretch; gap: 24px; width: max-content; }
 .reviews-group { flex-shrink: 0; }
@@ -114,7 +119,7 @@ body { font-size: 17px; }
 .city-links { grid-template-columns: repeat(3, 1fr); }
 .city-links > a { font-size: 28px; border-bottom: 1px solid var(--line); }
 .area-layout .area-small { font-size: 14px; }
-.map-note { font-size: 11px; line-height: 1.5; }
+
 .hero-grid > *, .page-hero-grid > *, .detail-layout > *, .faq-layout > *, .area-layout > *, .story-layout > *, .contact-grid > *, .booking-layout > * { min-width: 0; }
 
 @media (max-width: 1250px) {
@@ -189,7 +194,6 @@ body { font-size: 17px; }
   .review-score > strong { font-size: 57px; }
   .review-score > div > span:last-child { font-size: 13px; }
   .review-score .stars svg { width: 15px; height: 15px; }
-  .review-score > a { display: flex; width: 46px; height: 46px; margin-left: 6px; }
   .reviews-window { padding-inline: 20px; }
   .scrolling-reviews .review-card { width: min(355px, calc(100vw - 52px)); min-height: 335px; padding: 25px; }
   .scrolling-reviews .review-card blockquote { font-size: 19px; line-height: 1.7; }
@@ -224,7 +228,7 @@ body { font-size: 17px; }
   .detail-layout > div > .large-copy, .story-copy > .large-copy { font-size: 21px; line-height: 1.7; }
   .community-grid span, .area-layout .area-small { font-size: 14px; }
   .city-links > a { font-size: 28px; line-height: 1.1; margin-right: 10px; padding-right: 7px; }
-  .map-note { font-size: 11px; line-height: 1.6; }
+
   .contact-block p, .hours { font-size: 16px; }
   .contact-block small { font-size: 13px; }
   .booking-intro h1 { font-size: clamp(3rem, 12vw, 4rem); }
@@ -252,7 +256,6 @@ body { font-size: 17px; }
   .service-card p { font-size: 16px; max-width: 450px; margin-top: 12px; }
   .service-card-arrow { width: 42px; height: 42px; }
   .service-card-arrow svg { width: 22px; }
-  .service-index { font-size: 10px; padding: 5px 8px; top: 12px; left: 12px; }
   .dropdown-services { grid-template-columns: 1fr; gap: 0; }
   .dropdown-services > a { min-height: 68px; padding: 11px 8px; }
   .dropdown-services small { font-size: 13px; }
@@ -334,3 +337,34 @@ body { font-size: 17px; }
   .legal-body h2 { margin-top: 44px; padding-top: 24px; font-size: 1.8rem; }
   .legal-body h3 { font-size: 1.4rem; }
 }
+
+.hero-copy > p + p { margin-top: 14px; }
+
+/* Home services: all nine plus a closing tile, laid out as two rows of five on desktop. */
+.service-card-more { display: flex; flex-direction: column; gap: 18px; padding: 26px 22px 24px; border-radius: var(--radius); background: var(--wine); color: var(--white); box-shadow: var(--shadow-sm); transition: background .2s, box-shadow .3s var(--ease); }
+.service-card-more:hover { background: var(--wine-dark); box-shadow: var(--shadow-md); }
+.service-card-more h3 { margin: 0; text-transform: uppercase; font-size: 25px; line-height: 1; }
+.services-grid .service-card-more p { margin: 10px 0 0; color: var(--white); font-size: 14px; line-height: 1.65; opacity: .85; }
+.service-card-more .text-link { margin-top: auto; color: inherit; }
+@media (min-width: 1101px) {
+  .services-grid-wide { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 34px 20px; }
+  .services-grid-wide .service-card-photo img { height: 170px; }
+  .services-grid-wide .service-card-copy { padding: 18px 0 6px; }
+  .services-grid-wide .service-card-copy > div { align-items: flex-start; gap: 9px; }
+  .services-grid-wide .service-card-copy > div > svg { flex: none; width: 20px; margin-top: 2px; }
+  .services-grid-wide .service-card h3 { font-size: 23px; line-height: 1.05; }
+  .services-grid-wide .service-card p { margin-top: 10px; font-size: 14px; line-height: 1.65; }
+}
+/* Three columns hold the nine services evenly, so the closing tile steps aside. */
+@media (min-width: 761px) and (max-width: 1100px) { .services-grid-wide .service-card-more { display: none; } }
+
+/* Centered service card text */
+.services-grid-wide .service-card-copy { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 6px 8px; }
+.services-grid-wide .service-card-copy > div { flex-direction: column; justify-content: center; align-items: center; gap: 8px; }
+.services-grid-wide .service-card-copy > div > svg { margin-top: 0; }
+.services-grid-wide .service-card h3 { font-size: 23px; line-height: 1.1; text-wrap: balance; }
+.services-grid-wide .service-card p { max-width: 24ch; margin: 10px auto 0; font-size: 14.5px; line-height: 1.6; text-wrap: balance; }
+.services-grid-wide .service-card-more { align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 28px 22px; }
+.services-grid-wide .service-card-more h3 { text-wrap: balance; }
+.services-grid-wide .service-card-more p { max-width: 24ch; margin: 10px auto 0; line-height: 1.6; text-wrap: balance; }
+.services-grid-wide .service-card-more .text-link { margin-top: 6px; justify-content: center; }

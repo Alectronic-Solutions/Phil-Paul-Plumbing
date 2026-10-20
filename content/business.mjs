@@ -12,6 +12,7 @@ export const business = {
   yelp: 'https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4',
   facebook: 'https://www.facebook.com/PhilPaulsPlumbing',
   instagram: 'https://www.instagram.com/phil_and_pauls_plumbing/',
+  nextdoor: 'https://nextdoor.com/page/phil-pauls-plumbing-acampo-ca/',
   bbb: 'https://www.bbb.org/us/ca/acampo/profile/plumber/phil-pauls-plumbing-inc-1156-90004008',
   privacy: '/privacy-policy',
   terms: '/terms-and-conditions',
@@ -172,6 +173,13 @@ const basePages = [
   { route: '/terms-and-conditions', name: 'Terms and conditions', type: 'legal', legal: 'terms', title: "Terms and Conditions | Phil & Paul's Plumbing", description: "The terms that apply when you use the Phil & Paul's Plumbing website and services." },
   { route: '/cookie-policy', name: 'Cookie policy', type: 'legal', legal: 'cookies', title: "Cookie Policy | Phil & Paul's Plumbing", description: "Which cookies the Phil & Paul's Plumbing website uses, and how to change your privacy choices." },
   { route: '/accessibility', name: 'Accessibility statement', type: 'legal', legal: 'accessibility', title: "Accessibility Statement | Phil & Paul's Plumbing", description: "Our commitment to an accessible website, and how to reach us if anything on the site is hard to use." },
+  { route: '/faqs', name: 'FAQs', type: 'faqs', title: "Plumbing FAQs | Phil & Paul's Plumbing in Lodi", description: "Answers to common questions about our service area, hours, licensing, warranty, pricing, and what to expect when you call Phil & Paul's Plumbing." },
+  { route: '/sitemap', name: 'Sitemap', type: 'sitemap', title: "Sitemap | Phil & Paul's Plumbing", description: "Every page on the Phil & Paul's Plumbing website in one place: services, service areas, company information, and policies." },
+  // Draft pages: preview only. Always noindex, and kept out of sitemap.xml and the sitemap page. To remove them, delete these three
+  // entries, content/drafts.mjs, DraftPage in components/Site.jsx, and the three footer links.
+  { route: '/licensing', name: 'Licensing', type: 'draft', draft: true, title: "Licensing and Insurance | Phil & Paul's Plumbing", description: "Phil & Paul's Plumbing is a licensed California plumbing contractor (C-36 #900888) and insured. See how to verify our license." },
+  { route: '/warranty', name: 'Warranty', type: 'draft', draft: true, title: "Warranty | Phil & Paul's Plumbing", description: "Our one-year labor warranty on most repairs and installations, how manufacturer warranties differ, and how to request warranty service." },
+  { route: '/coupons', name: 'Coupons', type: 'draft', draft: true, title: "Plumbing Coupons | Phil & Paul's Plumbing", description: "Sample page for current Phil & Paul's Plumbing coupons and offers in Lodi. Placeholder content for design review only." },
   { route: '/leave-a-review', name: 'Customer reviews', type: 'reviews', title: "Customer Reviews | Phil & Paul's Plumbing", description: 'Read what customers say about Phil & Paul\'s Plumbing or share your experience on Google or Yelp.' },
 ];
 export const pages = [
@@ -179,3 +187,6 @@ export const pages = [
   ...services.map((service) => ({ route: `/service/${service.slug}`, type: 'service', service: service.slug, name: service.name, title: `${service.title} | Phil & Paul's${service.title.length > 34 ? '' : ' Plumbing'}`, description: `${service.description} Serving Lodi, Stockton, and Galt. Call (209) 366-2319.` })),
   ...cities.map((city) => ({ route: `/plumber/${city.slug}`, type: 'city', city: city.slug, name: city.name, title: `Plumber in ${city.name}, CA | Phil & Paul's Plumbing`, description: `Plumbing repairs, water heaters, drains, and sewer service in ${city.name}. Local plumbers serving the area since 1996. Call (209) 366-2319.` })),
 ];
+
+// Pages that belong in sitemap.xml and the HTML sitemap. Draft pages are excluded.
+export const sitemapPages = pages.filter(p => !p.draft);

@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { asset } from '../lib/asset.mjs';
 import { useRouter } from 'next/router';
 import { business, services, cities, hoursSummary } from '../content/business.mjs';
-import { Icon } from './Icon';
+import { Icon, Phone3D } from './Icon';
 
 export function Brand({ footer = false }) {
-  return <Link href="/" className={`brand ${footer ? 'brand-footer' : ''}`}><span>PHIL &amp; PAUL’S<span className="brand-period">.</span></span><small>PLUMBING INC. <span aria-hidden="true">/</span> LODI, CALIFORNIA</small></Link>;
+  if (!footer) return <Link href="/" className="brand brand-logo" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck.png')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" /></Link>;
+  return <Link href="/" className="brand brand-logo brand-footer" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck-white.png')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" /></Link>;
 }
 
 const descriptions = {
@@ -91,7 +92,7 @@ export function Header() {
             {trigger('company', 'Our company')}
             <div id="nav-company" className="nav-dropdown company-dropdown" hidden={panel !== 'company'}><div className="dropdown-heading"><span>MEET YOUR LOCAL TEAM</span></div><Link href="/about"><span><strong>Our story</strong><small>Working in the community since 1996</small></span><Icon name="diagonal" size={17} /></Link><Link href="/leave-a-review"><span><strong>Customer reviews</strong><small>Hear from people who have called us</small></span><Icon name="diagonal" size={17} /></Link><Link href="/contact"><span><strong>Contact &amp; hours</strong><small>A real person and a clear next step</small></span><Icon name="diagonal" size={17} /></Link></div>
           </div>
-          <a className="header-phone" href={`tel:${business.telephone}`}><Icon name="phone" size={19} />{business.phone}</a>
+          <a className="header-phone" href={`tel:${business.telephone}`}><Phone3D size={22} />{business.phone}</a>
           <Link href="/book-plumbing-services" className="button button-primary header-request">Request service<Icon name="diagonal" size={19} /></Link>
         </nav>
       </div>

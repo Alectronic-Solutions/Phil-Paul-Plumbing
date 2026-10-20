@@ -6,7 +6,8 @@
 // Have a California attorney review them, especially the dispute resolution section of the Terms.
 import { business } from './business.mjs';
 import { activeIntegrations, categories } from './integrations.mjs';
-import { consentCookie } from '../lib/consent.mjs';
+import { consentCookie, askWithoutTrackers } from '../lib/consent.mjs';
+import { displayKey } from '../lib/display.mjs';
 
 const updated = 'October 19, 2026';
 const { legalName, phone, telephone, email, address, license } = business;
@@ -28,6 +29,8 @@ function doc(sections) {
 
 const uses = category => activeIntegrations.some(item => item.category === category);
 const optional = activeIntegrations.length > 0;
+// The privacy-choices banner shows on the first visit, so the consent cookie is set once the visitor chooses.
+const asked = optional || askWithoutTrackers;
 const contactBlock = p(`${postal}<br>Phone: ${tel}<br>Email: ${mail}`);
 
 const cookieUse = optional
@@ -123,7 +126,8 @@ const privacy = doc([
 ]);
 
 const cookieRows = [
-  [`<code>${consentCookie}</code>`, 'Phil &amp; Paul’s Plumbing', optional ? 'Remembers your privacy choices so we do not ask again on every page. Set only after you make a choice.' : 'Remembers privacy choices. Not currently set, because the site has no optional cookies to choose about.', 'Strictly necessary', '12 months'],
+  [`<code>${consentCookie}</code>`, 'Phil &amp; Paul’s Plumbing', asked ? 'Remembers your privacy choices so we do not ask again on every page. Set only after you make a choice.' : 'Remembers privacy choices. Not currently set, because the site has no optional cookies to choose about.', 'Strictly necessary', '12 months'],
+  [`<code>${displayKey}</code> (local storage)`, 'Phil &amp; Paul’s Plumbing', 'Saves the text size, contrast, and other options you pick in Display settings, so they stay on as you browse. Set only if you change a setting. Never sent to us or anyone else.', 'Strictly necessary', 'Until you reset your display settings or clear site data'],
   ['<code>__cf_bm</code>', 'Cloudflare (our host)', 'Set only if our host’s bot protection is turned on. Helps tell people apart from automated traffic. Not used for tracking or advertising.', 'Strictly necessary', '30 minutes'],
   ...activeIntegrations.flatMap(item => item.cookies.map(cookie => [`<code>${esc(cookie.name)}</code>`, `${esc(item.name)} (${esc(item.provider)}), ${ext(item.privacyUrl, 'privacy policy')}`, esc(cookie.purpose), categories[item.category].name, esc(cookie.duration)])),
 ];
@@ -132,7 +136,7 @@ const cookies = doc([
   ['summary', 'Summary',
     p(optional
       ? 'This site uses only the cookies listed below. Optional cookies stay off until you allow them, and you can change your mind at any time with the “Your Privacy Choices” link at the bottom of every page.'
-      : 'This website does not use analytics, advertising, or other optional cookies. It does not load pixels, tags, session recording, chat widgets, or other tracking tools from other companies. A normal visit does not leave any cookies in your browser.'),
+      : `This website does not use analytics, advertising, or other optional cookies. It does not load pixels, tags, session recording, chat widgets, or other tracking tools from other companies. ${asked ? 'The only cookie we set remembers your answer to our privacy-choices banner, and only after you choose.' : 'A normal visit does not leave any cookies in your browser.'}`),
     p(`This Cookie Policy is part of our <a href="${business.privacy}">Privacy Policy</a>.`)],
   ['what', 'What cookies are',
     p('Cookies are small text files a website stores in your browser. Similar technologies include pixels, tags, local storage, and scripts that send information about your visit to another company. In this policy, “cookies” covers all of them.'),
@@ -246,7 +250,10 @@ const accessibility = doc([
       'Respected reduced-motion settings and added a pause button for the moving customer reviews.',
       'Tested pages at screen widths from small phones to large desktops.',
     ]),
-    p('We do not use an accessibility overlay or widget. We build accessibility into the site itself.')],
+    p('We build accessibility into the site itself. We do not use an accessibility overlay or a third-party widget.')],
+  ['display', 'Display settings',
+    p('Every page has a Display settings button (the round button in the bottom corner, also linked at the bottom of every page). It lets you make text larger, add text spacing, switch to a simpler font, raise contrast, underline links, stop motion, and use a bigger mouse pointer. Your choices are saved in your own browser and are not sent to us.'),
+    p('Display settings are an extra convenience. They do not change how the site works with screen readers or other assistive technology, and you do not need them to use the site. The settings in your browser and device, such as zoom, text size, and high contrast mode, work here too.')],
   ['limits', 'Known limitations',
     ul([
       'Pages on other websites we link to, such as Google, Yelp, and social media, are run by those companies and may not be fully accessible.',

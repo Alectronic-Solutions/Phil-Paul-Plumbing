@@ -5,11 +5,13 @@ import Script from 'next/script';
 import Link from 'next/link';
 import { business } from '../content/business.mjs';
 import { categories, activeIntegrations } from '../content/integrations.mjs';
-import { categoriesInUse, applySignals, parseConsent, serializeConsent, consentCookieString, needsChoice, permissions, acceptAll, rejectAll, allowedIntegrations, revokedIntegrations, cookieMatcher } from '../lib/consent.mjs';
+import { categoriesInUse, offeredCategories, applySignals, parseConsent, serializeConsent, consentCookieString, needsChoice, permissions, acceptAll, rejectAll, allowedIntegrations, revokedIntegrations, cookieMatcher } from '../lib/consent.mjs';
 import { Icon } from './Icon';
 
 const ConsentContext = createContext({ openPreferences: () => {} });
 const inUse = categoriesInUse(activeIntegrations);
+const offered = offeredCategories(activeIntegrations);
+const list = items => new Intl.ListFormat('en', { type: 'conjunction' }).format(items);
 
 function readSignals() {
   return { gpc: typeof navigator !== 'undefined' && navigator.globalPrivacyControl === true };
@@ -72,7 +74,9 @@ export function ConsentProvider({ children }) {
     {showBanner && <section className="consent-banner" aria-labelledby="consent-banner-title">
       <div className="consent-banner-copy">
         <h2 id="consent-banner-title">Your privacy choices</h2>
-        <p>With your permission, we use {new Intl.ListFormat('en', { type: 'conjunction' }).format(inUse.map(c => categories[c].short))} cookies from other companies. Nothing optional runs unless you allow it. See our <Link href="/cookie-policy">Cookie Policy</Link>.{signals.gpc && ' Your browser’s Global Privacy Control signal is on, so advertising cookies stay off.'}</p>
+        <p>{inUse.length
+          ? <>With your permission, we use {list(inUse.map(c => categories[c].short))} cookies from other companies. Nothing optional runs unless you allow it.</>
+          : <>We use one cookie to remember this choice. Optional {list(offered.map(c => categories[c].short))} cookies stay off unless you allow them.</>} See our <Link href="/cookie-policy">Cookie Policy</Link>.{signals.gpc && ' Your browser’s Global Privacy Control signal is on, so advertising cookies stay off.'}</p>
       </div>
       <div className="consent-actions">
         <button type="button" className="button consent-choice" onClick={() => save(rejectAll())}>Reject all</button>
@@ -85,7 +89,7 @@ export function ConsentProvider({ children }) {
         <h2 id="consent-dialog-title">Your privacy choices</h2>
         <button type="button" className="consent-close" onClick={() => dialog.current.close()} aria-label="Close privacy choices"><Icon name="close" size={22} /></button>
       </div>
-      {inUse.length === 0 ? <div className="consent-dialog-body">
+      {offered.length === 0 ? <div className="consent-dialog-body">
         <p>This website does not use analytics, advertising, or other optional cookies, and it does not load tracking tools from other companies. There is nothing to turn on or off.</p>
         <p>If that changes, we will ask for your permission first. Read our <Link href="/cookie-policy">Cookie Policy</Link> and <Link href={business.privacy}>Privacy Policy</Link>, or call {business.phone} with any questions.</p>
         <div className="consent-dialog-actions"><button type="button" className="button button-primary" onClick={() => dialog.current.close()}>Close</button></div>
@@ -96,7 +100,7 @@ export function ConsentProvider({ children }) {
           <div className="consent-category-head"><h3>Strictly necessary</h3><span className="consent-always">Always on</span></div>
           <p>Remember your privacy choices. They do not track you and cannot be turned off.</p>
         </div>
-        {inUse.map(category => {
+        {offered.map(category => {
           const locked = category === 'marketing' && signals.gpc;
           const tools = activeIntegrations.filter(item => item.category === category);
           return <div className="consent-category" key={category}>
@@ -105,7 +109,9 @@ export function ConsentProvider({ children }) {
               <label className="consent-switch"><input type="checkbox" role="switch" aria-labelledby={`consent-${category}-label`} aria-describedby={`consent-${category}-description`} checked={!locked && draft[category]} disabled={locked} onChange={event => setDraft({ ...draft, [category]: event.target.checked })} /></label>
             </div>
             <p id={`consent-${category}-description`}>{categories[category].description}</p>
-            <ul>{tools.map(item => <li key={item.id}><strong>{item.name}</strong> ({item.provider}): {item.purpose} <a href={item.privacyUrl} target="_blank" rel="noopener noreferrer">Privacy policy</a></li>)}</ul>
+            {tools.length
+              ? <ul>{tools.map(item => <li key={item.id}><strong>{item.name}</strong> ({item.provider}): {item.purpose} <a href={item.privacyUrl} target="_blank" rel="noopener noreferrer">Privacy policy</a></li>)}</ul>
+              : <p className="consent-empty">Nothing in this category is in use right now.</p>}
           </div>;
         })}
         <div className="consent-dialog-actions">

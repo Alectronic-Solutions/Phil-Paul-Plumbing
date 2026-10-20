@@ -2,16 +2,18 @@ import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
-import { pages, business } from '../content/business.mjs';
+import { pages, sitemapPages, business } from '../content/business.mjs';
 import { integrations, categories } from '../content/integrations.mjs';
+import { displayKey } from '../lib/display.mjs';
 
 // Legal guardrails: the cookie policy promises that nothing optional loads without consent.
 // Third-party tools may only be added through content/integrations.mjs, which the consent manager gates.
 const trackers = /googletagmanager|google-analytics|googleadservices|doubleclick|facebook\.net|connect\.facebook|fbevents|clarity\.ms|hotjar|podium|termly|callrail|accessibe|acsbapp|tiktok|linkedin\.com\/(px|insight)|bing\.com\/bat|segment\.(io|com)|fullstory|mouseflow|intercom|tawk\.to|livechat/i;
-const consentFiles = new Set(['components/Consent.jsx', 'lib/consent.mjs']);
+// The consent manager, and the first-party Display settings (local storage only, listed in the cookie policy).
+const storageFiles = new Set(['components/Consent.jsx', 'lib/consent.mjs', 'components/DisplaySettings.jsx', 'lib/display.mjs']);
 const listSource = async dir => (await readdir(dir, { recursive: true, withFileTypes: true })).filter(f => f.isFile() && /\.(m?js|jsx)$/.test(f.name)).map(f => `${f.parentPath ?? f.path}/${f.name}`.replace(/\\/g, '/'));
 for (const file of [...await listSource('components'), ...await listSource('pages'), ...await listSource('lib')]) {
-  if (consentFiles.has(file)) continue;
+  if (storageFiles.has(file)) continue;
   const code = await readFile(file, 'utf8');
   assert(!/document\.cookie|localStorage|sessionStorage|indexedDB|next\/script|createElement\(\s*['"]script|<iframe|\bgtag\(|\bfbq\(|dataLayer/.test(code), `${file} uses cookies, browser storage, or third-party scripts outside the consent manager. Add the tool to content/integrations.mjs instead.`);
   assert(!trackers.test(code), `${file} references a tracking or widget service. Add it through content/integrations.mjs so it is consent-gated and listed in the cookie policy.`);
@@ -37,7 +39,7 @@ for (const page of pages) {
   assert.equal($('h1').length, 1, `H1: ${page.route}`);
   assert.equal($('main').length, 1, `Main landmark: ${page.route}`);
   assert.equal($('html').attr('lang'), 'en-US');
-  assert.equal($('meta[name="robots"]').attr('content'), indexable ? undefined : 'noindex, nofollow', `Robots meta must match SITE_INDEXABLE: ${page.route}`);
+  assert.equal($('meta[name="robots"]').attr('content'), indexable && !page.draft ? undefined : 'noindex, nofollow', `Robots meta must match SITE_INDEXABLE: ${page.route}`);
   assert.equal($('meta[name="description"]').attr('content'), page.description);
   assert.equal($('link[rel="canonical"]').attr('href'), business.url + page.route, `Canonical: ${page.route}`);
   assert.equal($('meta[property="og:url"]').attr('content'), business.url + page.route, `og:url: ${page.route}`);
@@ -56,6 +58,7 @@ for (const page of pages) {
   assert(!trackers.test($('head').html() + $('body').html().replace(/<a [^>]*>/g, '')), `Tracking or widget service referenced on ${page.route}`);
   for (const route of legalLinks) assert($(`footer a[href^="${route}"]`).length, `Footer link to ${route} missing on ${page.route}`);
   assert.equal($('footer button.privacy-choices').length, 1, `"Your Privacy Choices" control missing on ${page.route}`);
+  assert.equal($('footer button.display-settings-link').length + $('button.display-launcher').length, 2, `Display settings controls missing on ${page.route}`);
   assert(!$('body').text().includes('\u2014'), `Em dash in visible copy: ${page.route}`);
   assert.equal($('.eyebrow > span').length, 0, `Decorative title dash: ${page.route}`);
   assert.equal($('.nav-trigger[aria-controls][aria-expanded="false"]').length, 3, `Navigation disclosures: ${page.route}`);
@@ -84,7 +87,7 @@ for (const page of pages) {
   }
 }
 const sitemap = await readFile('out/sitemap.xml', 'utf8');
-assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]), pages.map(p => business.url + p.route), 'Sitemap must list exactly the canonical URLs');
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]), sitemapPages.map(p => business.url + p.route), 'Sitemap must list exactly the canonical URLs');
 const robots = await readFile('out/robots.txt', 'utf8');
 assert.equal(/^Disallow: \/$/m.test(robots), !indexable, 'robots.txt must match SITE_INDEXABLE');
 if (indexable) assert(robots.includes(`Sitemap: ${business.url}/sitemap.xml`), 'robots.txt must point to the sitemap');
@@ -115,6 +118,10 @@ assert.equal(home('.review-avatar').length, 0, 'Initial-only avatars should be r
 assert.equal(home('button[aria-label="Next reviews"]').length, 1, 'Review navigation');
 const { CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(await readFile('functions/api/[[route]].js', 'utf8')).toString('base64')}`);
 assert.equal(booking('.consent-label > span').text().replace(/\s*\*$/, '').replace(/\s+/g, ' ').trim(), CONSENT.text, 'Booking consent label must match the consent record in functions/api/[[route]].js');
+const cookiePage = load(await readFile(htmlFile(business.cookies), 'utf8'))('.legal-body').text();
+assert(cookiePage.includes(displayKey), 'Cookie policy must list the Display settings storage entry');
+const a11yPage = load(await readFile(htmlFile(business.accessibility), 'utf8'))('.legal-body').text();
+assert(!/(compliant|compliance|guarantee)/i.test(a11yPage), 'Accessibility statement must not claim compliance');
 const termsPage = load(await readFile(htmlFile('/terms-and-conditions'), 'utf8'))('.legal-body').text();
 assert(!/disparag/i.test(termsPage), 'Terms must not restrict customer reviews (Consumer Review Fairness Act, Cal. Civ. Code 1670.8)');
 assert(termsPage.includes('Nothing in these Terms limits your right to post honest reviews'), 'Terms must keep the review rights statement');

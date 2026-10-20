@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises';
-import { pages, business } from '../content/business.mjs';
+import { sitemapPages, business } from '../content/business.mjs';
 const indexable = process.env.SITE_INDEXABLE === 'true';
-const urls = pages.map(p => `<url><loc>${business.url}${p.route}</loc></url>`).join('\n');
+const urls = sitemapPages.map(p => `<url><loc>${business.url}${p.route}</loc></url>`).join('\n');
 await writeFile('public/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 await writeFile('public/robots.txt', indexable
   ? `User-agent: *\nDisallow: /api/\n\nSitemap: ${business.url}/sitemap.xml\n`
@@ -28,4 +28,4 @@ await writeFile('public/_headers', [
   '  Cache-Control: public, max-age=604800, stale-while-revalidate=86400',
   '',
 ].join('\n'));
-console.log(`Prepared sitemap for ${pages.length} pages. Search indexing ${indexable ? 'ENABLED' : 'blocked (preview)'}.`);
+console.log(`Prepared sitemap for ${sitemapPages.length} pages. Search indexing ${indexable ? 'ENABLED' : 'blocked (preview)'}.`);

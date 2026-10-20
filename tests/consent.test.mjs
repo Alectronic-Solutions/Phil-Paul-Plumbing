@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { consentVersion, consentCookie, serializeConsent, parseConsent, needsChoice, permissions, acceptAll, rejectAll, allowedIntegrations, revokedIntegrations, categoriesInUse, cookieMatcher, consentCookieString } from '../lib/consent.mjs';
+import { consentVersion, consentCookie, serializeConsent, parseConsent, needsChoice, permissions, acceptAll, rejectAll, allowedIntegrations, revokedIntegrations, categoriesInUse, offeredCategories, askWithoutTrackers, optionalCategories, cookieMatcher, consentCookieString } from '../lib/consent.mjs';
 import { integrations } from '../content/integrations.mjs';
 
 const analytics = { id: 'a', enabled: true, category: 'analytics', cookies: [{ name: '_ga' }, { name: '_ga_<ID>' }] };
@@ -8,9 +8,16 @@ const ads = { id: 'm', enabled: true, category: 'marketing', cookies: [{ name: '
 const disabled = { id: 'd', enabled: false, category: 'functional', cookies: [] };
 const cookieFor = choice => `other=1; ${consentCookie}=${encodeURIComponent(serializeConsent(choice))}`;
 
-test('the site ships with no optional integrations, so no banner and no cookie', () => {
+test('the site ships with no optional integrations, and asks once only when askWithoutTrackers is on', () => {
   assert.deepEqual(categoriesInUse(integrations), []);
-  assert.equal(needsChoice(null, integrations), false);
+  assert.equal(needsChoice(null, integrations), askWithoutTrackers);
+  assert.equal(needsChoice(parseConsent(cookieFor(rejectAll())), integrations), false);
+  assert.deepEqual(offeredCategories(integrations, true), optionalCategories);
+  assert.deepEqual(offeredCategories(integrations, false), []);
+});
+test('showing the banner without trackers grants nothing until the visitor opts in', () => {
+  assert.deepEqual(permissions(null), rejectAll());
+  assert.deepEqual(allowedIntegrations([analytics, ads], permissions(null)), []);
 });
 test('consent round-trips through the cookie', () => {
   const stored = parseConsent(cookieFor({ functional: true, analytics: false, marketing: true }));
@@ -22,7 +29,7 @@ test('missing or malformed cookies count as no choice', () => {
   for (const header of ['', 'other=1', `${consentCookie}=garbage`, `${consentCookie}=v:1|t:x|f:1|a:1|m:1`, `${consentCookie}=v:1|t:1|f:2|a:1|m:1`, `${consentCookie}=%E0%A4%A`]) assert.equal(parseConsent(header), null);
 });
 test('the banner shows only when something optional is in use and there is no current choice', () => {
-  assert.equal(needsChoice(null, [disabled]), false);
+  assert.equal(needsChoice(null, [disabled], false), false);
   assert.equal(needsChoice(null, [analytics]), true);
   assert.equal(needsChoice(parseConsent(cookieFor(rejectAll())), [analytics]), false);
   assert.equal(needsChoice({ ...parseConsent(cookieFor(acceptAll())), version: 'older' }, [analytics]), true);

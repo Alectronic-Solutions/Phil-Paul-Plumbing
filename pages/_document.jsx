@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { Html, Head, Main, NextScript } from 'next/document';
 import { asset } from '../lib/asset.mjs';
+import { bootScript } from '../lib/display.mjs';
 
 // The @font-face rules from scripts/prepare-design-assets.mjs are inlined, so text never waits on a stylesheet request.
 // _document renders only at build time, so reading the file here does not reach the browser bundle.
@@ -11,5 +12,5 @@ const latinFile = (family, weight) => fontCss.split('/* latin */').slice(1).map(
 const preloads = [latinFile('Barlow Condensed', 600), latinFile('DM Sans', 400)].filter(Boolean);
 
 export default function Document() {
-  return <Html lang="en-US"><Head>{preloads.map(href => <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />)}<style dangerouslySetInnerHTML={{ __html: fontCss }} /><link rel="icon" href={asset("/images/favicon.png")} type="image/png" /><link rel="apple-touch-icon" href={asset("/images/favicon.png")} />{process.env.NEXT_PUBLIC_SITE_INDEXABLE !== 'true' && <meta name="robots" content="noindex, nofollow" />}<meta name="theme-color" content="#751c28" /></Head><body><Main /><NextScript /></body></Html>;
+  return <Html lang="en-US"><Head><script dangerouslySetInnerHTML={{ __html: bootScript }} />{preloads.map(href => <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />)}<style dangerouslySetInnerHTML={{ __html: fontCss }} /><link rel="icon" href={asset("/images/favicon.png")} type="image/png" /><link rel="apple-touch-icon" href={asset("/images/favicon.png")} />{process.env.NEXT_PUBLIC_SITE_INDEXABLE !== 'true' && <meta name="robots" content="noindex, nofollow" />}<meta name="theme-color" content="#751c28" /></Head><body><Main /><NextScript /></body></Html>;
 }
