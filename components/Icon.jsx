@@ -5,6 +5,7 @@ const paths = {
     pin: <><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
     clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
     check: <path d="m5 12 4 4L19 6" />,
+    search: <><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></>,
     shield: <><path d="m12 2 8 3v6c0 5-8 10-8 10S4 16 4 11V5l8-3Z" /><path d="m8 11 3 3 5-5" /></>,
     star: <path d="m12 2 3 6 7 1-5 5 1.2 7-6.2-3.4L5.8 21 7 14 2 9l7-1 3-6Z" />,
     heater: <><rect x="6" y="5" width="12" height="16" rx="3" /><path d="M9 5V2m6 3V2M9 18h6m-6-9h6" /><circle cx="12" cy="13" r="1" /></>,
@@ -176,6 +177,14 @@ const solid = {
   phone: <>
     <ellipse cx="16" cy="29.4" rx="7" ry="1.3" fill="#2e0710" opacity=".3" />
     <g transform="translate(2 2) scale(1.1)"><path d="m7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z" fill="url(#g-wine)" stroke="#3c0a15" strokeWidth=".6" strokeLinejoin="round" /><path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".6" strokeWidth=".8" strokeLinecap="round" /></g>
+  </>,
+  clock: <>
+    <ellipse cx="16" cy="29.4" rx="8" ry="1.4" fill="#2e0710" opacity=".3" />
+    <circle cx="16" cy="15.5" r="13" fill="url(#g-copper)" stroke="#7a4018" strokeWidth=".5" />
+    <circle cx="16" cy="15.5" r="10" fill="url(#g-steel)" />
+    <path d="M16 9v6.8l4.4 2.6" fill="none" stroke="#8a2233" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="16" cy="15.8" r="1.4" fill="#4d0f1b" />
+    <path d="M7.4 9.4c1.4-2.4 3.6-4 6.2-4.6" stroke="#fff" strokeOpacity=".75" strokeWidth="1.3" strokeLinecap="round" fill="none" />
   </>,
   flame: <>
     <path d="M17 2c2.4 6.6-5.8 8-2.6 14 1.8-.8 3-2.6 3-4.8C23.8 16.4 26 20 24 24.6 22 29 9 29 6.6 23.6 4 18 9 12 11.6 9c-1.4 4.6-.4 6.6 1 7.8C15.6 14 13.4 8 17 2Z" fill="url(#g-fire)" />

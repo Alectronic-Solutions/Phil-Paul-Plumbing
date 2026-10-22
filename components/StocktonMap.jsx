@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { business } from '../content/business.mjs';
-import { Icon } from './Icon';
+import { Icon, Icon3D } from './Icon';
 import { ServiceAreaMap } from './ServiceAreaMap';
 import { neighborhoodSpots } from '../content/neighborhood-spots.mjs';
 import { stocktonBounds, stocktonPaths, stocktonShields } from '../content/stockton-geo.mjs';
@@ -50,7 +50,7 @@ export function StocktonMap({ slug, neighborhoods, spots, activeName = null, onH
       })}
       <small className="map-credit">Map data © OpenStreetMap contributors</small>
     </div>
-    <a className="map-note" href={`tel:${business.telephone}`}><Icon name="phone" size={17} /><span>Not sure? Call <b>{business.phone}</b> and we will confirm your address.</span><Icon name="arrow" size={16} /></a>
+    <a className="map-note" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} /><span>Not sure? Call <b>{business.phone}</b> and we will confirm your address.</span><Icon name="arrow" size={16} /></a>
   </div>;
 }
 

@@ -31,6 +31,8 @@ const companyLinks = [
   { href: '/warranty', icon: 'check', name: 'Warranty', note: 'What our labor warranty covers' },
   { href: '/coupons', icon: 'tag', name: 'Coupons', note: 'Current savings and offers' },
   { href: '/contact', icon: 'phone', name: 'Contact & hours', note: 'A real person and a clear next step' },
+  { href: '/book-plumbing-services', icon: 'wrench', name: 'Request service', note: 'Book an appointment online' },
+  { href: '/sitemap', icon: 'pin', name: 'Sitemap', note: 'Every page on our website' },
 ];
 
 export function Header() {
@@ -42,6 +44,7 @@ export function Header() {
   const triggers = useRef({});
   const mobileTrigger = useRef(null);
   const router = useRouter();
+  const currentPath = router.asPath.split(/[?#]/)[0].replace(/(.)\/$/, '$1');
 
   useEffect(() => { setOpen(false); setPanel(null); }, [router.asPath]);
   useEffect(() => {
@@ -108,7 +111,7 @@ export function Header() {
                 <div className="dropdown-heading"><span>WHAT CAN WE HELP WITH?</span><Link href="/service">All services<Icon name="arrow" size={16} /></Link></div>
                 <div className="dropdown-services">{services.map(service => <Link href={`/service/${service.slug}`} key={service.slug}><span className="dropdown-icon"><Icon3D name={service.icon} size={28} /></span><span><strong>{service.name}</strong><small>{descriptions[service.slug]}</small></span><Icon className="dropdown-link-arrow" name="diagonal" size={15} /></Link>)}</div>
               </div>
-              <aside className="dropdown-feature"><img src={asset("/images/truck-960.webp")} alt="Phil and Paul's red plumbing service truck" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Not sure where<br />to start?</h2><a className="dropdown-call" href={`tel:${business.telephone}`}><Icon name="phone" size={17} />{business.phone}</a><small>Tell us what is happening.<br />We will help with the next step.</small></aside>
+              <aside className="dropdown-feature"><img src={asset("/images/truck-960.webp")} alt="Phil and Paul's red plumbing service truck" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Not sure where<br />to start?</h2><a className="dropdown-call" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} />{business.phone}</a><small>Tell us what is happening.<br />We will help with the next step.</small></aside>
             </div>
           </div>
           <div className="nav-item">
@@ -117,8 +120,8 @@ export function Header() {
               <div className="dropdown-main">
                 <div className="dropdown-heading"><span>BASED IN LODI. WORKING NEARBY.</span><Link href="/service-areas">Our coverage<Icon name="arrow" size={16} /></Link></div>
                 <div className="dropdown-cities" onMouseLeave={() => setHoverArea(null)}>
-                  <Link href="/" className="area-card-home" {...areaHover('lodi')}><span className="dropdown-pin"><Icon3D name="pin" size={30} /></span><span><strong>Lodi</strong><small>Our home base since 1996</small></span><Icon name="diagonal" size={16} /></Link>
-                  {cities.map(city => <Link key={city.slug} href={`/plumber/${city.slug}`} {...areaHover(city.slug)}><span className="dropdown-pin"><Icon3D name="pin" size={30} /></span><span><strong>{city.name}</strong><small>Homes &amp; businesses</small></span><Icon name="diagonal" size={16} /></Link>)}
+                  <Link href="/" className={currentPath === '/' ? 'area-card-home' : undefined} aria-current={currentPath === '/' ? 'page' : undefined} {...areaHover('lodi')}><span className="dropdown-pin"><Icon3D name="pin" size={30} /></span><span><strong>Lodi</strong><small>Our home base since 1996</small></span><Icon name="diagonal" size={16} /></Link>
+                  {cities.map(city => <Link key={city.slug} href={`/plumber/${city.slug}`} className={currentPath === `/plumber/${city.slug}` ? 'area-card-home' : undefined} aria-current={currentPath === `/plumber/${city.slug}` ? 'page' : undefined} {...areaHover(city.slug)}><span className="dropdown-pin"><Icon3D name="pin" size={30} /></span><span><strong>{city.name}</strong><small>Homes &amp; businesses</small></span><Icon name="diagonal" size={16} /></Link>)}
                 </div>
                 <p className="dropdown-area-note"><span>Also serving Clements and nearby communities.</span><span><a href={`tel:${business.telephone}`}>Call {business.phone}</a> to confirm coverage at your address.</span></p>
               </div>
@@ -131,8 +134,11 @@ export function Header() {
           <div className="nav-item company-nav-item">
             {trigger('company', 'Our company')}
             <div id="nav-company" className="nav-dropdown company-dropdown" hidden={panel !== 'company'} onKeyDown={panelKeys}>
-              <div className="dropdown-heading"><span>MEET YOUR LOCAL TEAM</span></div>
-              {companyLinks.map(item => <Link key={item.href} href={item.href}><span className="dropdown-pin"><Icon3D name={item.icon} size={30} /></span><span><strong>{item.name}</strong><small>{item.note}</small></span><Icon name="diagonal" size={16} /></Link>)}
+              <div className="dropdown-main">
+                <div className="dropdown-heading"><span>MEET YOUR LOCAL TEAM</span><Link href="/about">Our story<Icon name="arrow" size={16} /></Link></div>
+                <div className="dropdown-company">{companyLinks.map(item => <Link key={item.href} href={item.href}><span className="dropdown-pin"><Icon3D name={item.icon} size={30} /></span><span><strong>{item.name}</strong><small>{item.note}</small></span><Icon name="diagonal" size={16} /></Link>)}</div>
+              </div>
+              <aside className="dropdown-feature"><img src={asset("/images/team-960.webp")} alt="The Phil and Paul's Plumbing team" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Questions?<br />Just call.</h2><a className="dropdown-call" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} />{business.phone}</a><small>A real person will help you<br />with the next step.</small></aside>
             </div>
           </div>
           <a className="header-phone" href={`tel:${business.telephone}`}><Phone3D size={22} />{business.phone}</a>
