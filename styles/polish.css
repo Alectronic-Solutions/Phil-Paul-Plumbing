@@ -952,6 +952,23 @@ main > .about-feature:has(.about-feature-photo-portrait) { padding-block: clamp(
 .photo-tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 1000px) { .photo-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .photo-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+.review-photos h2 { margin-bottom: 12px; }
+.photo-lede { margin: 0 0 32px; color: var(--muted); }
+.photo-tile { display: block; padding: 0; border: 0; cursor: zoom-in; position: relative; }
+.photo-tile img { transition: transform .5s ease; }
+.photo-tile:hover img { transform: scale(1.05); }
+.photo-tile:focus-visible { outline: 3px solid var(--wine); outline-offset: 3px; }
+.photo-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 56px 16px 24px; background: rgba(20, 22, 18, .92); }
+.photo-lightbox figure { margin: 0; max-width: min(1100px, 100%); }
+.photo-lightbox figure img { display: block; max-width: 100%; max-height: calc(100vh - 150px); margin: 0 auto; border-radius: var(--radius); }
+.photo-lightbox figcaption { margin-top: 12px; color: #f3efe6; font-size: 15px; text-align: center; }
+.photo-lightbox figcaption span { margin-left: 8px; opacity: .65; }
+.lightbox-close, .lightbox-nav { display: grid; place-items: center; flex: none; width: 46px; height: 46px; border: 1px solid rgba(255, 255, 255, .3); border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .1); cursor: pointer; }
+.lightbox-close:hover, .lightbox-nav:hover { background: rgba(255, 255, 255, .22); }
+.lightbox-close:focus-visible, .lightbox-nav:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.lightbox-close { position: absolute; top: 12px; right: 12px; }
+.lightbox-nav.is-prev svg { transform: scaleX(-1); }
+@media (max-width: 760px) { .photo-lightbox { gap: 8px; padding-inline: 8px; } .lightbox-nav { position: absolute; bottom: 12px; } .lightbox-nav.is-prev { left: 16px; } .lightbox-nav.is-next { right: 16px; } }
 
 /* /leave-a-review: share your experience panel */
 .share-grid { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); column-gap: 64px; row-gap: 48px; align-items: center; padding: 72px; color: #f3efe6; background: radial-gradient(90% 120% at 100% 0%, rgba(138, 37, 51, .55) 0%, transparent 60%), linear-gradient(160deg, #2d312a 0%, var(--ink) 100%); border-radius: calc(var(--radius) * 2); box-shadow: var(--shadow-md); }

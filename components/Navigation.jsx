@@ -25,8 +25,8 @@ const descriptions = {
 
 const companyLinks = [
   { href: '/about', icon: 'building', name: 'Our story', note: 'Working in the community since 1996' },
-  { href: '/leave-a-review', icon: 'star', name: 'Customer reviews', note: 'Hear from people who have called us' },
   { href: '/faqs', icon: 'help', name: 'FAQs', note: 'Quick answers to common questions' },
+  { href: '/leave-a-review', icon: 'star', name: 'Customer reviews', note: 'Hear from people who have called us' },
   { href: '/licensing', icon: 'shield', name: 'Licensing', note: 'Licensed & insured in California' },
   { href: '/warranty', icon: 'check', name: 'Warranty', note: 'What our labor warranty covers' },
   { href: '/coupons', icon: 'tag', name: 'Coupons', note: 'Current savings and offers' },

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { business } from '../content/business.mjs';
 import { googleReviews } from '../content/google-reviews.mjs';
 import { Icon } from './Icon';
@@ -71,25 +71,64 @@ const photos = [
   ['team', 'The Phil & Paul’s crew standing in front of a service van', '50% 40%', true],
   ['google-crew-clipboard', 'A Phil & Paul’s plumber smiling on a walkway with a clipboard', '50% 18%'],
   ['drain', 'A plumber working in an excavated hole on a drain line', '50% 40%', true],
+  ['crew-wrenches', 'Two Phil & Paul’s plumbers holding pipe wrenches on a job site', '50% 35%', true],
   ['google-red-van-driveway', 'A Phil & Paul’s plumber standing beside the red service van in a driveway', '50% 50%'],
   ['repair', 'A plumber with a smile working under a sink with his tools laid out', '50% 40%', true],
+  ['excavation-repair', 'A plumber repairing a water line in an excavated trench', '50% 40%', true],
   ['google-lodi-news-award', 'Holding the Lodi News “Voted Best” plumbing service certificate', '50% 78%'],
   ['waterHeater', 'A plumber giving a thumbs up beside a new water heater', '50% 40%', true],
+  ['softener-install', 'Two plumbers setting a new water softener tank beside a home', '50% 40%', true],
   ['google-sewer-trailer', 'Phil & Paul’s service truck and trenchless sewer division trailer', '50% 50%'],
   ['gas', 'A plumber working on a gas meter connection', '50% 40%', true],
+  ['gas-meter-install', 'Two plumbers installing gas lines at a row of gas meters', '50% 50%', true],
+  ['lawn-trench', 'A plumber standing in a backyard beside a trenched lawn and old pipe', '50% 35%', true],
   ['google-sump-pumps', 'A plumber with two new sump pump risers on a commercial job', '50% 42%'],
+  ['softener-copper', 'A new water softener and whole-house filter plumbed in copper', '50% 40%', true],
   ['technician', 'A Phil & Paul’s technician standing in front of the red service van', '50% 35%', true],
+  ['google-red-van-side', 'The red Phil & Paul’s Plumbing service van parked at dusk', '50% 50%'],
   ['google-shower-valve', 'A plumber installing a shower valve in a tiled shower', '50% 30%'],
+  ['jeff', 'A Phil & Paul’s plumber waving from the cab of the service truck by a vineyard', '50% 35%', true],
+  ['filtration', 'A whole-home water filtration system plumbed in copper in a garage', '50% 45%', true],
+  ['camera', 'A sewer camera monitor beside an open cleanout, showing the inside of a drain line', '50% 40%', true],
+  ['roots', 'Tree roots pulled out of a sewer line after an inspection', '50% 40%', true],
+  ['fleet', 'Phil & Paul’s service truck parked beside a trailer of water heaters', '50% 50%', true],
 ];
 
+const src = (file, site, w) => asset(`/images/${file}${site ? `-${w}` : ''}.webp`);
+
 export function ReviewPhotos() {
+  const [active, setActive] = useState(null);
+  const close = () => setActive(null);
+  const step = d => setActive(i => (i + d + photos.length) % photos.length);
+  useEffect(() => {
+    if (active === null) return;
+    const onKey = e => {
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') step(1);
+      else if (e.key === 'ArrowLeft') step(-1);
+    };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [active]);
+  const current = active === null ? null : photos[active];
   return <section className="section review-photos" aria-labelledby="photos-heading">
     <div className="container">
       <div className="eyebrow">FROM THE FIELD</div>
       <h2 id="photos-heading">Out on the job.</h2>
-      <div className="photo-wall">{photos.map(([file, alt, position, site]) => <div className="photo-tile" key={file}>{site
-        ? <Photo name={file} alt={alt} style={{ objectPosition: position }} sizes="(max-width: 560px) calc(100vw - 40px), (max-width: 1000px) 50vw, 300px" />
-        : <img src={asset(`/images/${file}.webp`)} width="400" height="300" alt={alt} style={{ objectPosition: position }} loading="lazy" decoding="async" />}</div>)}</div>
+      <p className="photo-lede">Real jobs, real crew, around Lodi and the Central Valley. Tap any photo to see it larger.</p>
+      <div className="photo-wall">{photos.map(([file, alt, position, site], i) => <button type="button" className="photo-tile" key={file} onClick={() => setActive(i)} aria-label={`View larger: ${alt}`}>{site
+        ? <Photo name={file} alt="" style={{ objectPosition: position }} sizes="(max-width: 560px) calc(50vw - 20px), (max-width: 1000px) 33vw, 300px" />
+        : <img src={asset(`/images/${file}.webp`)} width="400" height="300" alt="" style={{ objectPosition: position }} loading="lazy" decoding="async" />}</button>)}</div>
     </div>
+    {current && <div className="photo-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onClick={close}>
+      <button type="button" className="lightbox-close" onClick={close} aria-label="Close photo viewer"><Icon name="close" size={22} /></button>
+      <button type="button" className="lightbox-nav is-prev" onClick={e => { e.stopPropagation(); step(-1); }} aria-label="Previous photo"><Icon name="arrow" size={22} /></button>
+      <figure onClick={e => e.stopPropagation()}>
+        <img src={src(current[0], current[3], 1440)} alt={current[1]} />
+        <figcaption>{current[1]} <span>{active + 1} / {photos.length}</span></figcaption>
+      </figure>
+      <button type="button" className="lightbox-nav is-next" onClick={e => { e.stopPropagation(); step(1); }} aria-label="Next photo"><Icon name="arrow" size={22} /></button>
+    </div>}
   </section>;
 }
