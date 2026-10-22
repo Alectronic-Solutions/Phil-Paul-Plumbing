@@ -22,6 +22,8 @@ const paths = {
     pause: <path d="M9 5v14M15 5v14" />,
     play: <path d="m8 4 12 8-12 8V4Z" />,
     plus: <path d="M12 5v14M5 12h14" />,
+    tag: <><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9-9-9Z" /><circle cx="8" cy="8" r="1.4" /></>,
+    help: <><circle cx="12" cy="12" r="10" /><path d="M9.2 9.3a2.9 2.9 0 0 1 5.6 1c0 1.9-2.8 2.4-2.8 4M12 17.6v.1" /></>,
     accessibility: <><circle cx="12" cy="12" r="10" /><circle cx="12" cy="7" r="1.4" fill="currentColor" stroke="none" /><path d="M7 9.6c3.3.9 6.7.9 10 0M12 10.3V14m0 0-2.6 4.2M12 14l2.6 4.2" /></>,
 };
 
@@ -31,6 +33,52 @@ export function Icon({ name = 'arrow', size = 24, className = '' }) {
 
 // Premium 3D service glyphs (no background tile). Each is a hand-built solid object: gradient bodies, bevels, gloss and a contact shadow.
 const solid = {
+  recirc: <>
+    <circle cx="16" cy="16" r="12.5" fill="url(#g-steelH)" />
+    <circle cx="16" cy="16" r="9" fill="url(#g-wine)" />
+    <path d="M10.5 15.5a5.6 5.6 0 0 1 9.6-2.6M21.5 16.5a5.6 5.6 0 0 1-9.6 2.6" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+    <path d="M21 9.6v4h-4M11 22.4v-4h4" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 10c1.6-3 4.2-4.8 7.4-5.4" stroke="#fff" strokeOpacity=".8" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+  </>,
+  sump: <>
+    <rect x="13.5" y="2.5" width="5" height="6" rx="1.6" fill="url(#g-copper)" />
+    <rect x="8" y="7.5" width="16" height="13" rx="5" fill="url(#g-wine)" />
+    <rect x="10.5" y="20" width="11" height="4" rx="1.6" fill="url(#g-steel)" />
+    <path d="M10.5 11c.6-1.6 1.6-2.4 3-2.8" stroke="#fff" strokeOpacity=".7" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+    <path d="M3 28.5c2-1.8 3.4 1.2 5.4 0s3.4-1.8 5.4 0 3.4 1.2 5.4 0 3.4-1.8 5.4 0 3.4 1.2 5.4 0" stroke="url(#g-blue)" strokeWidth="2.4" strokeLinecap="round" fill="none" />
+    <circle cx="16" cy="14" r="2.4" fill="url(#g-steel)" />
+  </>,
+  bath: <>
+    <path d="M5 4.5h2.4c1.6 0 2.6 1 2.6 2.6" fill="none" stroke="url(#g-steel)" strokeWidth="2.6" strokeLinecap="round" />
+    <path d="M2.5 14h27v2c0 5.6-3.4 9.5-8.5 9.5H11C5.9 25.5 2.5 21.6 2.5 16Z" fill="url(#g-steelH)" />
+    <path d="M2.5 14h27" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+    <path d="M5.5 17c.4 3 2 5 4.5 5.5" stroke="#fff" strokeOpacity=".7" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+    <rect x="6" y="25.2" width="3.6" height="3.2" rx="1.2" fill="url(#g-wine)" /><rect x="22.4" y="25.2" width="3.6" height="3.2" rx="1.2" fill="url(#g-wine)" />
+    <path d="M9 9.5c-1 1.4-1.2 2.6 0 2.6s1-1.2 0-2.6Z" fill="url(#g-blue)" />
+  </>,
+  valve: <>
+    <rect x="2" y="17" width="28" height="7.5" rx="2.8" fill="url(#g-copper)" />
+    <rect x="11" y="11.5" width="10" height="16.5" rx="3.2" fill="url(#g-steelH)" />
+    <rect x="14.4" y="6" width="3.2" height="6" rx="1" fill="url(#g-steel)" />
+    <rect x="7" y="2.5" width="18" height="5" rx="2.5" fill="url(#g-wine)" />
+    <path d="M9 4.200h9" stroke="#fff" strokeOpacity=".75" strokeWidth="1.1" strokeLinecap="round" />
+    <path d="M3.5 19h6" stroke="#fff" strokeOpacity=".6" strokeWidth="1.1" strokeLinecap="round" />
+  </>,
+  faucet: <>
+    <rect x="12" y="2.5" width="8" height="5.5" rx="2.2" fill="url(#g-wine)" />
+    <rect x="13.6" y="7" width="4.8" height="6" fill="url(#g-steelH)" />
+    <path d="M16 11.500h9.5q3 0 3 3.200v3.8" fill="none" stroke="url(#g-steel)" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 10.600h9.6" stroke="#fff" strokeOpacity=".8" strokeWidth="1.1" strokeLinecap="round" />
+    <path d="M28.5 22.500c-1.6 2.2-1.8 4-0 4s1.6-1.8 0-4Z" fill="url(#g-blue)" />
+    <rect x="3" y="12.5" width="9.5" height="4.6" rx="2.3" fill="url(#g-copper)" />
+  </>,
+  sprinkler: <>
+    <rect x="13.6" y="14" width="4.8" height="13" rx="1.6" fill="url(#g-steelH)" />
+    <rect x="11.5" y="9" width="9" height="6.5" rx="2.6" fill="url(#g-wine)" />
+    <path d="M12.8 10.500h5" stroke="#fff" strokeOpacity=".7" strokeWidth="1.1" strokeLinecap="round" />
+    <g stroke="url(#g-blue)" strokeWidth="2.2" strokeLinecap="round" fill="none"><path d="M16 6V2.800M10 7.2 7.5 4.800M22 7.200l2.5-2.400M7 11.2 3.5 10.200M25 11.200l3.5-1" /></g>
+    <path d="M7 28.500c2.5-1.6 4.5 1 9 0s6.5-1.8 9 0" stroke="#2f7a3c" strokeWidth="2.4" strokeLinecap="round" fill="none" />
+  </>,
   heater: <>
     <rect x="12" y="2.5" width="2.6" height="5" rx="1" fill="url(#g-copper)" /><rect x="17.4" y="2.5" width="2.6" height="5" rx="1" fill="url(#g-copper)" />
     <rect x="7" y="6" width="18" height="22" rx="6" fill="url(#g-steelH)" />
@@ -46,7 +94,6 @@ const solid = {
     <path d="M6.5 9c1.6-3 4.4-4.8 7.8-5" stroke="#fff" strokeOpacity=".7" strokeWidth="1.3" strokeLinecap="round" fill="none" />
   </>,
   wrench: <g transform="rotate(-45 16 16)">
-    <mask id="m-wr"><rect width="32" height="32" fill="#fff" /><rect x="2" y="12.6" width="8" height="6.8" fill="#000" /></mask>
     <g mask="url(#m-wr)"><circle cx="8.5" cy="16" r="6.6" fill="url(#g-steel)" /></g>
     <rect x="12" y="13.6" width="17" height="4.8" rx="2.4" fill="url(#g-steel)" />
     <circle cx="26.5" cy="16" r="1" fill="url(#g-wine)" />
@@ -86,14 +133,60 @@ const solid = {
     <circle cx="20.5" cy="12.6" r="1.1" fill="#ff5a5a" />
     <path d="M6 12.2c1-1 2-1.4 3.4-1.4" stroke="#fff" strokeOpacity=".7" strokeWidth="1.2" strokeLinecap="round" fill="none" />
   </>,
+  pin: <>
+    <ellipse cx="16" cy="28.4" rx="5" ry="1.6" fill="#2e0710" opacity=".35" />
+    <path d="M16 2C9.9 2 5.5 6.5 5.5 12.2 5.5 19.5 16 28.5 16 28.5s10.5-9 10.5-16.3C26.5 6.5 22.1 2 16 2Z" fill="url(#g-wine)" />
+    <circle cx="16" cy="12" r="4.6" fill="url(#g-steel)" /><circle cx="16" cy="12" r="2.4" fill="#3f0a15" />
+    <path d="M9.4 8.6C10.6 5.9 13 4.3 15.6 4.1" stroke="#fff" strokeOpacity=".75" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+  </>,
+  star: <>
+    <ellipse cx="16" cy="29" rx="7" ry="1.4" fill="#2e0710" opacity=".3" />
+    <path d="m16 2.5 3.8 7.8 8.6 1.2-6.2 6 1.5 8.5L16 21.9l-7.7 4.1 1.5-8.5-6.2-6 8.6-1.2L16 2.5Z" fill="url(#g-copper)" stroke="#7a4018" strokeWidth=".6" strokeLinejoin="round" />
+    <path d="m16 2.5 3.8 7.8-3.8 1.4-3.8-1.4L16 2.5Z" fill="#fff" fillOpacity=".4" />
+    <path d="M9.5 11.6 6 12.8" stroke="#fff" strokeOpacity=".8" strokeWidth="1.2" strokeLinecap="round" />
+  </>,
+  help: <>
+    <ellipse cx="16" cy="29.2" rx="8" ry="1.4" fill="#2e0710" opacity=".3" />
+    <circle cx="16" cy="15.5" r="13" fill="url(#g-wine)" />
+    <path d="M11.8 13a4.3 4.3 0 0 1 8.4 1.2c0 2.8-4.2 3.2-4.2 6" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" />
+    <circle cx="16" cy="24" r="1.6" fill="#fff" />
+    <path d="M6.6 9c1.6-3 4.4-4.8 7.8-5" stroke="#fff" strokeOpacity=".65" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+  </>,
+  shield: <>
+    <ellipse cx="16" cy="29.4" rx="6" ry="1.3" fill="#2e0710" opacity=".3" />
+    <path d="M16 2 4.5 6v9c0 7 5.2 11.6 11.5 14 6.3-2.4 11.5-7 11.5-14V6L16 2Z" fill="url(#g-steelH)" stroke="#6c7684" strokeWidth=".6" strokeLinejoin="round" />
+    <path d="M16 5.2 7.5 8.2V15c0 5.2 3.7 8.8 8.5 10.8 4.8-2 8.5-5.6 8.5-10.8V8.2L16 5.2Z" fill="url(#g-wine)" />
+    <path d="m11.3 15.4 3.4 3.4 6-6.4" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8.6 9.6 16 6.8" stroke="#fff" strokeOpacity=".6" strokeWidth="1.1" strokeLinecap="round" />
+  </>,
+  check: <>
+    <ellipse cx="16" cy="29.2" rx="8" ry="1.4" fill="#2e0710" opacity=".3" />
+    <path d="M11 22 8.5 30l4-2 2.5 2.4 1.4-8Z" fill="#4d0f1b" /><path d="M21 22l2.5 8-4-2-2.5 2.4-1.4-8Z" fill="url(#g-wine)" />
+    <g fill="url(#g-copper)" stroke="#7a4018" strokeWidth=".4">{Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6; return <circle key={i} cx={(16 + 10.2 * Math.cos(a)).toFixed(2)} cy={(14 + 10.2 * Math.sin(a)).toFixed(2)} r="4.1" />; })}<circle cx="16" cy="14" r="10.6" stroke="none" /></g>
+    <circle cx="16" cy="14" r="8.2" fill="url(#g-wine)" stroke="#fff" strokeOpacity=".5" strokeWidth=".8" />
+    <path d="m11.6 14.2 3.2 3.2 5.8-6.2" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9.6 9.6c1.2-2 3-3.2 5.2-3.6" stroke="#fff" strokeOpacity=".6" strokeWidth="1.1" strokeLinecap="round" fill="none" />
+  </>,
+  tag: <>
+    <ellipse cx="16" cy="29.4" rx="6" ry="1.3" fill="#2e0710" opacity=".3" />
+    <path d="M3.5 15.5V5.5a2 2 0 0 1 2-2h10l12 12-12 12-12-12Z" fill="url(#g-copper)" stroke="#7a4018" strokeWidth=".6" strokeLinejoin="round" />
+    <circle cx="10" cy="10" r="2.6" fill="url(#g-wine)" /><circle cx="9.4" cy="9.4" r=".9" fill="#fff" fillOpacity=".8" />
+    <path d="M6 5.4h9.4l9 9" stroke="#fff" strokeOpacity=".7" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+  </>,
+  phone: <>
+    <ellipse cx="16" cy="29.4" rx="7" ry="1.3" fill="#2e0710" opacity=".3" />
+    <g transform="translate(2 2) scale(1.1)"><path d="m7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z" fill="url(#g-wine)" stroke="#3c0a15" strokeWidth=".6" strokeLinejoin="round" /><path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".6" strokeWidth=".8" strokeLinecap="round" /></g>
+  </>,
   flame: <>
     <path d="M17 2c2.4 6.6-5.8 8-2.6 14 1.8-.8 3-2.6 3-4.8C23.8 16.4 26 20 24 24.6 22 29 9 29 6.6 23.6 4 18 9 12 11.6 9c-1.4 4.6-.4 6.6 1 7.8C15.6 14 13.4 8 17 2Z" fill="url(#g-fire)" />
     <path d="M16 15c1.6 3.6 5 4.8 4.2 9-.6 3-6 3.6-7.6.6-1.6-3 1.6-5.2 3.4-9.6Z" fill="url(#g-flame-in)" />
   </>,
 };
 
-export function Icon3D({ name = 'arrow', size = 28 }) {
-  return <svg width={size} height={size} viewBox="0 0 32 32" className="icon-3d" aria-hidden="true">
+// Gradients and the wrench mask are defined once per page. Per-glyph copies produced duplicate ids, and a glyph inside a display:none
+// ancestor (the closed nav dropdown) is the first match, which left every later glyph with unresolved fills.
+export function Icon3DDefs() {
+  return <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: 'absolute' }}>
     <defs>
       <linearGradient id="g-wine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#e0566e" /><stop offset=".5" stopColor="#8a2233" /><stop offset="1" stopColor="#4d0f1b" /></linearGradient>
       <linearGradient id="g-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ffffff" /><stop offset=".45" stopColor="#cfd4dc" /><stop offset="1" stopColor="#7a8491" /></linearGradient>
@@ -102,7 +195,13 @@ export function Icon3D({ name = 'arrow', size = 28 }) {
       <linearGradient id="g-blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#9fe0ff" /><stop offset=".5" stopColor="#2a86d6" /><stop offset="1" stopColor="#0c3f7c" /></linearGradient>
       <linearGradient id="g-fire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff9a3d" /><stop offset=".55" stopColor="#e63b22" /><stop offset="1" stopColor="#8a1020" /></linearGradient>
       <linearGradient id="g-flame-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff0a0" /><stop offset="1" stopColor="#ffa23a" /></linearGradient>
+    <mask id="m-wr"><rect width="32" height="32" fill="#fff" /><rect x="2" y="12.6" width="8" height="6.8" fill="#000" /></mask>
     </defs>
+  </svg>;
+}
+
+export function Icon3D({ name = 'arrow', size = 28 }) {
+  return <svg width={size} height={size} viewBox="0 0 32 32" className="icon-3d" aria-hidden="true">
     {solid[name] || <g fill="none" stroke="#8a2233" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" transform="scale(1.333)">{paths[name] || paths.arrow}</g>}
   </svg>;
 }

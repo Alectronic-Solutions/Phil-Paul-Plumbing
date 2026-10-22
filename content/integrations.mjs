@@ -44,6 +44,23 @@ export const categories = {
   marketing: { name: 'Advertising and marketing', short: 'advertising', description: 'Measure our advertising, show you relevant ads on other sites, or track which ad led to a call. Under California law, this may be "sharing" personal information for targeted advertising.' },
 };
 
-export const integrations = [];
+export const integrations = [
+  {
+    id: 'instagram-embeds',
+    enabled: true,
+    name: 'Instagram embedded posts',
+    provider: 'Meta Platforms, Inc.',
+    category: 'functional',
+    purpose: 'Shows our Instagram posts on the home page. Instagram may set its own cookies in your browser when a post loads.',
+    privacyUrl: 'https://privacycenter.instagram.com/policy',
+    cookies: [],
+    scripts: [{ src: 'https://www.instagram.com/embed.js' }],
+    csp: {
+      'frame-src': ['https://www.instagram.com'],
+      'img-src': ['https://*.cdninstagram.com', 'https://*.fbcdn.net'],
+      'connect-src': ['https://www.instagram.com'],
+    },
+  },
+];
 
 export const activeIntegrations = integrations.filter(item => item.enabled);

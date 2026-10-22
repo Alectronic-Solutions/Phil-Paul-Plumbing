@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
@@ -16,6 +16,20 @@ for (const [name, index] of Object.entries(choices)) {
     const resized = () => sharp(input).resize({ width, withoutEnlargement: true });
     await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
     await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
+  }
+}
+// Local job photos for city landing pages: reference/stockton/water-heater.jpg becomes stockton-water-heater-<width>.avif/.webp.
+// List them in the city's landing.photos in content/business.mjs.
+for (const city of ['stockton', 'galt', 'acampo', 'woodbridge', 'lockeford']) {
+  let files = [];
+  try { files = (await readdir(`reference/${city}`)).filter(f => /\.(jpe?g|png|webp)$/i.test(f)); } catch { continue; }
+  for (const file of files) {
+    const name = `${city}-${path.parse(file).name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    for (const width of photoWidths) {
+      const resized = () => sharp(`reference/${city}/${file}`).rotate().resize({ width, withoutEnlargement: true });
+      await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
+      await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
+    }
   }
 }
 if (process.argv.includes('--photos-only')) process.exit(0);

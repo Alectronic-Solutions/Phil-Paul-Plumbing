@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { asset } from '../lib/asset.mjs';
 import { useRouter } from 'next/router';
 import { business, services, cities, hoursSummary } from '../content/business.mjs';
-import { Icon, Phone3D } from './Icon';
+import { Icon, Icon3D, Phone3D } from './Icon';
+import { ServiceAreaMap } from './ServiceAreaMap';
 
 export function Brand({ footer = false }) {
   if (!footer) return <Link href="/" className="brand brand-logo" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck.png')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" /></Link>;
@@ -22,9 +23,21 @@ const descriptions = {
   'gas-lines': 'Gas piping installation & repair',
 };
 
+const companyLinks = [
+  { href: '/about', icon: 'building', name: 'Our story', note: 'Working in the community since 1996' },
+  { href: '/leave-a-review', icon: 'star', name: 'Customer reviews', note: 'Hear from people who have called us' },
+  { href: '/faqs', icon: 'help', name: 'FAQs', note: 'Quick answers to common questions' },
+  { href: '/licensing', icon: 'shield', name: 'Licensing', note: 'Licensed & insured in California' },
+  { href: '/warranty', icon: 'check', name: 'Warranty', note: 'What our labor warranty covers' },
+  { href: '/coupons', icon: 'tag', name: 'Coupons', note: 'Current savings and offers' },
+  { href: '/contact', icon: 'phone', name: 'Contact & hours', note: 'A real person and a clear next step' },
+];
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [panel, setPanel] = useState(null);
+  const [hoverArea, setHoverArea] = useState(null);
+  const [street, ...rest] = business.address.split(', ');
   const header = useRef(null);
   const triggers = useRef({});
   const mobileTrigger = useRef(null);
@@ -57,6 +70,23 @@ export function Header() {
     return () => { document.body.style.overflow = previous; };
   }, [open]);
 
+  useEffect(() => { if (panel !== 'areas') setHoverArea(null); }, [panel]);
+
+  // Highlights the matching station on the menu map while a town card is hovered or focused.
+  const areaHover = slug => ({ onMouseEnter: () => setHoverArea(slug), onFocus: () => setHoverArea(slug), onBlur: () => setHoverArea(null) });
+
+  // Arrow keys, Home and End move between the links of an open panel.
+  function panelKeys(event) {
+    if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+    const links = [...event.currentTarget.querySelectorAll('a')];
+    const current = links.indexOf(document.activeElement);
+    if (current < 0) return;
+    event.preventDefault();
+    const step = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1;
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? links.length - 1 : (current + step + links.length) % links.length;
+    links[next].focus();
+  }
+
   function trigger(id, label) {
     return <button ref={el => { triggers.current[id] = el; }} className={`nav-trigger ${panel === id ? 'active' : ''}`} aria-expanded={panel === id} aria-controls={`nav-${id}`} onClick={() => setPanel(panel === id ? null : id)} onKeyDown={event => {
       if (event.key === 'ArrowDown') { event.preventDefault(); setPanel(id); requestAnimationFrame(() => document.querySelector(`#nav-${id} a`)?.focus()); }
@@ -73,24 +103,37 @@ export function Header() {
         <nav id="main-navigation" className={`main-nav ${open ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="nav-item">
             {trigger('services', 'Services')}
-            <div id="nav-services" className="nav-dropdown services-dropdown" hidden={panel !== 'services'}>
+            <div id="nav-services" className="nav-dropdown services-dropdown" hidden={panel !== 'services'} onKeyDown={panelKeys}>
               <div className="dropdown-main">
                 <div className="dropdown-heading"><span>WHAT CAN WE HELP WITH?</span><Link href="/service">All services<Icon name="arrow" size={16} /></Link></div>
-                <div className="dropdown-services">{services.map(service => <Link href={`/service/${service.slug}`} key={service.slug}><span className="dropdown-icon"><Icon name={service.icon} size={23} /></span><span><strong>{service.name}</strong><small>{descriptions[service.slug]}</small></span><Icon className="dropdown-link-arrow" name="diagonal" size={15} /></Link>)}</div>
+                <div className="dropdown-services">{services.map(service => <Link href={`/service/${service.slug}`} key={service.slug}><span className="dropdown-icon"><Icon3D name={service.icon} size={28} /></span><span><strong>{service.name}</strong><small>{descriptions[service.slug]}</small></span><Icon className="dropdown-link-arrow" name="diagonal" size={15} /></Link>)}</div>
               </div>
-              <aside className="dropdown-feature"><img src={asset("/images/truck-960.webp")} alt="Phil and Paul's red plumbing service truck" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Not sure where<br />to start?</h2><a href={`tel:${business.telephone}`}><Icon name="phone" size={17} />{business.phone}</a><small>Tell us what is happening.<br />We will help with the next step.</small></aside>
+              <aside className="dropdown-feature"><img src={asset("/images/truck-960.webp")} alt="Phil and Paul's red plumbing service truck" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Not sure where<br />to start?</h2><a className="dropdown-call" href={`tel:${business.telephone}`}><Icon name="phone" size={17} />{business.phone}</a><small>Tell us what is happening.<br />We will help with the next step.</small></aside>
             </div>
           </div>
           <div className="nav-item">
             {trigger('areas', 'Service areas')}
-            <div id="nav-areas" className="nav-dropdown areas-dropdown" hidden={panel !== 'areas'}>
-              <div className="dropdown-main"><div className="dropdown-heading"><span>BASED IN LODI. WORKING NEARBY.</span><Link href="/service-areas">Our coverage<Icon name="arrow" size={16} /></Link></div><div className="dropdown-cities"><Link href="/"><Icon name="pin" size={21} /><span><strong>Lodi</strong><small>Our home base since 1996</small></span><Icon name="diagonal" size={16} /></Link>{cities.map(city => <Link key={city.slug} href={`/plumber/${city.slug}`}><Icon name="pin" size={21} /><span><strong>{city.name}</strong><small>Homes &amp; businesses</small></span><Icon name="diagonal" size={16} /></Link>)}</div><p className="dropdown-area-note">Also serving Clements and nearby communities. Call to confirm coverage at your address.</p></div>
-              <aside className="dropdown-area-feature"><Icon name="pin" size={32} /><span>OUR HOME BASE</span><h2>Lodi,<br />California.</h2><p>6 Sierra Vista Pl<br />Lodi, CA 95240</p><Link href="/contact">Contact &amp; office hours<Icon name="arrow" size={17} /></Link></aside>
+            <div id="nav-areas" className="nav-dropdown areas-dropdown" hidden={panel !== 'areas'} onKeyDown={panelKeys}>
+              <div className="dropdown-main">
+                <div className="dropdown-heading"><span>BASED IN LODI. WORKING NEARBY.</span><Link href="/service-areas">Our coverage<Icon name="arrow" size={16} /></Link></div>
+                <div className="dropdown-cities" onMouseLeave={() => setHoverArea(null)}>
+                  <Link href="/" className="area-card-home" {...areaHover('lodi')}><span className="dropdown-pin"><Icon3D name="pin" size={30} /></span><span><strong>Lodi</strong><small>Our home base since 1996</small></span><Icon name="diagonal" size={16} /></Link>
+                  {cities.map(city => <Link key={city.slug} href={`/plumber/${city.slug}`} {...areaHover(city.slug)}><span className="dropdown-pin"><Icon3D name="pin" size={30} /></span><span><strong>{city.name}</strong><small>Homes &amp; businesses</small></span><Icon name="diagonal" size={16} /></Link>)}
+                </div>
+                <p className="dropdown-area-note"><span>Also serving Clements and nearby communities.</span><span><a href={`tel:${business.telephone}`}>Call {business.phone}</a> to confirm coverage at your address.</span></p>
+              </div>
+              <aside className="dropdown-area-feature">
+                <ServiceAreaMap variant="compact" activeSlug={hoverArea} />
+                <div className="area-address"><span className="area-address-pin"><Icon name="pin" size={18} /></span><span className="area-address-text"><small>OUR HOME BASE</small><strong>{street}</strong><span>{rest.join(', ')}</span></span><Link href="/contact">Contact &amp; hours<Icon name="arrow" size={15} /></Link></div>
+              </aside>
             </div>
           </div>
           <div className="nav-item company-nav-item">
             {trigger('company', 'Our company')}
-            <div id="nav-company" className="nav-dropdown company-dropdown" hidden={panel !== 'company'}><div className="dropdown-heading"><span>MEET YOUR LOCAL TEAM</span></div><Link href="/about"><span><strong>Our story</strong><small>Working in the community since 1996</small></span><Icon name="diagonal" size={17} /></Link><Link href="/leave-a-review"><span><strong>Customer reviews</strong><small>Hear from people who have called us</small></span><Icon name="diagonal" size={17} /></Link><Link href="/contact"><span><strong>Contact &amp; hours</strong><small>A real person and a clear next step</small></span><Icon name="diagonal" size={17} /></Link></div>
+            <div id="nav-company" className="nav-dropdown company-dropdown" hidden={panel !== 'company'} onKeyDown={panelKeys}>
+              <div className="dropdown-heading"><span>MEET YOUR LOCAL TEAM</span></div>
+              {companyLinks.map(item => <Link key={item.href} href={item.href}><span className="dropdown-pin"><Icon3D name={item.icon} size={30} /></span><span><strong>{item.name}</strong><small>{item.note}</small></span><Icon name="diagonal" size={16} /></Link>)}
+            </div>
           </div>
           <a className="header-phone" href={`tel:${business.telephone}`}><Phone3D size={22} />{business.phone}</a>
           <Link href="/book-plumbing-services" className="button button-primary header-request">Request service<Icon name="diagonal" size={19} /></Link>

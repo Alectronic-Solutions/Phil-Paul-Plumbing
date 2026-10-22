@@ -1,0 +1,192 @@
+/* City landing pages (CityLanding in components/Site.jsx). Every rule is scoped to .city-landing so no other page changes. */
+
+/* Hero: dark, photo-backed, with the request card beside the copy */
+.city-landing .landing-hero { position: relative; isolation: isolate; overflow: hidden; padding: 27px 0 84px; background: #1c1e19; color: var(--paper); }
+.city-landing .landing-hero-bg { position: absolute; left: 0; top: -20%; z-index: -2; width: 100%; height: 140%; transform: translate3d(0, var(--parallax, 0px), 0); will-change: transform; object-fit: cover; object-position: 70% 40%; opacity: .42; filter: saturate(.7); }
+.city-landing .landing-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 60% 70% at 85% 10%, #751c2899, transparent 70%), linear-gradient(100deg, #1c1e19 30%, #1c1e19d9 55%, #1c1e1966), linear-gradient(#e1c7970d 1px, transparent 1px) 0 0 / 56px 56px, linear-gradient(90deg, #e1c7970d 1px, transparent 1px) 0 0 / 56px 56px; }
+.city-landing .landing-hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: linear-gradient(90deg, var(--wine), #a3414d 62%, var(--gold)); }
+.city-landing .landing-hero .breadcrumbs { color: #c9c4b8; }
+.city-landing .landing-hero .breadcrumbs > a:hover { color: #fff; }
+.city-landing .landing-hero .breadcrumbs > span:not([aria-current]) { color: #8a8678; }
+.city-landing .landing-hero .breadcrumbs > [aria-current] { color: #e1c797; }
+.city-landing .landing-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: clamp(460px, 62vh, 620px); }
+.city-landing .landing-hero-copy { max-width: 580px; }
+.city-landing .landing-hero h1 { font-size: clamp(3.2rem, 5.6vw, 5.6rem); line-height: .92; color: #fff; }
+.city-landing .landing-hero h1 > span { display: block; margin-top: 14px; font-size: .5em; letter-spacing: 0; color: #e1c797; }
+.city-landing .landing-pills { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 24px 0 22px; }
+.city-landing .landing-pills > li, .city-landing .landing-pills > li > a { display: inline-flex; align-items: center; gap: 8px; }
+.city-landing .landing-pills > li { font-size: 15px; font-weight: 500; color: #f1ede4; }
+.city-landing .landing-pills > li > svg { color: #e1c797; }
+.city-landing .landing-pills strong { font-size: 16px; color: #fff; }
+.city-landing .landing-pill-stars { display: inline-flex; gap: 1px; color: #f4b400; }
+.city-landing .landing-pill-stars svg { fill: currentColor; stroke: currentColor; stroke-width: 1; stroke-linejoin: round; }
+.city-landing .landing-lead { max-width: 560px; margin-bottom: 30px; font-size: 18px; line-height: 1.6; color: #d9d5cb; }
+.city-landing .landing-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.city-landing .landing-call { gap: 14px; padding: 14px 30px 14px 18px; font-size: 26px; font-family: var(--heading); font-weight: 600; letter-spacing: .01em; }
+.city-landing .landing-call > span { display: flex; flex-direction: column; line-height: 1; }
+.city-landing .landing-call small { margin-bottom: 4px; font-family: var(--body); font-size: 10px; font-weight: 700; letter-spacing: .14em; opacity: .8; }
+.city-landing .landing-hours { font-size: 13px; color: #b9b4a7; }
+
+/* Problem cards: photo on top, one lead card with a full-bleed photo spanning two rows */
+.city-landing .problem-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 18px; }
+.city-landing .problem-card { position: relative; isolation: isolate; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); box-shadow: var(--shadow-sm); transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
+.city-landing .problem-photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .6s var(--ease); }
+.city-landing .problem-body { display: flex; flex: 1; flex-direction: column; gap: 10px; padding: 22px 26px 24px; }
+.city-landing .problem-card h3 { font-size: 1.6rem; }
+.city-landing .problem-card p { flex: 1; margin: 0; font-size: 15px; line-height: 1.55; }
+.city-landing .problem-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 14px; font-weight: 700; color: var(--wine); }
+.city-landing .problem-link > svg { transition: transform .25s var(--ease); }
+.city-landing .problem-card:first-child { grid-row: span 2; justify-content: flex-end; min-height: 480px; border: 0; background: var(--wine); color: var(--paper); }
+.city-landing .problem-card:first-child .problem-photo { position: absolute; inset: 0; z-index: -2; height: 100%; aspect-ratio: auto; }
+.city-landing .problem-card:first-child::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #54151e1a 0%, #54151e66 38%, #3d0f16f2 78%); }
+.city-landing .problem-card:first-child .problem-body { flex: 0; padding: 36px 40px 38px; }
+.city-landing .problem-card:first-child h3 { font-size: clamp(2.2rem, 3vw, 2.9rem); color: #fff; }
+.city-landing .problem-card:first-child p { font-size: 17px; color: #f3e3e5; }
+.city-landing .problem-card:first-child .problem-link { color: #e1c797; }
+.city-landing .problem-card:hover { transform: translateY(-4px); border-color: #d6c7aa; box-shadow: var(--shadow-lg); }
+.city-landing .problem-card:hover .problem-photo { transform: scale(1.05); }
+.city-landing .problem-card:hover .problem-link > svg { transform: translateX(4px); }
+
+/* Featured local review */
+.city-landing .landing-quote { padding-block: 84px; background: var(--ink); color: var(--paper); }
+.city-landing .landing-quote-inner { display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; }
+.city-landing .landing-quote figure { position: relative; padding-left: 8px; }
+.city-landing .landing-quote-mark { position: absolute; top: -.32em; left: -.12em; font-family: Georgia, serif; font-size: 190px; line-height: 1; color: #e1c797; pointer-events: none; }
+.city-landing .landing-quote blockquote { position: relative; margin: 0 0 26px; font-family: var(--heading); font-size: clamp(2.1rem, 4vw, 3.5rem); font-weight: 500; line-height: 1.05; letter-spacing: -.01em; color: #fff; }
+.city-landing .landing-quote figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 14px; color: #b9b4a7; }
+.city-landing .landing-quote figcaption > a { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: #e1c797; }
+.city-landing .landing-quote figcaption > a:hover { color: #fff; }
+.city-landing .landing-quote-score { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 210px; padding: 30px 26px; border: 1px solid #ffffff1f; border-radius: var(--radius-lg); background: #ffffff0a; text-align: center; transition: background .2s, border-color .2s; }
+.city-landing .landing-quote-score:hover { border-color: #ffffff40; background: #ffffff14; }
+.city-landing .landing-quote-score strong { font-family: var(--heading); font-size: 76px; font-weight: 600; line-height: .9; color: #fff; }
+.city-landing .landing-quote-score > span:last-child { font-size: 13px; color: #b9b4a7; }
+
+/* Coverage: neighborhoods, ZIP codes, and the route map */
+.city-landing .landing-coverage-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
+.city-landing .landing-coverage h2 { margin-bottom: 22px; }
+.city-landing .landing-sub { margin: 26px 0 12px; font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.city-landing .chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.city-landing .chip-list > li { padding: 7px 14px; border: 1px solid var(--line); border-radius: var(--pill); background: var(--white); font-size: 14px; font-weight: 500; line-height: 1.3; }
+@media (min-width: 761px) { .city-landing .chip-list-zip { display: grid; grid-template-columns: repeat(6, max-content); justify-content: start; } }
+.city-landing .chip-list-zip > li { padding: 5px 11px; background: transparent; font-size: 13px; font-variant-numeric: tabular-nums; color: var(--muted); }
+.city-landing .map-station.is-active > i { background: var(--wine); transform: scale(1.5); box-shadow: 0 0 0 6px #751c2826; }
+.city-landing .map-station.is-active > span { color: var(--wine); font-weight: 700; }
+.city-landing .chip-list > li { transition: border-color .2s ease, color .2s ease, background .2s ease; }
+.city-landing .chip-list > li.is-active { border-color: var(--wine); background: var(--wine); color: #fff; }
+
+/* Neighborhood map: same drawing language as the regional map, with smaller labels so all the neighborhoods fit */
+.area-visual--city .map-city { fill: #fffefa8c; stroke: #751c2859; stroke-width: 1.5; stroke-dasharray: 3 6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.area-visual--city .map-street { fill: none; stroke: #cfcdc0; stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.area-visual--city .map-river { stroke-width: 8; stroke-linejoin: round; }
+.area-visual--city .map-river-small { stroke-width: 5; }
+.area-visual--city .map-channel { stroke-width: 9; }
+.area-visual--city .map-road-99, .area-visual--city .map-road-12 { stroke-width: 5; }
+.area-visual--city .map-road-4 { stroke: #6b6f61; stroke-width: 4; }
+.map-credit { position: absolute; right: 8px; bottom: 6px; font-size: 9px; color: #565d4e; }
+.map-to-lodi { position: absolute; z-index: 2; top: 12px; right: 16px; display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--pill); background: var(--wine); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.map-to-lodi > svg { transform: rotate(-90deg); }
+.map-hood { cursor: pointer; }
+.map-hood > i { left: -5px; top: -5px; width: 10px; height: 10px; border-width: 2.5px; }
+.map-hood > span { font-size: clamp(11px, 3.2cqw, 18px); font-weight: 600; letter-spacing: .02em; text-shadow: 0 0 2px var(--paper), 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 5px var(--paper); }
+.map-hood.is-tucked:not(.is-active) > span { display: none; }
+.map-hood.is-active { z-index: 3; }
+.map-hood.is-active > span { padding: 1px 6px; border-radius: 4px; background: var(--paper); box-shadow: 0 1px 6px #25282233; }
+/* Labels come from data-label so the decorative map does not repeat every neighborhood name in the page text. */
+.map-hood > span::before { content: attr(data-label); }
+.map-hood > span { translate: var(--nudge, none); }
+.map-hood.pos-r > span { left: 11px; }
+.map-hood.pos-b > span { top: 11px; }
+.map-hood.pos-l > span { right: 11px; }
+.map-hood.pos-t > span { bottom: 11px; }
+.map-hood.is-hub > i { left: -8px; top: -8px; width: 16px; height: 16px; border-width: 0; background: var(--wine); box-shadow: 0 0 0 5px #751c2826; }
+.map-hood.is-hub > span { left: 16px; color: var(--wine); font-weight: 700; }
+.city-landing .map-hood.is-active > i { transform: scale(1.6); }
+@media (max-width: 760px) { .map-hood > span { font-size: 11px; translate: none; } .map-hood.is-crowded:not(.is-active) > span { display: none; } .map-credit { font-size: 8px; } }
+
+/* Recent work gallery (shown only when photos exist) */
+.city-landing .landing-work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.city-landing .landing-work-grid img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); }
+.city-landing .landing-work-grid figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 1100px) {
+  .city-landing .landing-hero-grid { min-height: 0; }
+    .city-landing .problem-grid { grid-template-columns: 1fr 1fr; }
+  .city-landing .problem-card:first-child { grid-row: auto; grid-column: 1 / -1; min-height: 400px; }
+  .city-landing .landing-coverage-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 760px) {
+  .city-landing .landing-hero { padding: 22px 0 56px; }
+  .city-landing .landing-hero h1 { font-size: clamp(2.8rem, 13vw, 3.6rem); }
+  .city-landing .landing-hero::before { background: linear-gradient(#1c1e19e6, #1c1e19f2), linear-gradient(#e1c7970d 1px, transparent 1px) 0 0 / 40px 40px; }
+  .city-landing .landing-pills > li { font-size: 14px; }
+  .city-landing .landing-lead { font-size: 16px; }
+  .city-landing .landing-call { width: 100%; justify-content: center; font-size: 24px; }
+    .city-landing .problem-grid { grid-template-columns: 1fr; gap: 14px; }
+  .city-landing .problem-card:first-child { min-height: 380px; }
+  .city-landing .problem-body, .city-landing .problem-card:first-child .problem-body { padding: 20px 22px 22px; }
+  .city-landing .landing-quote { padding-block: 60px; }
+  .city-landing .landing-quote-inner { grid-template-columns: 1fr; gap: 32px; }
+  .city-landing .landing-quote-mark { font-size: 130px; }
+  .city-landing .landing-quote-score { flex-direction: row; flex-wrap: wrap; justify-content: center; min-width: 0; padding: 18px; }
+  .city-landing .landing-quote-score strong { font-size: 48px; }
+  .city-landing .landing-work-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .city-landing .problem-card, .city-landing .problem-photo, .city-landing .problem-link > svg { transition: none; }
+  .city-landing .problem-card:hover, .city-landing .problem-card:hover .problem-photo, .city-landing .problem-card:hover .problem-link > svg { transform: none; }
+}
+
+/* Acampo: the low sun sits right of center in the vineyard photo, so keep the right side of the hero clear and fade the copy side to the dark overlay. */
+.city-landing .landing-hero[data-city="service-areas"] .landing-hero-bg { left: 42%; top: -6%; width: 58%; height: 112%; object-fit: cover; object-position: 46% 50%; opacity: .95; filter: saturate(.95); -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%); mask-image: linear-gradient(90deg, transparent, #000 14%); }
+.city-landing .landing-hero[data-city="service-areas"] h1 { white-space: nowrap; }
+.city-landing .landing-hero[data-city="service-areas"] h1 { font-size: clamp(3rem, 4.5vw, 4.8rem); }
+.city-landing .landing-hero[data-city="service-areas"] h1 > span { white-space: normal; }
+.city-landing .landing-hero[data-city="service-areas"] .landing-lead { max-width: 500px; }
+.city-landing .landing-hero[data-city="service-areas"]::before { background: linear-gradient(100deg, #1c1e19 38%, #1c1e1959 50%, #1c1e1914 72%), linear-gradient(#e1c7970d 1px, transparent 1px) 0 0 / 56px 56px, linear-gradient(90deg, #e1c7970d 1px, transparent 1px) 0 0 / 56px 56px; }
+@media (max-width: 1100px) { .city-landing .landing-hero[data-city="service-areas"] .landing-hero-bg { left: 0; width: 100%; object-position: 30% 50%; opacity: .45; -webkit-mask-image: none; mask-image: none; } }
+.city-landing .landing-hero[data-city="acampo-plumbing-services"] .landing-hero-bg { left: 20%; width: 80%; object-position: 70% 40%; opacity: .78; filter: saturate(.9); }
+.city-landing .landing-hero[data-city="acampo-plumbing-services"]::before { background: radial-gradient(ellipse 55% 70% at 82% 30%, #e7a02b40, transparent 70%), linear-gradient(100deg, #1c1e19 26%, #1c1e19b3 44%, #1c1e1933 72%), linear-gradient(#e1c7970d 1px, transparent 1px) 0 0 / 56px 56px, linear-gradient(90deg, #e1c7970d 1px, transparent 1px) 0 0 / 56px 56px; }
+@media (max-width: 1100px) { .city-landing .landing-hero[data-city="acampo-plumbing-services"] .landing-hero-bg { left: 0; width: 100%; object-position: 70% 40%; opacity: .5; } }
+/* Woodbridge: the hero has no request form, so the copy sits left and the welcome sign is shown whole on the right. The image keeps its own proportions, is centered on the hero, and its edges dissolve into the dark background. Narrower screens keep a dimmed full-bleed background. No grid lines, and the badges are plain text. */
+.city-landing .landing-hero[data-city="woodbridge-plumbing-services"] .landing-hero-bg { left: 0; width: 100%; object-position: 52% 38%; opacity: .5; filter: saturate(.9); }
+.city-landing .landing-hero[data-city="woodbridge-plumbing-services"]::before { background: linear-gradient(100deg, #1c1e19 22%, #1c1e19a6 40%, #1c1e1933 70%); }
+@media (min-width: 1101px) {
+    .city-landing .landing-hero[data-city="woodbridge-plumbing-services"] .landing-hero-bg { left: 42%; width: 58%; height: auto; aspect-ratio: 862 / 415; top: 50%; transform: translate3d(0, calc(-50% + var(--parallax, 0px)), 0); object-fit: cover; object-position: 50% 50%; opacity: .95; filter: none;
+    -webkit-mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent), linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent), linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-composite: intersect; }
+  .city-landing .landing-hero[data-city="woodbridge-plumbing-services"]::before { background: radial-gradient(ellipse 40% 55% at 72% 50%, #751c2866, transparent 70%); }
+}
+/* Lockeford: the cow fills most of the frame and faces left, so shift the photo right of the copy and warm the overlay to match its red coat. */
+.city-landing .landing-hero[data-city="lockeford-plumbing-services"] .landing-hero-bg { left: 26%; top: 6%; width: 64%; height: 88%; object-fit: contain; object-position: 50% 50%; opacity: .78; filter: saturate(.88); -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent), linear-gradient(transparent, #000 14%, #000 86%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent), linear-gradient(transparent, #000 14%, #000 86%, transparent); mask-composite: intersect; }
+.city-landing .landing-hero[data-city="lockeford-plumbing-services"]::before { background: radial-gradient(ellipse 55% 70% at 80% 40%, #751c2833, transparent 70%), linear-gradient(100deg, #1c1e19 24%, #1c1e19a6 42%, #1c1e1933 70%); }
+@media (max-width: 1100px) { .city-landing .landing-hero[data-city="lockeford-plumbing-services"] .landing-hero-bg { left: 0; width: 100%; top: -8%; height: 108%; object-fit: cover; object-position: 40% 45%; -webkit-mask-image: none; mask-image: none; opacity: .5; } }
+/* Lockeford, wide screens: the form steps aside (the page ends with a request form) so the whole cow shows on the right. */
+@media (min-width: 1101px) {
+        .city-landing .landing-hero[data-city="lockeford-plumbing-services"] .landing-hero-bg { left: 40%; top: 50%; width: 60%; height: auto; aspect-ratio: 575 / 401; transform: translate3d(0, calc(-50% + var(--parallax, 0px)), 0); object-fit: cover; object-position: 50% 50%; opacity: .95; filter: saturate(.92); -webkit-mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent), linear-gradient(90deg, transparent, #000 14%, #000 92%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent), linear-gradient(90deg, transparent, #000 14%, #000 92%, transparent); mask-composite: intersect; }
+  .city-landing .landing-hero[data-city="lockeford-plumbing-services"]::before { background: radial-gradient(ellipse 45% 60% at 72% 50%, #751c2840, transparent 70%); }
+}
+/* Lockeford: plain text facts instead of pills. */
+@media (min-width: 1101px) { .area-visual--city .map-rail { fill: none; stroke: #9a9a8c; stroke-width: 2; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
+/* Galt: the new photo has the tower at the far left and the clock building at the far right, so the copy is centered in the open sky between them. */
+.city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-hero-bg { left: 0; top: -6%; width: 100%; height: auto; aspect-ratio: 686 / 382; object-position: 50% 50%; -webkit-mask-image: linear-gradient(#000 62%, transparent 96%); mask-image: linear-gradient(#000 62%, transparent 96%); opacity: .95; filter: saturate(.9); }
+.city-landing .landing-hero[data-city="galt-plumbing-services"]::before { background: radial-gradient(ellipse 42% 80% at 50% 50%, #1c1e19eb 35%, #1c1e19a6 70%, #1c1e1933); }
+.city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-hero-copy { margin-inline: auto; text-align: center; }
+.city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-pills, .city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-actions, .city-landing .landing-hero[data-city="galt-plumbing-services"] .eyebrow { justify-content: center; }
+.city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-lead { margin-inline: auto; }
+.city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-hours { flex-basis: 100%; }
+@media (max-width: 760px) {
+  .city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-hero-copy { text-align: left; }
+  .city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-pills, .city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-actions, .city-landing .landing-hero[data-city="galt-plumbing-services"] .eyebrow { justify-content: flex-start; }
+  .city-landing .landing-hero[data-city="galt-plumbing-services"] .landing-hero-bg { object-position: 8% 30%; opacity: .45; }
+  .city-landing .landing-hero[data-city="galt-plumbing-services"]::before { background: linear-gradient(#1c1e19d9, #1c1e19f2); }
+}
+/* Stockton: the downtown aerial is shown whole across the hero, with the sky at the top and the city below. The copy sits left over a dark fade, and the photo drifts slower than the page. */
+.city-landing .landing-hero[data-city="stockton-plumbers"] .landing-hero-bg { left: 0; top: -6%; width: 100%; height: auto; aspect-ratio: 1920 / 1184; object-position: 50% 50%; -webkit-mask-image: linear-gradient(#000 70%, transparent 98%); mask-image: linear-gradient(#000 70%, transparent 98%); opacity: .9; filter: saturate(.9); }
+.city-landing .landing-hero[data-city="stockton-plumbers"]::before { background: linear-gradient(100deg, #1c1e19 20%, #1c1e19c7 42%, #1c1e1933 72%); }
+@media (max-width: 760px) {
+  .city-landing .landing-hero[data-city="stockton-plumbers"] .landing-hero-bg { height: 100%; top: 0; aspect-ratio: auto; object-fit: cover; object-position: 50% 60%; opacity: .4; }
+  .city-landing .landing-hero[data-city="stockton-plumbers"]::before { background: linear-gradient(#1c1e19d9, #1c1e19f2); }
+}
+/* Nine neighborhoods break 3 / 3 / 3 on wide screens instead of wrapping unevenly. */
+.city-landing .chip-list > li.chip-break { display: none; }
+@media (min-width: 761px) { .city-landing .chip-list > li.chip-break { display: block; flex-basis: 100%; height: 0; margin: -8px 0; padding: 0; border: 0; } }

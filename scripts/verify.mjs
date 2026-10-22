@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
-import { pages, sitemapPages, business } from '../content/business.mjs';
+import { pages, sitemapPages, business, cities } from '../content/business.mjs';
 import { integrations, categories } from '../content/integrations.mjs';
 import { displayKey } from '../lib/display.mjs';
+import { neighborhoodSpots } from '../content/neighborhood-spots.mjs';
 
 // Legal guardrails: the cookie policy promises that nothing optional loads without consent.
 // Third-party tools may only be added through content/integrations.mjs, which the consent manager gates.
@@ -24,6 +25,11 @@ for (const item of integrations) {
   assert(/^https:\/\//.test(item.privacyUrl || ''), `Integration ${item.id} needs its provider's privacy policy URL.`);
   assert(Array.isArray(item.cookies) && item.cookies.every(c => c.name && c.duration && c.purpose), `Integration ${item.id} must list every cookie with name, duration, and purpose for the cookie policy.`);
   assert(Array.isArray(item.scripts), `Integration ${item.id} needs a scripts array.`);
+}
+// Every listed neighborhood needs a spot on its city's map, or it silently drops off the drawing.
+for (const city of cities.filter(c => neighborhoodSpots[c.slug])) {
+  const missing = (city.landing?.neighborhoods || []).filter(n => !neighborhoodSpots[city.slug][n]);
+  assert(!missing.length, `Add map coordinates in content/neighborhood-spots.mjs for: ${missing.join(', ')}`);
 }
 const legalLinks = [business.privacy, business.terms, business.cookies, business.accessibility];
 
@@ -130,5 +136,37 @@ for (const file of builtFiles) {
   const text = await readFile(`${file.parentPath ?? file.path}/${file.name}`, 'utf8');
   assert(!/termly/i.test(text), `Termly reference in ${file.name}`);
   assert(!text.includes('366-2621') && !text.includes('/images/reviewers/'), `Outdated phone number or reviewer photo in ${file.name}`);
+}
+// Content quality guardrails for service and city pages: Google's spam policies target templated, keyword-stuffed,
+// near-duplicate local pages. Each page needs its own substantial guide, written once, in the site's plain voice.
+const slop = /look no further|top-notch|seamless|peace of mind|rest assured|state-of-the-art|unparalleled|\belevate|tailored solutions|comprehensive|in today's|\bnavigate|\bdelve|trusted partner|we pride ourselves|one-stop|second to none|\bgo-to\b|whether you're a/i;
+const guideShingles = new Map();
+for (const page of pages.filter(p => p.type === 'service' || p.type === 'city')) {
+  const $ = load(await readFile(htmlFile(page.route), 'utf8'));
+  const place = page.type === 'city' ? page.name : 'Lodi';
+  assert.equal($('.local-guide').length, 1, `Local guide section missing: ${page.route}`);
+  assert($('.local-guide h2').text().includes(place), `Local guide heading should name ${place}: ${page.route}`);
+  const blocks = $('.local-guide p, .local-guide dd').toArray().map(el => $(el).text().toLowerCase().replace(/[^a-z0-9' ]+/g, ' ').split(/\s+/).filter(Boolean));
+  const words = $('.guide-body p').toArray().reduce((n, el) => n + $(el).text().split(/\s+/).filter(Boolean).length, 0);
+  assert(words >= 300, `Local guide is ${words} words; write at least 300: ${page.route}`);
+  const shingles = new Set(blocks.flatMap(w => w.slice(7).map((_, i) => w.slice(i, i + 8).join(' '))));
+  for (const [route, other] of guideShingles) {
+    const shared = [...shingles].filter(x => other.has(x));
+    assert.equal(shared.length, 0, `Local guides on ${page.route} and ${route} share wording: "${shared[0]}". Rewrite one so each page stands on its own.`);
+  }
+  guideShingles.set(page.route, shingles);
+  const main = $('main').text();
+  const mentions = main.split(place).length - 1;
+  assert(mentions <= (page.type === 'city' ? 14 : 8), `"${place}" appears ${mentions} times on ${page.route}; that reads as keyword stuffing.`);
+  const stock = main.match(slop);
+  assert(!stock, `Stock marketing phrase on ${page.route}: "${stock?.[0]}"`);
+  // Landing pages lead with the search phrase and answer their FAQs in structured data.
+  if (cities.find(c => c.slug === page.city)?.landing) {
+    assert($('h1').text().includes(`Plumber in${place}`) || $('h1').text().includes(`Plumber in ${place}`), `Landing h1 should say "Plumber in ${place}": ${page.route}`);
+    const graph = JSON.parse($('script[type="application/ld+json"]').html())['@graph'];
+    assert(graph.some(n => n['@type'] === 'FAQPage'), `Landing page needs FAQPage schema: ${page.route}`);
+    const ids = $('main [id]').toArray().map(el => $(el).attr('id'));
+    assert.equal(new Set(ids).size, ids.length, `Duplicate element ids: ${page.route}`);
+  }
 }
 console.log(`PASS (search indexing ${indexable ? 'ENABLED' : 'blocked'}): ${pages.length} pages, ${assets} asset references, ${links} internal links, metadata, schemas, form labels, original route coverage, copy checks, and consent and legal guardrails.`);
