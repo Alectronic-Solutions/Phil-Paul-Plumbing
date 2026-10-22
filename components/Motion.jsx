@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 // Sections whose first screenful has its own CSS entrance (see styles/motion.css).
-const sections = 'main section:not(.home-hero):not(.page-hero):not(.landing-hero) > .container, .site-footer > .container';
+const sections = 'main section:not(.home-hero):not(.page-hero):not(.landing-hero) > .container';
 // A child that is only a wrapper around repeated items is skipped so the items reveal one by one.
 const wrapper = /(?:^|\s)[\w-]*(?:-grid|-list|-links|-row|-cards|-layout)(?:\s|$)/;
 

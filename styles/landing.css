@@ -315,6 +315,7 @@ main > .booking-section:last-child { background: linear-gradient(0deg, var(--ink
   .footer-top .footer-visit > h2 { margin: 0 0 14px; padding: 0; border: 0; text-align: center; }
   .footer-top .footer-visit p { margin: 0 0 14px; min-width: 0; }
   .license { justify-content: center; text-align: left; margin-top: 4px; }
+  .footer-top .footer-visit .bbb-line { align-items: center; text-align: center; }
   .footer-warranty { text-align: center; padding-bottom: 20px; }
   .footer-bottom { flex-direction: column; align-items: center; gap: 14px; text-align: center; padding-inline: 0; }
   .footer-bottom > .footer-legal { flex-direction: column; gap: 10px; }

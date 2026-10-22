@@ -1,4 +1,4 @@
-// Instagram posts shown on the home page. To change one, replace its `url` with the post's permalink
+// Instagram posts shown on the home and contact pages. To change one, replace its `url` with the post's permalink
 // (Instagram: ... menu > Embed > copy the data-instgrm-permalink address, or just the post/reel link).
 export const instagramHandle = 'phil_and_pauls_plumbing';
 

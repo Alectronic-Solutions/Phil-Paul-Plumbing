@@ -32,6 +32,15 @@ for (const city of ['stockton', 'galt', 'acampo', 'woodbridge', 'lockeford']) {
     }
   }
 }
+// Job photos that apply across the site: reference/job-photos/crew-wrenches.png becomes crew-wrenches-<width>.avif/.webp.
+for (const file of (await readdir('reference/job-photos')).filter(f => /\.(jpe?g|png|webp)$/i.test(f))) {
+  const name = path.parse(file).name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  for (const width of photoWidths) {
+    const resized = () => sharp(`reference/job-photos/${file}`).rotate().resize({ width, withoutEnlargement: true });
+    await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
+    await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
+  }
+}
 if (process.argv.includes('--photos-only')) process.exit(0);
 
 // A full desktop Chrome user agent makes Google serve WOFF2, split into unicode-range subsets, so browsers download only the latin files.

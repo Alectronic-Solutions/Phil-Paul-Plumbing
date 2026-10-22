@@ -51,7 +51,7 @@ export const integrations = [
     name: 'Instagram embedded posts',
     provider: 'Meta Platforms, Inc.',
     category: 'functional',
-    purpose: 'Shows our Instagram posts on the home page. Instagram may set its own cookies in your browser when a post loads.',
+    purpose: 'Shows our Instagram posts on the home and contact pages. Instagram may set its own cookies in your browser when a post loads.',
     privacyUrl: 'https://privacycenter.instagram.com/policy',
     cookies: [],
     scripts: [{ src: 'https://www.instagram.com/embed.js' }],

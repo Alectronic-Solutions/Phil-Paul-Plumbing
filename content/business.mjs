@@ -126,7 +126,7 @@ export const services = [
     },
   },
   {
-    slug: 'plumbing-repair-services', title: 'Plumbing Repair & Leak Detection in Lodi, CA', number: '03', icon: 'wrench', name: 'Plumbing repairs', short: 'Small leak. Big relief.', image: 'pipe', overviewImage: 'drain', overviewAlt: 'A Phil and Paul\'s plumber fitting new pipe in an excavated trench',
+    slug: 'plumbing-repair-services', title: 'Plumbing Repair & Leak Detection in Lodi, CA', number: '03', icon: 'wrench', name: 'Plumbing repairs', short: 'Small leak. Big relief.', image: 'pipe', overviewImage: 'excavation-repair', overviewAlt: 'A Phil and Paul\'s plumber in an excavated trench, connecting new copper pipe to the line',
     hero: { lines: ['Plumbing repair', '& leak detection'], alt: 'A corroded section of old pipe with tree roots growing through it', proof: ['Price before the work starts', 'Same-day service often available', 'One-year labor warranty'] },
     description: 'Leaks, toilets, faucets, disposals, and the repairs that keep a home running.',
     meta: 'Plumbing repair in Lodi, CA: leaks, toilets, faucets, disposals, and pipe replacement. Price before work starts, one-year labor warranty. (209) 366-2319.',
@@ -168,7 +168,7 @@ export const services = [
     },
   },
   {
-    slug: 'sewer-repair', title: 'Sewer Line Repair & Replacement in Lodi, CA', number: '04', icon: 'pipe', name: 'Sewer repair', short: 'Find the trouble underground.', image: 'sewer', overviewImage: 'field', overviewAlt: 'A Phil and Paul\'s service truck beside an open excavation on a sewer job',
+    slug: 'sewer-repair', title: 'Sewer Line Repair & Replacement in Lodi, CA', number: '04', icon: 'pipe', name: 'Sewer repair', short: 'Find the trouble underground.', image: 'sewer', overviewImage: 'lawn-trench', overviewAlt: 'A Phil and Paul\'s plumber tamping a backyard trench, with the old pipe laid out on the lawn',
     hero: { lines: ['Sewer line repair', '& replacement'], alt: 'An open trench exposing a sewer line during a Phil and Paul\'s repair', proof: ['Camera inspection first', 'ABS pipe replacement', 'Warranty on the work'] },
     description: 'Sewer line diagnosis, repair, and replacement with a clear explanation of the work.',
     meta: 'Sewer line repair and replacement in Lodi, CA. Camera inspection finds roots, cracks, and sags; ABS pipe replacement backed by our warranty. (209) 366-2319.',
@@ -252,8 +252,8 @@ export const services = [
     },
   },
   {
-    slug: 'water-softeners', title: 'Water Softener Installation in Lodi, CA', number: '06', icon: 'drop', name: 'Water treatment', short: 'A better fit for your water.', image: 'filtration', overviewImage: 'technician', overviewAlt: 'A Phil and Paul\'s plumber beside the service van, which lists softeners among its services',
-    hero: { lines: ['Water softener', '& filtration'], alt: 'A whole-home water filtration system with two tanks installed on copper plumbing', proof: ['Softener, filter, and RO', 'Sized to your household', 'Bypass valve for service'] },
+    slug: 'water-softeners', title: 'Water Softener Installation in Lodi, CA', number: '06', icon: 'drop', name: 'Water treatment', short: 'A better fit for your water.', image: 'softener-install', overviewImage: 'softener-copper', overviewAlt: 'A new water softener tank and whole-house filter plumbed in copper with shutoff valves',
+    hero: { lines: ['Water softener', '& filtration'], alt: 'Two Phil and Paul\'s plumbers installing a whole-home water softener tank outside a Lodi house', proof: ['Softener, filter, and RO', 'Sized to your household', 'Bypass valve for service'] },
     description: 'Water softener, whole-home filtration, and reverse osmosis installation for your home.',
     meta: 'Water softener installation in Lodi, CA, plus whole-home filtration and reverse osmosis systems sized for your home. Call (209) 366-2319.',
     intro: 'White crust on faucets, spots on dishes, and soap that will not rinse off all point to hard water. We install softeners, filtration, and reverse osmosis systems, and help you pick the one that fixes what is bothering you.',
@@ -377,8 +377,8 @@ export const services = [
     },
   },
   {
-    slug: 'gas-lines', title: 'Gas Line Installation & Repair in Lodi, CA', number: '09', icon: 'flame', name: 'Gas lines', short: 'Careful work. Clear answers.', image: 'gas', overviewImage: 'heaterInstall', overviewAlt: 'A gas water heater connected with a yellow flexible gas line',
-    hero: { lines: ['Gas line repair', '& installation'], alt: 'A Phil and Paul\'s plumber working on gas piping beside a gas meter', proof: ['Black iron and Gastite CSST', 'Pressure tested', 'Certified Gastite installers'] },
+    slug: 'gas-lines', title: 'Gas Line Installation & Repair in Lodi, CA', number: '09', icon: 'flame', name: 'Gas lines', short: 'Careful work. Clear answers.', image: 'gas-meter-install', overviewImage: 'gas', overviewAlt: 'A gas water heater connected with a yellow flexible gas line',
+    hero: { lines: ['Gas line repair', '& installation'], alt: 'A Phil and Paul\'s plumber on a ladder with a press tool while a second plumber works on gas piping at a row of gas meters', proof: ['Black iron and Gastite CSST', 'Pressure tested', 'Certified Gastite installers'] },
     description: 'Gas line installation and repair by licensed plumbing professionals.',
     meta: 'Gas line repair and installation in Lodi, CA. Black iron and Gastite CSST by certified installers, leak detection, and new appliance lines. (209) 366-2319.',
     intro: 'Gas piping calls for experienced hands. We install new gas lines, find and repair leaks, and run service to new appliances in homes and businesses.',
