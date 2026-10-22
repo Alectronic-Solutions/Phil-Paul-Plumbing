@@ -1,0 +1,507 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - link "Skip to content" [ref=f1e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - generic [ref=f1e5]:
+      - generic [ref=f1e6]: Serving our neighbors since 1996
+      - generic [ref=f1e8]:
+        - text: Mon–Fri 7am–7pm
+        - generic [ref=f1e9]: /
+        - text: Sat 8am–4pm
+    - banner [ref=f1e10]:
+      - generic [ref=f1e11]:
+        - link "Phil & Paul’s Plumbing Inc. — Lodi, California, home" [ref=f1e12] [cursor=pointer]:
+          - /url: /
+          - img "Phil & Paul’s Plumbing" [ref=f1e13]
+        - navigation "Main navigation" [ref=f1e14]:
+          - button "Services" [ref=f1e16] [cursor=pointer]
+          - button "Service areas" [ref=f1e20] [cursor=pointer]
+          - button "Our company" [ref=f1e24] [cursor=pointer]
+          - link "(209) 366-2319" [ref=f1e27] [cursor=pointer]:
+            - /url: tel:+12093662319
+          - link "Request service" [ref=f1e32] [cursor=pointer]:
+            - /url: /book-plumbing-services
+    - main [ref=f1e35]:
+      - generic [ref=f1e36]:
+        - generic:
+          - generic:
+            - img "Jeff in a Phil and Paul's service truck"
+        - generic [ref=f1e37]:
+          - navigation "Breadcrumb" [ref=f1e38]:
+            - link "Home" [ref=f1e39] [cursor=pointer]:
+              - /url: /
+            - generic [ref=f1e40]: /
+            - generic [ref=f1e41]: FAQS
+          - generic [ref=f1e43]:
+            - generic [ref=f1e44]: FAQS
+            - heading "Straight answers. No runaround." [level=1] [ref=f1e45]: Straight answers.No runaround.
+            - paragraph [ref=f1e47]: The questions we hear most often. If yours is not here,call us and a real person will help.
+            - generic [ref=f1e48]:
+              - link "Request service" [ref=f1e49] [cursor=pointer]:
+                - /url: /book-plumbing-services
+              - link "(209) 366-2319" [ref=f1e52] [cursor=pointer]:
+                - /url: tel:+12093662319
+      - generic [ref=f1e57]:
+        - complementary "Search and topics" [ref=f1e58]:
+          - generic [ref=f1e59]:
+            - generic [ref=f1e63]: Search the FAQs
+            - searchbox "Search the FAQs" [ref=f1e64]
+          - paragraph [ref=f1e65]: Topics
+          - group "Filter by topic" [ref=f1e66]:
+            - button "All questions 74" [pressed] [ref=f1e67] [cursor=pointer]:
+              - text: All questions
+              - generic [ref=f1e68]: "74"
+            - button "Getting started 9" [ref=f1e69] [cursor=pointer]:
+              - text: Getting started
+              - generic [ref=f1e70]: "9"
+            - button "Service area 6" [ref=f1e71] [cursor=pointer]:
+              - text: Service area
+              - generic [ref=f1e72]: "6"
+            - button "Estimates and pricing 8" [ref=f1e73] [cursor=pointer]:
+              - text: Estimates and pricing
+              - generic [ref=f1e74]: "8"
+            - button "Licensing, insurance, and warranty 8" [ref=f1e75] [cursor=pointer]:
+              - text: Licensing, insurance, and warranty
+              - generic [ref=f1e76]: "8"
+            - button "Water heaters 9" [ref=f1e77] [cursor=pointer]:
+              - text: Water heaters
+              - generic [ref=f1e78]: "9"
+            - button "Drains and sewer lines 10" [ref=f1e79] [cursor=pointer]:
+              - text: Drains and sewer lines
+              - generic [ref=f1e80]: "10"
+            - button "Leaks, fixtures, and repairs 7" [ref=f1e81] [cursor=pointer]:
+              - text: Leaks, fixtures, and repairs
+              - generic [ref=f1e82]: "7"
+            - button "Gas lines and water quality 8" [ref=f1e83] [cursor=pointer]:
+              - text: Gas lines and water quality
+              - generic [ref=f1e84]: "8"
+            - button "Commercial plumbing 5" [ref=f1e85] [cursor=pointer]:
+              - text: Commercial plumbing
+              - generic [ref=f1e86]: "5"
+            - button "About Phil & Paul's 4" [ref=f1e87] [cursor=pointer]:
+              - text: About Phil & Paul's
+              - generic [ref=f1e88]: "4"
+          - generic [ref=f1e89]:
+            - paragraph [ref=f1e90]: Have something else on your mind?Give us a call. We are happy to help.
+            - link "(209) 366-2319" [ref=f1e91] [cursor=pointer]:
+              - /url: tel:+12093662319
+        - generic [ref=f1e94]:
+          - generic [ref=f1e95]:
+            - paragraph [ref=f1e96]: Showing all 74 questions
+            - generic [ref=f1e97]:
+              - button "Expand all" [ref=f1e98] [cursor=pointer]
+              - button "Collapse all" [ref=f1e99] [cursor=pointer]
+          - generic [ref=f1e100]:
+            - group [ref=f1e101]:
+              - generic "Getting started How do I schedule a plumber?" [ref=f1e102] [cursor=pointer]:
+                - generic [ref=f1e103]: Getting started
+                - generic [ref=f1e104]: How do I schedule a plumber?
+            - group [ref=f1e108]:
+              - generic "Getting started What should I tell you when I call?" [ref=f1e109] [cursor=pointer]:
+                - generic [ref=f1e110]: Getting started
+                - generic [ref=f1e111]: What should I tell you when I call?
+            - group [ref=f1e115]:
+              - generic "Getting started How quickly can someone come out?" [ref=f1e116] [cursor=pointer]:
+                - generic [ref=f1e117]: Getting started
+                - generic [ref=f1e118]: How quickly can someone come out?
+            - group [ref=f1e122]:
+              - generic "Getting started What are your hours?" [ref=f1e123] [cursor=pointer]:
+                - generic [ref=f1e124]: Getting started
+                - generic [ref=f1e125]: What are your hours?
+            - group [ref=f1e129]:
+              - generic "Getting started Can I book online?" [ref=f1e130] [cursor=pointer]:
+                - generic [ref=f1e131]: Getting started
+                - generic [ref=f1e132]: Can I book online?
+            - group [ref=f1e136]:
+              - generic "Getting started Do I need to be home during the visit?" [ref=f1e137] [cursor=pointer]:
+                - generic [ref=f1e138]: Getting started
+                - generic [ref=f1e139]: Do I need to be home during the visit?
+            - group [ref=f1e143]:
+              - generic "Getting started Will I know who is coming?" [ref=f1e144] [cursor=pointer]:
+                - generic [ref=f1e145]: Getting started
+                - generic [ref=f1e146]: Will I know who is coming?
+            - group [ref=f1e150]:
+              - generic "Getting started Do you handle emergencies?" [ref=f1e151] [cursor=pointer]:
+                - generic [ref=f1e152]: Getting started
+                - generic [ref=f1e153]: Do you handle emergencies?
+            - group [ref=f1e157]:
+              - generic "Getting started What if I am not sure what the problem is?" [ref=f1e158] [cursor=pointer]:
+                - generic [ref=f1e159]: Getting started
+                - generic [ref=f1e160]: What if I am not sure what the problem is?
+            - group [ref=f1e164]:
+              - generic "Service area Where do you work?" [ref=f1e165] [cursor=pointer]:
+                - generic [ref=f1e166]: Service area
+                - generic [ref=f1e167]: Where do you work?
+            - group [ref=f1e171]:
+              - generic "Service area How do I know if you cover my address?" [ref=f1e172] [cursor=pointer]:
+                - generic [ref=f1e173]: Service area
+                - generic [ref=f1e174]: How do I know if you cover my address?
+            - group [ref=f1e178]:
+              - generic "Service area Is there a charge to come to Stockton or Galt?" [ref=f1e179] [cursor=pointer]:
+                - generic [ref=f1e180]: Service area
+                - generic [ref=f1e181]: Is there a charge to come to Stockton or Galt?
+            - group [ref=f1e185]:
+              - generic "Service area Do you work on homes and businesses?" [ref=f1e186] [cursor=pointer]:
+                - generic [ref=f1e187]: Service area
+                - generic [ref=f1e188]: Do you work on homes and businesses?
+            - group [ref=f1e192]:
+              - generic "Service area Do you work with property managers and landlords?" [ref=f1e193] [cursor=pointer]:
+                - generic [ref=f1e194]: Service area
+                - generic [ref=f1e195]: Do you work with property managers and landlords?
+            - group [ref=f1e199]:
+              - generic "Service area Do you work with HOAs?" [ref=f1e200] [cursor=pointer]:
+                - generic [ref=f1e201]: Service area
+                - generic [ref=f1e202]: Do you work with HOAs?
+            - group [ref=f1e206]:
+              - generic "Estimates and pricing Do you give a price before starting the work?" [ref=f1e207] [cursor=pointer]:
+                - generic [ref=f1e208]: Estimates and pricing
+                - generic [ref=f1e209]: Do you give a price before starting the work?
+            - group [ref=f1e213]:
+              - generic "Estimates and pricing Do you offer free estimates?" [ref=f1e214] [cursor=pointer]:
+                - generic [ref=f1e215]: Estimates and pricing
+                - generic [ref=f1e216]: Do you offer free estimates?
+            - group [ref=f1e220]:
+              - generic "Estimates and pricing Why can you not quote everything over the phone?" [ref=f1e221] [cursor=pointer]:
+                - generic [ref=f1e222]: Estimates and pricing
+                - generic [ref=f1e223]: Why can you not quote everything over the phone?
+            - group [ref=f1e227]:
+              - generic "Estimates and pricing What if you find something else once you start?" [ref=f1e228] [cursor=pointer]:
+                - generic [ref=f1e229]: Estimates and pricing
+                - generic [ref=f1e230]: What if you find something else once you start?
+            - group [ref=f1e234]:
+              - generic "Estimates and pricing Will you tell me if a repair is not worth it?" [ref=f1e235] [cursor=pointer]:
+                - generic [ref=f1e236]: Estimates and pricing
+                - generic [ref=f1e237]: Will you tell me if a repair is not worth it?
+            - group [ref=f1e241]:
+              - generic "Estimates and pricing What forms of payment do you accept?" [ref=f1e242] [cursor=pointer]:
+                - generic [ref=f1e243]: Estimates and pricing
+                - generic [ref=f1e244]: What forms of payment do you accept?
+            - group [ref=f1e248]:
+              - generic "Estimates and pricing Do you offer financing?" [ref=f1e249] [cursor=pointer]:
+                - generic [ref=f1e250]: Estimates and pricing
+                - generic [ref=f1e251]: Do you offer financing?
+            - group [ref=f1e255]:
+              - generic "Estimates and pricing Do you have coupons or discounts?" [ref=f1e256] [cursor=pointer]:
+                - generic [ref=f1e257]: Estimates and pricing
+                - generic [ref=f1e258]: Do you have coupons or discounts?
+            - group [ref=f1e262]:
+              - generic "Licensing, insurance, and warranty Are you licensed and insured?" [ref=f1e263] [cursor=pointer]:
+                - generic [ref=f1e264]: Licensing, insurance, and warranty
+                - generic [ref=f1e265]: Are you licensed and insured?
+            - group [ref=f1e269]:
+              - generic "Licensing, insurance, and warranty How do I verify your license?" [ref=f1e270] [cursor=pointer]:
+                - generic [ref=f1e271]: Licensing, insurance, and warranty
+                - generic [ref=f1e272]: How do I verify your license?
+            - group [ref=f1e276]:
+              - generic "Licensing, insurance, and warranty Can I get a certificate of insurance?" [ref=f1e277] [cursor=pointer]:
+                - generic [ref=f1e278]: Licensing, insurance, and warranty
+                - generic [ref=f1e279]: Can I get a certificate of insurance?
+            - group [ref=f1e283]:
+              - generic "Licensing, insurance, and warranty Do you stand behind your work?" [ref=f1e284] [cursor=pointer]:
+                - generic [ref=f1e285]: Licensing, insurance, and warranty
+                - generic [ref=f1e286]: Do you stand behind your work?
+            - group [ref=f1e290]:
+              - generic "Licensing, insurance, and warranty What does the one-year labor warranty cover?" [ref=f1e291] [cursor=pointer]:
+                - generic [ref=f1e292]: Licensing, insurance, and warranty
+                - generic [ref=f1e293]: What does the one-year labor warranty cover?
+            - group [ref=f1e297]:
+              - generic "Licensing, insurance, and warranty What is not covered by the labor warranty?" [ref=f1e298] [cursor=pointer]:
+                - generic [ref=f1e299]: Licensing, insurance, and warranty
+                - generic [ref=f1e300]: What is not covered by the labor warranty?
+            - group [ref=f1e304]:
+              - generic "Licensing, insurance, and warranty Do manufacturer warranties apply too?" [ref=f1e305] [cursor=pointer]:
+                - generic [ref=f1e306]: Licensing, insurance, and warranty
+                - generic [ref=f1e307]: Do manufacturer warranties apply too?
+            - group [ref=f1e311]:
+              - generic "Licensing, insurance, and warranty How do I request warranty service?" [ref=f1e312] [cursor=pointer]:
+                - generic [ref=f1e313]: Licensing, insurance, and warranty
+                - generic [ref=f1e314]: How do I request warranty service?
+            - group [ref=f1e318]:
+              - generic "Water heaters Why is my water heater not making hot water?" [ref=f1e319] [cursor=pointer]:
+                - generic [ref=f1e320]: Water heaters
+                - generic [ref=f1e321]: Why is my water heater not making hot water?
+            - group [ref=f1e325]:
+              - generic "Water heaters Should I repair or replace my water heater?" [ref=f1e326] [cursor=pointer]:
+                - generic [ref=f1e327]: Water heaters
+                - generic [ref=f1e328]: Should I repair or replace my water heater?
+            - group [ref=f1e332]:
+              - generic "Water heaters How long does a water heater last?" [ref=f1e333] [cursor=pointer]:
+                - generic [ref=f1e334]: Water heaters
+                - generic [ref=f1e335]: How long does a water heater last?
+            - group [ref=f1e339]:
+              - generic "Water heaters What should I do if my water heater is leaking?" [ref=f1e340] [cursor=pointer]:
+                - generic [ref=f1e341]: Water heaters
+                - generic [ref=f1e342]: What should I do if my water heater is leaking?
+            - group [ref=f1e346]:
+              - generic "Water heaters Do you install tankless water heaters?" [ref=f1e347] [cursor=pointer]:
+                - generic [ref=f1e348]: Water heaters
+                - generic [ref=f1e349]: Do you install tankless water heaters?
+            - group [ref=f1e353]:
+              - generic "Water heaters Which water heater brands do you install?" [ref=f1e354] [cursor=pointer]:
+                - generic [ref=f1e355]: Water heaters
+                - generic [ref=f1e356]: Which water heater brands do you install?
+            - group [ref=f1e360]:
+              - generic "Water heaters Do you pull the permit for a water heater replacement?" [ref=f1e361] [cursor=pointer]:
+                - generic [ref=f1e362]: Water heaters
+                - generic [ref=f1e363]: Do you pull the permit for a water heater replacement?
+            - group [ref=f1e367]:
+              - generic "Water heaters Do you haul away the old water heater?" [ref=f1e368] [cursor=pointer]:
+                - generic [ref=f1e369]: Water heaters
+                - generic [ref=f1e370]: Do you haul away the old water heater?
+            - group [ref=f1e374]:
+              - generic "Water heaters Does flushing a water heater help?" [ref=f1e375] [cursor=pointer]:
+                - generic [ref=f1e376]: Water heaters
+                - generic [ref=f1e377]: Does flushing a water heater help?
+            - group [ref=f1e381]:
+              - generic "Drains and sewer lines Which drains should I check before I call?" [ref=f1e382] [cursor=pointer]:
+                - generic [ref=f1e383]: Drains and sewer lines
+                - generic [ref=f1e384]: Which drains should I check before I call?
+            - group [ref=f1e388]:
+              - generic "Drains and sewer lines Should I try a chemical drain cleaner first?" [ref=f1e389] [cursor=pointer]:
+                - generic [ref=f1e390]: Drains and sewer lines
+                - generic [ref=f1e391]: Should I try a chemical drain cleaner first?
+            - group [ref=f1e395]:
+              - generic "Drains and sewer lines Can you clear a main sewer line?" [ref=f1e396] [cursor=pointer]:
+                - generic [ref=f1e397]: Drains and sewer lines
+                - generic [ref=f1e398]: Can you clear a main sewer line?
+            - group [ref=f1e402]:
+              - generic "Drains and sewer lines What if the clog keeps coming back?" [ref=f1e403] [cursor=pointer]:
+                - generic [ref=f1e404]: Drains and sewer lines
+                - generic [ref=f1e405]: What if the clog keeps coming back?
+            - group [ref=f1e409]:
+              - generic "Drains and sewer lines When is hydro-jetting better than a rooter?" [ref=f1e410] [cursor=pointer]:
+                - generic [ref=f1e411]: Drains and sewer lines
+                - generic [ref=f1e412]: When is hydro-jetting better than a rooter?
+            - group [ref=f1e416]:
+              - generic "Drains and sewer lines What does a sewer camera inspection involve?" [ref=f1e417] [cursor=pointer]:
+                - generic [ref=f1e418]: Drains and sewer lines
+                - generic [ref=f1e419]: What does a sewer camera inspection involve?
+            - group [ref=f1e423]:
+              - generic "Drains and sewer lines Can tree roots cause sewer backups?" [ref=f1e424] [cursor=pointer]:
+                - generic [ref=f1e425]: Drains and sewer lines
+                - generic [ref=f1e426]: Can tree roots cause sewer backups?
+            - group [ref=f1e430]:
+              - generic "Drains and sewer lines Does every sewer problem need a replacement?" [ref=f1e431] [cursor=pointer]:
+                - generic [ref=f1e432]: Drains and sewer lines
+                - generic [ref=f1e433]: Does every sewer problem need a replacement?
+            - group [ref=f1e437]:
+              - generic "Drains and sewer lines Who is responsible for the sewer lateral?" [ref=f1e438] [cursor=pointer]:
+                - generic [ref=f1e439]: Drains and sewer lines
+                - generic [ref=f1e440]: Who is responsible for the sewer lateral?
+            - group [ref=f1e444]:
+              - generic "Drains and sewer lines Do you inspect sewer lines before a property purchase?" [ref=f1e445] [cursor=pointer]:
+                - generic [ref=f1e446]: Drains and sewer lines
+                - generic [ref=f1e447]: Do you inspect sewer lines before a property purchase?
+            - group [ref=f1e451]:
+              - generic "Leaks, fixtures, and repairs How do I know if I have a hidden leak?" [ref=f1e452] [cursor=pointer]:
+                - generic [ref=f1e453]: Leaks, fixtures, and repairs
+                - generic [ref=f1e454]: How do I know if I have a hidden leak?
+            - group [ref=f1e458]:
+              - generic "Leaks, fixtures, and repairs How do I shut off my water in an emergency?" [ref=f1e459] [cursor=pointer]:
+                - generic [ref=f1e460]: Leaks, fixtures, and repairs
+                - generic [ref=f1e461]: How do I shut off my water in an emergency?
+            - group [ref=f1e465]:
+              - generic "Leaks, fixtures, and repairs What should I do about a burst or leaking pipe?" [ref=f1e466] [cursor=pointer]:
+                - generic [ref=f1e467]: Leaks, fixtures, and repairs
+                - generic [ref=f1e468]: What should I do about a burst or leaking pipe?
+            - group [ref=f1e472]:
+              - generic "Leaks, fixtures, and repairs Should I repair or replace an old toilet or faucet?" [ref=f1e473] [cursor=pointer]:
+                - generic [ref=f1e474]: Leaks, fixtures, and repairs
+                - generic [ref=f1e475]: Should I repair or replace an old toilet or faucet?
+            - group [ref=f1e479]:
+              - generic "Leaks, fixtures, and repairs Should I replace the shutoff valves under my sinks?" [ref=f1e480] [cursor=pointer]:
+                - generic [ref=f1e481]: Leaks, fixtures, and repairs
+                - generic [ref=f1e482]: Should I replace the shutoff valves under my sinks?
+            - group [ref=f1e486]:
+              - generic "Leaks, fixtures, and repairs What pipe materials do you work on?" [ref=f1e487] [cursor=pointer]:
+                - generic [ref=f1e488]: Leaks, fixtures, and repairs
+                - generic [ref=f1e489]: What pipe materials do you work on?
+            - group [ref=f1e493]:
+              - generic "Leaks, fixtures, and repairs Do you handle other jobs, like sump pumps or sprinkler lines?" [ref=f1e494] [cursor=pointer]:
+                - generic [ref=f1e495]: Leaks, fixtures, and repairs
+                - generic [ref=f1e496]: Do you handle other jobs, like sump pumps or sprinkler lines?
+            - group [ref=f1e500]:
+              - generic "Gas lines and water quality What should I do if I smell gas?" [ref=f1e501] [cursor=pointer]:
+                - generic [ref=f1e502]: Gas lines and water quality
+                - generic [ref=f1e503]: What should I do if I smell gas?
+            - group [ref=f1e507]:
+              - generic "Gas lines and water quality Can you install a new gas line?" [ref=f1e508] [cursor=pointer]:
+                - generic [ref=f1e509]: Gas lines and water quality
+                - generic [ref=f1e510]: Can you install a new gas line?
+            - group [ref=f1e514]:
+              - generic "Gas lines and water quality What types of gas piping do you install?" [ref=f1e515] [cursor=pointer]:
+                - generic [ref=f1e516]: Gas lines and water quality
+                - generic [ref=f1e517]: What types of gas piping do you install?
+            - group [ref=f1e521]:
+              - generic "Gas lines and water quality Will my gas line handle a tankless water heater?" [ref=f1e522] [cursor=pointer]:
+                - generic [ref=f1e523]: Gas lines and water quality
+                - generic [ref=f1e524]: Will my gas line handle a tankless water heater?
+            - group [ref=f1e528]:
+              - generic "Gas lines and water quality How do I know if I need a water softener?" [ref=f1e529] [cursor=pointer]:
+                - generic [ref=f1e530]: Gas lines and water quality
+                - generic [ref=f1e531]: How do I know if I need a water softener?
+            - group [ref=f1e535]:
+              - generic "Gas lines and water quality What is the difference between a softener and a filter?" [ref=f1e536] [cursor=pointer]:
+                - generic [ref=f1e537]: Gas lines and water quality
+                - generic [ref=f1e538]: What is the difference between a softener and a filter?
+            - group [ref=f1e542]:
+              - generic "Gas lines and water quality Do you repair existing water softeners?" [ref=f1e543] [cursor=pointer]:
+                - generic [ref=f1e544]: Gas lines and water quality
+                - generic [ref=f1e545]: Do you repair existing water softeners?
+            - group [ref=f1e549]:
+              - generic "Gas lines and water quality Does hard water damage a water heater?" [ref=f1e550] [cursor=pointer]:
+                - generic [ref=f1e551]: Gas lines and water quality
+                - generic [ref=f1e552]: Does hard water damage a water heater?
+            - group [ref=f1e556]:
+              - generic "Commercial plumbing Can you handle a plumbing emergency at my business?" [ref=f1e557] [cursor=pointer]:
+                - generic [ref=f1e558]: Commercial plumbing
+                - generic [ref=f1e559]: Can you handle a plumbing emergency at my business?
+            - group [ref=f1e563]:
+              - generic "Commercial plumbing Can you work around our business hours?" [ref=f1e564] [cursor=pointer]:
+                - generic [ref=f1e565]: Commercial plumbing
+                - generic [ref=f1e566]: Can you work around our business hours?
+            - group [ref=f1e570]:
+              - generic "Commercial plumbing Do you offer scheduled maintenance?" [ref=f1e571] [cursor=pointer]:
+                - generic [ref=f1e572]: Commercial plumbing
+                - generic [ref=f1e573]: Do you offer scheduled maintenance?
+            - group [ref=f1e577]:
+              - generic "Commercial plumbing Can you clean restaurant grease lines?" [ref=f1e578] [cursor=pointer]:
+                - generic [ref=f1e579]: Commercial plumbing
+                - generic [ref=f1e580]: Can you clean restaurant grease lines?
+            - group [ref=f1e584]:
+              - generic "Commercial plumbing Can you service commercial water heaters?" [ref=f1e585] [cursor=pointer]:
+                - generic [ref=f1e586]: Commercial plumbing
+                - generic [ref=f1e587]: Can you service commercial water heaters?
+            - group [ref=f1e591]:
+              - generic "About Phil & Paul's Where are you located?" [ref=f1e592] [cursor=pointer]:
+                - generic [ref=f1e593]: About Phil & Paul's
+                - generic [ref=f1e594]: Where are you located?
+            - group [ref=f1e598]:
+              - generic "About Phil & Paul's How can I contact you?" [ref=f1e599] [cursor=pointer]:
+                - generic [ref=f1e600]: About Phil & Paul's
+                - generic [ref=f1e601]: How can I contact you?
+            - group [ref=f1e605]:
+              - generic "About Phil & Paul's Where can I read reviews?" [ref=f1e606] [cursor=pointer]:
+                - generic [ref=f1e607]: About Phil & Paul's
+                - generic [ref=f1e608]: Where can I read reviews?
+            - group [ref=f1e612]:
+              - generic "About Phil & Paul's I have a question that is not here. What do I do?" [ref=f1e613] [cursor=pointer]:
+                - generic [ref=f1e614]: About Phil & Paul's
+                - generic [ref=f1e615]: I have a question that is not here. What do I do?
+    - contentinfo [ref=f1e619]:
+      - generic [ref=f1e620]:
+        - generic [aria-hidden]: P&P
+        - generic [ref=f1e621]:
+          - generic [ref=f1e622]:
+            - link "Phil & Paul’s Plumbing Inc. — Lodi, California, home" [ref=f1e623] [cursor=pointer]:
+              - /url: /
+              - img "Phil & Paul’s Plumbing" [ref=f1e624]
+            - paragraph [ref=f1e625]: Local people. Experienced hands.Here for Lodi and our neighbors since 1996.
+            - link "(209) 366-2319" [ref=f1e626] [cursor=pointer]:
+              - /url: tel:+12093662319
+            - paragraph [ref=f1e629]: Follow us
+            - generic [ref=f1e630]:
+              - link "Phil & Paul’s Plumbing on Facebook" [ref=f1e631] [cursor=pointer]:
+                - /url: https://www.facebook.com/PhilPaulsPlumbing
+              - link "Phil & Paul’s Plumbing on Instagram" [ref=f1e635] [cursor=pointer]:
+                - /url: https://www.instagram.com/phil_and_pauls_plumbing/
+              - link "Phil & Paul’s Plumbing on Google" [ref=f1e641] [cursor=pointer]:
+                - /url: https://g.page/phil-paul-s-plumbing-inc-lodi?share
+              - link "Phil & Paul’s Plumbing on Yelp" [ref=f1e649] [cursor=pointer]:
+                - /url: https://www.yelp.com/biz/phil-and-pauls-plumbing-lodi-4
+              - link "Phil & Paul’s Plumbing on Nextdoor" [ref=f1e658] [cursor=pointer]:
+                - /url: https://nextdoor.com/page/phil-pauls-plumbing-acampo-ca/
+          - generic [ref=f1e662]:
+            - heading "What we do" [level=2] [ref=f1e663]
+            - link "Water heaters" [ref=f1e664] [cursor=pointer]:
+              - /url: /service/water-heaters
+            - link "Drain cleaning" [ref=f1e665] [cursor=pointer]:
+              - /url: /service/drain-cleaning
+            - link "Plumbing repairs" [ref=f1e666] [cursor=pointer]:
+              - /url: /service/plumbing-repair-services
+            - link "Sewer repair" [ref=f1e667] [cursor=pointer]:
+              - /url: /service/sewer-repair
+            - link "Commercial plumbing" [ref=f1e668] [cursor=pointer]:
+              - /url: /service/commercial-plumbing
+            - link "Water treatment" [ref=f1e669] [cursor=pointer]:
+              - /url: /service/water-softeners
+            - link "Hydro-jetting" [ref=f1e670] [cursor=pointer]:
+              - /url: /service/hydro-jetting
+            - link "Camera inspections" [ref=f1e671] [cursor=pointer]:
+              - /url: /service/video-inspection
+            - link "Gas lines" [ref=f1e672] [cursor=pointer]:
+              - /url: /service/gas-lines
+          - generic [ref=f1e673]:
+            - heading "Good to know" [level=2] [ref=f1e674]
+            - link "Our story" [ref=f1e675] [cursor=pointer]:
+              - /url: /about
+            - link "Where we work" [ref=f1e676] [cursor=pointer]:
+              - /url: /service-areas
+            - link "Customer reviews" [ref=f1e677] [cursor=pointer]:
+              - /url: /leave-a-review
+            - link "FAQs" [ref=f1e678] [cursor=pointer]:
+              - /url: /faqs
+            - link "Licensing" [ref=f1e679] [cursor=pointer]:
+              - /url: /licensing
+            - link "Warranty" [ref=f1e680] [cursor=pointer]:
+              - /url: /warranty
+            - link "Coupons" [ref=f1e681] [cursor=pointer]:
+              - /url: /coupons
+            - link "Contact & hours" [ref=f1e682] [cursor=pointer]:
+              - /url: /contact
+            - link "Request service" [ref=f1e683] [cursor=pointer]:
+              - /url: /book-plumbing-services
+            - link "Sitemap" [ref=f1e684] [cursor=pointer]:
+              - /url: /sitemap
+          - generic [ref=f1e685]:
+            - heading "Service areas" [level=2] [ref=f1e686]
+            - link "Lodi" [ref=f1e687] [cursor=pointer]:
+              - /url: /service-areas
+            - link "Stockton" [ref=f1e688] [cursor=pointer]:
+              - /url: /plumber/stockton-plumbers
+            - link "Galt" [ref=f1e689] [cursor=pointer]:
+              - /url: /plumber/galt-plumbing-services
+            - link "Acampo" [ref=f1e690] [cursor=pointer]:
+              - /url: /plumber/acampo-plumbing-services
+            - link "Woodbridge" [ref=f1e691] [cursor=pointer]:
+              - /url: /plumber/woodbridge-plumbing-services
+            - link "Lockeford" [ref=f1e692] [cursor=pointer]:
+              - /url: /plumber/lockeford-plumbing-services
+          - generic [ref=f1e693]:
+            - heading "Find us in Lodi" [level=2] [ref=f1e694]
+            - paragraph [ref=f1e695]: 6 Sierra Vista PlLodi, CA 95240
+            - paragraph [ref=f1e696]: "Monday–Friday: 7am–7pmSaturday: 8am–4pmSunday: Closed"
+            - generic [ref=f1e697]: "Fully licensed & insuredCA C-36 #900888"
+        - paragraph [ref=f1e701]: "*One-year labor warranty applies to most repairs and installations. Ask about coverage for your job."
+        - generic [ref=f1e702]:
+          - generic [ref=f1e703]:
+            - generic [ref=f1e704]: © 2026 Phil & Paul's Plumbing, Inc. All rights reserved.
+            - link [ref=f1e705] [cursor=pointer]:
+              - /url: https://alectronicsolutions.com
+              - text: Replumbed by
+              - strong [ref=f1e706]: Alectronic Solutions
+          - generic [ref=f1e709]:
+            - link "Privacy" [ref=f1e710] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Terms" [ref=f1e711] [cursor=pointer]:
+              - /url: /terms-and-conditions
+            - link "Cookies" [ref=f1e712] [cursor=pointer]:
+              - /url: /cookie-policy
+            - link "Accessibility" [ref=f1e713] [cursor=pointer]:
+              - /url: /accessibility
+            - button "Display settings" [ref=f1e714] [cursor=pointer]
+            - button "Your Privacy Choices" [ref=f1e715] [cursor=pointer]
+    - button "Display settings" [ref=f1e716] [cursor=pointer]
+    - region [ref=f1e721]:
+      - generic [ref=f1e722]:
+        - heading "Your privacy choices" [level=2] [ref=f1e723]
+        - paragraph [ref=f1e724]:
+          - text: With your permission, we use functional cookies from other companies. Nothing optional runs unless you allow it. See our
+          - link "Cookie Policy" [ref=f1e725] [cursor=pointer]:
+            - /url: /cookie-policy
+          - text: .
+      - generic [ref=f1e726]:
+        - button "Reject all" [ref=f1e727] [cursor=pointer]
+        - button "Accept all" [ref=f1e728] [cursor=pointer]
+        - button "Customize" [ref=f1e729] [cursor=pointer]
+  - alert [ref=f1e730]
