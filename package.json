@@ -7,6 +7,7 @@
     "build": "node scripts/prepare-redesign.mjs && next build && node scripts/finalize-headers.mjs",
     "capture": "node scripts/capture-site.mjs && node scripts/capture-dependencies.mjs && node scripts/prepare-content.mjs",
     "prepare:social": "node scripts/prepare-social-images.mjs",
+    "prepare:share": "node scripts/prepare-share-image.mjs",
     "prepare:content": "node scripts/prepare-content.mjs",
     "verify": "node scripts/verify.mjs",
     "preview": "node scripts/preview.mjs",
