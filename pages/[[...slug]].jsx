@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { pages, services, cities, business, openHours, commonFaqs, areaFaqs, contactFaqs, fullFaqs } from '../content/business.mjs';
+import { pageUrl, shareImage, shareAlt } from '../lib/share.mjs';
 import { warranty } from '../content/drafts.mjs';
 import { Layout, HomePage, ServicesPage, ServicePage, AboutPage, AreasPage, CityPage, ContactPage, BookingPage, ReviewsPage, LegalPage, FaqsPage, SitemapPage, DraftPage, LicensingPage, WarrantyPage, CouponsPage } from '../components/Site';
 
@@ -9,14 +10,15 @@ const areaServed = ['Lodi', 'Stockton', 'Galt', 'Acampo', 'Woodbridge', 'Lockefo
 const parents = { service: { route: '/service', name: 'Services' }, city: { route: '/service-areas', name: 'Service area' } };
 
 export default function SitePage({ page, legal }) {
-  const canonical = site + page.route;
+  const canonical = pageUrl(page.route);
+  const share = shareImage(page);
   const service = page.type === 'service' && services.find(s => s.slug === page.service);
   const city = page.type === 'city' && cities.find(c => c.slug === page.city);
   const trail = page.route === '/' ? [] : [{ route: '/', name: 'Home' }, ...(parents[page.type] ? [parents[page.type]] : []), page];
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Plumber', '@id': `${site}/#business`, name: business.name, legalName: business.legalName, url: `${site}/`, telephone: business.telephone, email: business.email, foundingDate: '1996', logo: `${site}/images/favicon.png`, image: `${site}/images/og-image.jpg`, hasMap: business.google, address: { '@type': 'PostalAddress', streetAddress: '6 Sierra Vista Pl', addressLocality: 'Lodi', addressRegion: 'CA', postalCode: '95240', addressCountry: 'US' }, areaServed, openingHoursSpecification: openHours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dayOfWeek, opens: h.opens, closes: h.closes })), hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: `California contractor license ${business.license}` }, sameAs: [business.google, business.yelp, business.bbb, business.facebook, business.instagram, business.nextdoor] },
+      { '@type': 'Plumber', '@id': `${site}/#business`, name: business.name, legalName: business.legalName, url: `${site}/`, telephone: business.telephone, email: business.email, foundingDate: '1996', logo: `${site}/images/favicon.png`, image: `${site}/images/og/default.jpg`, hasMap: business.google, address: { '@type': 'PostalAddress', streetAddress: '6 Sierra Vista Pl', addressLocality: 'Lodi', addressRegion: 'CA', postalCode: '95240', addressCountry: 'US' }, areaServed, openingHoursSpecification: openHours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dayOfWeek, opens: h.opens, closes: h.closes })), hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: `California contractor license ${business.license}` }, sameAs: [business.google, business.yelp, business.bbb, business.facebook, business.instagram, business.nextdoor] },
       { '@type': 'WebSite', '@id': `${site}/#website`, url: `${site}/`, name: business.name, publisher: { '@id': `${site}/#business` }, inLanguage: 'en-US' },
       { '@type': page.type === 'contact' ? ['WebPage', 'ContactPage'] : 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: page.title, description: page.description, isPartOf: { '@id': `${site}/#website` }, about: { '@id': `${site}/#business` }, inLanguage: 'en-US', ...(trail.length ? { breadcrumb: { '@id': `${canonical}#breadcrumb` } } : {}) },
       ...(trail.length ? [{ '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`, itemListElement: trail.map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, item: site + item.route })) }] : []),
@@ -43,7 +45,8 @@ export default function SitePage({ page, legal }) {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       {page.draft && indexable && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={canonical} />
-      <meta property="og:type" content="website" /><meta property="og:site_name" content={business.name} /><meta property="og:locale" content="en_US" /><meta property="og:title" content={page.title} /><meta property="og:description" content={page.description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={`${site}/images/og-image.jpg`} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:alt" content="The Phil & Paul's Plumbing crew in front of their red service van in Lodi" /><meta name="twitter:card" content="summary_large_image" />
+      <meta property="og:type" content="website" /><meta property="og:site_name" content={business.name} /><meta property="og:locale" content="en_US" /><meta property="og:title" content={page.title} /><meta property="og:description" content={page.description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={share.url} /><meta property="og:image:type" content="image/jpeg" /><meta property="og:image:width" content={share.width} /><meta property="og:image:height" content={share.height} /><meta property="og:image:alt" content={shareAlt(page)} />
+      <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={page.title} /><meta name="twitter:description" content={page.description} /><meta name="twitter:image" content={share.url} /><meta name="twitter:image:alt" content={shareAlt(page)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
     </Head>
     <Layout>

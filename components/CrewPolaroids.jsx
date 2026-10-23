@@ -57,7 +57,7 @@ export function CrewPolaroids({ Photo }) {
       {crew.map(([name, alt, caption], i) => {
         const pos = (i - active + n) % n;
         return <figure key={name} className="crew-polaroid" data-pos={pos > 2 ? 'hidden' : pos} style={{ '--tilt': `${tilts[i]}deg` }} aria-hidden={pos !== 0}>
-          <Photo name={name} alt={alt} priority={i === 0} sizes="(max-width: 760px) 70vw, 340px" />
+          <Photo name={name} alt={alt} sizes="(max-width: 760px) 70vw, 340px" />
           <figcaption>{caption}</figcaption>
         </figure>;
       })}

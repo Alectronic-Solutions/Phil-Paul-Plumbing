@@ -5,18 +5,30 @@ import sharp from 'sharp';
 import { photoWidths } from '../lib/photos.mjs';
 
 const photos = JSON.parse(await readFile('reference/photo-inventory.json', 'utf8'));
-const choices = { team: 2, technician: 14, crew: 24, truck: 19, fleet: 32, drain: 16, roots: 13, sewer: 22, camera: 8, waterHeater: 56, heaterInstall: 52, commercial: 36, commercialHeaters: 38, repair: 30, filtration: 60, jeff: 50, gas: 15, field: 27, pipe: 7 };
+const choices = { team: 2, technician: 14, crew: 24, truck: 19, fleet: 32, drain: 16, roots: 13, sewer: 22, camera: 8, waterHeater: 56, heaterInstall: 52, commercial: 36, commercialHeaters: 38, repair: 30, filtration: 60, jeff: 50, gas: 15, pipe: 7 };
 // Every photo ships as AVIF (served first) with a WebP fallback, at the widths listed in lib/photos.mjs.
 // Sources top out near 1080px, so the largest variant is never upscaled.
 await mkdir('public/images', { recursive: true });
+// AVIF at q50 smoothed away fine texture (soil, pipe threads, lettering) that the WebP fallback kept, so AVIF now runs at q55 with
+// the slowest encoder: visually close to the source at a size still below the WebP. WebP is only the fallback, so it sits lower.
+// Encoding to a buffer first, then writing with a retry, survives Windows briefly locking a file it just wrote (antivirus scans).
+async function save(file, pipeline) {
+  const data = await pipeline.toBuffer();
+  for (let attempt = 0; ; attempt++) {
+    try { return await writeFile(file, data); } catch (error) { if (attempt >= 4) throw error; await new Promise(r => setTimeout(r, 250 * (attempt + 1))); }
+  }
+}
+async function encode(input, name, rotate = false) {
+  for (const width of photoWidths) {
+    const resized = () => (rotate ? sharp(input).rotate() : sharp(input)).resize({ width, withoutEnlargement: true, kernel: 'lanczos3' });
+    await save(`public/images/${name}-${width}.avif`, resized().avif({ quality: 55, effort: 9 }));
+    await save(`public/images/${name}-${width}.webp`, resized().webp({ quality: 60, effort: 6, smartSubsample: true }));
+  }
+}
 for (const [name, index] of Object.entries(choices)) {
   let input = 'public' + photos[index].local;
   try { await access(input); } catch { input = 'reference/published-assets/' + path.basename(photos[index].local); }
-  for (const width of photoWidths) {
-    const resized = () => sharp(input).resize({ width, withoutEnlargement: true });
-    await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
-    await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
-  }
+  await encode(input, name);
 }
 // Local job photos for city landing pages: reference/stockton/water-heater.jpg becomes stockton-water-heater-<width>.avif/.webp.
 // List them in the city's landing.photos in content/business.mjs.
@@ -25,21 +37,13 @@ for (const city of ['stockton', 'galt', 'acampo', 'woodbridge', 'lockeford']) {
   try { files = (await readdir(`reference/${city}`)).filter(f => /\.(jpe?g|png|webp)$/i.test(f)); } catch { continue; }
   for (const file of files) {
     const name = `${city}-${path.parse(file).name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-    for (const width of photoWidths) {
-      const resized = () => sharp(`reference/${city}/${file}`).rotate().resize({ width, withoutEnlargement: true });
-      await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
-      await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
-    }
+    await encode(`reference/${city}/${file}`, name, true);
   }
 }
 // Job photos that apply across the site: reference/job-photos/crew-wrenches.png becomes crew-wrenches-<width>.avif/.webp.
 for (const file of (await readdir('reference/job-photos')).filter(f => /\.(jpe?g|png|webp)$/i.test(f))) {
   const name = path.parse(file).name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  for (const width of photoWidths) {
-    const resized = () => sharp(`reference/job-photos/${file}`).rotate().resize({ width, withoutEnlargement: true });
-    await resized().avif({ quality: 50, effort: 5 }).toFile(`public/images/${name}-${width}.avif`);
-    await resized().webp({ quality: 72, effort: 6, smartSubsample: true }).toFile(`public/images/${name}-${width}.webp`);
-  }
+  await encode(`reference/job-photos/${file}`, name, true);
 }
 if (process.argv.includes('--photos-only')) process.exit(0);
 

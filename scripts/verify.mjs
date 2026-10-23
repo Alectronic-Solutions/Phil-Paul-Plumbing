@@ -2,8 +2,10 @@ import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
+import sharp from 'sharp';
 import { pages, sitemapPages, business, cities } from '../content/business.mjs';
 import { integrations, categories } from '../content/integrations.mjs';
+import { pageUrl, shareImage } from '../lib/share.mjs';
 import { displayKey } from '../lib/display.mjs';
 import { neighborhoodSpots } from '../content/neighborhood-spots.mjs';
 
@@ -47,9 +49,18 @@ for (const page of pages) {
   assert.equal($('html').attr('lang'), 'en-US');
   assert.equal($('meta[name="robots"]').attr('content'), indexable && !page.draft ? undefined : 'noindex, nofollow', `Robots meta must match SITE_INDEXABLE: ${page.route}`);
   assert.equal($('meta[name="description"]').attr('content'), page.description);
-  assert.equal($('link[rel="canonical"]').attr('href'), business.url + page.route, `Canonical: ${page.route}`);
-  assert.equal($('meta[property="og:url"]').attr('content'), business.url + page.route, `og:url: ${page.route}`);
-  assert((await stat('out' + new URL($('meta[property="og:image"]').attr('content')).pathname)).isFile(), `Social image missing: ${page.route}`);
+  assert.equal($('link[rel="canonical"]').attr('href'), pageUrl(page.route), `Canonical: ${page.route}`);
+  assert.equal($('meta[property="og:url"]').attr('content'), pageUrl(page.route), `og:url: ${page.route}`);
+  const image = shareImage(page).url;
+  for (const tag of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) assert.equal($(tag).attr('content'), image, `${tag}: ${page.route}`);
+  assert.equal($('meta[name="twitter:card"]').attr('content'), 'summary_large_image', `twitter:card: ${page.route}`);
+  assert.equal($('meta[name="twitter:title"]').attr('content'), page.title, `twitter:title: ${page.route}`);
+  assert.equal($('meta[name="twitter:description"]').attr('content'), page.description, `twitter:description: ${page.route}`);
+  assert($('meta[property="og:image:alt"]').attr('content')?.length > 20, `og:image:alt: ${page.route}`);
+  const shareFile = 'out' + new URL(image).pathname.slice((process.env.NEXT_PUBLIC_BASE_PATH || '').length);
+  assert((await stat(shareFile)).isFile(), `Social image missing: ${page.route}`);
+  const dims = (await sharp(shareFile).metadata());
+  assert(dims.width === 1200 && dims.height === 630, `Social image must be 1200x630: ${page.route}`);
   assert(!seen.titles.has(page.title) && !seen.descriptions.has(page.description), `Duplicate title or description: ${page.route}`);
   seen.titles.add(page.title); seen.descriptions.add(page.description);
   assert(page.title.length <= 65 && page.description.length >= 70 && page.description.length <= 165, `Title or description length: ${page.route}`);
@@ -122,7 +133,12 @@ assert.equal(home('.review-card img:not(.google-mark)').length, 0, 'Reviewer pho
 assert.equal(home('.reviews-duplicate a:not([tabindex="-1"])').length, 0, 'Duplicate review links should not receive keyboard focus');
 assert.equal(home('.review-avatar').length, 0, 'Initial-only avatars should be removed');
 assert.equal(home('button[aria-label="Next reviews"]').length, 1, 'Review navigation');
-const { CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(await readFile('functions/api/[[route]].js', 'utf8')).toString('base64')}`);
+const { CONSENT, TEXT_CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(await readFile('functions/api/[[route]].js', 'utf8')).toString('base64')}`);
+// The text-us widget only renders when opened, so check its consent wording in the source.
+const widgetSource = await readFile('components/TextUsWidget.jsx', 'utf8');
+const widgetPoints = widgetSource.match(/<ul className="consent-points">([\s\S]*?)<\/ul>/)[1].match(/<li>[\s\S]*?<\/li>/g).join(' ');
+const widgetLabel = (widgetSource.match(/<label className="consent-label">[\s\S]*?<span>([\s\S]*?)<\/span><\/label>/)[1] + ' ' + widgetPoints).replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/&apos;/g, "'").replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+assert.equal(widgetLabel, TEXT_CONSENT.text, 'Text-us widget consent label must match TEXT_CONSENT in functions/api/[[route]].js');
 assert.equal(booking('.consent-label > span').text().replace(/\s*\*$/, '').replace(/\s+/g, ' ').trim(), CONSENT.text, 'Booking consent label must match the consent record in functions/api/[[route]].js');
 const cookiePage = load(await readFile(htmlFile(business.cookies), 'utf8'))('.legal-body').text();
 assert(cookiePage.includes(displayKey), 'Cookie policy must list the Display settings storage entry');

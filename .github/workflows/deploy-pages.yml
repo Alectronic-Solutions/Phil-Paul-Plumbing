@@ -31,6 +31,7 @@ jobs:
       - run: npm run build
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          PAGES_ORIGIN: ${{ steps.pages.outputs.origin }}
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

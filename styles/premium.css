@@ -457,3 +457,5 @@ body { font-size: 17px; }
 .dropdown-cities > a:hover .dropdown-photo, .dropdown-cities > a:focus-visible .dropdown-photo { transform: scale(1.06); box-shadow: 0 6px 14px #2528223a; }
 @media (max-width: 760px) { .areas-dropdown .dropdown-cities > a { padding-left: 8px; } .dropdown-photo { width: 44px; height: 44px; } }
 .dropdown-photo img[src*="galt-water-tower"] { object-position: 0 50%; }
+
+.reviews-window + .reviews-window { padding-top: 0; }

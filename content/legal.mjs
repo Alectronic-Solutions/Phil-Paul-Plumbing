@@ -56,6 +56,7 @@ const privacy = doc([
     `<h3>Information you give us</h3>`,
     ul([
       '<strong>Service requests.</strong> Your name, phone number, city or ZIP code, the service you need, and, if you choose to include them, your email address and a description of the problem. We also keep the date, time, page, and IP address of the submission and the wording you agreed to, as a record of your consent to be contacted.',
+      '<strong>Text messages from the “Text us” button.</strong> Your name, mobile phone number, and the message you type, plus the date, time, page, IP address, and the wording you agreed to. We use them only to reply to you. This tool is run by us on this website. We do not use a third-party chat service, and we do not record your visit or keep a chat history beyond the request itself.',
       '<strong>Calls, texts, and emails.</strong> What you tell us when you contact us, such as your service address, access instructions, and photos of the problem you choose to send.',
       '<strong>Job records.</strong> When we work for you, we keep the records you would expect: the service address, estimates, the work performed, invoices, payment records, and warranty information.',
     ]),
@@ -69,7 +70,7 @@ const privacy = doc([
     table('Categories of personal information', ['Category', 'Examples', 'Where it comes from', 'Why we use it', 'Who receives it'], [
       ['Identifiers and contact details', 'Name, phone number, email address, service address, IP address', 'You, and your device when you visit the site', 'Respond to you, schedule and perform work, keep the site secure', 'Service providers and advisors (see “When we share information”)'],
       ['Customer and job records', 'Estimates, invoices, payment records, warranty details', 'You, and our own work for you', 'Perform, bill, and warrant work; meet tax and legal duties', 'Payment, invoicing, and accounting providers; advisors'],
-      ['Records of your consent', 'Date, time, page, IP address, and the wording you agreed to', 'Your service request', 'Prove you agreed to be contacted', 'Our form-delivery provider'],
+      ['Records of your consent', 'Date, time, page, IP address, and the wording you agreed to', 'Your service request or “Text us” message', 'Prove you agreed to be contacted', 'Our form-delivery provider'],
       ['Internet and device data', 'Browser type, pages requested, time of visit', 'Your browser, through our host', 'Deliver the site and protect it against abuse', 'Our website host'],
       ['Photos and messages you send', 'Photos of a problem, access instructions, what you tell us', 'You', 'Understand the job and give an accurate estimate', 'Service providers'],
     ])],
@@ -206,7 +207,7 @@ const terms = doc([
   ['license', 'License and insurance',
     p(`We are licensed by the California Contractors State License Board, license ${license}, and we are insured. You can check any contractor’s license at ${ext('https://www.cslb.ca.gov/', 'cslb.ca.gov')}. Ask us for proof of insurance when you request an estimate.`)],
   ['communications', 'Calls, texts, and emails',
-    p('When you send a service request, you agree that we may contact you by phone, text message, or email at the number and address you provide about that request and any resulting work. This consent is not a condition of buying anything from us.'),
+    p('When you send a service request, you agree that we may contact you by phone, text message, or email at the number and address you provide about that request and any resulting work. If you send us a message with the “Text us” button, you agree that we may text and call you at that number about your message, including by automated means. This consent is not a condition of buying anything from us.'),
     ul([
       '<strong>What the texts are.</strong> Messages about your request or job, such as scheduling, arrival times, estimates, and follow-up. They are not marketing messages, and we will not send marketing texts unless you separately agree.',
       '<strong>How often.</strong> Message frequency depends on your request.',
@@ -282,6 +283,7 @@ const accessibility = doc([
     p('We build accessibility into the site itself. We do not use an accessibility overlay or a third-party widget. This statement describes our goal and our efforts. We have not claimed that every page meets every part of the guidelines, and we are still improving.')],
   ['display', 'Display settings',
     p('Every page has a Display settings button (the round button in the bottom corner, also linked at the bottom of every page). It lets you make text larger, add text spacing, switch to a simpler font, raise contrast, underline links, stop motion, and use a bigger mouse pointer. Your choices are saved in your own browser and are not sent to us.'),
+    p('The “Text us” button opens a form you can use with a keyboard or screen reader. Close it with the Escape key or its close button. You can always call us instead.'),
     p('Display settings are an extra convenience. They do not change how the site works with screen readers or other assistive technology, and you do not need them to use the site. The settings in your browser and device, such as zoom, text size, and high contrast mode, work here too.')],
   ['limits', 'Known limitations',
     ul([

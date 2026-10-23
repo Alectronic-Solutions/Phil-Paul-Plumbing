@@ -8,12 +8,13 @@ const ads = { id: 'm', enabled: true, category: 'marketing', cookies: [{ name: '
 const disabled = { id: 'd', enabled: false, category: 'functional', cookies: [] };
 const cookieFor = choice => `other=1; ${consentCookie}=${encodeURIComponent(serializeConsent(choice))}`;
 
-test('the site ships with no optional integrations, and asks once only when askWithoutTrackers is on', () => {
-  assert.deepEqual(categoriesInUse(integrations), []);
+test('the only optional integration is the consent-gated Instagram embed, and the banner asks once when askWithoutTrackers is on', () => {
+  assert.deepEqual(integrations.filter(item => item.enabled).map(item => item.id), ['instagram-embeds']);
+  assert.deepEqual(categoriesInUse(integrations), ['functional']);
   assert.equal(needsChoice(null, integrations), askWithoutTrackers);
   assert.equal(needsChoice(parseConsent(cookieFor(rejectAll())), integrations), false);
   assert.deepEqual(offeredCategories(integrations, true), optionalCategories);
-  assert.deepEqual(offeredCategories(integrations, false), []);
+  assert.deepEqual(offeredCategories(integrations, false), ['functional']);
 });
 test('showing the banner without trackers grants nothing until the visitor opts in', () => {
   assert.deepEqual(permissions(null), rejectAll());

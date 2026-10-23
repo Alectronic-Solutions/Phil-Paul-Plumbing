@@ -19,6 +19,7 @@ const paths = {
     flame: <path d="M13 2c2 6-4 6-1 10 2-1 3-3 3-5 5 5 6 8 4 12-2 4-10 4-13 0-3-4 0-9 3-12-1 4 0 5 1 6 3-3 1-7 3-11Z" />,
     menu: <path d="M3 6h18M3 12h18M3 18h18" />,
     close: <path d="m6 6 12 12M18 6 6 18" />,
+    chat: <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm4 5h8m-8 3h5" />,
     chevron: <path d="m6 9 6 6 6-6" />,
     pause: <path d="M9 5v14M15 5v14" />,
     play: <path d="m8 4 12 8-12 8V4Z" />,

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const source = await readFile(new URL('../functions/api/[[route]].js', import.meta.url), 'utf8');
-const { onRequestPost, CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+const { onRequestPost, CONSENT, TEXT_CONSENT } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
 const valid = { Name: 'Test User', Phone: '2095550100', City: 'Lodi', 'Service-Needed': 'Drain cleaning', 'Opt-In': 'on' };
 function context(fields, env = {}, origin = 'https://preview.example.com') {
   return { request: new Request('https://preview.example.com/api/book-service', { method: 'POST', headers: { Origin: origin, Referer: 'https://preview.example.com/book-plumbing-services/', 'Content-Type': 'application/json' }, body: JSON.stringify(fields) }), env, params: { route: ['book-service'] } };
@@ -53,5 +53,27 @@ test('a failed delivery service does not produce a success', async () => {
     const response = await onRequestPost(context(valid, { DELIVERY_WEBHOOK_URL: 'https://delivery.example.com/form' }));
     assert.equal(response.status, 502);
     assert.equal((await response.json()).ok, false);
+  } finally { globalThis.fetch = realFetch; }
+});
+
+const text = { Name: 'Test User', Phone: '2095550100', Message: 'My water heater is leaking.', 'Opt-In': 'on' };
+const textContext = (fields, env = {}) => ({ ...context(fields, env), params: { route: ['text-request'] } });
+test('text requests need a name, phone, message, and consent', async () => {
+  for (const fields of [{}, { ...text, Name: '' }, { ...text, Phone: 'abc' }, { ...text, Message: '' }, { ...text, 'Opt-In': '' }, { ...text, Message: 'x'.repeat(2001) }, { ...text, Website: 'spam' }]) {
+    assert.equal((await onRequestPost(textContext(fields))).status, 400);
+  }
+  assert.equal((await onRequestPost(textContext(text))).status, 503);
+});
+test('a text request is delivered with its own consent record', async () => {
+  const realFetch = globalThis.fetch;
+  let delivered;
+  globalThis.fetch = async (url, options) => { delivered = JSON.parse(options.body); return new Response('ok'); };
+  try {
+    const response = await onRequestPost(textContext({ ...text, injected: 'discard me' }, { DELIVERY_WEBHOOK_URL: 'https://delivery.example.com/form' }));
+    assert.equal(response.status, 200);
+    assert.equal(delivered.type, 'text-request');
+    assert.deepEqual(delivered.fields, text);
+    assert.equal(delivered.consent.version, TEXT_CONSENT.version);
+    assert.equal(delivered.consent.text, TEXT_CONSENT.text);
   } finally { globalThis.fetch = realFetch; }
 });

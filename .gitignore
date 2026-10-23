@@ -6,3 +6,7 @@ out/
 !.env.example
 artifacts/
 *.log
+
+# Local tooling output
+.playwright-cli/
+.snapshots/
