@@ -138,7 +138,11 @@
 .footer-policies { flex-wrap: wrap; align-items: center; }
 .privacy-choices, .back-to-top, .display-settings-link { padding: 0; border: 0; background: none; color: inherit; font: inherit; font-size: inherit; cursor: pointer; }
 /* Keep footer text clear of the fixed back-to-top and Display settings buttons. */
-@media (min-width: 761px) { .footer-bottom { padding-inline: 72px; } }
+@media (min-width: 761px) {
+  .footer-bottom { padding-inline: 72px; }
+  /* Keep Back to top on the same row as the other policy links. */
+  .footer-bottom > .footer-policies { flex-wrap: nowrap; flex-shrink: 0; white-space: nowrap; }
+}
 .privacy-choices:hover, .back-to-top:hover, .display-settings-link:hover { color: white; }
 
 /* Gas safety notice */
