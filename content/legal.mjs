@@ -9,22 +9,29 @@ import { activeIntegrations, categories } from './integrations.mjs';
 import { consentCookie, askWithoutTrackers } from '../lib/consent.mjs';
 import { displayKey } from '../lib/display.mjs';
 
-const updated = 'October 19, 2026';
+const updated = 'October 22, 2026';
 const { legalName, phone, telephone, email, address, license } = business;
 const pge = '1-800-743-5000';
 const [street, cityLine] = [address.split(', ')[0], address.split(', ').slice(1).join(', ')];
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const p = text => `<p>${text}</p>`;
+const caps = text => `<p class="legal-caps">${text}</p>`;
 const ul = items => `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
 const ext = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${text}</a>`;
 const mail = `<a href="mailto:${email}">${email}</a>`;
 const tel = `<a href="tel:${telephone}">${phone}</a>`;
 const postal = `${esc(legalName)}, ${street}, ${cityLine}`;
-const table = (caption, head, rows) => `<div class="legal-table" role="region" aria-label="${esc(caption)}" tabindex="0"><table><caption class="visually-hidden">${esc(caption)}</caption><thead><tr>${head.map(h => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+const table = (caption, head, rows) => `<div class="legal-table" role="region" aria-label="${esc(caption)}" tabindex="0"><table><caption class="visually-hidden">${esc(caption)}</caption><thead><tr>${head.map(h => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map((c, i) => `<td data-label="${esc(head[i])}">${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+// {{section:id}} in a block becomes that section's number, so cross-references cannot drift when sections move.
 function doc(sections) {
+  const number = id => sections.findIndex(s => s[0] === id) + 1;
   const toc = `<ul class="legal-toc">${sections.map(([id, title], i) => `<li><a href="#${id}">${i + 1}. ${title}</a></li>`).join('')}</ul>`;
-  return toc + sections.map(([id, title, ...blocks], i) => `<h2 id="${id}">${i + 1}. ${title}</h2>${blocks.join('')}`).join('');
+  const html = toc + sections.map(([id, title, ...blocks], i) => `<h2 id="${id}">${i + 1}. ${title}</h2>${blocks.join('')}`).join('');
+  return html.replace(/\{\{section:([\w-]+)\}\}/g, (_, id) => {
+    if (!number(id)) throw new Error(`Legal cross-reference to unknown section "${id}"`);
+    return number(id);
+  });
 }
 
 const uses = category => activeIntegrations.some(item => item.category === category);
@@ -57,6 +64,15 @@ const privacy = doc([
     p(cookieUse),
     `<h3>What we do not collect</h3>`,
     p('We do not collect your precise location from your device, and we do not ask for sensitive information such as Social Security numbers, health information, or financial account logins through this website. Please do not send that kind of information in a service request.')],
+  ['categories', 'Categories of information at a glance',
+    p('This table summarizes the personal information we collected from consumers in the past 12 months, where it came from, why we use it, and whom we disclose it to. ' + (uses('marketing') ? 'Advertising cookies are covered in “When we share information.”' : 'We did not sell it or share it for targeted advertising.')),
+    table('Categories of personal information', ['Category', 'Examples', 'Where it comes from', 'Why we use it', 'Who receives it'], [
+      ['Identifiers and contact details', 'Name, phone number, email address, service address, IP address', 'You, and your device when you visit the site', 'Respond to you, schedule and perform work, keep the site secure', 'Service providers and advisors (see “When we share information”)'],
+      ['Customer and job records', 'Estimates, invoices, payment records, warranty details', 'You, and our own work for you', 'Perform, bill, and warrant work; meet tax and legal duties', 'Payment, invoicing, and accounting providers; advisors'],
+      ['Records of your consent', 'Date, time, page, IP address, and the wording you agreed to', 'Your service request', 'Prove you agreed to be contacted', 'Our form-delivery provider'],
+      ['Internet and device data', 'Browser type, pages requested, time of visit', 'Your browser, through our host', 'Deliver the site and protect it against abuse', 'Our website host'],
+      ['Photos and messages you send', 'Photos of a problem, access instructions, what you tell us', 'You', 'Understand the job and give an accurate estimate', 'Service providers'],
+    ])],
   ['use', 'How we use information',
     ul([
       'To respond to your request, confirm whether we serve your area, and schedule a visit.',
@@ -74,7 +90,7 @@ const privacy = doc([
   ['share', 'When we share information',
     p('We share personal information only as needed to run our business and serve you:'),
     ul([
-      '<strong>Service providers</strong> that work on our behalf, such as our website host (Cloudflare), the service that delivers website requests to our office, and our phone, text, email, scheduling, invoicing, and payment providers. They may use the information only to provide their services to us.',
+      '<strong>Service providers</strong> that work on our behalf, such as our website host (Cloudflare), the provider that delivers form submissions to our office, and our phone, text, email, scheduling, invoicing, and payment providers. They may use the information only to provide their services to us.',
       '<strong>Professional advisors</strong> such as our accountants, insurers, and lawyers, when needed.',
       '<strong>Legal requirements.</strong> When required by law, a court order, or a government request, or to protect the rights, property, or safety of our customers, employees, or others.',
       '<strong>Business transfers.</strong> If our business is sold or reorganized, customer records may be transferred to the new owner, who must continue to protect them.',
@@ -84,7 +100,7 @@ const privacy = doc([
     p(saleShare)],
   ['cookies', 'Cookies and tracking',
     p(cookieUse),
-    p(`Our <a href="${business.cookies}">Cookie Policy</a> lists every cookie the site may use and explains how to change your choices.`)],
+    p(`Our <a href="${business.cookies}">Cookie Policy</a> lists every cookie and similar technology the site may use and explains how to change your choices.`)],
   ['signals', 'Global Privacy Control and Do Not Track',
     p(`We treat a Global Privacy Control (GPC) signal from your browser as a valid request to opt out of the sale or sharing of your personal information for targeted advertising. When we detect it, advertising cookies stay off without you having to do anything. Learn more at ${ext('https://globalprivacycontrol.org/', 'globalprivacycontrol.org')}.`),
     p(optional
@@ -129,7 +145,12 @@ const cookieRows = [
   [`<code>${consentCookie}</code>`, 'Phil &amp; Paul’s Plumbing', asked ? 'Remembers your privacy choices so we do not ask again on every page. Set only after you make a choice.' : 'Remembers privacy choices. Not currently set, because the site has no optional cookies to choose about.', 'Strictly necessary', '12 months'],
   [`<code>${displayKey}</code> (local storage)`, 'Phil &amp; Paul’s Plumbing', 'Saves the text size, contrast, and other options you pick in Display settings, so they stay on as you browse. Set only if you change a setting. Never sent to us or anyone else.', 'Strictly necessary', 'Until you reset your display settings or clear site data'],
   ['<code>__cf_bm</code>', 'Cloudflare (our host)', 'Set only if our host’s bot protection is turned on. Helps tell people apart from automated traffic. Not used for tracking or advertising.', 'Strictly necessary', '30 minutes'],
-  ...activeIntegrations.flatMap(item => item.cookies.map(cookie => [`<code>${esc(cookie.name)}</code>`, `${esc(item.name)} (${esc(item.provider)}), ${ext(item.privacyUrl, 'privacy policy')}`, esc(cookie.purpose), categories[item.category].name, esc(cookie.duration)])),
+  ...activeIntegrations.flatMap(item => {
+    const source = `${esc(item.name)} (${esc(item.provider)}), ${ext(item.privacyUrl, 'privacy policy')}`;
+    // A tool that sets cookies of its own choosing still has to be listed, so the table never hides it.
+    if (!item.cookies.length) return [[`Set by ${esc(item.provider)}`, source, esc(item.purpose), categories[item.category].name, 'Set by the provider. See its privacy policy.']];
+    return item.cookies.map(cookie => [`<code>${esc(cookie.name)}</code>`, source, esc(cookie.purpose), categories[item.category].name, esc(cookie.duration)]);
+  }),
 ];
 
 const cookies = doc([
@@ -165,7 +186,7 @@ const cookies = doc([
 const terms = doc([
   ['agreement', 'Agreement to these terms',
     p(`These Terms and Conditions (“Terms”) are an agreement between you and ${esc(legalName)} (“we,” “us,” or “our”), located at ${address}. They apply when you use this website or send us a service request through it.`),
-    p(`<strong>Please read <a href="#disputes">Section 15, Dispute resolution</a>. It requires most disputes to be resolved through informal negotiation, small claims court, or individual binding arbitration instead of a jury trial or class action. You may opt out within 30 days.</strong>`),
+    p(`<strong>Please read <a href="#disputes">Section {{section:disputes}}, Dispute resolution</a>. It requires most disputes to be resolved through informal negotiation, small claims court, or individual binding arbitration instead of a jury trial or class action. You may opt out within 30 days.</strong>`),
     p('Work we perform at your property is governed by the written estimate, work order, or contract for that job. If anything in these Terms conflicts with that written agreement, the written agreement controls.')],
   ['eligibility', 'Using this website',
     p('You must be at least 18 years old to request service through this website. If you request service for a property or business, you confirm that you are authorized to do so.')],
@@ -183,9 +204,17 @@ const terms = doc([
     p('We offer a one-year labor warranty on most repairs and installations. The coverage, exclusions, and start date that apply to your job are provided in writing with your estimate or invoice, and those written terms control. The description on this website is a summary and does not create any additional warranty.'),
     p('Equipment and parts are covered by their manufacturers’ warranties, which are provided by the manufacturer, not by us. Nothing in these Terms limits any warranty or right you have under California law for work we perform.')],
   ['license', 'License and insurance',
-    p(`We are licensed by the California Contractors State License Board, license ${license}. You can check any contractor’s license at ${ext('https://www.cslb.ca.gov/', 'cslb.ca.gov')}.`)],
+    p(`We are licensed by the California Contractors State License Board, license ${license}, and we are insured. You can check any contractor’s license at ${ext('https://www.cslb.ca.gov/', 'cslb.ca.gov')}. Ask us for proof of insurance when you request an estimate.`)],
   ['communications', 'Calls, texts, and emails',
-    p('When you send a service request, you agree that we may contact you by phone, text message, or email at the number and address you provide about that request and any resulting work. Message and data rates may apply. Message frequency depends on your request. Reply STOP to stop texts or HELP for help. This consent does not cover marketing messages, and we will not send marketing texts unless you separately agree.'),
+    p('When you send a service request, you agree that we may contact you by phone, text message, or email at the number and address you provide about that request and any resulting work. This consent is not a condition of buying anything from us.'),
+    ul([
+      '<strong>What the texts are.</strong> Messages about your request or job, such as scheduling, arrival times, estimates, and follow-up. They are not marketing messages, and we will not send marketing texts unless you separately agree.',
+      '<strong>How often.</strong> Message frequency depends on your request.',
+      '<strong>Cost.</strong> Message and data rates may apply.',
+      `<strong>Stop or get help.</strong> Reply STOP to stop texts or HELP for help. You can also call ${tel} or email ${mail}.`,
+      '<strong>Carriers.</strong> Wireless carriers are not liable for delayed or undelivered messages.',
+      `<strong>Your information.</strong> See our <a href="${business.privacy}#texts">Privacy Policy</a> for how we handle your mobile number. We do not share it with third parties for their marketing.`,
+    ]),
     p('Please give us only a phone number and email address that belong to you or that you are authorized to use, and let us know if they change.')],
   ['use', 'Acceptable use',
     p('Please do not use this website to break the law, send false service requests, send spam or harmful code, interfere with the site or its security, or collect other people’s personal information.'),
@@ -199,8 +228,8 @@ const terms = doc([
     p(`Our <a href="${business.privacy}">Privacy Policy</a> and <a href="${business.cookies}">Cookie Policy</a> explain how we handle personal information. They are part of these Terms.`)],
   ['disclaimer', 'Website disclaimer and limitation of liability',
     p('<strong>This section applies to your use of the website only. It does not limit our responsibility for the plumbing work we perform, which is governed by your written agreement, our written warranty, and the law.</strong>'),
-    p('THE WEBSITE IS PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES ABOUT THE WEBSITE, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT PROMISE THAT THE WEBSITE WILL ALWAYS BE AVAILABLE, ERROR-FREE, OR CURRENT.'),
-    p('TO THE FULLEST EXTENT PERMITTED BY LAW, WE WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE WEBSITE, AND OUR TOTAL LIABILITY FOR ANY CLAIM ARISING FROM YOUR USE OF THE WEBSITE WILL NOT EXCEED $100.'),
+    caps('THE WEBSITE IS PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES ABOUT THE WEBSITE, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT PROMISE THAT THE WEBSITE WILL ALWAYS BE AVAILABLE, ERROR-FREE, OR CURRENT.'),
+    caps('TO THE FULLEST EXTENT PERMITTED BY LAW, WE WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE WEBSITE, AND OUR TOTAL LIABILITY FOR ANY CLAIM ARISING FROM YOUR USE OF THE WEBSITE WILL NOT EXCEED $100.'),
     p('These limits do not apply to liability for fraud, gross negligence, willful misconduct, violation of law, personal injury, or anything else that cannot be limited under applicable law, including California Civil Code section 1668.')],
   ['indemnity', 'Your responsibility for misuse',
     p('To the extent permitted by law, you agree to cover our reasonable losses and costs, including reasonable attorneys’ fees, from third-party claims caused by your misuse of this website, your violation of these Terms, or your violation of someone else’s rights. This does not apply to claims caused by our own conduct.')],
@@ -214,7 +243,7 @@ const terms = doc([
     `<h3>Binding individual arbitration</h3>`,
     p(`Any other Dispute will be resolved by binding individual arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules (${ext('https://www.adr.org/', 'adr.org')}). The Federal Arbitration Act governs this section. Arbitration will take place in San Joaquin County, California, or by phone, video, or written submissions if the arbitrator allows. Your share of AAA fees will not exceed what the AAA Consumer Arbitration Rules allow, and we will pay the rest. The arbitrator may award the same individual relief a court could award, and the decision may be entered as a judgment in any court with jurisdiction.`),
     `<h3>No class actions and no jury</h3>`,
-    p('<strong>YOU AND WE EACH AGREE TO BRING DISPUTES ONLY IN AN INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS, COLLECTIVE, OR REPRESENTATIVE PROCEEDING. YOU AND WE EACH GIVE UP THE RIGHT TO A JURY TRIAL.</strong> The arbitrator may not combine more than one person’s claims or preside over any class or representative proceeding.'),
+    caps('<strong>YOU AND WE EACH AGREE TO BRING DISPUTES ONLY IN AN INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS, COLLECTIVE, OR REPRESENTATIVE PROCEEDING. YOU AND WE EACH GIVE UP THE RIGHT TO A JURY TRIAL.</strong> The arbitrator may not combine more than one person’s claims or preside over any class or representative proceeding.'),
     `<h3>Exceptions</h3>`,
     p('Either Party may go to court for a claim about intellectual property. Any request for public injunctive relief (relief meant to benefit the general public) will be decided by a court, not an arbitrator, after any arbitrable claims are decided, and the court case will be paused until then.'),
     `<h3>Your right to opt out</h3>`,
@@ -230,27 +259,27 @@ const terms = doc([
   ['changes', 'Changes to these terms',
     p('We may update these Terms. The date at the top shows when they were last changed. Changes apply only going forward and do not apply to a service request you already sent or a Dispute already noticed.')],
   ['general', 'General',
-    p('These Terms, our Privacy Policy, our Cookie Policy, and any written agreement for your job are the complete agreement about your use of this website. If any part of these Terms is found unenforceable, the rest remains in effect. Our failure to enforce a provision is not a waiver. We are not responsible for delays caused by events beyond our reasonable control. You may not transfer these Terms without our consent.')],
+    p('These Terms, our Privacy Policy, our Cookie Policy, and any written agreement for your job are the complete agreement about your use of this website. If any part of these Terms is found unenforceable, the rest remains in effect. Nothing in these Terms takes away a consumer right that California or federal law does not allow you to give up, including any right to cancel a contract within the time the law allows. Our failure to enforce a provision is not a waiver. We are not responsible for delays caused by events beyond our reasonable control. You may not transfer these Terms without our consent.')],
   ['contact', 'Contact us',
     contactBlock],
 ]);
 
 const accessibility = doc([
   ['commitment', 'Our commitment',
-    p(`${esc(legalName)} wants everyone to be able to use this website, including people who use screen readers, keyboard navigation, magnification, voice control, or other assistive technology. Our goal is to meet the Web Content Accessibility Guidelines (WCAG) 2.2, Level AA.`)],
+    p(`${esc(legalName)} wants everyone to be able to use this website, including people who use screen readers, keyboard navigation, magnification, voice control, or other assistive technology. Our goal is to follow the Web Content Accessibility Guidelines (WCAG) 2.2, Level AA.`)],
   ['help', 'Need help? Call us',
     p(`If any part of this website is hard to use, please call ${tel} during business hours (Monday through Friday, 7 a.m. to 7 p.m., and Saturday, 8 a.m. to 4 p.m.) or email ${mail}. We can take your service request by phone, read information aloud, or send it in a format that works for you.`)],
   ['measures', 'What we have done',
     ul([
       'Built the site with clear headings, landmarks, and a “Skip to content” link.',
-      'Made every menu, link, button, and form usable with a keyboard, with a visible focus indicator.',
-      'Labeled every form field and described errors in text.',
+      'Designed menus, links, buttons, and forms to work with a keyboard, with a visible focus indicator.',
+      'Labeled form fields and described errors in text.',
       'Added text descriptions for meaningful images.',
-      'Checked main text and button colors for contrast.',
-      'Respected reduced-motion settings and added a pause button for the moving customer reviews.',
-      'Tested pages at screen widths from small phones to large desktops.',
+      'Chose text and button colors with contrast in mind.',
+      'Followed reduced-motion settings and added a pause button for the moving customer reviews.',
+      'Checked pages at screen widths from small phones to large desktops.',
     ]),
-    p('We build accessibility into the site itself. We do not use an accessibility overlay or a third-party widget.')],
+    p('We build accessibility into the site itself. We do not use an accessibility overlay or a third-party widget. This statement describes our goal and our efforts. We have not claimed that every page meets every part of the guidelines, and we are still improving.')],
   ['display', 'Display settings',
     p('Every page has a Display settings button (the round button in the bottom corner, also linked at the bottom of every page). It lets you make text larger, add text spacing, switch to a simpler font, raise contrast, underline links, stop motion, and use a bigger mouse pointer. Your choices are saved in your own browser and are not sent to us.'),
     p('Display settings are an extra convenience. They do not change how the site works with screen readers or other assistive technology, and you do not need them to use the site. The settings in your browser and device, such as zoom, text size, and high contrast mode, work here too.')],
@@ -261,7 +290,7 @@ const accessibility = doc([
     ]),
     p('We review the site for accessibility when we make changes and fix problems as we find them.')],
   ['feedback', 'Report a problem',
-    p(`Tell us which page you were on and what happened, and we will work to fix it. We aim to respond within two business days. Call ${tel} or email ${mail}.`)],
+    p(`Tell us which page you were on and what happened, and we will work to fix it. We try to respond within two business days. Call ${tel} or email ${mail}.`)],
 ]);
 
 export const legal = {

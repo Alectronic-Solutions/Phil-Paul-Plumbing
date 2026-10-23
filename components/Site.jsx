@@ -46,7 +46,7 @@ function BackToTop() {
 }
 
 export function Layout({ children }) {
-  return <ConsentProvider><DisplaySettingsProvider><a className="skip-link" href="#main-content">Skip to content</a><Icon3DDefs /><Header /><main id="main-content">{children}</main><Footer /><BackToTop /><DisplayLauncher /><div className="mobile-actions"><a href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} />Call now</a><Link href="/book-plumbing-services">Request service<Icon name="arrow" size={18} /></Link></div></DisplaySettingsProvider></ConsentProvider>;
+  return <ConsentProvider><DisplaySettingsProvider><a className="skip-link" href="#main-content">Skip to content</a><Icon3DDefs /><Header /><main id="main-content">{children}</main><Footer /><BackToTop /><DisplayLauncher /><div className="mobile-actions"><Link href="/book-plumbing-services">Request service<Icon name="arrow" size={18} /></Link><a href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} />Call now</a></div></DisplaySettingsProvider></ConsentProvider>;
 }
 export function Eyebrow({ children, light = false }) { return <div className={`eyebrow ${light ? 'eyebrow-light' : ''}`}>{children}</div>; }
 export function Stars() { return <span className="stars" role="img" aria-label="5 out of 5 stars">{[0, 1, 2, 3, 4].map(i => <Icon key={i} name="star" size={15} />)}</span>; }
@@ -115,13 +115,35 @@ export function Faqs({ items = commonFaqs, title = <>A few things<br />worth kno
 }
 
 // Posts a form to the service-request endpoint. Shared by the CTA form, the booking page, and the contact page.
+// While the site is a preview, nothing is sent: a valid submit opens a notice instead. Set to false to post to the endpoint again.
+const DEMO_FORMS = true;
+
+function DemoNotice({ dialog, form }) {
+  const close = () => dialog.current?.close();
+  return <dialog className="consent-dialog demo-dialog" ref={dialog} aria-labelledby="demo-dialog-title" onClose={() => { form.current?.reset(); form.current = null; }}>
+    <div className="consent-dialog-head">
+      <h2 id="demo-dialog-title">This is an example</h2>
+      <button type="button" className="consent-close" onClick={close} aria-label="Close"><Icon name="close" size={22} /></button>
+    </div>
+    <div className="consent-dialog-body">
+      <p>This form is for demonstration only. Nothing was submitted and no information was saved or sent.</p>
+      <p><strong>Thank you!</strong></p>
+      <div className="consent-dialog-actions"><button type="button" className="button button-primary" onClick={close}>Got it</button></div>
+    </div>
+  </dialog>;
+}
+
 function useRequestSubmit() {
   const [state, setState] = useState('idle');
   const [message, setMessage] = useState('');
+  const dialog = useRef(null);
+  const demoForm = useRef(null);
+  const notice = DEMO_FORMS ? <DemoNotice dialog={dialog} form={demoForm} /> : null;
   async function submit(event) {
     event.preventDefault();
     const form = event.currentTarget;
     if (state === 'sending' || !form.reportValidity()) return;
+    if (DEMO_FORMS) { demoForm.current = form; dialog.current?.showModal(); return; }
     setState('sending'); setMessage('');
     try {
       const response = await fetch('/api/book-service', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) });
@@ -130,23 +152,23 @@ function useRequestSubmit() {
       setState('success');
     } catch (error) { setState('error'); setMessage(error.message); }
   }
-  return { state, message, submit };
+  return { state, message, submit, notice };
 }
 
 // The service request form, shared by the CTA band and landing-page heroes. `idPrefix` keeps label ids unique when two copies share a page.
 export function ServiceRequestForm({ idPrefix = 'cta', title = 'Request service' }) {
-  const { state, message, submit } = useRequestSubmit();
+  const { state, message, submit, notice } = useRequestSubmit();
   const id = name => `${idPrefix}-${name}`;
   if (state === 'success') return <div className="form-success" role="status" aria-live="polite"><Icon name="check" size={36} /><h3>We have your request.</h3><p>Our team will contact you during business hours.</p></div>;
-  return <form action={asset('/api/book-service')} method="post" onSubmit={submit} data-service-request>
+  return <><form action={asset('/api/book-service')} method="post" onSubmit={submit} data-service-request>
     <h3>{title}</h3>
     <div className="form-row"><div className="form-field"><label htmlFor={id('name')}>Your name</label><input id={id('name')} name="Name" autoComplete="name" required maxLength={120} placeholder="First and last name" /></div><div className="form-field"><label htmlFor={id('phone')}>Phone number</label><input id={id('phone')} name="Phone" type="tel" autoComplete="tel" required maxLength={40} placeholder="(209) 555-0123" /></div></div>
     <div className="form-row"><div className="form-field"><label htmlFor={id('city')}>City or ZIP</label><input id={id('city')} name="City" autoComplete="address-level2" required maxLength={120} placeholder="Where is the job?" /></div><div className="form-field"><label htmlFor={id('service')}>What needs attention?</label><select id={id('service')} name="Service-Needed" required defaultValue=""><option value="" disabled>Choose one</option>{services.slice(0, 6).map(s => <option key={s.slug}>{s.name}</option>)}<option>Other / not sure</option></select></div></div>
     <div className="form-honeypot" aria-hidden="true"><label htmlFor={id('company-url')}>Leave this empty</label><input id={id('company-url')} name="Website" tabIndex={-1} autoComplete="off" /></div>
-    <label className="consent-label"><input type="checkbox" name="Opt-In" required /><span>I agree to the <Link href={business.terms} target="_blank">Terms</Link> and <Link href={business.privacy} target="_blank">Privacy Policy</Link>, and to be contacted by phone, text, or email about this request. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label>
+    <label className="consent-label"><input type="checkbox" name="Opt-In" required /><span>I agree to the <Link href={business.terms} target="_blank">Terms and Conditions</Link> and <Link href={business.privacy} target="_blank">Privacy Policy</Link>, and I agree to be contacted by phone, text, or email about this service request. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label>
     {state === 'error' && <div className="form-error" role="alert"><strong>Your request has not been sent.</strong><p>{message}</p></div>}
     <button className="button button-primary form-submit" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending…' : 'Send request'}<Icon name="arrow" size={19} /></button>
-  </form>;
+  </form>{notice}</>;
 }
 
 export function Cta({ title = <>Let’s get it<br />taken care of.</>, text = 'Tell us what is going on. We will help you figure out the next step.' }) {
@@ -209,7 +231,7 @@ function AboutFeature({ onAbout = false }) {
 }
 
 export function HomePage() {
-  return <><section className="home-hero"><div className="container hero-grid"><div className="hero-copy"><Eyebrow>LODI, STOCKTON &amp; GALT</Eyebrow><h1>Your local<br />plumber.<br /><span>Since ’96.</span></h1><p>When something goes wrong with your plumbing, you don’t want to guess who to call. Phil &amp; Paul’s has been serving Lodi and the surrounding communities since 1996, with honest diagnoses and work done right the first time.</p><p>We’re fully licensed, insured, and rated A+ by the BBB. Whether it’s a water heater going out, a stubborn drain, or a pipe you’ve been meaning to fix, give us a call and we’ll get it handled.</p><div className="button-group"><Button icon="diagonal">Let’s fix it</Button><a className="hero-phone" href={`tel:${business.telephone}`}><Phone3D size={26} /><span><small>GIVE US A CALL</small>{business.phone}</span></a></div><ul className="hero-note"><li><Icon3D name="shield" size={28} /><span>Licensed &amp; insured<small>CA {business.license}</small></span></li><li><Icon3D name="check" size={28} /><span>Homes &amp; businesses<small>Residential and commercial</small></span></li></ul></div><div className="hero-visual"><div className="hero-photo"><Photo name="team" alt="The Phil and Paul's Plumbing crew in front of their red service van" priority sizes="(max-width: 760px) calc(100vw - 50px), (max-width: 1390px) 48vw, 668px" /><div className="hero-photo-caption"><span>YOUR NEIGHBORS. YOUR PLUMBERS.</span><span>LODI, CA <Icon name="pin" size={15} /></span></div></div><div className="hero-badges"><img className="hero-badge hero-badge-lodi" src={asset('/images/badges/best-of-lodi-2026.webp')} alt="Winner, Best of Lodi 2026, Lodi News-Sentinel Readers’ Choice Awards" width="144" height="144" decoding="async" /><a className="hero-badge hero-badge-yelp" href={business.yelp} target="_blank" rel="noopener noreferrer"><img src={asset('/images/badges/yelp-customer-best.webp')} alt="People love us on Yelp" width="144" height="144" decoding="async" /></a></div></div></div></section><TrustBar />
+  return <><section className="home-hero"><div className="container hero-grid"><div className="hero-copy"><Eyebrow>LODI, STOCKTON &amp; GALT</Eyebrow><h1>Your local<br />plumber.<br /><span>Since ’96.</span></h1><p>When something goes wrong with your plumbing, you don’t want to guess who to call.<br className="br-mobile" /><br className="br-mobile" /> Phil &amp; Paul’s has been serving Lodi and the surrounding communities since 1996, with honest diagnoses and work done right the first time.</p><p>We’re fully licensed, insured, and rated A+ by the BBB. Whether it’s a water heater going out, a stubborn drain, or a pipe you’ve been meaning to fix, give us a call and we’ll get it handled.</p><div className="button-group"><Button icon="diagonal">Let’s fix it</Button><a className="hero-phone" href={`tel:${business.telephone}`}><Phone3D size={26} /><span><small>GIVE US A CALL</small>{business.phone}</span></a></div><ul className="hero-note"><li><Icon3D name="shield" size={28} /><span>Licensed &amp; insured<small>CA {business.license}</small></span></li><li><Icon3D name="check" size={28} /><span>Homes &amp; businesses<small>Residential and commercial</small></span></li></ul></div><div className="hero-visual"><div className="hero-photo"><Photo name="team" alt="The Phil and Paul's Plumbing crew in front of their red service van" priority sizes="(max-width: 760px) calc(100vw - 50px), (max-width: 1390px) 48vw, 668px" /><div className="hero-photo-caption"><span>YOUR NEIGHBORS. YOUR PLUMBERS.</span><span>LODI, CA <Icon name="pin" size={15} /></span></div></div><div className="hero-badges"><img className="hero-badge hero-badge-lodi" src={asset('/images/badges/best-of-lodi-2026.webp')} alt="Winner, Best of Lodi 2026, Lodi News-Sentinel Readers’ Choice Awards" width="144" height="144" decoding="async" /><a className="hero-badge hero-badge-yelp" href={business.yelp} target="_blank" rel="noopener noreferrer"><img src={asset('/images/badges/yelp-customer-best.webp')} alt="People love us on Yelp" width="144" height="144" decoding="async" /></a></div></div></div></section><TrustBar />
     <section className="section services-section"><div className="container"><div className="section-heading"><div><Eyebrow>OUR SERVICES</Eyebrow><h2>What needs<br />fixing?</h2></div><div className="section-heading-side"><p>From the kitchen sink to the sewer line.<br />A capable crew for the work you need.</p><Link className="text-link" href="/service">Explore all services<Icon name="arrow" size={18} /></Link></div></div><ServiceCards wide /></div></section>
     <AboutFeature />
     <section className="process-section section"><div className="container"><div className="section-heading"><div><Eyebrow>HERE’S HOW IT WORKS</Eyebrow><h2>One less thing<br />to worry about.</h2></div><p className="section-heading-side">You should know who is coming,<br />what is wrong, and what happens next.</p></div><ProcessSteps /></div></section><WhyTrustSection /><Reviews /><InstagramFeed /><AreaSection /><Faqs /><Cta /></>;
@@ -260,7 +282,7 @@ function ServiceChecks({ items, icons, notes }) {
   })}</ul>;
 }
 
-export function ServicePage({ service: s }) { const h = s.hero; return <><PageHero eyebrow={s.name.toUpperCase()} breadcrumb={s.name} parent={{ href: '/service', name: 'Services' }} title={<>{h ? h.lines.map(line => <Fragment key={line}>{line}<br /></Fragment>) : <>{s.name}<br /></>}<span>in Lodi.</span></>} image={s.image} alt={h?.alt ?? `${s.name} work by Phil and Paul's Plumbing`} backdrop={!!h} proof={h?.proof}><p>{s.intro}</p></PageHero><TrustBar /><section className="section service-overview"><div className="container detail-layout"><div className="overview-lead"><Eyebrow light>WHAT WE CAN HELP WITH</Eyebrow><h2>{s.short.split(/(?<=,) /).map((part, i) => <span key={i} className="h2-line">{part}</span>)}</h2><p>{s.description.split(/(?<=\.) /).map(line => <span key={line} className="overview-line">{line}</span>)}</p>{s.overviewImage && <Photo name={s.overviewImage} alt={s.overviewAlt ?? ''} className="overview-photo" sizes="(max-width: 760px) calc(100vw - 80px), 420px" />}<div className="overview-actions"><Button variant="cream" /><a className="text-link" href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} />{business.phone}</a></div></div><ServiceChecks items={s.details} icons={s.detailIcons} notes={s.detailNotes} /></div>{s.slug === 'gas-lines' && <div className="container"><aside className="safety-notice" aria-labelledby="gas-safety-title"><Icon3D name="flame" size={30} /><div><h3 id="gas-safety-title">Smell gas? Get out first.</h3><p>Leave the building right away. Do not use light switches, phones, or anything that could make a spark. From a safe distance, call 911<br />or PG&amp;E at <a href="tel:+18007435000">1-800-743-5000</a>. Then call us for repairs.</p></div></aside></div>}</section><section className="section service-approach"><div className="container"><Eyebrow>THE WAY WE WORK</Eyebrow><div className="approach-grid">{s.sections.map(([t, d], i) => <WaterCard key={t} number={`0${i + 1}`} title={t} text={d} delay={i * 450} />)}</div></div></section><LocalGuide guide={s.guide} /><Faqs items={s.faqs} title={<>About your<br />{s.slug === 'commercial-plumbing' ? 'property.' : 'service.'}</>} /><section className="related-section section"><div className="container"><div className="section-heading"><div><Eyebrow>WHILE WE’RE HERE</Eyebrow><h2>Other ways we help.</h2></div><Link className="text-link" href="/service">All services <Icon name="arrow" size={18} /></Link></div><div className="related-links">{services.filter(x => x.slug !== s.slug).slice(0, 4).map(x => <Link key={x.slug} href={`/service/${x.slug}`}><Icon3D name={x.icon} size={30} /><span>{x.name}</span><Icon name="diagonal" size={18} /></Link>)}</div></div></section><Cta /></>; }
+export function ServicePage({ service: s }) { const h = s.hero; return <><PageHero eyebrow={s.name.toUpperCase()} breadcrumb={s.name} parent={{ href: '/service', name: 'Services' }} title={<>{h ? h.lines.map(line => <Fragment key={line}>{line}<br /></Fragment>) : <>{s.name}<br /></>}<span>in Lodi.</span></>} image={s.image} alt={h?.alt ?? `${s.name} work by Phil and Paul's Plumbing`} backdrop={!!h} proof={h?.proof}><p>{s.intro}</p></PageHero><TrustBar /><section className="section service-overview"><div className="container detail-layout"><div className="overview-lead"><Eyebrow light>WHAT WE CAN HELP WITH</Eyebrow><h2>{s.short.split(/(?<=,) /).map((part, i) => <span key={i} className="h2-line">{part}</span>)}</h2><p>{s.description.split(/(?<=\.) /).map(line => <span key={line} className="overview-line">{line}</span>)}</p>{s.overviewImage && <Photo name={s.overviewImage} alt={s.overviewAlt ?? ''} className="overview-photo" sizes="(max-width: 760px) calc(100vw - 80px), 420px" />}<div className="overview-actions"><Button variant="cream" /><a className="text-link" href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} />{business.phone}</a></div></div><ServiceChecks items={s.details} icons={s.detailIcons} notes={s.detailNotes} /></div>{s.slug === 'gas-lines' && <div className="container"><aside className="safety-notice" aria-labelledby="gas-safety-title"><Icon3D name="flame" size={30} /><div><h3 id="gas-safety-title">Smell gas? Get out first.</h3><p>Leave the building right away. Do not use light switches, phones, or anything that could make a spark.<br className="br-mobile" /> From a safe distance, call 911<br />or PG&amp;E at <a href="tel:+18007435000">1-800-743-5000</a>. Then call us for repairs.</p></div></aside></div>}</section><section className="section service-approach"><div className="container"><Eyebrow>THE WAY WE WORK</Eyebrow><div className="approach-grid">{s.sections.map(([t, d], i) => <WaterCard key={t} number={`0${i + 1}`} title={t} text={d} delay={i * 450} />)}</div></div></section><LocalGuide guide={s.guide} /><Faqs items={s.faqs} title={<>About your<br />{s.slug === 'commercial-plumbing' ? 'property.' : 'service.'}</>} /><section className="related-section section"><div className="container"><div className="section-heading"><div><Eyebrow>WHILE WE’RE HERE</Eyebrow><h2>Other ways we help.</h2></div><Link className="text-link" href="/service">All services <Icon name="arrow" size={18} /></Link></div><div className="related-links">{services.filter(x => x.slug !== s.slug).slice(0, 4).map(x => <Link key={x.slug} href={`/service/${x.slug}`}><Icon3D name={x.icon} size={30} /><span>{x.name}</span><Icon name="diagonal" size={18} /></Link>)}</div></div></section><Cta /></>; }
 
 export function AboutPage() { return <><PageHero eyebrow="OUR STORY" title={<>Local roots.<br />A lot of hard work.</>} image="crew-wrenches" alt="Two Phil and Paul's plumbers smiling with pipe wrenches on their shoulders at a Lodi job" backdrop proof={['Serving Lodi since 1996', 'Licensed and insured', 'One-year labor warranty']}><p>Phil &amp; Paul’s Plumbing has served Lodi and the surrounding communities since 1996. We are a local team with a straightforward way of doing business.</p></PageHero><TrustBar /><section className="section"><div className="container story-layout"><div><Eyebrow>THE WAY WE SEE IT</Eyebrow><h2 className="stagger">{['A good plumber', 'should make', 'things simpler.'].map(line => <span key={line}>{line}{' '}</span>)}</h2></div><div className="story-copy"><p className="large-copy">You call because something is wrong. Our job is to understand it, explain it, and do the work properly.</p><p>That means listening before recommending a repair. It means telling you when replacement makes more sense and when it does not. And it means answering your questions along the way.</p><p>From the office to the job site, the people you deal with are part of a local team. We work on homes and businesses across Lodi, Stockton, Galt, and nearby communities.</p><p>We are licensed, insured, and back most repairs and installations with a one-year labor warranty. If you have a concern about our work, call us.</p><Awards /></div></div></section><AboutFeature onAbout /><WhyTrustSection /><CrewOverview about /><AreaSection /><section className="team-gallery section"><div className="container"><div className="section-heading"><div><Eyebrow>PEOPLE BEHIND THE WORK</Eyebrow><h2>You’ll recognize<br />the red trucks.</h2></div><p className="section-heading-side">Our crew, our equipment, and<br />work from around the community.</p></div><div className="gallery-grid"><figure><Photo name="jeff" alt="Jeff in a Phil and Paul's Plumbing service truck" sizes="(max-width: 760px) calc(50vw - 28px), (max-width: 1390px) 26vw, 362px" /><figcaption>A familiar face on the road.</figcaption></figure><figure><Photo name="crew" alt="A Phil and Paul's technician beside a service van" sizes="(max-width: 760px) calc(50vw - 28px), (max-width: 1390px) 26vw, 362px" /><figcaption>Ready for the work ahead.</figcaption></figure><figure><Photo name="fleet" alt="A Phil and Paul's red service truck hauling a trailer loaded with water heaters" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1390px) 36.5vw, 507px" /><figcaption>Loaded up and on the way to your job.</figcaption></figure></div></div></section><Reviews /><Cta /></>; }
 
@@ -279,7 +301,7 @@ export function AreasPage() {
   const communities = [{ name: 'Lodi', href: '/', image: 'team', alt: 'The Phil and Paul’s Plumbing crew in front of their red service van in Lodi', caption: 'Our home base. Shop and dispatch are here.', wide: true }, ...cities.map(c => ({ name: c.name, href: `/plumber/${c.slug}`, image: c.image, alt: `A view of ${c.name}, California, in the Phil and Paul’s Plumbing service area`, caption: c.landing?.drive ?? 'Residential and commercial service' }))];
   return <>
     <div className="city-landing"><section className="landing-hero" data-city="service-areas">
-      <Photo name="fleet" alt="" className="landing-hero-bg" priority sizes="100vw" />
+      <Photo name="team" alt="" className="landing-hero-bg" priority sizes="100vw" />
       <div className="container">
         <Breadcrumbs current="Service area" />
         <div className="landing-hero-grid"><div className="landing-hero-copy">
@@ -287,7 +309,7 @@ export function AreasPage() {
           <h1>Plumber in<br />Lodi, Stockton<br />&amp; Galt, CA.<span>Based in Lodi. Here for our neighbors.</span></h1>
           <ul className="landing-pills"><li><Icon3D name="pin" size={26} />7 communities served</li><li><Icon3D name="shield" size={26} />Licensed &amp; insured · CA {business.license}</li></ul>
           <p className="landing-lead">We provide residential and commercial plumbing service in Lodi, Stockton, Galt, Acampo, Woodbridge, Lockeford, and nearby communities. Not sure we cover your address?<br />Call and we will tell you.</p>
-          <div className="landing-actions"><a className="button button-primary landing-call" href={`tel:${business.telephone}`}><Phone3D size={24} /><span><small>CALL NOW</small>{business.phone}</span></a><Button variant="outline-light" icon="diagonal">Request service</Button><small className="landing-hours">{hoursSummary.join(' · ')}</small></div>
+          <div className="landing-actions"><a className="button button-primary landing-call" href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} /><span><small>CALL NOW</small>{business.phone}</span></a><Button variant="outline-light" icon="diagonal">Request service</Button><small className="landing-hours">{hoursSummary.join(' · ')}</small></div>
         </div></div>
       </div>
     </section></div>
@@ -336,7 +358,7 @@ function CityLanding({ city: c }) {
   const featured = l.reviews[0];
   return <div className="city-landing">
     <section className="landing-hero" data-city={c.slug}>
-      <Photo name={c.image} alt="" className="landing-hero-bg" priority sizes="100vw" />
+      <Photo name="team" alt="" className="landing-hero-bg" priority sizes="100vw" />
       <div className="container">
         <Breadcrumbs current={c.name} parent={{ href: '/service-areas', name: 'Service area' }} />
         <div className="landing-hero-grid">
@@ -346,10 +368,10 @@ function CityLanding({ city: c }) {
             <ul className="landing-pills">
               <li><a href={business.google} target="_blank" rel="noopener noreferrer"><BrandIcon name="google" size={18} /><strong>{business.rating.value}</strong><span className="landing-pill-stars" aria-hidden="true">{[0, 1, 2, 3, 4].map(i => <Icon key={i} name="star" size={13} />)}</span>{business.rating.count} reviews</a></li>
               <li><Icon3D name="clock" size={26} />{l.sameDay}</li>
-              <li><Icon3D name="pin" size={26} />{l.drive}</li>
+              <li><Icon3D name="pin" size={26} />{l.drive.split(/ (?=on Highway)/).map((part, i) => i ? <Fragment key={i}><br className="br-mobile" /> {part}</Fragment> : part)}</li>
             </ul>
             <p className="landing-lead">{l.lead}</p>
-            <div className="landing-actions"><a className="button button-primary landing-call" href={`tel:${business.telephone}`}><Phone3D size={24} /><span><small>CALL NOW</small>{business.phone}</span></a><Button variant="outline-light" icon="diagonal">Request service</Button><small className="landing-hours">{hoursSummary.join(' · ')}</small></div>
+            <div className="landing-actions"><a className="button button-primary landing-call" href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} /><span><small>CALL NOW</small>{business.phone}</span></a><Button variant="outline-light" icon="diagonal">Request service</Button><small className="landing-hours">{hoursSummary.join(' · ')}</small></div>
           </div>
         </div>
       </div>
@@ -358,12 +380,12 @@ function CityLanding({ city: c }) {
     <section className="section landing-problems"><div className="container"><div className="section-heading"><div><Eyebrow>WHAT WE FIX HERE</Eyebrow><h2>The calls we get<br />from {c.name}.</h2></div><p className="section-heading-side">{(l.problemsNote || ['Older homes, busy rentals, and restaurant', 'kitchens. Each one fails its own way.']).flatMap((t, i) => i ? [<br key={i} />, t] : [t])}</p></div>
       <div className="problem-grid">{l.problems.map(([photo, t, d, href], i) => <Link key={t} href={href} className="problem-card"><Photo name={photo} alt="" className="problem-photo" sizes={i === 0 ? '(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 72px), 480px' : '(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 50vw, 390px'} /><div className="problem-body"><h3>{t}</h3><p>{d}</p><span className="problem-link">{services.find(s => href.endsWith(s.slug))?.name}<Icon name="arrow" size={17} /></span></div></Link>)}</div></div></section>
     {featured && <section className="landing-quote"><div className="container landing-quote-inner"><figure><span className="landing-quote-mark" aria-hidden="true">“</span><blockquote>{featured.text.split(/(?<=[.!?]) (?=What more)/).flatMap((part, i) => i ? [<br key={i} />, part] : [part])}</blockquote><figcaption><a href={featured.profile} target="_blank" rel="noopener noreferrer">{featured.name}<Icon name="diagonal" size={15} /></a><span>Google review from a {c.name} customer</span></figcaption></figure><a className="landing-quote-score" href={business.google} target="_blank" rel="noopener noreferrer"><strong>{business.rating.value}</strong><span className="landing-pill-stars" aria-hidden="true">{[0, 1, 2, 3, 4].map(i => <Icon key={i} name="star" size={16} />)}</span><span>{business.rating.count} Google reviews</span></a></div></section>}
-    <section className="section landing-coverage"><div className="container landing-coverage-grid"><CityCoverage slug={c.slug} neighborhoods={l.neighborhoods} zips={l.zips}><Eyebrow>WHERE WE GO</Eyebrow><h2>Every corner<br />of {c.name}.</h2><p>{l.drive}.<br />Don’t see your neighborhood? Call, we probably cover it.</p></CityCoverage></div></section>
+    <section className="section landing-coverage"><div className="container landing-coverage-grid"><CityCoverage slug={c.slug} neighborhoods={l.neighborhoods} zips={l.zips}><Eyebrow>WHERE WE GO</Eyebrow><h2>Every corner<br />of {c.name}.</h2><p>{l.drive}.<br />Don’t see your neighborhood?<br className="br-mobile" /> Call, we probably cover it.</p></CityCoverage></div></section>
     {l.photos.length > 0 && <section className="section landing-work"><div className="container"><div className="section-heading"><div><Eyebrow>RECENT WORK</Eyebrow><h2>Jobs around<br />the city.</h2></div></div><div className="landing-work-grid">{l.photos.map(([name, caption]) => <figure key={name}><Photo name={name} alt={caption} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1340px) 33vw, 420px" /><figcaption>{caption}</figcaption></figure>)}</div></div></section>}
     <section className="process-section section"><div className="container"><div className="section-heading"><div><Eyebrow>HERE’S HOW IT WORKS</Eyebrow><h2>One call.<br />A clear plan.</h2></div><p className="section-heading-side">You know who is coming, what is wrong,<br />and what it costs before work starts.</p></div><ProcessSteps /></div></section>
     <LocalGuide guide={c.guide} />
     <Reviews />
-    <section className="section services-section"><div className="container"><div className="section-heading"><div><Eyebrow>HOW WE CAN HELP</Eyebrow><h2>Everything else<br />we handle.</h2></div><Link className="text-link" href="/service">All services<Icon name="arrow" size={18} /></Link></div><ServiceCards limit={6} /></div></section>
+    <section className="section services-section"><div className="container"><div className="section-heading"><div><Eyebrow>HOW WE CAN HELP</Eyebrow><h2>Everything else{' '}<br />we handle.</h2></div><Link className="text-link" href="/service">All services<Icon name="arrow" size={18} /></Link></div><ServiceCards limit={6} /></div></section>
     <Faqs items={l.faqs} title={<>Before<br />you call.</>} />
     <Cta title={<>Plumbing trouble<br />in {c.name}?</>} text="Tell us what is going on and where. We will confirm a time and what to expect." />
   </div>;
@@ -394,9 +416,9 @@ const contactTopics = [...services.slice(0, 6).map(s => s.name), 'A quote or big
 
 // Same endpoint and consent record as the booking form (functions/api/[[route]].js), with the message first and email up front.
 function ContactForm() {
-  const { state, message, submit } = useRequestSubmit();
+  const { state, message, submit, notice } = useRequestSubmit();
   if (state === 'success') return <div className="form-success" role="status" aria-live="polite"><Icon name="check" size={40} /><h3>Thank you. We have your message.</h3><p>Our team will contact you during business hours. Your appointment is confirmed once you speak with us.</p><a className="text-link" href={`tel:${business.telephone}`}>Need us sooner? {business.phone}</a></div>;
-  return <form action={asset('/api/book-service')} method="post" onSubmit={submit} data-service-request>
+  return <><form action={asset('/api/book-service')} method="post" onSubmit={submit} data-service-request>
     <div className="form-row"><div className="form-field"><label htmlFor="contact-name">Your name *</label><input id="contact-name" name="Name" autoComplete="name" required maxLength={120} placeholder="First and last name" /></div><div className="form-field"><label htmlFor="contact-phone">Phone number *</label><input id="contact-phone" name="Phone" type="tel" autoComplete="tel" required maxLength={40} placeholder="(209) 555-0123" /></div></div>
     <div className="form-row"><div className="form-field"><label htmlFor="contact-email">Email <span>(optional)</span></label><input id="contact-email" name="Email" type="email" autoComplete="email" maxLength={256} placeholder="you@example.com" /></div><div className="form-field"><label htmlFor="contact-city">City or ZIP code *</label><input id="contact-city" name="City" autoComplete="address-level2" required maxLength={120} placeholder="Where are you?" /></div></div>
     <div className="form-field"><label htmlFor="contact-topic">What is this about? *</label><select id="contact-topic" name="Service-Needed" required defaultValue=""><option value="" disabled>Choose one</option>{contactTopics.map(t => <option key={t}>{t}</option>)}</select></div>
@@ -406,7 +428,7 @@ function ContactForm() {
     {state === 'error' && <div className="form-error" role="alert"><strong>Your message has not been sent.</strong><p>{message}</p></div>}
     <button className="button button-primary form-submit" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending…' : 'Send message'}<Icon name="arrow" size={19} /></button>
     <p className="form-note"><Icon name="shield" size={14} />This is a request, not a confirmed appointment. For anything urgent, call.</p>
-  </form>;
+  </form>{notice}</>;
 }
 
 // Dark, photo-backed hero in the city landing style, with the truck and its phone number as the backdrop. The h1 leads with the search phrase.
@@ -416,7 +438,7 @@ export function ContactPage() {
   const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=6+Sierra+Vista+Pl+Lodi+CA+95240';
   return <div className="city-landing contact-page">
     <section className="landing-hero" data-city="contact">
-      <Photo name="field" alt="" className="landing-hero-bg" priority sizes="100vw" />
+      <Photo name="team" alt="" className="landing-hero-bg" priority sizes="100vw" />
       <div className="container">
         <Breadcrumbs current="Contact" />
         <div className="landing-hero-grid"><div className="landing-hero-copy">
@@ -428,7 +450,7 @@ export function ContactPage() {
             <li><Icon3D name="shield" size={26} />Licensed &amp; insured · CA {business.license}</li>
           </ul>
           <p className="landing-lead">Call our local office, send a message, or stop by. We handle plumbing repairs, water heaters, drains, sewer lines, and bigger projects for homes and businesses in Lodi, Stockton, Galt, and nearby communities.</p>
-          <div className="landing-actions"><a className="button button-primary landing-call" href={`tel:${business.telephone}`}><Phone3D size={24} /><span><small>CALL NOW</small>{business.phone}</span></a><Button href="#contact-form" variant="outline-light" icon="arrow">Send a message</Button><small className="landing-hours">{hoursSummary.join(' · ')}</small></div>
+          <div className="landing-actions"><a className="button button-primary landing-call" href={`tel:${business.telephone}`}><Icon3D name="phone" size={27} /><span><small>CALL NOW</small>{business.phone}</span></a><Button href="#contact-form" variant="outline-light" icon="arrow">Send a message</Button><small className="landing-hours">{hoursSummary.join(' · ')}</small></div>
         </div></div>
       </div>
     </section>
@@ -453,14 +475,14 @@ export function ContactPage() {
 const referralSources = ['Google', 'Yelp', 'Facebook or Instagram', 'Nextdoor', 'Friend or neighbor', 'Existing customer', 'Saw a truck', 'Other'];
 
 export function BookingPage() {
-  const { state, message, submit } = useRequestSubmit();
+  const { state, message, submit, notice } = useRequestSubmit();
   const [selectedServices, setSelectedServices] = useState([]);
   const toggleService = name => setSelectedServices(list => list.includes(name) ? list.filter(n => n !== name) : [...list, name]);
   return <section className="booking-section"><div className="container"><Breadcrumbs current="Request service" /><div className="booking-layout"><div className="booking-intro"><Eyebrow>LET’S GET STARTED</Eyebrow><h1>What can we<br />help you with?</h1><p>A few details are enough to get the conversation started. Our team will contact you during business hours to discuss the job and arrange a time.</p><div className="urgent-call"><Phone3D size={38} /><div><strong>Need help sooner?</strong><a href={`tel:${business.telephone}`}>Call {business.phone}</a><span>Call to confirm availability.</span></div></div><Photo name="softener-install" alt="Two Phil and Paul's plumbers installing a water softener at a Lodi home" sizes="(max-width: 1340px) 40vw, 533px" /><div className="booking-trust"><Icon name="shield" size={19} />Licensed &amp; insured <span>·</span> Serving since 1996</div></div><div className="booking-form-panel"><div className="form-heading"><span>YOUR SERVICE REQUEST</span><small>Fields marked * are required</small></div>{state === 'success' ? <div className="form-success" role="status" aria-live="polite"><Icon name="check" size={40} /><h2>We have your request.</h2><p>Our team will contact you during business hours. Your appointment is confirmed once you speak with us.</p><a className="text-link" href={`tel:${business.telephone}`}>Need to add something? {business.phone}</a></div> : <form action={asset("/api/book-service")} method="post" onSubmit={submit} data-service-request>
       <div className="form-field"><label htmlFor="request-name">Your name *</label><input id="request-name" name="Name" autoComplete="name" required maxLength={120} placeholder="First and last name" /></div><div className="form-row"><div className="form-field"><label htmlFor="request-phone">Phone number *</label><input id="request-phone" name="Phone" type="tel" autoComplete="tel" required maxLength={40} placeholder="(209) 555-0123" /></div><div className="form-field"><label htmlFor="request-city">City or ZIP code *</label><input id="request-city" name="City" autoComplete="address-level2" required maxLength={120} placeholder="Where is the job?" /></div></div><div className="form-field"><label htmlFor="request-address">Street address <span>(optional)</span></label><input id="request-address" name="Address" autoComplete="street-address" maxLength={200} placeholder="Helps us plan the visit" /></div>
       <fieldset className="service-picker"><legend>What needs attention? * <span>(select all that apply)</span></legend><input type="hidden" name="Service-Needed" value={selectedServices.join(', ')} /><div>{[...services.slice(0, 6).map(s => ({ key: s.slug, name: s.name, icon: <Icon3D name={s.icon} size={26} /> })), { key: 'other', name: 'Other / not sure', label: 'Something else / not sure', icon: <Icon name="plus" size={21} /> }].map(o => <label className={selectedServices.includes(o.name) ? 'selected' : ''} key={o.key}><input type="checkbox" value={o.name} required={selectedServices.length === 0} checked={selectedServices.includes(o.name)} onChange={() => toggleService(o.name)} />{o.icon}<span>{o.label || o.name}</span><span className="radio-mark" /></label>)}</div></fieldset>
       <div className="form-field"><label htmlFor="request-email">Email <span>(optional)</span></label><input id="request-email" type="email" name="Email" autoComplete="email" maxLength={256} placeholder="you@example.com" /></div><div className="form-field"><label htmlFor="request-details">Anything else we should know? <span>(optional)</span></label><textarea id="request-details" name="Details" rows={3} maxLength={2000} placeholder="A short description of the problem helps." /></div><div className="form-field"><label htmlFor="request-source">How did you hear about us? <span>(optional)</span></label><select id="request-source" name="Heard-About" defaultValue=""><option value="">Choose one</option>{referralSources.map(s => <option key={s}>{s}</option>)}</select></div><div className="form-honeypot" aria-hidden="true"><label htmlFor="company-url">Leave this empty</label><input id="company-url" name="Website" tabIndex={-1} autoComplete="off" /></div><label className="consent-label"><input type="checkbox" name="Opt-In" required /><span>I agree to the <Link href={business.terms} target="_blank">Terms and Conditions</Link> and <Link href={business.privacy} target="_blank">Privacy Policy</Link>, and I agree to be contacted by phone, text, or email about this service request. Msg &amp; data rates may apply. Reply STOP to opt out. *</span></label>{state === 'error' && <div className="form-error" role="alert"><strong>Your request has not been sent.</strong><p>{message}</p></div>}<button className="button button-primary form-submit" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending your request…' : 'Send service request'}<Icon name="arrow" size={19} /></button><p className="form-note"><Icon name="shield" size={14} />This is a request, not a confirmed appointment.</p>
-    </form>}</div></div></div></section>;
+    </form>}{notice}</div></div></div></section>;
 }
 
 function ReviewLink({ href, brand, title, stars, children }) {

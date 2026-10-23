@@ -122,10 +122,19 @@
   .city-landing .landing-hero::before { background: linear-gradient(#1c1e19e6, #1c1e19f2), linear-gradient(#e1c7970d 1px, transparent 1px) 0 0 / 40px 40px; }
   .city-landing .landing-pills > li { font-size: 14px; }
   .city-landing .landing-lead { font-size: 16px; }
-  .city-landing .landing-call { width: 100%; justify-content: center; font-size: 24px; }
+  .city-landing .landing-actions { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 4px; text-align: center; }
+  .city-landing .landing-call, .city-landing .landing-actions .button-outline-light { align-self: center; width: 84%; }
+  .city-landing .landing-call { justify-content: center; gap: 12px; min-height: 60px; padding: 8px 20px; font-size: 24px; border-radius: 999px; box-shadow: 0 10px 26px #751c2866, inset 0 1px 0 #ffffff26; }
+  .city-landing .landing-call > span { align-items: flex-start; }
+  .city-landing .landing-call > svg { flex: none; padding: 2px; box-sizing: content-box; filter: drop-shadow(0 0 .6px #fff) drop-shadow(0 0 .6px #fff) drop-shadow(0 3px 3px #00000055); }
+  .city-landing .landing-actions .button-outline-light { min-height: 50px; padding-block: 10px; justify-content: center; border-radius: 999px; border-color: #e1c79766; background: #ffffff0d; font-size: 15px; }
+  .city-landing .landing-hours { flex-basis: auto; margin-top: 2px; font-size: 13px; text-align: center; }
     .city-landing .problem-grid { grid-template-columns: 1fr; gap: 14px; }
   .city-landing .problem-card:first-child { min-height: 380px; }
-  .city-landing .problem-body, .city-landing .problem-card:first-child .problem-body { padding: 20px 22px 22px; }
+  .city-landing .problem-body, .city-landing .problem-card:first-child .problem-body { padding: 20px 22px 22px; align-items: center; text-align: center; }
+  .city-landing .landing-coverage-grid > :first-child { text-align: center; }
+  .city-landing .landing-coverage .chip-list { justify-content: center; }
+  .city-landing .landing-coverage-grid > :first-child p { text-wrap: balance; }
   .city-landing .landing-quote { padding-block: 60px; }
   .city-landing .landing-quote-inner { grid-template-columns: 1fr; gap: 32px; }
   .city-landing .landing-quote-mark { font-size: 130px; }
@@ -195,6 +204,8 @@
 
 /* Section edge blending. Loaded last so it wins over the per-page rules above. Every edge between two sections of different color fades over --blend instead of cutting. */
 .trust-bar { background: linear-gradient(180deg, var(--paper) 0, var(--white) 24%, var(--white) 76%, var(--paper) 100%); border-block: 0; }
+/* Overlap by a pixel so a fractional hero height can't leave a hairline of the dark hero between the fade and the trust bar. */
+.landing-hero + .trust-bar { position: relative; margin-top: -1px; }
 .city-landing .landing-hero::after { height: var(--blend); background: linear-gradient(0deg, var(--paper), transparent); }
 .city-landing .landing-quote { background: linear-gradient(180deg, var(--paper) 0, transparent var(--blend)), linear-gradient(0deg, var(--paper) 0, transparent var(--blend)), var(--ink); }
 .cta-section { background: linear-gradient(180deg, var(--paper) 0, transparent var(--blend)), linear-gradient(0deg, var(--ink) 0, transparent var(--blend)), radial-gradient(120% 140% at 85% 0%, #8a2533 0%, var(--wine) 45%, #5e1620 100%); }
@@ -322,4 +333,12 @@ main > .booking-section:last-child { background: linear-gradient(0deg, var(--ink
   .footer-bottom > .footer-policies { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
   .footer-bottom > .footer-policies > * { min-height: 32px; display: inline-flex; align-items: center; }
   .footer-watermark { display: none; }
+}
+
+/* Every landing hero shares the crew-and-van photo: full bleed, van and crew kept on the right, the copy side fading to the dark overlay. Doubled [data-city] outranks the per-city rules above. */
+.city-landing .landing-hero[data-city][data-city] .landing-hero-bg { left: 0; top: -20%; width: 100%; height: 140%; aspect-ratio: auto; object-fit: cover; object-position: 75% 55%; opacity: .6; filter: saturate(.95); -webkit-mask-image: none; mask-image: none; transform: translate3d(0, var(--parallax, 0px), 0); }
+.city-landing .landing-hero[data-city][data-city]::before { background: linear-gradient(100deg, #1c1e19 24%, #1c1e19b3 46%, #1c1e1933 74%); }
+@media (max-width: 1100px) {
+  .city-landing .landing-hero[data-city][data-city] .landing-hero-bg { object-position: 60% 50%; opacity: .38; }
+  .city-landing .landing-hero[data-city][data-city]::before { background: linear-gradient(#1c1e19d9, #1c1e19f2); }
 }

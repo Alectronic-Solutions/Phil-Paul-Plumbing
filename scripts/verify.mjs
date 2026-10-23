@@ -131,6 +131,14 @@ assert(!/(compliant|compliance|guarantee)/i.test(a11yPage), 'Accessibility stat
 const termsPage = load(await readFile(htmlFile('/terms-and-conditions'), 'utf8'))('.legal-body').text();
 assert(!/disparag/i.test(termsPage), 'Terms must not restrict customer reviews (Consumer Review Fairness Act, Cal. Civ. Code 1670.8)');
 assert(termsPage.includes('Nothing in these Terms limits your right to post honest reviews'), 'Terms must keep the review rights statement');
+const termsDoc = load(await readFile(htmlFile('/terms-and-conditions'), 'utf8'));
+const disputesNumber = termsDoc('h2#disputes').text().match(/^(\d+)\./)?.[1];
+assert(disputesNumber && termsDoc('p a[href$="#disputes"]').first().text().startsWith(`Section ${disputesNumber},`), 'Terms cross-reference to the dispute resolution section must match its number');
+for (const route of ['/', '/contact']) {
+  const $ = load(await readFile(htmlFile(route), 'utf8'));
+  assert($('.consent-label > span').length, `No consent label found on ${route}`);
+  $('.consent-label > span').each((_, el) => assert.equal($(el).text().replace(/\s*\*$/, '').replace(/\s+/g, ' ').trim(), CONSENT.text, `Consent label on ${route} must match the consent record`));
+}
 const builtFiles = (await readdir('out', { recursive: true, withFileTypes: true })).filter(f => f.isFile() && /\.(html|js|css|txt|xml)$/.test(f.name));
 for (const file of builtFiles) {
   const text = await readFile(`${file.parentPath ?? file.path}/${file.name}`, 'utf8');

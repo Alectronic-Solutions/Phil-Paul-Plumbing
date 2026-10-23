@@ -175,8 +175,8 @@ const solid = {
     <path d="M6 5.4h9.4l9 9" stroke="#fff" strokeOpacity=".7" strokeWidth="1.2" strokeLinecap="round" fill="none" />
   </>,
   phone: <>
-    <ellipse cx="16" cy="29.4" rx="7" ry="1.3" fill="#2e0710" opacity=".3" />
-    <g transform="translate(2 2) scale(1.1)"><path d="m7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z" fill="url(#g-wine)" stroke="#3c0a15" strokeWidth=".6" strokeLinejoin="round" /><path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".6" strokeWidth=".8" strokeLinecap="round" /></g>
+    <ellipse cx="16" cy="29.4" rx="7" ry="1.3" fill="#062a14" opacity=".3" />
+    <g transform="translate(2 2) scale(1.1)"><path d="m7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z" fill="url(#g-green)" stroke="#083d1c" strokeWidth=".6" strokeLinejoin="round" /><path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".6" strokeWidth=".8" strokeLinecap="round" /></g>
   </>,
   clock: <>
     <ellipse cx="16" cy="29.4" rx="8" ry="1.4" fill="#2e0710" opacity=".3" />
@@ -198,32 +198,31 @@ export function Icon3DDefs() {
   return <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: 'absolute' }}>
     <defs>
       <linearGradient id="g-wine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#e0566e" /><stop offset=".5" stopColor="#8a2233" /><stop offset="1" stopColor="#4d0f1b" /></linearGradient>
+      <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#5fe08a" /><stop offset=".5" stopColor="#1f9d4d" /><stop offset="1" stopColor="#0d5a2a" /></linearGradient>
       <linearGradient id="g-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ffffff" /><stop offset=".45" stopColor="#cfd4dc" /><stop offset="1" stopColor="#7a8491" /></linearGradient>
       <linearGradient id="g-steelH" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#8b95a2" /><stop offset=".3" stopColor="#ffffff" /><stop offset=".65" stopColor="#c6ccd5" /><stop offset="1" stopColor="#6c7684" /></linearGradient>
       <linearGradient id="g-copper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ffd9a3" /><stop offset=".5" stopColor="#d28a4a" /><stop offset="1" stopColor="#7a4018" /></linearGradient>
       <linearGradient id="g-blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#9fe0ff" /><stop offset=".5" stopColor="#2a86d6" /><stop offset="1" stopColor="#0c3f7c" /></linearGradient>
       <linearGradient id="g-fire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff9a3d" /><stop offset=".55" stopColor="#e63b22" /><stop offset="1" stopColor="#8a1020" /></linearGradient>
       <linearGradient id="g-flame-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff0a0" /><stop offset="1" stopColor="#ffa23a" /></linearGradient>
+      <linearGradient id="pp3d-body" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#5fe08a" /><stop offset=".5" stopColor="#1f9d4d" /><stop offset="1" stopColor="#0d5a2a" /></linearGradient>
+      <linearGradient id="pp3d-shine" x1="5" y1="3" x2="13" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#fff" stopOpacity=".55" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></linearGradient>
     <mask id="m-wr"><rect width="32" height="32" fill="#fff" /><rect x="2" y="12.6" width="8" height="6.8" fill="#000" /></mask>
     </defs>
   </svg>;
 }
 
 export function Icon3D({ name = 'arrow', size = 28 }) {
-  return <svg width={size} height={size} viewBox="0 0 32 32" className="icon-3d" aria-hidden="true">
+  return <svg width={size} height={size} viewBox="0 0 32 32" className={name === 'phone' ? 'icon-3d phone-ring' : 'icon-3d'} aria-hidden="true">
     {solid[name] || <g fill="none" stroke="#8a2233" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" transform="scale(1.333)">{paths[name] || paths.arrow}</g>}
   </svg>;
 }
 
-// Solid, lit handset used beside phone numbers. No background disc: the depth comes from gradients and a soft shadow.
+// Solid, lit handset used beside phone numbers. Its gradients live in Icon3DDefs: a copy inside each icon shares one id, and a copy in a hidden menu breaks every other handset. No background disc: the depth comes from gradients and a soft shadow.
 export function Phone3D({ size = 24 }) {
   const d = 'm7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z';
-  return <svg width={size} height={size} viewBox="0 0 24 24" className="phone-3d" aria-hidden="true">
-    <defs>
-      <linearGradient id="pp3d-body" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#c0394f" /><stop offset=".5" stopColor="#8a2233" /><stop offset="1" stopColor="#4d0f1b" /></linearGradient>
-      <linearGradient id="pp3d-shine" x1="5" y1="3" x2="13" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#fff" stopOpacity=".55" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></linearGradient>
-    </defs>
-    <path d={d} fill="url(#pp3d-body)" stroke="#3c0a15" strokeWidth=".6" strokeLinejoin="round" />
+  return <svg width={size} height={size} viewBox="0 0 24 24" className="phone-3d phone-ring" aria-hidden="true">
+    <path d={d} fill="url(#pp3d-body)" stroke="#083d1c" strokeWidth=".6" strokeLinejoin="round" />
     <path d={d} fill="url(#pp3d-shine)" />
     <path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".5" strokeWidth=".7" strokeLinecap="round" />
   </svg>;

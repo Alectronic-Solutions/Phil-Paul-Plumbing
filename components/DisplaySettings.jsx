@@ -69,7 +69,7 @@ export function DisplaySettingsProvider({ children }) {
           <button type="button" className="button button-outline" onClick={() => update({ ...defaultDisplay })} disabled={!changed}>Reset all</button>
           <button type="button" className="button button-primary" onClick={() => dialog.current.close()}>Done</button>
         </div>
-        <p className="display-help">Still having trouble? Call <a href={`tel:${business.telephone}`}>{business.phone}</a> or read our <Link href={business.accessibility}>Accessibility Statement</Link>.</p>
+        <p className="display-help"><span>Still having trouble?</span> <span>Call <a href={`tel:${business.telephone}`}>{business.phone}</a></span> <span>or read our <Link href={business.accessibility}>Accessibility Statement</Link>.</span></p>
       </div>
     </dialog>
   </DisplayContext.Provider>;

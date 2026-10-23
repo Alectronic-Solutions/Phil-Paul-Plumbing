@@ -451,3 +451,9 @@ body { font-size: 17px; }
 .hero-note svg { flex: none; color: var(--wine); }
 .hero-note li > span { display: grid; gap: 2px; font-weight: 700; }
 .hero-note small { font-size: 13px; font-weight: 500; color: var(--muted); }
+
+.dropdown-photo { display: inline-block; flex: none; width: 48px; height: 48px; border-radius: 12px; overflow: hidden; background: #f1eadd; box-shadow: 0 2px 6px #25282226; transition: transform .25s var(--ease), box-shadow .25s; }
+.dropdown-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dropdown-cities > a:hover .dropdown-photo, .dropdown-cities > a:focus-visible .dropdown-photo { transform: scale(1.06); box-shadow: 0 6px 14px #2528223a; }
+@media (max-width: 760px) { .areas-dropdown .dropdown-cities > a { padding-left: 8px; } .dropdown-photo { width: 44px; height: 44px; } }
+.dropdown-photo img[src*="galt-water-tower"] { object-position: 0 50%; }
