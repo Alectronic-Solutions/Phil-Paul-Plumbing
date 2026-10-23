@@ -141,7 +141,7 @@ export function Header() {
               <aside className="dropdown-feature"><img src={asset("/images/team-960.webp")} alt="The Phil and Paul's Plumbing team" width="640" height="360" loading="lazy" /><span>LOCAL HELP. ONE CALL AWAY.</span><h2>Questions?<br />Just call.</h2><a className="dropdown-call" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} />{business.phone}</a><small>A real person will help you<br />with the next step.</small></aside>
             </div>
           </div>
-          <a className="header-phone" href={`tel:${business.telephone}`}><Phone3D size={22} />{business.phone}</a>
+          <a className="header-phone" href={`tel:${business.telephone}`}><Phone3D key={currentPath} size={22} />{business.phone}</a>
           <Link href="/book-plumbing-services" className="button button-primary header-request">Request service<Icon name="diagonal" size={19} /></Link>
         </nav>
       </div>

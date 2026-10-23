@@ -27,7 +27,7 @@ export const warranty = {
     ['Have your invoice handy', 'Your invoice or the service address helps us find your job quickly.'],
     ['We come back and correct it', 'If the workmanship fails within a year, we return and put it right.'],
   ],
-  green: ['Workmanship on most repairs and installations', 'Corrections if our work fails within a year', 'Help registering equipment with its manufacturer'],
+  green: ['Workmanship on most repairs and installations', 'Corrections if our work fails within a year', 'Help registering equipment with its manufacturer', 'Leaks or failures caused by how we did the work', 'A return visit to put it right'],
   red: ['Damage from misuse', 'Freezing', 'Hard water scale', 'Work done by someone else', 'Normal wear'],
   faqs: [
     ['Do you stand behind your work?', 'We offer a one-year labor warranty on most repairs and installations. Ask about the coverage that applies to your job. Equipment manufacturer warranties are separate.'],

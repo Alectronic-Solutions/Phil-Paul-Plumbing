@@ -22,8 +22,13 @@
 .review-controls > button, .review-score > a { border-radius: 50%; }
 .review-controls > button { background: var(--white); box-shadow: var(--shadow-sm); transition: background .2s, border-color .2s, color .2s, box-shadow .2s; }
 .review-controls > button:hover { box-shadow: var(--shadow-md); }
-.phone-ring { transform-origin: 50% 60%; animation: phone-ring 2.4s ease-in-out infinite; }
-@keyframes phone-ring { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+.phone-ring { transform-origin: 50% 55%; animation: phone-ring 3.6s linear 3; }
+.nav-dropdown .phone-ring { animation: none; }
+@keyframes phone-ring {
+  0%, 22%, 100% { transform: translate(0, 0) rotate(0); }
+  2%, 6%, 10%, 14%, 18% { transform: translate(-1.2px, 0) rotate(-9deg); }
+  4%, 8%, 12%, 16%, 20% { transform: translate(1.2px, 0) rotate(9deg); }
+}
 @media (prefers-reduced-motion: reduce) { .phone-ring { animation: none; } }
 .phone-3d { flex: none; background: none; filter: drop-shadow(0 1px 0 #ffffff99) drop-shadow(0 3px 3px #0d5a2a55) drop-shadow(0 6px 8px #0d5a2a33); transition: transform .25s ease; }
 .hero-phone:hover .phone-3d, .header-phone:hover .phone-3d { transform: translateY(-2px) rotate(-8deg) scale(1.06); }
@@ -1110,6 +1115,32 @@ main > .about-feature:has(.about-feature-photo-portrait) { padding-block: clamp(
 .lic-card dt { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .lic-card dd { margin: 3px 0 0; font-weight: 600; color: var(--ink); }
 .lic-card > p { margin: 24px 0 0; font-style: italic; font-size: 14px; color: var(--muted); }
+/* Warranty card as a clipboard: hardboard with grain and bevel, stacked white paper, spring steel clip with rivets and hang hole */
+.lic-card.lic-clipboard { padding: 126px 40px 44px; border: 1px solid #5e3d20; border-radius: 12px; transform: rotate(-1.2deg);
+  background:
+    repeating-linear-gradient(90deg, rgba(60,32,10,.07) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(255,230,190,.07) 0 2px, transparent 2px 11px),
+    radial-gradient(120% 90% at 25% 10%, rgba(255,225,170,.28), transparent 60%),
+    linear-gradient(160deg, #b98650, #a06e3d 55%, #8c5d33);
+  box-shadow: 0 2px 0 #6f4a28, 0 18px 34px -10px rgba(40,22,8,.55), 0 6px 12px rgba(40,22,8,.25), inset 0 1px 0 rgba(255,235,200,.55), inset 0 -3px 5px rgba(50,25,5,.35), inset 3px 0 4px rgba(255,235,200,.12); }
+.lic-card.lic-clipboard::after { content: ""; position: absolute; z-index: 0; inset: 62px 18px 20px; border-radius: 2px 2px 3px 3px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.14), transparent 26px),
+    linear-gradient(115deg, rgba(255,255,255,0) 60%, rgba(120,120,130,.07) 100%),
+    repeating-linear-gradient(transparent 0 31px, rgba(80,130,200,.14) 31px 32px),
+    #fdfdfc;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 3px 3px 0 -1px #f1f1ef, 3px 3px 0 0 rgba(0,0,0,.14), 5px 5px 0 -1px #e8e8e5, 5px 5px 0 0 rgba(0,0,0,.12), 8px 10px 14px -4px rgba(0,0,0,.35); }
+.lic-card.lic-clipboard::before { content: ""; position: absolute; z-index: 2; top: 18px; left: 50%; width: 168px; height: 82px; transform: translateX(-50%); border-radius: 10px 10px 16px 16px; border: 1px solid #4f565d;
+  background:
+    radial-gradient(circle at 50% 14px, #3a2410 0 6px, #1b1008 6.5px, rgba(255,255,255,.7) 7px 8px, transparent 8.5px),
+    radial-gradient(circle at 20px 56px, #e9edf0 0 2px, #7a828a 3px, #4a5056 4.5px, transparent 5px),
+    radial-gradient(circle at calc(100% - 20px) 56px, #e9edf0 0 2px, #7a828a 3px, #4a5056 4.5px, transparent 5px),
+    linear-gradient(180deg, rgba(255,255,255,.9) 0, rgba(255,255,255,0) 4px),
+    linear-gradient(180deg, #d9dee3 0, #aeb6be 30%, #7f8890 52%, #5d656d 54%, #aab2ba 72%, #d3d8dd 100%);
+  box-shadow: 0 6px 8px -2px rgba(0,0,0,.5), 0 2px 2px rgba(0,0,0,.4), inset 0 -2px 3px rgba(0,0,0,.25); }
+.lic-card.lic-clipboard > * { position: relative; z-index: 1; }
+.lic-card.lic-clipboard .lic-card-head, .lic-card.lic-clipboard dd { color: #1d1d1b; }
+.lic-card.lic-clipboard .lic-card-head { border-bottom-color: #cfd6df; }
 .lic-steps h2 { margin: 0 0 28px; }
 .lic-steps ol { list-style: none; margin: 0 0 30px; padding: 0; position: relative; display: grid; gap: 22px; }
 .lic-steps ol::before { content: ""; position: absolute; left: 31px; top: 30px; bottom: 30px; width: 2px; background: linear-gradient(#8fbad4, #e1c797); }
@@ -1364,12 +1395,10 @@ main > .faq-section[id] { scroll-margin-top: 90px; }
   .premium-header .menu-toggle svg { color: inherit; stroke: currentColor; }
 }
 
-/* Service cards: centered copy on mobile */
-@media (max-width: 760px) {
-  .service-card-copy { text-align: center; }
-  .service-card-copy > div { justify-content: center; }
-  .service-card-copy > p { margin-inline: auto; }
-}
+/* Service cards: centered copy */
+.service-card-copy { text-align: center; }
+.service-card-copy > div { justify-content: center; }
+.service-card-copy > p { margin-inline: auto; }
 
 /* "We handle those too": centered stack on mobile */
 @media (max-width: 760px) {
@@ -1634,3 +1663,8 @@ main > .faq-section[id] { scroll-margin-top: 90px; }
   .process-step p { margin-top: 8px; line-height: 1.65; }
   .process-step:not(:last-child)::after { content: ""; position: absolute; top: 54px; left: calc(50% + 46px); width: calc(100% + 40px - 92px); height: 0; border-top: 2px dotted #8fbad4; opacity: .7; pointer-events: none; }
 }
+
+/* Booking page: plain call line (no card) and a checkmark on selected services */
+.booking-intro .urgent-call { padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+.service-picker .radio-mark { width: 18px; height: 18px; border: 1.5px solid #b4b5a8; border-radius: 4px; background: #fff; transition: background-color .15s, border-color .15s; }
+.service-picker .selected .radio-mark { border-color: var(--wine); background: var(--wine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E") center / 12px 12px no-repeat; }

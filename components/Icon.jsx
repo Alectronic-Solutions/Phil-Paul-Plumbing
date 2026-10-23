@@ -34,6 +34,16 @@ export function Icon({ name = 'arrow', size = 24, className = '' }) {
 }
 
 // Premium 3D service glyphs (no background tile). Each is a hand-built solid object: gradient bodies, bevels, gloss and a contact shadow.
+const Smartphone = <>
+  <rect x="6.2" y="1.4" width="11.6" height="21.2" rx="3" fill="#16241d" stroke="#0a120e" strokeWidth=".5" />
+  <rect x="7.6" y="3.6" width="8.8" height="16.8" rx="1.6" fill="url(#pp3d-body)" />
+  <rect x="7.6" y="3.6" width="8.8" height="16.8" rx="1.6" fill="url(#pp3d-shine)" />
+  <rect x="10.2" y="2.3" width="3.6" height=".9" rx=".45" fill="#3b4a42" />
+  <rect x="10.4" y="21" width="3.2" height=".7" rx=".35" fill="#3b4a42" />
+  <path transform="translate(12 12) scale(.34) translate(-11.7 -12.3)" d="m7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z" fill="#fff" />
+  <path d="M6.9 4.6c0-1.6 1-2.7 2.6-2.8" fill="none" stroke="#fff" strokeOpacity=".35" strokeWidth=".6" strokeLinecap="round" />
+</>;
+
 const solid = {
   recirc: <>
     <circle cx="16" cy="16" r="12.5" fill="url(#g-steelH)" />
@@ -177,7 +187,7 @@ const solid = {
   </>,
   phone: <>
     <ellipse cx="16" cy="29.4" rx="7" ry="1.3" fill="#062a14" opacity=".3" />
-    <g transform="translate(2 2) scale(1.1)"><path d="m7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z" fill="url(#g-green)" stroke="#083d1c" strokeWidth=".6" strokeLinejoin="round" /><path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".6" strokeWidth=".8" strokeLinecap="round" /></g>
+    <g transform="translate(.6 -1) scale(1.28)">{Smartphone}</g>
   </>,
   clock: <>
     <ellipse cx="16" cy="29.4" rx="8" ry="1.4" fill="#2e0710" opacity=".3" />
@@ -221,11 +231,8 @@ export function Icon3D({ name = 'arrow', size = 28 }) {
 
 // Solid, lit handset used beside phone numbers. Its gradients live in Icon3DDefs: a copy inside each icon shares one id, and a copy in a hidden menu breaks every other handset. No background disc: the depth comes from gradients and a soft shadow.
 export function Phone3D({ size = 24 }) {
-  const d = 'm7 3 3 5-2.5 2c1.2 3.1 3.4 5.3 6.5 6.5L16 14l5 3-.7 3.1c-.2.9-1 1.5-1.9 1.4C9.9 20.7 3.3 14.1 2.5 5.6c-.1-.9.5-1.7 1.4-1.9L7 3Z';
   return <svg width={size} height={size} viewBox="0 0 24 24" className="phone-3d phone-ring" aria-hidden="true">
-    <path d={d} fill="url(#pp3d-body)" stroke="#083d1c" strokeWidth=".6" strokeLinejoin="round" />
-    <path d={d} fill="url(#pp3d-shine)" />
-    <path d="M4.2 4.6 7 3.8l2 3.4" fill="none" stroke="#fff" strokeOpacity=".5" strokeWidth=".7" strokeLinecap="round" />
+    {Smartphone}
   </svg>;
 }
 

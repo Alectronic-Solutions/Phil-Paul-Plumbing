@@ -177,7 +177,7 @@ function HeroBackdrop({ image, alt }) {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.hasAttribute('data-display-motion')) return;
     let frame = 0;
     const update = () => { frame = 0; el.style.setProperty('--parallax', `${Math.min(window.scrollY * .3, 60).toFixed(1)}px`); };
     const onScroll = () => { frame ||= requestAnimationFrame(update); };
@@ -574,7 +574,7 @@ export function LicensingPage() {
 export function WarrantyPage() {
   return <><PageHero eyebrow="OUR WARRANTY" breadcrumb="Warranty" title={<>We stand behind<br /><span>our work.</span></>} image="fleet" alt="A Phil and Paul's service truck towing a trailer of water heaters in Lodi" backdrop proof={['One-year labor warranty', 'Most repairs and installations', 'Manufacturer coverage is separate']}><p>If something we installed or repaired is not right, call us. We would rather fix it than have you wonder.</p></PageHero>
     <section className="section lic-section"><div className="container lic-grid">
-      <article className="lic-card" aria-label="Our warranty at a glance"><div className="lic-card-head"><Icon3D name="shield" size={54} /><div><small>LABOR WARRANTY</small><strong>1 year</strong></div></div><dl><div><dt>Covers</dt><dd>Workmanship on most repairs and installations</dd></div><div><dt>Equipment</dt><dd>The manufacturer’s own warranty</dd></div><div><dt>Coverage details</dt><dd>Ask when you get your estimate</dd></div><div><dt>Questions</dt><dd>{business.phone}</dd></div></dl><p>Coverage can differ by job.<br />We will tell you what applies to yours.</p></article>
+      <article className="lic-card lic-clipboard" aria-label="Our warranty at a glance"><div className="lic-card-head"><Icon3D name="shield" size={54} /><div><small>LABOR WARRANTY</small><strong>1 year</strong></div></div><dl><div><dt>Covers</dt><dd>Workmanship on most repairs and installations</dd></div><div><dt>Equipment</dt><dd>The manufacturer’s own warranty</dd></div><div><dt>Coverage details</dt><dd>Ask when you get your estimate</dd></div><div><dt>Questions</dt><dd>{business.phone}</dd></div></dl><p>Coverage can differ by job.<br />We will tell you what applies to yours.</p></article>
       <div className="lic-steps"><Eyebrow>HOW TO REQUEST SERVICE</Eyebrow><h2>Something not right?<br />Here is what<br />to do.</h2><LicenseSteps steps={warranty.steps} /><Button href={`tel:${business.telephone}`} icon="phone">Call {business.phone}</Button></div>
     </div></section>
     <section className="section lic-flags"><div className="container"><div className="section-heading"><div><Eyebrow>THE FINE PRINT, PLAINLY</Eyebrow><h2>What is covered.<br />What is not.</h2></div><p className="section-heading-side">Short, so you can actually read it.</p></div><LicenseFlags green={warranty.green} red={warranty.red} greenTitle="Covered by our labor warranty" redTitle="Not covered" /></div></section>

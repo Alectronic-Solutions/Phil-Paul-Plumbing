@@ -216,6 +216,11 @@ textarea, .text-panel .form-field > textarea { resize: none; }
 .home-hero-shadow .hero-badge, .home-hero-shadow .hero-badge-lodi { position: static; width: 104px; height: 104px; transform: none; box-shadow: 0 0 0 4px #fffefa, 0 0 0 5px #25282222, 0 10px 26px #25282240; }
 .home-hero-shadow .hero-badge-yelp:hover { transform: translateY(-2px); }
 @media (max-width: 950px) { .home-hero-shadow .hero-badge, .home-hero-shadow .hero-badge-lodi { width: 88px; height: 88px; } }
+/* Tablet: the copy takes the left column, so the backdrop stays inside the right column instead of running under the text. */
+@media (min-width: 761px) and (max-width: 950px) {
+  .home-hero-shadow .page-hero-backdrop { inset: 0 0 0 auto; width: 47%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%), linear-gradient(0deg, transparent 0, #000 30%); mask-image: linear-gradient(90deg, transparent 0, #000 22%), linear-gradient(0deg, transparent 0, #000 30%); }
+  .home-hero-shadow .page-hero-backdrop img { object-position: 62% 40%; opacity: .9; transform: none; }
+}
 @media (max-width: 760px) {
   .home-hero-shadow .hero-visual { position: relative; min-height: 0; aspect-ratio: 4 / 3; margin: 22px -20px 0; }
   .home-hero-shadow .page-hero-backdrop { inset: 0; width: 100%; -webkit-mask-image: linear-gradient(transparent, #000 10%, #000 70%, transparent); mask-image: linear-gradient(transparent, #000 10%, #000 70%, transparent); -webkit-mask-composite: source-over; mask-composite: add; }
@@ -265,3 +270,124 @@ textarea, .text-panel .form-field > textarea { resize: none; }
 }
 
 .footer-watermark { bottom: 140px; }
+
+/* Plumbing-pipes texture behind the cream page background. Paper-coloured bands go transparent so it shows through;
+   cards, forms, header and footer keep their solid colours. Mirrored 2x2 tile, so no visible seams. */
+body { background-color: var(--paper); }
+/* The texture is a fixed layer (components/Parallax.jsx) that scrolls slower than the page. */
+.parallax-bg {
+  position: fixed; top: calc(-1 * var(--tile-h, 1582px)); left: 0; right: 0; height: calc(100% + var(--tile-h, 1582px));
+  z-index: -1; pointer-events: none; will-change: transform;
+  background-size: 1200px auto; background-position: center top; background-repeat: repeat;
+}
+:is(.home-hero, .services-section, .process-section, .faq-db, .legal-intro, .lic-flags, .booking-section) { background-color: transparent; }
+html[data-display-contrast] .booking-section { background-color: var(--paper); }
+@media (max-width: 760px) {
+  .parallax-bg { background-size: 700px auto; }
+}
+html[data-display-contrast] .parallax-bg { display: none; }
+html[data-display-contrast] :is(.home-hero, .services-section, .process-section, .faq-db, .legal-intro, .lic-flags) { background-color: var(--paper); }
+
+/* Soft section blending: no hard band edges. Light bands become translucent tints that fade to nothing at their top and
+   bottom so the pipes texture flows through; dark bands feather into it with a mask. */
+:root { --fade: clamp(72px, 9vw, 130px); }
+:is(.trust-bar, .why-trust-section, .contact-ready, .faq-section, .faq-section:last-child, .related-section) {
+  background: linear-gradient(180deg, transparent 0, #fffefa99 var(--fade), #fffefa99 calc(100% - var(--fade)), transparent 100%);
+  border: 0;
+}
+:is(.reviews-section, .reviews-wall, .faq-jump) {
+  background: linear-gradient(180deg, transparent 0, #ece7dcb3 var(--fade), #ece7dcb3 calc(100% - var(--fade)), transparent 100%);
+  background-blend-mode: normal;
+  border: 0;
+}
+:is(.area-section, .instagram-section, .contact-desk) { background: transparent; }
+.about-feature {
+  background-image: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+}
+.landing-hero {
+  background: #1c1e19;
+  -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - var(--fade)), transparent 100%);
+  mask-image: linear-gradient(180deg, #000 calc(100% - var(--fade)), transparent 100%);
+}
+.cta-section, .faq-section + .cta-section, .share-review + .cta-section {
+  background: linear-gradient(0deg, var(--ink) 0, transparent var(--fade)), radial-gradient(120% 140% at 85% 0%, #8a2533 0%, var(--wine) 45%, #5e1620 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade));
+  mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade));
+}
+.site-header { border-bottom-color: #dcd9cf66; }
+html[data-display-contrast] :is(.trust-bar, .why-trust-section, .contact-ready, .faq-section, .related-section, .reviews-section, .reviews-wall, .faq-jump) { background: var(--paper); }
+html[data-display-contrast] :is(.about-feature, .landing-hero, .cta-section) { -webkit-mask-image: none; mask-image: none; }
+
+/* Page hero: the paper band fades out at its bottom edge so the pipes texture flows into the next section. */
+.page-hero-shadow { background: linear-gradient(180deg, var(--paper) 0, var(--paper) calc(100% - 64px), transparent 100%); }
+html[data-display-contrast] .page-hero-shadow { background: var(--paper); }
+
+/* Readability floor: font-size only, no layout or colour changes.
+   Letterspaced labels never go below 13px, running text and fine print never below 14px. */
+.eyebrow, .utility, .utility span, .utility-inner, .utility-inner span,
+.map-overview-label, .map-to-lodi, .map-lodi-label small,
+.coupon-code small, .coupon-value small, .coupon-copy em,
+.form-heading > span, .form-heading small, .hero-phone small,
+.landing-call small, .contact-way small, .guide-related-label,
+.crew-aside-label, .landing-sub, .brand > small, .heritage-stamp > span,
+.faq-number, .faq-db-label, .faq-db-chip > span, .request-label,
+.main-nav .button, .header-request, .trust-grid dt, .guide-facts dt,
+dt, sup { font-size: 13px !important; }
+
+figcaption, .image-caption, .hero-photo-caption, .hero-photo-caption > span,
+.footer-warranty, .footer-bottom, .footer-bottom > div, .license,
+.footer-legal, .footer-legal span, .footer-legal a, .footer-credit,
+.footer-policies a, .footer-policies button, .bbb-line, .bbb-line > span,
+.trust-grid > a, .trust-grid > span, .review-source-note, .review-source-note a,
+.review-source-note span, .review-score > div > span:last-child,
+.review-card figcaption > div > span, .section-footnote, .warranty-note,
+.form-note, .consent-label, .consent-label > span, .consent-fine,
+.coupon-exp, .office-status, .wall-services, .crew-aside-note,
+.cta-actions > span, .urgent-call span, .booking-trust, .breadcrumbs,
+.awards p, .area-small, .area-layout .area-small, .contact-block small,
+.service-picker label, .form-field > label, .service-picker > legend,
+.form-error > p, .hero-note, .gallery-grid figcaption, .community-grid span,
+.footer-top p, .footer-top > div:not(:first-child) > a,
+.footer-top .footer-visit p, .footer-top > div:not(:first-child) > h2,
+.text-panel .consent-label, .text-panel .form-field > label,
+.text-notice, .text-emergency, .text-license, .consent-box,
+.display-toggle small, .display-help, .consent-empty, .consent-category ul,
+.legal-table td::before, .crew-facts span, .lic-card-head small,
+.coupon-sample, code { font-size: 14px !important; }
+
+.map-credit { font-size: 11px !important; }
+
+/* "How to redeem" / approach and team gallery bands: cream tint fades out at both edges so the pipes texture flows through. */
+.service-approach, .team-gallery {
+  background: linear-gradient(180deg, transparent 0, color-mix(in srgb, var(--cream) 85%, transparent) var(--fade), color-mix(in srgb, var(--cream) 85%, transparent) calc(100% - var(--fade)), transparent 100%);
+}
+html[data-display-contrast] :is(.service-approach, .team-gallery) { background: var(--cream); }
+
+/* Last-child FAQ bands (contact page and others): landing.css gives them an opaque gradient that wins on specificity, so restate the soft fade here. */
+main > .faq-section:last-child, .contact-page > .faq-section:last-child {
+  background: linear-gradient(180deg, transparent 0, #fffefa99 var(--fade), #fffefa99 calc(100% - var(--fade)), transparent 100%);
+}
+html[data-display-contrast] :is(main > .faq-section:last-child, .contact-page > .faq-section:last-child) { background: var(--paper); }
+
+/* Legal / sitemap body band: same soft fade as the other white bands so it doesn't cut across the pipes texture. */
+.legal-section { background: linear-gradient(180deg, transparent 0, #fffefa99 var(--fade), #fffefa99 calc(100% - var(--fade)), transparent 100%); }
+html[data-display-contrast] .legal-section { background: var(--white); }
+.dropdown-heading > span, .dropdown-feature > span, .dropdown-area-feature small,
+.map-station > span, .review-score > strong > span, .crew-polaroid-count { font-size: 13px !important; }
+.dropdown-heading > a, .dropdown-feature > small, .dropdown-area-note, .dropdown-area-note span,
+.dropdown-area-note a, .area-address-text, .area-address-text span, .area-address-text small,
+.area-address > a, .area-card-home small, .crew-service small, .lic-paper-call small,
+.urgent-call strong, .dropdown-services small, .dropdown-cities small, .dropdown-company small,
+.map-credit { font-size: 14px !important; }
+.map-credit { font-size: 11px !important; }
+.wall-meta span, .wall-meta time { font-size: 13px !important; }
+
+/* Trust bar is shorter than two full fades, so the pixel stops overlapped and the bottom edge was cut off mid-tint. Use percentages. */
+.trust-bar.trust-bar { background: linear-gradient(180deg, transparent 0, #fffefa99 35%, #fffefa99 65%, transparent 100%); }
+html[data-display-contrast] .trust-bar.trust-bar { background: var(--paper); }
+/* Text-us consent (desktop and phones): let the agreement wrap naturally across the full box width instead of a narrow column. */
+.text-panel .consent-box .consent-label { gap: 9px; }
+.text-panel .consent-box .consent-label > span { text-wrap: pretty; }
+.text-panel .consent-points { padding-left: 25px; }
