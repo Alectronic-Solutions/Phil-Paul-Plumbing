@@ -36,6 +36,6 @@ export function ServiceAreaMap({ variant = 'full', activeSlug = null }) {
       <span className="map-station map-clements pos-tl" style={stationStyle({ x: 555, y: 160 })}><i /><span>Clements</span></span>
       <span className={`map-lodi ${activeSlug === 'lodi' ? 'is-active' : ''}`} style={stationStyle({ x: 300, y: 235 })}><span className="map-pin"><Icon name="pin" size={22} /></span><span className="map-lodi-label"><strong>LODI</strong><small>HOME BASE</small></span></span>
     </div>
-    {!compact && <a className="map-note" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} /><span>Not sure? Call <b>{business.phone}</b> and we will confirm your address.</span><Icon name="arrow" size={16} /></a>}
+    {!compact && <a className="map-note" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} /><span>Not sure? Call <b>{business.phone}</b> <span className="map-note-rest">and we will confirm your address.</span></span><Icon name="arrow" size={16} /></a>}
   </div>;
 }

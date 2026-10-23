@@ -4,6 +4,7 @@ import '../styles/polish.css';
 import '../styles/landing.css';
 import '../styles/motion.css';
 import '../styles/finish.css';
+import '../styles/tablet.css';
 import { Motion } from '../components/Motion';
 import { Parallax } from '../components/Parallax';
 export default function App({ Component, pageProps }) { return <><Parallax /><Component {...pageProps} /><Motion /></>; }

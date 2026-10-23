@@ -1,0 +1,70 @@
+/* Tablet layouts (iPad portrait through iPad landscape). Loaded last; every rule stays inside the 761px–1100px range so phone and desktop are untouched. */
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  /* Footer: brand row on top, three link columns, then the visit details in one even row */
+  .footer-top { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: "brand brand brand" "what good areas" "visit visit visit"; gap: 36px 32px; padding-bottom: 40px; }
+  .footer-top > div:nth-child(1) { grid-area: brand; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr; column-gap: 40px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid #44483c; }
+  .footer-top > div:nth-child(1) > :first-child { grid-column: 1; grid-row: 1; justify-self: start; }
+  .footer-top > div:nth-child(1) > p:not(.footer-follow) { grid-column: 1; grid-row: 2 / 4; margin: 14px 0 0; }
+  .footer-top > div:nth-child(1) > .footer-phone { grid-column: 2; grid-row: 1; align-self: center; margin-top: 0; }
+  .footer-top > div:nth-child(1) > .footer-follow { grid-column: 2; grid-row: 2; margin-top: 14px; }
+  .footer-top > div:nth-child(1) > .footer-social { grid-column: 2; grid-row: 3; }
+  .footer-top > div:nth-child(2) { grid-area: what; }
+  .footer-top > div:nth-child(3) { grid-area: good; }
+  .footer-top > div:nth-child(4) { grid-area: areas; }
+  .footer-top .footer-visit { grid-area: visit; display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; align-items: start; gap: 14px 28px; padding-top: 28px; border-top: 1px solid #44483c; }
+  .footer-top .footer-visit > h2 { grid-column: 1 / -1; margin: 0; }
+  .footer-top .footer-visit p, .footer-top .footer-visit .license, .footer-top .footer-visit .bbb-line { margin: 0; min-width: 0; }
+  .footer-top .footer-visit .bbb-line { margin-top: 0; }
+
+  /* Footer bottom: policy links on one centered row, copyright and credit under them. The side padding keeps both clear of the fixed corner buttons. */
+  .footer-bottom { flex-direction: column-reverse; align-items: center; gap: 16px; padding: 22px 72px 26px; text-align: center; }
+  .footer-bottom > .footer-policies { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; white-space: normal; }
+  .footer-bottom > .footer-legal { justify-content: center; gap: 10px 16px; }
+  .footer-warranty { text-align: center; }
+
+  /* Keep phone pills on one line */
+  .faq-section .faq-help .text-link, .cta-call { white-space: nowrap; }
+  .faq-section .faq-help .text-link { padding-right: 20px; }
+
+  /* Service area map is narrower here: drop the corner label and the "Home base" caption so neither collides with the routes. The Lodi pin and name still mark home. */
+  .area-visual .map-overview-label, .area-visual .map-lodi-label small { display: none; }
+
+  /* Instagram: three posts across instead of two plus an orphan */
+  .instagram-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+
+/* Large tablets: give the call-to-action copy enough room for its heading and phone pill */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .cta-section .cta-inner { gap: 40px; }
+  .cta-card { flex: 0 1 460px; }
+}
+
+/* Small tablets (iPad portrait): three narrow columns get too tight here */
+@media (min-width: 761px) and (max-width: 900px) {
+  /* Request form: use the full card width for paired fields */
+  .cta-card .form-row { grid-template-columns: 1fr 1fr; }
+
+  /* Home "how it works" steps: less side padding so the copy is not squeezed */
+  .process-step { padding-inline: 10px; }
+  .process-step p { max-width: none; }
+
+  /* Service "the way we work" cards: one card per row, number beside the copy */
+  .approach-grid { grid-template-columns: 1fr; gap: 16px; }
+  .approach-grid > .water-card { display: block; }
+  .water-card-copy { display: grid; grid-template-columns: 64px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 26px; align-items: start; padding: 30px 34px; text-align: left; }
+  .water-card-copy > .approach-number { grid-row: 1 / 3; margin: 0; }
+  .approach-grid .water-card-copy > h3, .approach-grid .water-card-copy > p { max-width: none; margin-inline: 0; }
+  .approach-grid .water-card-copy > p { margin-top: 8px; }
+
+  /* Service area crew facts: stack the three facts so their labels read on one line */
+  .crew-facts { grid-template-columns: 1fr; }
+  .crew-facts li { flex-direction: row; align-items: center; gap: 14px; padding: 14px 4px; }
+  .crew-facts li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .crew-facts li > svg { margin-bottom: 0; }
+  .crew-facts strong { min-width: 3.2em; }
+  .areas-overview .crew-facts li { align-items: center; text-align: left; }
+
+  /* Licensing and warranty clipboard: keep it card-sized once it stacks */
+  .lic-grid > .lic-card { width: 100%; max-width: 500px; justify-self: center; }
+}

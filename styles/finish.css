@@ -261,12 +261,13 @@ textarea, .text-panel .form-field > textarea { resize: none; }
   .cta-card .consent-label .consent-fine { font-size: 11.5px; }
 }
 
-/* Consent on phones: larger, easier-to-read text, bigger checkbox, and fine print spanning the full box width. */
+/* Consent on phones: checkbox in its own column, copy left-aligned beside it, fine print set off under a hairline in the same column. */
 @media (max-width: 600px) {
-  .cta-card .consent-label { gap: 10px; padding: 12px 12px 10px; font-size: 13px; line-height: 1.45; }
-  .cta-card .consent-label > input { width: 20px; height: 20px; margin-top: 0; }
-  .cta-card .consent-label > span { text-wrap: wrap; }
-  .cta-card .consent-label .consent-fine { margin: 8px 0 0 -30px; padding-top: 8px; font-size: 11.5px; line-height: 1.45; text-wrap: balance; text-align: center; }
+  .cta-card .consent-label { gap: 12px; padding: 14px 14px 13px; font-size: 13px; line-height: 1.5; }
+  .cta-card .consent-label > input { width: 20px; height: 20px; margin-top: 1px; }
+  .cta-card .consent-label > span { text-wrap: pretty; }
+  .cta-card .consent-label .consent-fine { margin: 10px 0 0; padding-top: 10px; font-size: 12px; line-height: 1.5; text-wrap: pretty; text-align: left; }
+  .cta-card .form-submit { justify-content: center; gap: 12px; }
 }
 
 .footer-watermark { bottom: 140px; }

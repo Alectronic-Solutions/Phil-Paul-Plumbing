@@ -43,6 +43,8 @@ export function Header() {
   const header = useRef(null);
   const triggers = useRef({});
   const mobileTrigger = useRef(null);
+  const navEl = useRef(null);
+  const [more, setMore] = useState(false);
   const router = useRouter();
   const currentPath = router.asPath.split(/[?#]/)[0].replace(/(.)\/$/, '$1');
 
@@ -75,6 +77,20 @@ export function Header() {
 
   useEffect(() => { if (panel !== 'areas') setHoverArea(null); }, [panel]);
 
+  // The mobile menu scrolls inside itself, so show a "more below" cue until the reader reaches the bottom.
+  useEffect(() => {
+    const el = navEl.current;
+    if (!open || !el) { setMore(false); return undefined; }
+    const check = () => setMore(el.scrollHeight - el.scrollTop - el.clientHeight > 24);
+    check();
+    el.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    const watch = new ResizeObserver(check);
+    watch.observe(el);
+    [...el.children].forEach(c => watch.observe(c));
+    return () => { el.removeEventListener('scroll', check); window.removeEventListener('resize', check); watch.disconnect(); };
+  }, [open, panel]);
+
   // Highlights the matching station on the menu map while a town card is hovered or focused.
   const areaHover = slug => ({ onMouseEnter: () => setHoverArea(slug), onFocus: () => setHoverArea(slug), onBlur: () => setHoverArea(null) });
 
@@ -103,7 +119,7 @@ export function Header() {
       <div className="container header-inner">
         <Brand />
         <button ref={mobileTrigger} className="menu-toggle" aria-expanded={open} aria-controls="main-navigation" onClick={() => { setOpen(!open); setPanel(null); }}><span>{open ? 'Close' : 'Menu'}</span><Icon name={open ? 'close' : 'menu'} size={22} /></button>
-        <nav id="main-navigation" className={`main-nav ${open ? 'is-open' : ''}`} aria-label="Main navigation">
+        <nav id="main-navigation" ref={navEl} className={`main-nav ${open ? 'is-open' : ''}`} aria-label="Main navigation">
           <div className="nav-item">
             {trigger('services', 'Services')}
             <div id="nav-services" className="nav-dropdown services-dropdown" hidden={panel !== 'services'} onKeyDown={panelKeys}>
@@ -143,6 +159,7 @@ export function Header() {
           </div>
           <a className="header-phone" href={`tel:${business.telephone}`}><Phone3D key={currentPath} size={22} />{business.phone}</a>
           <Link href="/book-plumbing-services" className="button button-primary header-request">Request service<Icon name="diagonal" size={19} /></Link>
+        <div className="nav-scroll-cue" data-visible={more ? 'true' : 'false'} aria-hidden="true"><button type="button" tabIndex={-1} onClick={() => navEl.current?.scrollBy({ top: navEl.current.clientHeight * 0.7, behavior: 'smooth' })}>Scroll for more<Icon name="chevron" size={16} /></button></div>
         </nav>
       </div>
     </header>

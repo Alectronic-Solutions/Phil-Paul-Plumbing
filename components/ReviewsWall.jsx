@@ -49,14 +49,14 @@ export function ReviewsWall() {
         <div className="wall-summary">
           <strong>{business.rating.value}<span>/5</span></strong>
           <div>
-            <Stars />
+            <span className="wall-stars"><Stars /><img className="google-mark" src={asset('/images/google-g.svg')} alt="Google" width="20" height="20" /></span>
             <span>{business.rating.count} Google reviews as of {business.rating.asOf}</span>
           </div>
         </div>
       </div>
       <div className="wall-grid">{visible.map((r, i) => <WallCard key={`${r.name}-${i}`} review={r} />)}</div>
       <div className="wall-foot">
-        <p>Showing {visible.length} of {business.rating.count} reviews. {googleReviews.length < business.rating.count && 'The rest are on our Google profile.'}</p>
+        <p>Showing {visible.length} of {business.rating.count} reviews. {googleReviews.length < business.rating.count && <><br className="wall-br" />The rest are on our Google profile.</>}</p>
         <div className="button-group">
           {remaining > 0 && <button type="button" className="button button-outline" onClick={() => setShown(shown + PAGE)}>Show {Math.min(PAGE, remaining)} more</button>}
           <a className="button button-primary" href={business.google} target="_blank" rel="noopener noreferrer">Read all on Google<Icon name="diagonal" size={16} /></a>

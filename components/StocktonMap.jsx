@@ -50,7 +50,7 @@ export function StocktonMap({ slug, neighborhoods, spots, activeName = null, onH
       })}
       <small className="map-credit">Map data © OpenStreetMap contributors</small>
     </div>
-    <a className="map-note" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} /><span>Not sure? Call <b>{business.phone}</b> and we will confirm your address.</span><Icon name="arrow" size={16} /></a>
+    <a className="map-note" href={`tel:${business.telephone}`}><Icon3D name="phone" size={26} /><span>Not sure? Call <b>{business.phone}</b> <span className="map-note-rest">and we will confirm your address.</span></span><Icon name="arrow" size={16} /></a>
   </div>;
 }
 

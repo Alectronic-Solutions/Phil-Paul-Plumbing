@@ -60,7 +60,7 @@ for (const page of pages) {
   const shareFile = 'out' + new URL(image).pathname.slice((process.env.NEXT_PUBLIC_BASE_PATH || '').length);
   assert((await stat(shareFile)).isFile(), `Social image missing: ${page.route}`);
   const dims = (await sharp(shareFile).metadata());
-  assert(dims.width === 1200 && dims.height === 630, `Social image must be 1200x630: ${page.route}`);
+  assert(dims.width === shareImage(page).width && dims.height === shareImage(page).height, `Social image size must match the og:image dimensions: ${page.route}`);
   assert(!seen.titles.has(page.title) && !seen.descriptions.has(page.description), `Duplicate title or description: ${page.route}`);
   seen.titles.add(page.title); seen.descriptions.add(page.description);
   assert(page.title.length <= 65 && page.description.length >= 70 && page.description.length <= 165, `Title or description length: ${page.route}`);
