@@ -104,7 +104,7 @@ textarea, .text-panel .form-field > textarea { resize: none; }
 .text-panel .form-submit { width: 100%; margin-top: 12px; min-height: 52px; justify-content: center; font-size: 16px; letter-spacing: .02em; }
 .text-panel .text-emergency { margin: 16px 0 0; padding: 12px 14px; border-radius: 12px; background: #f3eee2; font-size: 12.5px; line-height: 1.55; color: var(--ink); text-wrap: balance; }
 .text-panel .text-emergency a { font-weight: 700; }
-.text-panel .text-license { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #ece7dc; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #8a8b80; }
+.text-panel .text-license { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #ece7dc; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #5a5b52; }
 .text-panel .text-panel-done { padding: 18px 0 8px; }
 @media (max-width: 760px) {
   .text-panel { border-radius: 20px; }
@@ -266,7 +266,7 @@ textarea, .text-panel .form-field > textarea { resize: none; }
   .cta-card .consent-label { gap: 10px; padding: 12px 12px 10px; font-size: 13px; line-height: 1.45; }
   .cta-card .consent-label > input { width: 20px; height: 20px; margin-top: 0; }
   .cta-card .consent-label > span { text-wrap: wrap; }
-  .cta-card .consent-label .consent-fine { margin: 8px 0 0 -30px; padding-top: 8px; font-size: 11.5px; line-height: 1.45; text-wrap: balance; }
+  .cta-card .consent-label .consent-fine { margin: 8px 0 0 -30px; padding-top: 8px; font-size: 11.5px; line-height: 1.45; text-wrap: balance; text-align: center; }
 }
 
 .footer-watermark { bottom: 140px; }
@@ -391,3 +391,38 @@ html[data-display-contrast] .trust-bar.trust-bar { background: var(--paper); }
 .text-panel .consent-box .consent-label { gap: 9px; }
 .text-panel .consent-box .consent-label > span { text-wrap: pretty; }
 .text-panel .consent-points { padding-left: 25px; }
+
+/* Readability pass (senior-friendly): bolder headings, larger and darker eyebrow labels, no tiny text on the core pages. */
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -.015em; }
+h1, h2 { text-shadow: none; }
+.eyebrow, .section-heading .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: .1em; line-height: 1.35; }
+.eyebrow > span { height: 3px; }
+.hero-photo-caption, .image-caption, .dropdown-heading > span, .guide-related-label, .lic-card-head small, .coupon-value small, .coupon-copy em { font-size: 13px; }
+.trust-grid dt, .contact-page .office-status, .city-landing .landing-sub, .faq-db-label, .draft-facts dt, .lic-card dt, .booking-intro .urgent-call strong { font-size: 14px; }
+.crew-facts span, .crew-service small, .wall-card > header span:not(.wall-avatar), .wall-services, .coupon-exp, .faq-db-chip span, .dropdown-services small, .dropdown-cities small, .dropdown-company small, .dropdown-feature > small, .guide-facts dt, .contact-page .contact-way small, .cta-copy > small, .awards > p, .areas-overview .crew-aside-note, .wall-summary > div, .review-link-note { font-size: 14px; }
+.utility-inner, .breadcrumbs, .booking-trust { font-size: 14px; }
+.nav-trigger, .premium-header .header-phone { font-size: 15px; }
+.service-card p { font-size: 16px; }
+@media (max-width: 950px) {
+  .main-nav > a:not(.button), .trust-grid > a, .trust-grid > span, .hero-note, .service-picker label { font-size: 14px; }
+  .service-card p { font-size: 15px; }
+  .eyebrow, .section-heading .eyebrow { font-size: 14px; }
+}
+
+/* Readability pass, part 2: body copy, darker muted text, widget/consent/map text, calmer background texture. */
+:root { --muted: #2f302a; }
+.hero-copy > p, .page-hero-copy > p { font-size: 18px; line-height: 1.6; max-width: 34em; }
+.section-heading p, .detail-layout p, .why-trust-list p, .process-step p, .about-feature-copy p, .landing-hero p, .legal-body p, .legal-body li { font-size: 17px; line-height: 1.65; }
+.service-card p, .faq-db p { font-size: 16px; }
+.parallax-bg { opacity: .55; }
+.text-panel .consent-label, .text-panel .consent-box, .text-panel .consent-box .consent-label, .text-panel .text-notice, .text-panel .text-emergency, .text-panel .text-license, .text-notice, .text-emergency, .text-license { font-size: 14px; line-height: 1.5; }
+.text-panel .form-field > label, .text-panel .text-bubble, .text-bubble { font-size: 14px; }
+.cta-card .consent-label, .cta-card .consent-label .consent-fine { font-size: 14px; }
+.consent-banner p, .consent-category p, .consent-category ul, .consent-category .consent-empty, .consent-always, .display-toggle small, .display-help { font-size: 15px !important; }
+.consent-dialog:not(.display-dialog) .consent-dialog-body > p, .consent-dialog:not(.display-dialog) .consent-category p, .consent-dialog:not(.display-dialog) .consent-category ul, .consent-dialog:not(.display-dialog) .consent-category .consent-empty { font-size: 14.5px; }
+.map-credit, .map-overview-label, .map-lodi-label small, .map-to-lodi, .map-hood > span, .map-station > span, .coupon-sample, .coupon-code small, .city-landing .landing-call small { font-size: 13px !important; }
+.map-note, .wall-meta span, .wall-meta time, .footer-follow, .city-landing .chip-list-zip > li, .city-landing .landing-hours { font-size: 14px !important; }
+@media (max-width: 950px) {
+  .hero-copy > p, .page-hero-copy > p { font-size: 17px; }
+  .text-panel .consent-label, .text-panel .consent-box, .text-panel .text-emergency { font-size: 13.5px; }
+}
