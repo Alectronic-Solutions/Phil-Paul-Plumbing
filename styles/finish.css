@@ -34,7 +34,7 @@ h1, h2 { text-shadow: 0 1px 0 #fffefa, 0 6px 18px #2528220e; }
 .text-link:hover { text-decoration-color: currentColor; }
 .eyebrow { text-shadow: 0 1px 0 #fffefa; }
 ::selection { background: var(--wine); color: var(--white); text-shadow: none; }
-html { scrollbar-color: #b9b3a3 var(--paper); }
+html { scrollbar-color: var(--wine) var(--paper); }
 
 /* Gradient on every button style, not just the primary. */
 .button-primary, .consent-choice, .review-link-cta, .header-request, .form-submit { background-image: linear-gradient(180deg, #ffffff1f, #ffffff00 55%), linear-gradient(180deg, #7e202c, var(--wine-dark)); box-shadow: inset 0 1px 0 #ffffff2e, 0 1px 2px #54151e40, 0 8px 20px #751c2833; }

@@ -51,12 +51,36 @@ export function CrewPolaroids({ Photo }) {
 
   const move = step => setActive(a => (a + step + n) % n);
 
+  // Click/touch and drag: the top photo follows the pointer, and releasing past the threshold moves to the next or previous one.
+  const drag = useRef(null);
+  const [dx, setDx] = useState(0);
+  const onDown = e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    drag.current = { x: e.clientX, id: e.pointerId };
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+  const onMove = e => {
+    if (!drag.current) return;
+    const d = e.clientX - drag.current.x;
+    if (Math.abs(d) > 4 || dx) setDx(d);
+  };
+  const onUp = e => {
+    if (!drag.current) return;
+    const d = e.clientX - drag.current.x;
+    drag.current = null;
+    setDx(0);
+    if (Math.abs(d) > 50) move(d < 0 ? 1 : -1);
+  };
+
   return <div className="crew-polaroids" ref={root} role="group" aria-roledescription="carousel" aria-label="Photos of the Phil and Paul’s crew"
     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onFocus={() => setHover(true)} onBlur={() => setHover(false)}>
-    <div className="crew-polaroid-stack" aria-live={running ? 'off' : 'polite'}>
+    <div className={`crew-polaroid-stack${dx ? ' is-dragging' : ''}`} aria-live={running ? 'off' : 'polite'}
+      onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}>
       {crew.map(([name, alt, caption], i) => {
         const pos = (i - active + n) % n;
-        return <figure key={name} className="crew-polaroid" data-pos={pos > 2 ? 'hidden' : pos} style={{ '--tilt': `${tilts[i]}deg` }} aria-hidden={pos !== 0}>
+        const style = { '--tilt': `${tilts[i]}deg` };
+        if (pos === 0 && dx) style.transform = `translateX(${dx}px) rotate(${dx / 20}deg)`;
+        return <figure key={name} className="crew-polaroid" data-pos={pos > 2 ? 'hidden' : pos} style={style} aria-hidden={pos !== 0}>
           <Photo name={name} alt={alt} sizes="(max-width: 760px) 70vw, 340px" />
           <figcaption>{caption}</figcaption>
         </figure>;

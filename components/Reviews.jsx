@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { business, reviews } from '../content/business.mjs';
+import { business, reviewRows } from '../content/business.mjs';
 import { Icon } from './Icon';
 import { useMotionOff } from './DisplaySettings';
 import { asset } from '../lib/asset.mjs';
@@ -103,7 +103,7 @@ export function Reviews({ full = false }) {
   const motionOff = useMotionOff();
   const firstMove = useRef(null);
   const secondMove = useRef(null);
-  const second = [...reviews.slice(2), ...reviews.slice(0, 2)].reverse();
+  const [first, second] = reviewRows;
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -115,7 +115,7 @@ export function Reviews({ full = false }) {
   function step(direction) { setPaused(true); firstMove.current?.(direction); secondMove.current?.(-direction); }
 
   return <section className={`reviews-section section scrolling-reviews ${full ? 'reviews-full' : ''}`} aria-label="Customer reviews"><div className="container"><div className="section-heading"><div><div className="eyebrow">FROM OUR NEIGHBORS</div><h2>Good work gets<br />people talking.</h2></div><div className="review-score"><strong>{business.rating.value}<span>/5</span></strong><div><div className="review-stars-row"><Stars label="" /><a href={business.google} target="_blank" rel="noopener noreferrer" aria-label="Read all Google reviews"><img className="google-mark" src={asset("/images/google-g.svg")} alt="Google" width="22" height="22" /></a></div><span>{business.rating.count} Google reviews as of {business.rating.asOf}</span></div></div></div></div>
-    <ReviewRow items={reviews} direction={1} paused={paused} reduced={reduced} motionOff={motionOff} onInteract={() => setPaused(true)} api={firstMove} />
+    <ReviewRow items={first} direction={1} paused={paused} reduced={reduced} motionOff={motionOff} onInteract={() => setPaused(true)} api={firstMove} />
     <ReviewRow items={second} direction={-1} paused={paused} reduced={reduced} motionOff={motionOff} onInteract={() => setPaused(true)} api={secondMove} secondary stagger={0.5} />
     <div className="container reviews-bottom"><div className="review-source-note"><span>Real customers. Reviews from Google.</span><a href={business.google} target="_blank" rel="noopener noreferrer">Read all reviews<Icon name="diagonal" size={15} /></a></div><div className="review-controls"><button onClick={() => step(-1)} aria-label="Previous reviews"><Icon className="reverse-arrow" name="arrow" size={21} /></button><button onClick={() => setPaused(!paused)} aria-label={reduced ? 'Automatic scrolling is off for reduced motion' : paused ? 'Play automatic review scrolling' : 'Pause automatic review scrolling'} aria-pressed={paused} disabled={reduced}><Icon name={paused || reduced ? 'play' : 'pause'} size={18} /></button><button onClick={() => step(1)} aria-label="Next reviews"><Icon name="arrow" size={21} /></button></div></div>
   </section>;

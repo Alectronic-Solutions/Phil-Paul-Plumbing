@@ -443,8 +443,41 @@ export const reviews = [
     "text": "Excellent service! Great explanations, prompt, and cost efficient.",
     "service": "Commercial customer",
     "profile": "https://www.google.com/maps/contrib/112314188013151123869/reviews?hl=en"
+  },
+  {
+    "name": "Sharon G.",
+    "text": "The cost was very fair and the service was excellent! We will be using Phil & Paul’s service from now on!!",
+    "service": "Sewer repair",
+    "profile": business.google
+  },
+  {
+    "name": "Elizabeth H.",
+    "text": "Same day service. Got here super fast for a clogged urinal at my work. Had it cleared in no time.",
+    "service": "Commercial plumbing",
+    "profile": business.google
+  },
+  {
+    "name": "Joe W.",
+    "text": "Fantastic service! Quick response! This was literally “same day service”!",
+    "service": "Plumbing leak repair",
+    "profile": business.google
+  },
+  {
+    "name": "Justin H.",
+    "text": "Great local plumbing company! Honest prices and quality work.",
+    "service": "Plumbing service",
+    "profile": business.google
+  },
+  {
+    "name": "Jacob W.",
+    "text": "I have tried other plumbers and never got the quality service we always receive from Phil & Pauls.",
+    "service": "Home & commercial",
+    "profile": business.google
   }
 ];
+
+// The scrolling carousel shows two rows; each row gets its own five reviews so nothing repeats between them.
+export const reviewRows = [reviews.slice(0, 5), reviews.slice(5, 10)];
 
 export const commonFaqs = [
   ['Where do you work?', 'We are based in Lodi and serve Stockton, Galt, and surrounding communities, including Acampo, Woodbridge, Lockeford, and Clements. Call if you are unsure whether your address is in our service area.'],

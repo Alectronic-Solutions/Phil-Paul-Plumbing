@@ -643,11 +643,11 @@ a.map-station:focus-visible > span { outline: 2px solid var(--wine); outline-off
 }
 
 /* Slim page scrollbar */
-html { scrollbar-width: thin; scrollbar-color: #b9b3a4 transparent; }
+html { scrollbar-width: thin; scrollbar-color: var(--wine, #751c28) transparent; }
 html::-webkit-scrollbar { width: 8px; height: 8px; }
 html::-webkit-scrollbar-track { background: transparent; }
-html::-webkit-scrollbar-thumb { background: #b9b3a4; border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
-html::-webkit-scrollbar-thumb:hover { background: var(--wine, #7a2a3a); background-clip: content-box; }
+html::-webkit-scrollbar-thumb { background: var(--wine, #751c28); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+html::-webkit-scrollbar-thumb:hover { background: var(--wine-dark, #54151e); background-clip: content-box; }
 
 /* Service glyphs match the home page cards everywhere they appear */
 .dropdown-icon > svg.icon-3d { width: 42px; height: 42px; }
@@ -845,6 +845,11 @@ html::-webkit-scrollbar-thumb:hover { background: var(--wine, #7a2a3a); backgrou
 .crew-polaroid-controls { margin-top: 28px; align-items: center; }
 .crew-polaroid-count { margin-left: 8px; font-size: 12px; letter-spacing: .08em; color: var(--muted); }
 @media (max-width: 760px) { .crew-polaroids { margin-top: 32px; max-width: 320px; } }
+@media (min-width: 1001px) { .areas-overview .detail-layout > div:first-child { margin-left: clamp(24px, 4vw, 64px); } }
+.crew-polaroid-stack { touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.crew-polaroid-stack.is-dragging { cursor: grabbing; }
+.crew-polaroid-stack.is-dragging .crew-polaroid[data-pos="0"] { transition: none; }
+.crew-polaroid img { -webkit-user-drag: none; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .crew-polaroid { transition: none; } }
 
 /* Section blending: every section edge fades into its neighbour instead of ending on a hard line */
@@ -1286,6 +1291,18 @@ main > .faq-section[id] { scroll-margin-top: 90px; }
 /* Underlined group titles and a narrower results column. */
 .faq-db-group { padding-bottom: 8px; border-bottom: 2px solid var(--wine); width: fit-content; min-width: 140px; }
 .faq-db-panel { grid-template-columns: 340px minmax(0, 620px); }
+/* Mobile: single column, kept after the desktop grid so it wins the cascade. */
+@media (max-width: 860px) {
+  .faq-db-panel { grid-template-columns: minmax(0, 1fr); width: auto; max-width: 100%; }
+  .faq-db-side, .faq-db-main { min-width: 0; }
+}
+@media (max-width: 480px) {
+  .faq-db { padding: 32px 0 48px; }
+  .faq-db-panel { padding: 14px; border-radius: var(--radius); }
+  .faq-db .faq-item summary { padding: 13px 14px; gap: 10px; }
+  .faq-db .faq-answer { padding: 0 14px 16px; }
+  .faq-db-search { padding: 0 14px; }
+}
 
 /* Check list: sequential, slow tick-draw that replays on every scroll into view */
 .check-list-anim > li { opacity: 0; transform: translateX(-10px); }
@@ -1454,6 +1471,8 @@ main > .faq-section[id] { scroll-margin-top: 90px; }
 
 /* Line break that only applies on mobile (e.g. the gas safety notice). */
 .br-mobile { display: none; }
+.br-desktop { display: none; }
+@media (min-width: 761px) { .br-desktop { display: inline; } }
 @media (max-width: 760px) { .br-mobile { display: inline; } }
 
 /* Crew overview on mobile: center the heading, polaroid pile, controls and aside copy. */
