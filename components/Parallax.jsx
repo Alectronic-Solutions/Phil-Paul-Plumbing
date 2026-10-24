@@ -24,9 +24,8 @@ export function Parallax() {
     const root = document.documentElement;
     const phone = window.matchMedia('(max-width: 760px)');
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches || root.hasAttribute('data-display-motion');
+    // styles/finish.css sets --tile-h per breakpoint, so the layer is already in place on first paint (no layout shift).
     const tileHeight = () => (phone.matches ? 700 : TILE.width) * TILE.height / TILE.width;
-    const setTile = () => el.style.setProperty('--tile-h', `${tileHeight().toFixed(1)}px`);
-    setTile();
     if (still) { el.style.transform = 'translate3d(0,0,0)'; return undefined; }
 
     const items = [];
@@ -47,27 +46,27 @@ export function Parallax() {
       const tile = tileHeight();
       const rate = phone.matches ? 0.16 : 0.34;
       const shift = (((-window.scrollY * rate) % tile) + tile) % tile;
-      el.style.transform = `translate3d(0,${shift.toFixed(1)}px,0)`;
       const mid = window.innerHeight / 2;
       const scale = phone.matches ? 0.5 : 1;
-      for (const item of items) {
-        if (!item.visible) continue;
-        const rect = item.node.getBoundingClientRect();
-        const centre = rect.top - item.applied + rect.height / 2;
+      // Read every rect before writing any style, so the loop never forces a reflow.
+      const visible = items.filter(item => item.visible);
+      const rects = visible.map(item => item.node.getBoundingClientRect());
+      el.style.transform = `translate3d(0,${shift.toFixed(1)}px,0)`;
+      visible.forEach((item, i) => {
+        const centre = rects[i].top - item.applied + rects[i].height / 2;
         const max = item.max * scale;
         const offset = Math.max(-max, Math.min(max, (centre - mid) * item.speed * scale));
         item.applied = offset;
         item.node.style.translate = `0 ${offset.toFixed(1)}px`;
-      }
+      });
     };
     const onScroll = () => { frame ||= requestAnimationFrame(update); };
-    const onResize = () => { setTile(); onScroll(); };
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
+    window.addEventListener('resize', onScroll);
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener('resize', onScroll);
       cancelAnimationFrame(frame);
       observer.disconnect();
       items.forEach(i => i.node.style.removeProperty('translate'));

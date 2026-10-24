@@ -275,15 +275,17 @@ textarea, .text-panel .form-field > textarea { resize: none; }
    cards, forms, header and footer keep their solid colours. Mirrored 2x2 tile, so no visible seams. */
 body { background-color: var(--paper); }
 /* The texture is a fixed layer (components/Parallax.jsx) that scrolls slower than the page. */
+/* --tile-h is one tile's rendered height (1582px tile at 1200px wide, or 700px wide on phones). Parallax.jsx wraps the drift at it. */
 .parallax-bg {
-  position: fixed; top: calc(-1 * var(--tile-h, 1582px)); left: 0; right: 0; height: calc(100% + var(--tile-h, 1582px));
+  --tile-h: 1582px;
+  position: fixed; top: calc(-1 * var(--tile-h)); left: 0; right: 0; height: calc(100% + var(--tile-h));
   z-index: -1; pointer-events: none; will-change: transform;
   background-size: 1200px auto; background-position: center top; background-repeat: repeat;
 }
 :is(.home-hero, .services-section, .process-section, .faq-db, .legal-intro, .lic-flags, .booking-section) { background-color: transparent; }
 html[data-display-contrast] .booking-section { background-color: var(--paper); }
 @media (max-width: 760px) {
-  .parallax-bg { background-size: 700px auto; }
+  .parallax-bg { --tile-h: 922.83px; background-size: 700px auto; }
 }
 html[data-display-contrast] .parallax-bg { display: none; }
 html[data-display-contrast] :is(.home-hero, .services-section, .process-section, .faq-db, .legal-intro, .lic-flags) { background-color: var(--paper); }

@@ -20,9 +20,8 @@
 .hero-copy > :nth-child(n+6), .page-hero-copy > :nth-child(n+6), .landing-hero-copy > :nth-child(n+6) { --hero-i: 5; }
 .hero-visual, .page-hero-image { animation: motionFocus 1.3s var(--motion-ease) .25s backwards; }
 .page-hero-backdrop, .landing-hero-bg { animation: motionFade 1.4s ease-out backwards; }
-/* The home hero photo is the largest paint on the page, so it fades in at once instead of waiting out the stagger and blur. */
-.home-hero-shadow .hero-visual { animation: none; }
-.home-hero-shadow .page-hero-backdrop { animation-duration: .5s; }
+/* The home hero photo is the largest paint on the page, so it appears at once: a fade from opacity 0 holds back LCP. */
+.home-hero-shadow .hero-visual, .home-hero-shadow .page-hero-backdrop { animation: none; }
 .page-hero .breadcrumbs { animation: motionFade .8s ease-out backwards; }
 .site-header { animation: motionFade .7s ease-out backwards; }
 .hero-badges { animation: motionRise .9s var(--motion-ease) .9s backwards; }

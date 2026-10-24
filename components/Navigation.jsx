@@ -7,8 +7,8 @@ import { Icon, Icon3D, Phone3D } from './Icon';
 import { ServiceAreaMap } from './ServiceAreaMap';
 
 export function Brand({ footer = false }) {
-  if (!footer) return <Link href="/" className="brand brand-logo" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck.png')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" /></Link>;
-  return <Link href="/" className="brand brand-logo brand-footer" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck-white.png')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" /></Link>;
+  if (!footer) return <Link href="/" className="brand brand-logo" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck.webp')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" /></Link>;
+  return <Link href="/" className="brand brand-logo brand-footer" aria-label="Phil &amp; Paul’s Plumbing Inc. — Lodi, California, home"><img src={asset('/images/logo-truck-white.webp')} alt="Phil &amp; Paul’s Plumbing" width="211" height="46" loading="lazy" decoding="async" /></Link>;
 }
 
 const descriptions = {
