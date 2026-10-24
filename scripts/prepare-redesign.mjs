@@ -1,7 +1,11 @@
+import { execSync } from 'node:child_process';
 import { writeFile } from 'node:fs/promises';
 import { sitemapPages, business } from '../content/business.mjs';
 const indexable = process.env.SITE_INDEXABLE === 'true';
-const urls = sitemapPages.map(p => `<url><loc>${business.url}${p.route}</loc></url>`).join('\n');
+// The last commit date stands in for when the content changed; without git history the tag is left out.
+let lastmod = '';
+try { lastmod = `<lastmod>${execSync('git log -1 --format=%cI', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()}</lastmod>`; } catch {}
+const urls = sitemapPages.map(p => `<url><loc>${business.url}${p.route}</loc>${lastmod}</url>`).join('\n');
 await writeFile('public/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 await writeFile('public/robots.txt', indexable
   ? `User-agent: *\nDisallow: /api/\n\nSitemap: ${business.url}/sitemap.xml\n`

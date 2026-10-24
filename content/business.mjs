@@ -20,6 +20,8 @@ export const business = {
   accessibility: '/accessibility',
   // Update with the date checked whenever the Google rating changes.
   rating: { value: '4.8', count: 119, asOf: 'October 2026' },
+  priceRange: '$$',
+  geo: { latitude: 38.12199914888224, longitude: -121.27358612511436 },
   // The single source for office hours: header, footer, contact page, CTA, FAQ, and JSON-LD all read from here.
   hours: [
     { days: 'Monday–Friday', short: 'Mon–Fri', time: '7am–7pm', opens: '07:00', closes: '19:00', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'] },

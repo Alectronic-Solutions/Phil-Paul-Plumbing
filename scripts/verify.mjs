@@ -105,6 +105,13 @@ for (const page of pages) {
 }
 const sitemap = await readFile('out/sitemap.xml', 'utf8');
 assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]), sitemapPages.map(p => business.url + p.route), 'Sitemap must list exactly the canonical URLs');
+// Every URL on the original site must still work, either as a page or through a redirect.
+const redirected = new Set((await readFile('public/_redirects', 'utf8')).split('\n').map(l => l.trim().split(/\s+/)[0]).filter(Boolean));
+const legacy = await readFile('reference/sitemap.xml', 'utf8');
+for (const [, loc] of legacy.matchAll(/<loc>(.*?)<\/loc>/g)) {
+  const path = new URL(loc).pathname.replace(/\/$/, '') || '/';
+  assert(routes.has(path) || redirected.has(path), `Original URL has no page or redirect: ${path}`);
+}
 const robots = await readFile('out/robots.txt', 'utf8');
 assert.equal(/^Disallow: \/$/m.test(robots), !indexable, 'robots.txt must match SITE_INDEXABLE');
 if (indexable) assert(robots.includes(`Sitemap: ${business.url}/sitemap.xml`), 'robots.txt must point to the sitemap');
