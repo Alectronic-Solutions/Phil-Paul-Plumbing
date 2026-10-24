@@ -210,8 +210,9 @@ textarea, .text-panel .form-field > textarea { resize: none; }
 .home-hero-shadow { position: relative; isolation: isolate; }
 .home-hero-shadow .hero-visual { position: static; align-self: stretch; min-height: 460px; padding: 0; }
 .home-hero-shadow .hero-visual::after { content: none; }
-.home-hero-shadow .page-hero-backdrop { width: min(64%, 1000px); right: -3%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30%), linear-gradient(0deg, transparent 0, #000 30%); mask-image: linear-gradient(90deg, transparent 0, #000 30%), linear-gradient(0deg, transparent 0, #000 30%); }
-.home-hero-shadow .page-hero-backdrop img { object-position: 50% 40%; opacity: .8; transform: translate3d(0, var(--parallax, 0px), 0) scale(1.06); }
+.home-hero-shadow .page-hero-backdrop { width: min(62%, 960px); right: max(1%, calc((100% - 1280px) / 2 + 6px)); -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 38%), linear-gradient(270deg, transparent 0, #000 22%), linear-gradient(0deg, transparent 0, #000 30%); mask-image: linear-gradient(90deg, transparent 0, #000 38%), linear-gradient(270deg, transparent 0, #000 22%), linear-gradient(0deg, transparent 0, #000 30%); -webkit-mask-composite: source-in; mask-composite: intersect; }
+.home-hero-shadow .page-hero-backdrop img { object-position: 50% 40%; opacity: .72; transform: translate3d(0, var(--parallax, 0px), 0) scale(1.06); }
+@media (min-width: 951px) { .home-hero-shadow .hero-copy { position: relative; z-index: 2; } .home-hero-shadow .hero-copy > p, .home-hero-shadow .hero-note, .home-hero-shadow .hero-phone { text-shadow: 0 0 14px #fffefa, 0 0 4px #fffefacc; } }
 .home-hero-shadow .hero-badges { inset: auto max(36px, calc((100% - 1280px) / 2)) 72px auto; display: flex; align-items: center; gap: 16px; }
 .home-hero-shadow .hero-badge, .home-hero-shadow .hero-badge-lodi { position: static; width: 104px; height: 104px; transform: none; box-shadow: 0 0 0 4px #fffefa, 0 0 0 5px #25282222, 0 10px 26px #25282240; }
 .home-hero-shadow .hero-badge-yelp:hover { transform: translateY(-2px); }
