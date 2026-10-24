@@ -75,7 +75,7 @@ export function ConsentProvider({ children }) {
       <div className="consent-banner-copy">
         <h2 id="consent-banner-title">Your privacy choices</h2>
         <p>{inUse.length
-          ? <>With your permission, we use {list(inUse.map(c => categories[c].short))} cookies from other companies. Nothing optional runs unless you allow it.</>
+          ? <>With your permission, we use {list(inUse.map(c => categories[c].short))} cookies from other companies.<br className="consent-br" /> Nothing optional runs unless you allow it.</>
           : <>We use one cookie to remember this choice. Optional {list(offered.map(c => categories[c].short))} cookies stay off unless you allow them.</>} See our <Link href="/cookie-policy">Cookie Policy</Link>.{signals.gpc && ' Your browser’s Global Privacy Control signal is on, so advertising cookies stay off.'}</p>
       </div>
       <div className="consent-actions">
