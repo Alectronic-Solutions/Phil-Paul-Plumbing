@@ -13,7 +13,7 @@ const html = `<!doctype html><meta charset="utf-8"><style>
 @font-face{font-family:'Barlow Condensed';font-weight:700;src:url(${url('public/fonts/2a84ba04cd81.woff2')}) format('woff2')}
 *{margin:0;box-sizing:border-box}
 body{width:1200px;height:630px;position:relative;overflow:hidden;background:url(${url('scripts/share-source.jpg')}) 50% 14%/cover no-repeat}
-.phone{position:absolute;left:50%;top:26px;transform:translateX(-50%);padding:10px 34px 8px;background:#751c28;border:3px solid #e1c797;border-radius:10px;color:#fffefa;font:700 64px/1 'Barlow Condensed';letter-spacing:.03em;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.phone{position:absolute;left:34px;bottom:34px;padding:12px 30px 9px;background:#751c28;border:3px solid #e1c797;border-radius:10px;color:#fffefa;font:700 60px/1 'Barlow Condensed';letter-spacing:.03em;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .badge{position:absolute;bottom:34px;width:170px;height:170px;filter:drop-shadow(0 5px 10px rgba(0,0,0,.4))}
 </style>
 <div class="phone">${business.phone}</div>
