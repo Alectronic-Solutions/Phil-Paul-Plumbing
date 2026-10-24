@@ -118,8 +118,6 @@
 .scrolling-reviews .review-card { width: 355px; min-height: 330px; flex: 0 0 auto; padding: 28px; border: 1px solid #dfd9cd; border-radius: 8px; background: var(--white); box-shadow: 0 5px 15px #25282204; }
 .scrolling-reviews .review-card blockquote { font-size: 20px; line-height: 1.65; font-weight: 500; letter-spacing: -.02em; margin: 27px 0 30px; max-width: none; }
 .scrolling-reviews .review-card figcaption { display: flex; gap: 12px; align-items: center; padding-top: 18px; border-top: 1px solid #eeebe3; }
-.review-profile { display: block; flex-shrink: 0; }
-.review-profile > img { width: 48px; height: 48px; border-radius: 7px; object-fit: cover; background: #f4f1e8; }
 .scrolling-reviews .review-card figcaption > div { min-width: 0; flex: 1; gap: 4px; }
 .scrolling-reviews .review-card figcaption > div > a { font-size: 14px; font-weight: 600; line-height: 1.4; }
 .scrolling-reviews .review-card figcaption > div > span { font-size: 12px; line-height: 1.5; }
@@ -156,7 +154,6 @@ body { font-size: 17px; }
 .consent-label, .form-note { font-size: 12px; line-height: 1.8; }
 .form-error > p { font-size: 14px; }
 .contact-block p, .hours { font-size: 16px; }
-.contact-block small { font-size: 13px; }
 .community-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
 .community-card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px; overflow: hidden; border-radius: 6px; isolation: isolate; background: #1c1e19; color: #fff; }
 .community-card-wide { grid-column: span 2; }
@@ -249,8 +246,6 @@ body { font-size: 17px; }
   .hero-phone { font-size: 15px; min-height: 48px; }
   .hero-phone small { font-size: 9px; }
   .hero-note { font-size: 11px; }
-  .hero-photo-caption { font-size: 9px; line-height: 1.5; }
-  .hero-photo-caption > span:last-child { font-size: 8px; }
   .trust-grid { min-height: 138px; }
   .trust-grid > a, .trust-grid > span { font-size: 12px; line-height: 1.55; }
   .trust-grid > :nth-child(even) { padding-left: 15px; }
@@ -284,7 +279,6 @@ body { font-size: 17px; }
   .faq-answer { padding-left: 25px; padding-right: 12px; }
   .cta-inner h2 { font-size: clamp(2.9rem, 12vw, 3.8rem); line-height: 1.02; }
   .cta-actions > .button, .button, .page-hero .button { font-size: 15px; min-height: 55px; }
-  .cta-actions > span { font-size: 12px; }
   .footer-top { gap: 35px 24px; }
   .footer-top p, .footer-top > div:not(:first-child) > a, .footer-top .footer-visit p { font-size: 14px; line-height: 1.85; }
   .footer-top > div:not(:first-child) > a { min-height: 38px; display: flex; align-items: center; margin-top: 5px; }
@@ -304,7 +298,6 @@ body { font-size: 17px; }
   .city-links > a { font-size: 28px; line-height: 1.1; margin-right: 10px; padding-right: 7px; }
 
   .contact-block p, .hours { font-size: 16px; }
-  .contact-block small { font-size: 13px; }
   .booking-intro h1 { font-size: clamp(3rem, 12vw, 4rem); }
   .urgent-call strong { font-size: 14px; }
   .urgent-call span { font-size: 12px; }
@@ -317,8 +310,6 @@ body { font-size: 17px; }
   .consent-label, .form-note { font-size: 13px; }
   .form-submit { font-size: 16px; }
   .form-error > p { font-size: 14px; }
-  .reviews-intro > .container > p { font-size: 17px; }
-  .reviews-intro .button { font-size: 14px; }
 }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; gap: 29px; }

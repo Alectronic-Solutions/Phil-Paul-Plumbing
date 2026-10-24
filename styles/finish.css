@@ -12,7 +12,6 @@ h1, h2 { text-shadow: 0 1px 0 #fffefa, 0 6px 18px #2528220e; }
 .about-feature h2, .cta-section h2, .landing-hero h1, .landing-hero h2, .landing-quote h2, .landing-quote blockquote, .site-footer h2 { text-shadow: 0 1px 2px #00000040, 0 8px 24px #00000047; }
 .about-feature .eyebrow, .cta-section .eyebrow, .landing-hero .eyebrow { text-shadow: 0 1px 8px #0000006b; }
 .about-feature p, .cta-section p, .landing-hero p { text-shadow: 0 1px 10px #00000040; }
-.hero-photo-caption { text-shadow: 0 1px 6px #00000066; }
 
 /* Buttons: a lit top edge and a little more depth on the primary action. */
 .button-primary { background-image: linear-gradient(180deg, #ffffff1f, #ffffff00 55%), linear-gradient(180deg, #7e202c, var(--wine-dark)); box-shadow: inset 0 1px 0 #ffffff2e, 0 1px 2px #54151e40, 0 8px 20px #751c2833; text-shadow: 0 1px 2px #00000040; }
@@ -100,7 +99,6 @@ textarea, .text-panel .form-field > textarea { resize: none; }
 .text-panel .form-field > input, .text-panel .form-field > textarea { border-color: #ddd8cb; background: #faf8f3; box-shadow: inset 0 1px 2px #2528220a; }
 .text-panel .form-field > input:focus, .text-panel .form-field > textarea:focus { border-color: var(--wine); background: var(--white); box-shadow: 0 0 0 4px #751c281f; }
 .text-panel .consent-label { margin: 14px 0 12px; padding: 12px 14px; border: 1px solid #e8e3d6; border-radius: 12px; background: #faf8f3; text-align: left; font-size: 11.5px; line-height: 1.5; color: var(--muted); }
-.text-panel .text-notice { margin: 0 auto 4px; max-width: 30em; font-size: 12px; color: var(--muted); text-wrap: balance; }
 .text-panel .form-submit { width: 100%; margin-top: 12px; min-height: 52px; justify-content: center; font-size: 16px; letter-spacing: .02em; }
 .text-panel .text-emergency { margin: 16px 0 0; padding: 12px 14px; border-radius: 12px; background: #f3eee2; font-size: 12.5px; line-height: 1.55; color: var(--ink); text-wrap: balance; }
 .text-panel .text-emergency a { font-weight: 700; }
@@ -428,3 +426,7 @@ h1, h2 { text-shadow: none; }
   .hero-copy > p, .page-hero-copy > p { font-size: 17px; }
   .text-panel .consent-label, .text-panel .consent-box, .text-panel .text-emergency { font-size: 13.5px; }
 }
+
+/* Legibility: text shadows keep hero copy readable over photos */
+.landing-hero p, .landing-hero li, .landing-hero small { text-shadow: 0 1px 3px #000000a6, 0 2px 14px #000000b3; }
+.page-hero-shadow .page-hero-copy :is(p, li, .breadcrumbs) { text-shadow: 0 0 10px #fffefa, 0 0 3px #fffefacc; }

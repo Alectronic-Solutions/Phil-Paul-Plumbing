@@ -308,7 +308,6 @@ main > .booking-section:last-child { background: linear-gradient(0deg, var(--ink
   .section-heading-side .text-link, .section-heading > .text-link { justify-content: center; }
   .cta-section .cta-inner { flex-direction: column; text-align: center; }
   .cta-call { margin-inline: auto; }
-  .cta-actions { margin-right: 0; min-width: 0; width: 100%; }
   /* Footer */
   .footer-top { grid-template-columns: 1fr 1fr; gap: 30px 20px; justify-items: stretch; text-align: left; }
   .footer-top > div:first-child { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 28px; border-bottom: 1px solid #44483c; }
