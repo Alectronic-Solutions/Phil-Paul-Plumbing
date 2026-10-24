@@ -1,4 +1,4 @@
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { instagramHandle, instagramPosts } from '../content/instagram.mjs';
 import { Icon } from './Icon';
 

@@ -2,7 +2,8 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { asset } from '../lib/asset.mjs';
 import { useRouter } from 'next/router';
-import { business, services, cities, hoursSummary } from '../content/business.mjs';
+import { business, hoursSummary } from '../content/company.mjs';
+import { useCatalog } from '../lib/catalog.mjs';
 import { Icon, Icon3D, Phone3D } from './Icon';
 import { ServiceAreaMap } from './ServiceAreaMap';
 
@@ -36,6 +37,7 @@ const companyLinks = [
 ];
 
 export function Header() {
+  const { services, cities } = useCatalog();
   const [open, setOpen] = useState(false);
   const [panel, setPanel] = useState(null);
   const [hoverArea, setHoverArea] = useState(null);

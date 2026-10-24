@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { business, reviewRows } from '../content/business.mjs';
+import { business, reviewRows } from '../content/company.mjs';
 import { Icon } from './Icon';
 import { useMotionOff } from './DisplaySettings';
 import { asset } from '../lib/asset.mjs';

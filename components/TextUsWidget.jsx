@@ -5,7 +5,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { asset } from '../lib/asset.mjs';
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { Icon } from './Icon';
 
 export function TextUsWidget({ demo = false }) {

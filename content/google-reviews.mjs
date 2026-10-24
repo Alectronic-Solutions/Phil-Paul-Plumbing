@@ -7,7 +7,7 @@
 // Text and replies are copied as Google shows them. Dates are converted from Google's relative
 // dates ("2 months ago") to a month, so they are approximate. Em dashes in the owner replies are swapped for commas (site style rule). Only add reviews that exist on the
 // Google Business Profile, and do not rewrite, trim, or cherry-pick them: the FTC and California
-// rules treat curated or edited reviews as deceptive. Update business.rating in business.mjs
+// rules treat curated or edited reviews as deceptive. Update business.rating in company.mjs
 // when you refresh this list.
 export const googleReviews = [
   {

@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { categories, activeIntegrations } from '../content/integrations.mjs';
 import { categoriesInUse, offeredCategories, applySignals, parseConsent, serializeConsent, consentCookieString, needsChoice, permissions, acceptAll, rejectAll, allowedIntegrations, revokedIntegrations, cookieMatcher } from '../lib/consent.mjs';
 import { Icon } from './Icon';

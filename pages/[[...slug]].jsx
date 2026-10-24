@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { pages, services, cities, business, openHours, commonFaqs, areaFaqs, contactFaqs, fullFaqs } from '../content/business.mjs';
+import { business, openHours, commonFaqs, areaFaqs, contactFaqs } from '../content/company.mjs';
 import { pageUrl, shareImage, shareAlt } from '../lib/share.mjs';
 import { warranty } from '../content/drafts.mjs';
 import { Layout, HomePage, ServicesPage, ServicePage, AboutPage, AreasPage, CityPage, ContactPage, BookingPage, ReviewsPage, LegalPage, FaqsPage, SitemapPage, DraftPage, LicensingPage, WarrantyPage, CouponsPage } from '../components/Site';
@@ -9,11 +9,10 @@ const indexable = process.env.NEXT_PUBLIC_SITE_INDEXABLE === 'true';
 const areaServed = ['Lodi', 'Stockton', 'Galt', 'Acampo', 'Woodbridge', 'Lockeford', 'Clements'].map(name => ({ '@type': 'City', name: `${name}, CA` }));
 const parents = { service: { route: '/service', name: 'Services' }, city: { route: '/service-areas', name: 'Service area' } };
 
-export default function SitePage({ page, legal }) {
+export default function SitePage({ page, catalog, service = null, city = null, faqGroups = null, legal }) {
+  const { services, cities } = catalog;
   const canonical = pageUrl(page.route);
   const share = shareImage(page);
-  const service = page.type === 'service' && services.find(s => s.slug === page.service);
-  const city = page.type === 'city' && cities.find(c => c.slug === page.city);
   const trail = page.route === '/' ? [] : [{ route: '/', name: 'Home' }, ...(parents[page.type] ? [parents[page.type]] : []), page];
   const schema = {
     '@context': 'https://schema.org',
@@ -32,7 +31,7 @@ export default function SitePage({ page, legal }) {
       ] : []),
       ...(page.type === 'contact' ? [{ '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: contactFaqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
       ...(page.type === 'warranty' ? [{ '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: warranty.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
-      ...(page.type === 'faqs' ?[{ '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: fullFaqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
+      ...(page.type === 'faqs' ?[{ '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: faqGroups.flatMap(g => g.items).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
       ...(service ? [{ '@type': 'Service', '@id': `${canonical}#service`, name: service.title.replace(/ in Lodi, CA$/, ''), serviceType: service.name, description: service.guide?.body[0] ?? service.description, provider: { '@id': `${site}/#business` }, url: canonical, areaServed, hasOfferCatalog: { '@type': 'OfferCatalog', name: service.name, itemListElement: service.details.map(d => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: d } })) } }, { '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: service.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
       ...(city ? [{ '@type': 'Service', '@id': `${canonical}#service`, name: `Plumbing service in ${city.name}, CA`, serviceType: 'Plumbing', provider: { '@id': `${site}/#business` }, url: canonical, areaServed: city.landing ? [{ '@type': 'City', name: `${city.name}, CA` }, ...city.landing.zips.map(postalCode => ({ '@type': 'Place', address: { '@type': 'PostalAddress', postalCode, addressLocality: city.name, addressRegion: 'CA', addressCountry: 'US' } }))] : { '@type': 'City', name: `${city.name}, CA` }, ...(city.landing ? { hoursAvailable: openHours.map(h => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.dayOfWeek, opens: h.opens, closes: h.closes })) } : {}) }] : []),
       ...(city?.landing ? [{ '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: city.landing.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
@@ -60,7 +59,7 @@ export default function SitePage({ page, legal }) {
       {page.type === 'booking' && <BookingPage />}
       {page.type === 'reviews' && <ReviewsPage />}
       {page.type === 'legal' && <LegalPage doc={legal} />}
-      {page.type === 'faqs' && <FaqsPage />}
+      {page.type === 'faqs' && <FaqsPage groups={faqGroups} />}
       {page.type === 'sitemap' && <SitemapPage />}
       {page.type === 'draft' && <DraftPage page={page} />}
       {page.type === 'licensing' && <LicensingPage />}
@@ -70,15 +69,22 @@ export default function SitePage({ page, legal }) {
   </>;
 }
 
-export function getStaticPaths() {
+// The full content is loaded only here, at build time. Each page gets the slim `catalog` plus its own records, so
+// the long service, city, FAQ, and policy copy ships in that page's HTML instead of the shared client bundle.
+export async function getStaticPaths() {
+  const { pages } = await import('../content/business.mjs');
   return { paths: pages.map((page) => ({ params: { slug: page.route === '/' ? [] : page.route.slice(1).split('/') } })), fallback: false };
 }
 
 export async function getStaticProps({ params }) {
+  const { pages, services, cities, faqGroups, catalog } = await import('../content/business.mjs');
   const route = '/' + (params.slug || []).join('/');
   const page = pages.find((item) => item.route === route);
   if (!page) return { notFound: true };
-  // Loaded here so the policy text only ships in the legal pages' HTML, not the shared client bundle.
-  if (page.type === 'legal') return { props: { page, legal: (await import('../content/legal.mjs')).legal[page.legal] } };
-  return { props: { page } };
+  const props = { page, catalog };
+  if (page.type === 'service') props.service = services.find(s => s.slug === page.service);
+  if (page.type === 'city') props.city = cities.find(c => c.slug === page.city);
+  if (page.type === 'faqs') props.faqGroups = faqGroups;
+  if (page.type === 'legal') props.legal = (await import('../content/legal.mjs')).legal[page.legal];
+  return { props };
 }

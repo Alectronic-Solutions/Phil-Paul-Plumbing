@@ -3,7 +3,7 @@
 // markup, so screen readers and other assistive technology get the same page either way.
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { displayKey, displaySettings, defaultDisplay, parseDisplay, serializeDisplay, displayAttributes, attribute } from '../lib/display.mjs';
 import { Icon } from './Icon';
 

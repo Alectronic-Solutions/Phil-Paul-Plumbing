@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { Icon, Icon3D } from './Icon';
 
 // Station coordinates share the 600 x 420 viewBox of the route drawing below, so each station is placed in percent.

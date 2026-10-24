@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { Icon, Icon3D } from './Icon';
 import { ServiceAreaMap } from './ServiceAreaMap';
 import { neighborhoodSpots } from '../content/neighborhood-spots.mjs';

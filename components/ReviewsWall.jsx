@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { business } from '../content/business.mjs';
+import { business } from '../content/company.mjs';
 import { googleReviews } from '../content/google-reviews.mjs';
 import { Icon } from './Icon';
 import { Photo } from './Site';
