@@ -72,6 +72,8 @@ for (const page of pages) {
     const url = $(el).attr('src') || $(el).attr('href') || '';
     assert(!/^(https?:)?\/\//.test(url) || el.name === 'link' && /^(canonical|alternate)$/.test($(el).attr('rel')), `Third-party resource loaded without consent on ${page.route}: ${url}`);
   }
+  // Next's bundles, held back by scripts/defer-hydration.mjs, are listed in the loader's data-src instead of script[src].
+  for (const url of $('script[data-src]').toArray().flatMap(el => JSON.parse($(el).attr('data-src')))) assert(!/^(https?:)?\/\//.test(url), `Third-party script deferred on ${page.route}: ${url}`);
   assert(!trackers.test($('head').html() + $('body').html().replace(/<a [^>]*>/g, '')), `Tracking or widget service referenced on ${page.route}`);
   for (const route of legalLinks) assert($(`footer a[href^="${route}"]`).length, `Footer link to ${route} missing on ${page.route}`);
   assert.equal($('footer button.privacy-choices').length, 1, `"Your Privacy Choices" control missing on ${page.route}`);
